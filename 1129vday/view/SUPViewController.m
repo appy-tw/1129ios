@@ -52,19 +52,19 @@
     [self.view addSubview:uiivMain];
     
     UIButton *uibTsai = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    uibTsai.frame = CGRectMake(cgfAvailableWidth * 0.19, cgfAvailableHeight * 0.40 + cgfAvailableHeightStart, cgfAvailableWidth * 0.13, cgfAvailableWidth * 0.13 * 173.0 / 176.0);
+    uibTsai.frame = CGRectMake(cgfAvailableWidth * 0.19, cgfAvailableHeight * 0.408 + cgfAvailableHeightStart, cgfAvailableWidth * 0.13, cgfAvailableWidth * 0.13 * 173.0 / 176.0);
     [uibTsai addTarget:self action:@selector(uibClickedTsai) forControlEvents:UIControlEventTouchUpInside];
     uibTsai.tintColor = [UIColor colorWithRed:0.71 green:0.13 blue:0.25 alpha:1.0];
     [self.view addSubview:uibTsai];
     
     UIButton *uibWu = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    uibWu.frame = CGRectMake(cgfAvailableWidth * 0.436, cgfAvailableHeight * 0.40 + cgfAvailableHeightStart, cgfAvailableWidth * 0.13, cgfAvailableWidth * 0.13 * 173.0 / 176.0);
+    uibWu.frame = CGRectMake(cgfAvailableWidth * 0.436, cgfAvailableHeight * 0.408 + cgfAvailableHeightStart, cgfAvailableWidth * 0.13, cgfAvailableWidth * 0.13 * 173.0 / 176.0);
     [uibWu addTarget:self action:@selector(uibClickedWu) forControlEvents:UIControlEventTouchUpInside];
     uibWu.tintColor = [UIColor colorWithRed:0.71 green:0.13 blue:0.25 alpha:1.0];
     [self.view addSubview:uibWu];
 
     UIButton *uibLin = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    uibLin.frame = CGRectMake(cgfAvailableWidth * 0.698, cgfAvailableHeight * 0.40 + cgfAvailableHeightStart, cgfAvailableWidth * 0.13, cgfAvailableWidth * 0.13 * 173.0 / 176.0);
+    uibLin.frame = CGRectMake(cgfAvailableWidth * 0.698, cgfAvailableHeight * 0.408 + cgfAvailableHeightStart, cgfAvailableWidth * 0.13, cgfAvailableWidth * 0.13 * 173.0 / 176.0);
     [uibLin addTarget:self action:@selector(uibClickedLin) forControlEvents:UIControlEventTouchUpInside];
     uibLin.tintColor = [UIColor colorWithRed:0.71 green:0.13 blue:0.25 alpha:1.0];
     [self.view addSubview:uibLin];
