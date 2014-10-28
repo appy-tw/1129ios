@@ -78,6 +78,7 @@
     uilTitle.text = @"誰是公民 v ?";
     uilTitle.textColor = [UIColor colorWithRed:0.71 green:0.13 blue:0.25 alpha:1.0];
     uilTitle.textAlignment = NSTextAlignmentCenter;
+    [uilTitle setAdjustsFontSizeToFitWidth:YES];
     [self.view addSubview:uilTitle];
 
     UITextView *uitvContent = [[UITextView alloc]initWithFrame:CGRectMake(cgfAvailableWidth * 0.06, cgfAvailableHeight * 0.65 + cgfAvailableHeightStart, cgfAvailableWidth * 0.88, cgfAvailableWidth * 0.88 * 600.0 / 1315.0)];
@@ -88,21 +89,6 @@
     [[UIImageView alloc]initWithFrame:CGRectMake(cgfAvailableWidth * 0.06, cgfAvailableHeight * 0.88 + cgfAvailableHeightStart, cgfAvailableWidth * 0.88, cgfAvailableWidth * 0.88 * 56.0 / 1315.0)];
     uiivTitleEnd.image = [UIImage imageNamed:@"msp_title_end"];
     [self.view addSubview:uiivTitleEnd];
-}
-
-- (void)uibClicked {
-    
-}
-
-- (void)setButton {
-    UIButton *uibTsai = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    uibTsai.frame = CGRectMake(0, self.view.frame.size.height - 65, 160,65);
-    [uibTsai addTarget:self action:@selector(uibClicked) forControlEvents:UIControlEventTouchUpInside];
-    uibTsai.tintColor = [UIColor blackColor];
-    [self.view addSubview:uibTsai];
-    
-    UIImage *uiiButtonTsai = [UIImage imageNamed:@""];
-    [uibTsai setImage:uiiButtonTsai forState:UIControlStateNormal];
 }
 
 - (void)drawScreen {
