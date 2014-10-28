@@ -28,8 +28,8 @@
 
 @implementation MSViewController
 
-- (void)embedYouTube:(NSString *)urlString frame:(CGRect)frame {
-    NSString *embedHTML = @"\
+- (void)embedYouTube:(NSString *)nssUrlString frame:(CGRect)cgrRrame {
+    NSString *nssEmbedHTML = @"\
     <html><head>\
     <style type=\"text/css\">\
     body {\
@@ -41,10 +41,10 @@
     <embed id=\"yt\" src=\"%@\" type=\"application/x-shockwave-flash\" \
     width=\"%0.0f\" height=\"%0.0f\"></embed>\
     </body></html>";
-    NSString *html = [NSString stringWithFormat:embedHTML, urlString, frame.size.width, frame.size.height];
-    UIWebView *videoView = [[UIWebView alloc] initWithFrame:frame];
-    [videoView loadHTMLString:html baseURL:nil];
-    [self.view addSubview:videoView];
+    NSString *nssHtml = [NSString stringWithFormat:nssEmbedHTML, nssUrlString, cgrRrame.size.width, cgrRrame.size.height];
+    UIWebView *uiwVideoView = [[UIWebView alloc] initWithFrame:cgrRrame];
+    [uiwVideoView loadHTMLString:nssHtml baseURL:nil];
+    [self.view addSubview:uiwVideoView];
 }
 
 - (void)setMyScreenSize
