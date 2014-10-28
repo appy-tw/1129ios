@@ -74,18 +74,18 @@
     uiivTitle.image = [UIImage imageNamed:@"msp_title"];
     [self.view addSubview:uiivTitle];
 
-    UILabel *uilTitle = [[UILabel alloc]initWithFrame:CGRectMake(cgfAvailableWidth * 0.06, cgfAvailableHeight * 0.58 + cgfAvailableHeightStart, cgfAvailableWidth * 0.88, cgfAvailableWidth * 0.88 * 154.0 / 1315.0)];
+    UILabel *uilTitle = [[UILabel alloc]initWithFrame:CGRectMake(cgfAvailableWidth * 0.06, cgfAvailableHeight * 0.60 + cgfAvailableHeightStart, cgfAvailableWidth * 0.88, cgfAvailableWidth * 0.88 * 154.0 / 1315.0)];
     uilTitle.text = @"誰是公民 v ?";
     uilTitle.textColor = [UIColor colorWithRed:0.71 green:0.13 blue:0.25 alpha:1.0];
     uilTitle.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:uilTitle];
 
-    UILabel *uilContent = [[UILabel alloc]initWithFrame:CGRectMake(cgfAvailableWidth * 0.06, cgfAvailableHeight * 0.60 + cgfAvailableHeightStart, cgfAvailableWidth * 0.88, cgfAvailableWidth * 0.88 * 600.0 / 1315.0)];
-    uilContent.text = @"人機不天人媽一拿的服，萬大成人放新合麗狀場轉！許一正，笑德間日呢集心起送始、思國放地；外回費十以詩驚，書火使：報界清難料一表新，課團此意式。黨資書回用除。新由那面期公年，公過說花規的和面地花的再。叫時要也展綠師合大事條帶理是老就。時到園務們體音領商的。好大銷在正爸使展理突例色不出位，天兒花，化根十表，親布日千為布著響的好對是觀小色生：器可找候只此。社了民，全而個親飯半種了，以刻開治處當，取邊化知我站不未大起車分非過列國才因、北舉城來事應性陽球西常標在的！遠觀來出否公或的生不先可上給是門電壓拿。";
-    [self.view addSubview:uilContent];
+    UITextView *uitvContent = [[UITextView alloc]initWithFrame:CGRectMake(cgfAvailableWidth * 0.06, cgfAvailableHeight * 0.65 + cgfAvailableHeightStart, cgfAvailableWidth * 0.88, cgfAvailableWidth * 0.88 * 600.0 / 1315.0)];
+    uitvContent.text = @"人機不天人媽一拿的服，萬大成人放新合麗狀場轉！許一正，笑德間日呢集心起送始、思國放地；外回費十以詩驚，書火使：報界清難料一表新，課團此意式。黨資書回用除。新由那面期公年，公過說花規的和面地花的再。叫時要也展綠師合大事條帶理是老就。";
+    [self.view addSubview:uitvContent];
     
     UIImageView *uiivTitleEnd =
-    [[UIImageView alloc]initWithFrame:CGRectMake(cgfAvailableWidth * 0.06, cgfAvailableHeight * 0.83 + cgfAvailableHeightStart, cgfAvailableWidth * 0.88, cgfAvailableWidth * 0.88 * 56.0 / 1315.0)];
+    [[UIImageView alloc]initWithFrame:CGRectMake(cgfAvailableWidth * 0.06, cgfAvailableHeight * 0.88 + cgfAvailableHeightStart, cgfAvailableWidth * 0.88, cgfAvailableWidth * 0.88 * 56.0 / 1315.0)];
     uiivTitleEnd.image = [UIImage imageNamed:@"msp_title_end"];
     [self.view addSubview:uiivTitleEnd];
 }
