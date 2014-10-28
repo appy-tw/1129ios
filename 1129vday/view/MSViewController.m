@@ -63,12 +63,29 @@
     NSLog(@"Available High:%f-%f",cgfAvailableHeightStart,cgfAvailableHeightEnd);
 }
 
-- (void)setImage {
+- (void)setImageAndLabel {
     UIImageView *uiivMain =
     [[UIImageView alloc]initWithFrame:CGRectMake(cgfAvailableWidth * 0.06, cgfAvailableHeight * 0.03 + cgfAvailableHeightStart, cgfAvailableWidth * 0.88, cgfAvailableWidth * 0.88 * 76.0 / 1000.0)];
     uiivMain.image = [UIImage imageNamed:@"msp_main"];
-    
     [self.view addSubview:uiivMain];
+    
+    UIImageView *uiivTitle =
+    [[UIImageView alloc]initWithFrame:CGRectMake(cgfAvailableWidth * 0.06, cgfAvailableHeight * 0.53 + cgfAvailableHeightStart, cgfAvailableWidth * 0.88, cgfAvailableWidth * 0.88 * 154.0 / 1315.0)];
+    uiivTitle.image = [UIImage imageNamed:@"msp_title"];
+    [self.view addSubview:uiivTitle];
+
+    UILabel *uilTitle = [[UILabel alloc]initWithFrame:CGRectMake(cgfAvailableWidth * 0.06, cgfAvailableHeight * 0.60 + cgfAvailableHeightStart, cgfAvailableWidth * 0.88, cgfAvailableWidth * 0.88 * 154.0 / 1315.0)];
+    uilTitle.text = @"誰是公民 v ?";
+    [self.view addSubview:uilTitle];
+
+    UILabel *uilContent = [[UILabel alloc]initWithFrame:CGRectMake(cgfAvailableWidth * 0.06, cgfAvailableHeight * 0.60 + cgfAvailableHeightStart, cgfAvailableWidth * 0.88, cgfAvailableWidth * 0.88 * 300.0 / 1315.0)];
+    uilContent.text = @"誰是公民 v ?";
+    [self.view addSubview:uilContent];
+    
+    UIImageView *uiivTitleEnd =
+    [[UIImageView alloc]initWithFrame:CGRectMake(cgfAvailableWidth * 0.06, cgfAvailableHeight * 0.83 + cgfAvailableHeightStart, cgfAvailableWidth * 0.88, cgfAvailableWidth * 0.88 * 56.0 / 1315.0)];
+    uiivTitleEnd.image = [UIImage imageNamed:@"msp_title_end"];
+    [self.view addSubview:uiivTitleEnd];
 }
 
 - (void)uibClicked {
@@ -88,9 +105,10 @@
 
 - (void)drawScreen {
     [self setMyScreenSize];
-    [self setImage];
+    [self setImageAndLabel];
 //    [self setButton];
-    [self embedYouTube:@"https://www.youtube.com/watch?feature=player_embedded&v=_F36LVanRE0" frame:CGRectMake(cgfAvailableWidth * 0.06, cgfAvailableHeight * 0.13 + cgfAvailableHeightStart, cgfAvailableWidth * 0.88, cgfAvailableWidth * 0.88 * 9.0 / 16.0)];
+    [self embedYouTube:@"https://www.youtube.com/watch?feature=player_embedded&v=OtvbZscM90A" frame:CGRectMake(cgfAvailableWidth * 0.06, cgfAvailableHeight * 0.13 + cgfAvailableHeightStart, cgfAvailableWidth * 0.88, cgfAvailableWidth * 0.88 * 9.0 / 16.0)];
+//    http://www.youtube.com/watch?feature=player_embedded&v=OtvbZscM90A
 }
 
 - (void)viewDidLoad {
