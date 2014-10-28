@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "1129vday/view/MSViewController.m"
-            timestampString = "436196461.241455"
+            timestampString = "436204234.580399"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
             landmarkName = "-setImage"
             landmarkType = "5">
          </BreakpointContent>

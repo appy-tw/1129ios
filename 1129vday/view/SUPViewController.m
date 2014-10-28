@@ -1,15 +1,15 @@
 //
-//  IntroViewController.m
+//  SUPViewController.m
 //  1129vday
 //
-//  Created by lololol on 26/Oct/14.
+//  Created by lololol on 28/Oct/14.
 //  Copyright (c) 2014 appy.tw. All rights reserved.
 //
 
-#import "MSViewController.h"
+#import "SUPViewController.h"
 #import "AppDelegate.h"
 
-@interface MSViewController ()
+@interface SUPViewController ()
 {
     CGFloat cgfAvailableWidth;
     CGFloat cgfAvailableHeight;
@@ -26,26 +26,8 @@
 
 @end
 
-@implementation MSViewController
+@implementation SUPViewController
 
-- (void)embedYouTube:(NSString *)urlString frame:(CGRect)frame {
-    NSString *embedHTML = @"\
-    <html><head>\
-    <style type=\"text/css\">\
-    body {\
-    background-color: transparent;\
-    color: white;\
-    }\
-    </style>\
-    </head><body style=\"margin:0\">\
-    <embed id=\"yt\" src=\"%@\" type=\"application/x-shockwave-flash\" \
-    width=\"%0.0f\" height=\"%0.0f\"></embed>\
-    </body></html>";
-    NSString *html = [NSString stringWithFormat:embedHTML, urlString, frame.size.width, frame.size.height];
-    UIWebView *videoView = [[UIWebView alloc] initWithFrame:frame];
-    [videoView loadHTMLString:html baseURL:nil];
-    [self.view addSubview:videoView];
-}
 
 - (void)setMyScreenSize
 {
@@ -58,15 +40,15 @@
     
     cgfAvailableHeightStart = cgfStatusBarHeight + cgfNavigationBarHeight;
     cgfAvailableHeightEnd = cgfAvailableHeight - cgfTabBarHeight;
-
+    
     NSLog(@"AvailableScreen:%fx%f",cgfAvailableWidth,cgfAvailableHeight);
     NSLog(@"Available High:%f-%f",cgfAvailableHeightStart,cgfAvailableHeightEnd);
 }
 
 - (void)setImage {
     UIImageView *uiivMain =
-    [[UIImageView alloc]initWithFrame:CGRectMake(cgfAvailableWidth * 0.06, cgfAvailableHeight * 0.03 + cgfAvailableHeightStart, cgfAvailableWidth * 0.88, cgfAvailableWidth * 0.88 * 76.0 / 1000.0)];
-    uiivMain.image = [UIImage imageNamed:@"msp_main"];
+    [[UIImageView alloc]initWithFrame:CGRectMake(cgfAvailableWidth * 0.06, cgfAvailableHeight * 0.03 + cgfAvailableHeightStart, cgfAvailableWidth * 0.88, cgfAvailableWidth * 0.88 * 1010.0 / 1393.0)];
+    uiivMain.image = [UIImage imageNamed:@"supp_main"];
     
     [self.view addSubview:uiivMain];
 }
@@ -89,8 +71,7 @@
 - (void)drawScreen {
     [self setMyScreenSize];
     [self setImage];
-//    [self setButton];
-    [self embedYouTube:@"https://www.youtube.com/watch?feature=player_embedded&v=_F36LVanRE0" frame:CGRectMake(cgfAvailableWidth * 0.06, cgfAvailableHeight * 0.13 + cgfAvailableHeightStart, cgfAvailableWidth * 0.88, cgfAvailableWidth * 0.88 * 9.0 / 16.0)];
+    [self setButton];
 }
 
 - (void)viewDidLoad {
@@ -98,7 +79,6 @@
     // Do any additional setup after loading the view.
     delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [self drawScreen];
-//    [self embedYouTube:@"http://www.youtube.com/watch?v=l3Iwh5hqbyE" frame:CGRectMake(20, 20, 100, 100)];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -107,13 +87,13 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

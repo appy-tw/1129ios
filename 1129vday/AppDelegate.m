@@ -12,7 +12,7 @@
 #import "MSViewController.h"
 #import "BLOGTableViewController.h"
 #import "FREEViewController.h"
-#import "SUPTableViewController.h"
+#import "SUPViewController.h"
 #import "CONNViewController.h"
 
 @interface AppDelegate ()
@@ -24,7 +24,7 @@
     //戰況，魔王，uitableview
     FREEViewController *freeViewController;
     //佔領，各投開票所資料，uitableview
-    SUPTableViewController *supTableViewController;
+    SUPViewController *supViewController;
     //地圖，各票所分佈(最後弄)
     CONNViewController *connViewController;
     //其他，uitableview
@@ -36,22 +36,22 @@
 
 - (void)setMyViewController {
     msViewController = [[MSViewController alloc]init];
-    msViewController.title = NSLocalizedString(@"任務設定", nil);
+    msViewController.title = NSLocalizedString(@"罷免日計劃", nil);
 //    introViewController.tabBarItem = [UIImage imageNamed:<#(NSString *)#>];
     blogTableViewController = [[BLOGTableViewController alloc]init];
-    blogTableViewController.title = NSLocalizedString(@"即時戰況", nil);
+    blogTableViewController.title = NSLocalizedString(@"戰略消息", nil);
     //戰況，魔王，uitableview
     freeViewController = [[FREEViewController alloc]init];
-    freeViewController.title = NSLocalizedString(@"罷免示範區", nil);
+    freeViewController.title = NSLocalizedString(@"自由罷免示範區", nil);
     //佔領，各投開票所資料，uitableview
-    supTableViewController = [[SUPTableViewController alloc]init];
-    supTableViewController.title = NSLocalizedString(@"支援公民V", nil);
+    supViewController = [[SUPViewController alloc]init];
+    supViewController.title = NSLocalizedString(@"加入公民V", nil);
     //地圖，各票所分佈(最後弄)
     connViewController = [[CONNViewController alloc]init];
     connViewController.title = NSLocalizedString(@"聯絡主堡", nil);
     //其他，uitableview
 
-    NSArray *nsaViewControllers = [[NSArray alloc]initWithObjects:msViewController, blogTableViewController, freeViewController, supTableViewController, connViewController, nil];
+    NSArray *nsaViewControllers = [[NSArray alloc]initWithObjects:msViewController, blogTableViewController, freeViewController, supViewController, connViewController, nil];
     tabBarController = [[TabBarController alloc]init];
     [tabBarController setViewControllers:nsaViewControllers];
     [self.window addSubview:tabBarController.view];

@@ -18,10 +18,9 @@
 		8F2A4E8819FD18DE00098925 /* MSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2A4E8619FD18DE00098925 /* MSViewController.m */; };
 		8F2A4E8B19FD1C5900098925 /* BLOGTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2A4E8A19FD1C5900098925 /* BLOGTableViewController.m */; };
 		8F2A4E8C19FD1C5900098925 /* BLOGTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2A4E8A19FD1C5900098925 /* BLOGTableViewController.m */; };
+		8F5775BF19FFEDB300A613E9 /* SUPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775BE19FFEDB300A613E9 /* SUPViewController.m */; };
 		8F9FAF0119FEA161006964FD /* FREEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F9FAF0019FEA161006964FD /* FREEViewController.m */; };
 		8F9FAF0219FEA161006964FD /* FREEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F9FAF0019FEA161006964FD /* FREEViewController.m */; };
-		8F9FAF0519FEA1F3006964FD /* SUPTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F9FAF0419FEA1F3006964FD /* SUPTableViewController.m */; };
-		8F9FAF0619FEA1F3006964FD /* SUPTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F9FAF0419FEA1F3006964FD /* SUPTableViewController.m */; };
 		8F9FAF0919FEA212006964FD /* CONNViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F9FAF0819FEA212006964FD /* CONNViewController.m */; };
 		8F9FAF0A19FEA212006964FD /* CONNViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F9FAF0819FEA212006964FD /* CONNViewController.m */; };
 /* End PBXBuildFile section */
@@ -53,10 +52,10 @@
 		8F2A4E8619FD18DE00098925 /* MSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MSViewController.m; path = view/MSViewController.m; sourceTree = "<group>"; };
 		8F2A4E8919FD1C5900098925 /* BLOGTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BLOGTableViewController.h; path = view/BLOGTableViewController.h; sourceTree = "<group>"; };
 		8F2A4E8A19FD1C5900098925 /* BLOGTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BLOGTableViewController.m; path = view/BLOGTableViewController.m; sourceTree = "<group>"; };
+		8F5775BD19FFEDB300A613E9 /* SUPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SUPViewController.h; path = view/SUPViewController.h; sourceTree = "<group>"; };
+		8F5775BE19FFEDB300A613E9 /* SUPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SUPViewController.m; path = view/SUPViewController.m; sourceTree = "<group>"; };
 		8F9FAEFF19FEA161006964FD /* FREEViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FREEViewController.h; path = view/FREEViewController.h; sourceTree = "<group>"; };
 		8F9FAF0019FEA161006964FD /* FREEViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FREEViewController.m; path = view/FREEViewController.m; sourceTree = "<group>"; };
-		8F9FAF0319FEA1F3006964FD /* SUPTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SUPTableViewController.h; path = view/SUPTableViewController.h; sourceTree = "<group>"; };
-		8F9FAF0419FEA1F3006964FD /* SUPTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SUPTableViewController.m; path = view/SUPTableViewController.m; sourceTree = "<group>"; };
 		8F9FAF0719FEA212006964FD /* CONNViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CONNViewController.h; path = ../CONNViewController.h; sourceTree = "<group>"; };
 		8F9FAF0819FEA212006964FD /* CONNViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CONNViewController.m; path = ../CONNViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -145,10 +144,10 @@
 				8F2A4E8619FD18DE00098925 /* MSViewController.m */,
 				8F2A4E8919FD1C5900098925 /* BLOGTableViewController.h */,
 				8F2A4E8A19FD1C5900098925 /* BLOGTableViewController.m */,
+				8F5775BD19FFEDB300A613E9 /* SUPViewController.h */,
+				8F5775BE19FFEDB300A613E9 /* SUPViewController.m */,
 				8F9FAEFF19FEA161006964FD /* FREEViewController.h */,
 				8F9FAF0019FEA161006964FD /* FREEViewController.m */,
-				8F9FAF0319FEA1F3006964FD /* SUPTableViewController.h */,
-				8F9FAF0419FEA1F3006964FD /* SUPTableViewController.m */,
 				8F9FAF0719FEA212006964FD /* CONNViewController.h */,
 				8F9FAF0819FEA212006964FD /* CONNViewController.m */,
 			);
@@ -256,10 +255,10 @@
 				8F2A4E5D19FD162B00098925 /* AppDelegate.m in Sources */,
 				8F2A4E8719FD18DE00098925 /* MSViewController.m in Sources */,
 				8F9FAF0919FEA212006964FD /* CONNViewController.m in Sources */,
+				8F5775BF19FFEDB300A613E9 /* SUPViewController.m in Sources */,
 				8F2A4E5A19FD162B00098925 /* main.m in Sources */,
 				8F2A4E8319FD185800098925 /* TabBarController.m in Sources */,
 				8F2A4E8B19FD1C5900098925 /* BLOGTableViewController.m in Sources */,
-				8F9FAF0519FEA1F3006964FD /* SUPTableViewController.m in Sources */,
 				8F9FAF0119FEA161006964FD /* FREEViewController.m in Sources */,
 				8F2A4E6019FD162B00098925 /* _129vday.xcdatamodeld in Sources */,
 			);
@@ -270,7 +269,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F9FAF0A19FEA212006964FD /* CONNViewController.m in Sources */,
-				8F9FAF0619FEA1F3006964FD /* SUPTableViewController.m in Sources */,
 				8F2A4E7719FD162C00098925 /* _129vdayTests.m in Sources */,
 				8F2A4E8819FD18DE00098925 /* MSViewController.m in Sources */,
 				8F2A4E8419FD185800098925 /* TabBarController.m in Sources */,
