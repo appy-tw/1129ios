@@ -19,10 +19,10 @@
 		8F2A4E8B19FD1C5900098925 /* BLOGTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2A4E8A19FD1C5900098925 /* BLOGTableViewController.m */; };
 		8F2A4E8C19FD1C5900098925 /* BLOGTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2A4E8A19FD1C5900098925 /* BLOGTableViewController.m */; };
 		8F5775BF19FFEDB300A613E9 /* SUPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775BE19FFEDB300A613E9 /* SUPViewController.m */; };
+		8F5775C51A0010C800A613E9 /* MAPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775C41A0010C800A613E9 /* MAPViewController.m */; };
+		8F5775C61A0010C800A613E9 /* MAPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F5775C41A0010C800A613E9 /* MAPViewController.m */; };
 		8F9FAF0119FEA161006964FD /* FREEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F9FAF0019FEA161006964FD /* FREEViewController.m */; };
 		8F9FAF0219FEA161006964FD /* FREEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F9FAF0019FEA161006964FD /* FREEViewController.m */; };
-		8F9FAF0919FEA212006964FD /* CONNViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F9FAF0819FEA212006964FD /* CONNViewController.m */; };
-		8F9FAF0A19FEA212006964FD /* CONNViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F9FAF0819FEA212006964FD /* CONNViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,10 +54,10 @@
 		8F2A4E8A19FD1C5900098925 /* BLOGTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BLOGTableViewController.m; path = view/BLOGTableViewController.m; sourceTree = "<group>"; };
 		8F5775BD19FFEDB300A613E9 /* SUPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SUPViewController.h; path = view/SUPViewController.h; sourceTree = "<group>"; };
 		8F5775BE19FFEDB300A613E9 /* SUPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SUPViewController.m; path = view/SUPViewController.m; sourceTree = "<group>"; };
+		8F5775C31A0010C800A613E9 /* MAPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MAPViewController.h; path = view/MAPViewController.h; sourceTree = "<group>"; };
+		8F5775C41A0010C800A613E9 /* MAPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MAPViewController.m; path = view/MAPViewController.m; sourceTree = "<group>"; };
 		8F9FAEFF19FEA161006964FD /* FREEViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FREEViewController.h; path = view/FREEViewController.h; sourceTree = "<group>"; };
 		8F9FAF0019FEA161006964FD /* FREEViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FREEViewController.m; path = view/FREEViewController.m; sourceTree = "<group>"; };
-		8F9FAF0719FEA212006964FD /* CONNViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CONNViewController.h; path = ../CONNViewController.h; sourceTree = "<group>"; };
-		8F9FAF0819FEA212006964FD /* CONNViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CONNViewController.m; path = ../CONNViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,8 +148,8 @@
 				8F5775BE19FFEDB300A613E9 /* SUPViewController.m */,
 				8F9FAEFF19FEA161006964FD /* FREEViewController.h */,
 				8F9FAF0019FEA161006964FD /* FREEViewController.m */,
-				8F9FAF0719FEA212006964FD /* CONNViewController.h */,
-				8F9FAF0819FEA212006964FD /* CONNViewController.m */,
+				8F5775C31A0010C800A613E9 /* MAPViewController.h */,
+				8F5775C41A0010C800A613E9 /* MAPViewController.m */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -254,10 +254,10 @@
 			files = (
 				8F2A4E5D19FD162B00098925 /* AppDelegate.m in Sources */,
 				8F2A4E8719FD18DE00098925 /* MSViewController.m in Sources */,
-				8F9FAF0919FEA212006964FD /* CONNViewController.m in Sources */,
 				8F5775BF19FFEDB300A613E9 /* SUPViewController.m in Sources */,
 				8F2A4E5A19FD162B00098925 /* main.m in Sources */,
 				8F2A4E8319FD185800098925 /* TabBarController.m in Sources */,
+				8F5775C51A0010C800A613E9 /* MAPViewController.m in Sources */,
 				8F2A4E8B19FD1C5900098925 /* BLOGTableViewController.m in Sources */,
 				8F9FAF0119FEA161006964FD /* FREEViewController.m in Sources */,
 				8F2A4E6019FD162B00098925 /* _129vday.xcdatamodeld in Sources */,
@@ -268,12 +268,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F9FAF0A19FEA212006964FD /* CONNViewController.m in Sources */,
 				8F2A4E7719FD162C00098925 /* _129vdayTests.m in Sources */,
 				8F2A4E8819FD18DE00098925 /* MSViewController.m in Sources */,
 				8F2A4E8419FD185800098925 /* TabBarController.m in Sources */,
 				8F2A4E8C19FD1C5900098925 /* BLOGTableViewController.m in Sources */,
 				8F9FAF0219FEA161006964FD /* FREEViewController.m in Sources */,
+				8F5775C61A0010C800A613E9 /* MAPViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

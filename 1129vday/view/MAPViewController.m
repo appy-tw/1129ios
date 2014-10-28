@@ -1,18 +1,18 @@
 //
-//  CONNViewController.m
+//  MAPViewController.m
 //  1129vday
 //
-//  Created by lololol on 27/Oct/14.
+//  Created by lololol on 29/Oct/14.
 //  Copyright (c) 2014 appy.tw. All rights reserved.
 //
 
-#import "CONNViewController.h"
+#import "MAPViewController.h"
 
-@interface CONNViewController ()
+@interface MAPViewController ()
 
 @end
 
-@implementation CONNViewController
+@implementation MAPViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

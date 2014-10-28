@@ -13,7 +13,7 @@
 #import "BLOGTableViewController.h"
 #import "FREEViewController.h"
 #import "SUPViewController.h"
-#import "CONNViewController.h"
+#import "MAPViewController.h"
 
 @interface AppDelegate ()
 {
@@ -26,7 +26,7 @@
     //佔領，各投開票所資料，uitableview
     SUPViewController *supViewController;
     //地圖，各票所分佈(最後弄)
-    CONNViewController *connViewController;
+    MAPViewController *mapViewController;
     //其他，uitableview
 }
 
@@ -47,11 +47,11 @@
     supViewController = [[SUPViewController alloc]init];
     supViewController.title = NSLocalizedString(@"加入公民V", nil);
     //地圖，各票所分佈(最後弄)
-    connViewController = [[CONNViewController alloc]init];
-    connViewController.title = NSLocalizedString(@"聯絡主堡", nil);
+    mapViewController = [[MAPViewController alloc]init];
+    mapViewController.title = NSLocalizedString(@"待", nil);
     //其他，uitableview
 
-    NSArray *nsaViewControllers = [[NSArray alloc]initWithObjects:msViewController, blogTableViewController, freeViewController, supViewController, connViewController, nil];
+    NSArray *nsaViewControllers = [[NSArray alloc]initWithObjects:msViewController, blogTableViewController, freeViewController, supViewController, mapViewController, nil];
     tabBarController = [[TabBarController alloc]init];
     [tabBarController setViewControllers:nsaViewControllers];
     [self.window addSubview:tabBarController.view];
