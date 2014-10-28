@@ -18,17 +18,20 @@
 {
     CGRect frame = CGRectMake(0.0, 0.0, self.view.bounds.size.width, 88);
     UIView *v = [[UIView alloc] initWithFrame:frame];
-    [v setBackgroundColor:[UIColor colorWithRed:0.11 green:0.6 blue:0.65 alpha:1]];
+    [v setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1]];
     //    [v setBackgroundColor:[UIColor redColor]];
     //        [v setAlpha:0.5];
+    self.tabBar.layer.borderWidth = 0.5;
+    self.tabBar.layer.borderColor = [[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0] CGColor];
+
     [[self tabBar] addSubview:v];
 }
 
 - (void)setMyTabBarItem
 {
     //set the tab bar title appearance for normal state
-    [[UITabBarItem appearance]setTitleTextAttributes:@{NSFontAttributeName : [UIFont fontWithName:@"HelveticaNeue-Bold" size:10.0f], NSForegroundColorAttributeName : [UIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:1]} forState:UIControlStateSelected];
-    [[UITabBarItem appearance]setTitleTextAttributes:@{NSFontAttributeName : [UIFont fontWithName:@"HelveticaNeue-Bold" size:10.0f], NSForegroundColorAttributeName : [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1]} forState:UIControlStateNormal];
+    [[UITabBarItem appearance]setTitleTextAttributes:@{NSFontAttributeName : [UIFont fontWithName:@"HelveticaNeue-Bold" size:10.0f], NSForegroundColorAttributeName : [UIColor colorWithRed:0.71 green:0.13 blue:0.25 alpha:1.0]} forState:UIControlStateSelected];
+    [[UITabBarItem appearance]setTitleTextAttributes:@{NSFontAttributeName : [UIFont fontWithName:@"HelveticaNeue-Bold" size:10.0f], NSForegroundColorAttributeName : [UIColor colorWithRed:0.4 green:0.4 blue:0.4 alpha:1.0]} forState:UIControlStateNormal];
     [[UITabBar appearance] setTintColor:[UIColor redColor]];
     [UITabBar appearance].tintColor = [UIColor redColor];
 }
