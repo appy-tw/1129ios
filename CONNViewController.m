@@ -1,18 +1,18 @@
 //
-//  IntroViewController.m
+//  CONNViewController.m
 //  1129vday
 //
-//  Created by lololol on 26/Oct/14.
+//  Created by lololol on 27/Oct/14.
 //  Copyright (c) 2014 appy.tw. All rights reserved.
 //
 
-#import "IntroViewController.h"
+#import "CONNViewController.h"
 
-@interface IntroViewController ()
+@interface CONNViewController ()
 
 @end
 
-@implementation IntroViewController
+@implementation CONNViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

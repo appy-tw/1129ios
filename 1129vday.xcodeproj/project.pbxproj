@@ -10,21 +10,20 @@
 		8F2A4E5A19FD162B00098925 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2A4E5919FD162B00098925 /* main.m */; };
 		8F2A4E5D19FD162B00098925 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2A4E5C19FD162B00098925 /* AppDelegate.m */; };
 		8F2A4E6019FD162B00098925 /* _129vday.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8F2A4E5E19FD162B00098925 /* _129vday.xcdatamodeld */; };
-		8F2A4E6319FD162B00098925 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2A4E6219FD162B00098925 /* ViewController.m */; };
 		8F2A4E6819FD162B00098925 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F2A4E6719FD162B00098925 /* Images.xcassets */; };
 		8F2A4E7719FD162C00098925 /* _129vdayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2A4E7619FD162C00098925 /* _129vdayTests.m */; };
 		8F2A4E8319FD185800098925 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2A4E8219FD185800098925 /* TabBarController.m */; };
 		8F2A4E8419FD185800098925 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2A4E8219FD185800098925 /* TabBarController.m */; };
-		8F2A4E8719FD18DE00098925 /* IntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2A4E8619FD18DE00098925 /* IntroViewController.m */; };
-		8F2A4E8819FD18DE00098925 /* IntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2A4E8619FD18DE00098925 /* IntroViewController.m */; };
-		8F2A4E8B19FD1C5900098925 /* BlogTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2A4E8A19FD1C5900098925 /* BlogTableViewController.m */; };
-		8F2A4E8C19FD1C5900098925 /* BlogTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2A4E8A19FD1C5900098925 /* BlogTableViewController.m */; };
-		8F2A4E8F19FD1C7C00098925 /* OccupyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2A4E8E19FD1C7C00098925 /* OccupyTableViewController.m */; };
-		8F2A4E9019FD1C7C00098925 /* OccupyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2A4E8E19FD1C7C00098925 /* OccupyTableViewController.m */; };
-		8F2A4E9319FD1CB400098925 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2A4E9219FD1CB400098925 /* MapViewController.m */; };
-		8F2A4E9419FD1CB400098925 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2A4E9219FD1CB400098925 /* MapViewController.m */; };
-		8F2A4E9719FD1CE000098925 /* MoreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2A4E9619FD1CE000098925 /* MoreTableViewController.m */; };
-		8F2A4E9819FD1CE000098925 /* MoreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2A4E9619FD1CE000098925 /* MoreTableViewController.m */; };
+		8F2A4E8719FD18DE00098925 /* MSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2A4E8619FD18DE00098925 /* MSViewController.m */; };
+		8F2A4E8819FD18DE00098925 /* MSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2A4E8619FD18DE00098925 /* MSViewController.m */; };
+		8F2A4E8B19FD1C5900098925 /* BLOGTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2A4E8A19FD1C5900098925 /* BLOGTableViewController.m */; };
+		8F2A4E8C19FD1C5900098925 /* BLOGTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2A4E8A19FD1C5900098925 /* BLOGTableViewController.m */; };
+		8F9FAF0119FEA161006964FD /* FREEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F9FAF0019FEA161006964FD /* FREEViewController.m */; };
+		8F9FAF0219FEA161006964FD /* FREEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F9FAF0019FEA161006964FD /* FREEViewController.m */; };
+		8F9FAF0519FEA1F3006964FD /* SUPTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F9FAF0419FEA1F3006964FD /* SUPTableViewController.m */; };
+		8F9FAF0619FEA1F3006964FD /* SUPTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F9FAF0419FEA1F3006964FD /* SUPTableViewController.m */; };
+		8F9FAF0919FEA212006964FD /* CONNViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F9FAF0819FEA212006964FD /* CONNViewController.m */; };
+		8F9FAF0A19FEA212006964FD /* CONNViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F9FAF0819FEA212006964FD /* CONNViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,25 +43,22 @@
 		8F2A4E5B19FD162B00098925 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8F2A4E5C19FD162B00098925 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		8F2A4E5F19FD162B00098925 /* _129vday.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = _129vday.xcdatamodel; sourceTree = "<group>"; };
-		8F2A4E6119FD162B00098925 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		8F2A4E6219FD162B00098925 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		8F2A4E6719FD162B00098925 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		8F2A4E6A19FD162B00098925 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		8F2A4E7019FD162C00098925 /* 1129vdayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = 1129vdayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F2A4E7519FD162C00098925 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8F2A4E7619FD162C00098925 /* _129vdayTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _129vdayTests.m; sourceTree = "<group>"; };
 		8F2A4E8119FD185800098925 /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TabBarController.h; path = view/TabBarController.h; sourceTree = "<group>"; };
 		8F2A4E8219FD185800098925 /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TabBarController.m; path = view/TabBarController.m; sourceTree = "<group>"; };
-		8F2A4E8519FD18DE00098925 /* IntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IntroViewController.h; path = view/IntroViewController.h; sourceTree = "<group>"; };
-		8F2A4E8619FD18DE00098925 /* IntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IntroViewController.m; path = view/IntroViewController.m; sourceTree = "<group>"; };
-		8F2A4E8919FD1C5900098925 /* BlogTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BlogTableViewController.h; path = view/BlogTableViewController.h; sourceTree = "<group>"; };
-		8F2A4E8A19FD1C5900098925 /* BlogTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BlogTableViewController.m; path = view/BlogTableViewController.m; sourceTree = "<group>"; };
-		8F2A4E8D19FD1C7C00098925 /* OccupyTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OccupyTableViewController.h; sourceTree = "<group>"; };
-		8F2A4E8E19FD1C7C00098925 /* OccupyTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OccupyTableViewController.m; sourceTree = "<group>"; };
-		8F2A4E9119FD1CB400098925 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapViewController.h; path = view/MapViewController.h; sourceTree = "<group>"; };
-		8F2A4E9219FD1CB400098925 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapViewController.m; path = view/MapViewController.m; sourceTree = "<group>"; };
-		8F2A4E9519FD1CE000098925 /* MoreTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoreTableViewController.h; path = view/MoreTableViewController.h; sourceTree = "<group>"; };
-		8F2A4E9619FD1CE000098925 /* MoreTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoreTableViewController.m; path = view/MoreTableViewController.m; sourceTree = "<group>"; };
+		8F2A4E8519FD18DE00098925 /* MSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MSViewController.h; path = view/MSViewController.h; sourceTree = "<group>"; };
+		8F2A4E8619FD18DE00098925 /* MSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MSViewController.m; path = view/MSViewController.m; sourceTree = "<group>"; };
+		8F2A4E8919FD1C5900098925 /* BLOGTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BLOGTableViewController.h; path = view/BLOGTableViewController.h; sourceTree = "<group>"; };
+		8F2A4E8A19FD1C5900098925 /* BLOGTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BLOGTableViewController.m; path = view/BLOGTableViewController.m; sourceTree = "<group>"; };
+		8F9FAEFF19FEA161006964FD /* FREEViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FREEViewController.h; path = view/FREEViewController.h; sourceTree = "<group>"; };
+		8F9FAF0019FEA161006964FD /* FREEViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FREEViewController.m; path = view/FREEViewController.m; sourceTree = "<group>"; };
+		8F9FAF0319FEA1F3006964FD /* SUPTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SUPTableViewController.h; path = view/SUPTableViewController.h; sourceTree = "<group>"; };
+		8F9FAF0419FEA1F3006964FD /* SUPTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SUPTableViewController.m; path = view/SUPTableViewController.m; sourceTree = "<group>"; };
+		8F9FAF0719FEA212006964FD /* CONNViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CONNViewController.h; path = ../CONNViewController.h; sourceTree = "<group>"; };
+		8F9FAF0819FEA212006964FD /* CONNViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CONNViewController.m; path = ../CONNViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,10 +103,7 @@
 				8F2A4E8019FD17EC00098925 /* view */,
 				8F2A4E5B19FD162B00098925 /* AppDelegate.h */,
 				8F2A4E5C19FD162B00098925 /* AppDelegate.m */,
-				8F2A4E6119FD162B00098925 /* ViewController.h */,
-				8F2A4E6219FD162B00098925 /* ViewController.m */,
 				8F2A4E6719FD162B00098925 /* Images.xcassets */,
-				8F2A4E6919FD162B00098925 /* LaunchScreen.xib */,
 				8F2A4E5E19FD162B00098925 /* _129vday.xcdatamodeld */,
 				8F2A4E5719FD162B00098925 /* Supporting Files */,
 			);
@@ -148,16 +141,16 @@
 			children = (
 				8F2A4E8119FD185800098925 /* TabBarController.h */,
 				8F2A4E8219FD185800098925 /* TabBarController.m */,
-				8F2A4E8519FD18DE00098925 /* IntroViewController.h */,
-				8F2A4E8619FD18DE00098925 /* IntroViewController.m */,
-				8F2A4E8919FD1C5900098925 /* BlogTableViewController.h */,
-				8F2A4E8A19FD1C5900098925 /* BlogTableViewController.m */,
-				8F2A4E8D19FD1C7C00098925 /* OccupyTableViewController.h */,
-				8F2A4E8E19FD1C7C00098925 /* OccupyTableViewController.m */,
-				8F2A4E9119FD1CB400098925 /* MapViewController.h */,
-				8F2A4E9219FD1CB400098925 /* MapViewController.m */,
-				8F2A4E9519FD1CE000098925 /* MoreTableViewController.h */,
-				8F2A4E9619FD1CE000098925 /* MoreTableViewController.m */,
+				8F2A4E8519FD18DE00098925 /* MSViewController.h */,
+				8F2A4E8619FD18DE00098925 /* MSViewController.m */,
+				8F2A4E8919FD1C5900098925 /* BLOGTableViewController.h */,
+				8F2A4E8A19FD1C5900098925 /* BLOGTableViewController.m */,
+				8F9FAEFF19FEA161006964FD /* FREEViewController.h */,
+				8F9FAF0019FEA161006964FD /* FREEViewController.m */,
+				8F9FAF0319FEA1F3006964FD /* SUPTableViewController.h */,
+				8F9FAF0419FEA1F3006964FD /* SUPTableViewController.m */,
+				8F9FAF0719FEA212006964FD /* CONNViewController.h */,
+				8F9FAF0819FEA212006964FD /* CONNViewController.m */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -260,15 +253,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F2A4E9719FD1CE000098925 /* MoreTableViewController.m in Sources */,
-				8F2A4E8F19FD1C7C00098925 /* OccupyTableViewController.m in Sources */,
 				8F2A4E5D19FD162B00098925 /* AppDelegate.m in Sources */,
-				8F2A4E8719FD18DE00098925 /* IntroViewController.m in Sources */,
-				8F2A4E9319FD1CB400098925 /* MapViewController.m in Sources */,
+				8F2A4E8719FD18DE00098925 /* MSViewController.m in Sources */,
+				8F9FAF0919FEA212006964FD /* CONNViewController.m in Sources */,
 				8F2A4E5A19FD162B00098925 /* main.m in Sources */,
 				8F2A4E8319FD185800098925 /* TabBarController.m in Sources */,
-				8F2A4E8B19FD1C5900098925 /* BlogTableViewController.m in Sources */,
-				8F2A4E6319FD162B00098925 /* ViewController.m in Sources */,
+				8F2A4E8B19FD1C5900098925 /* BLOGTableViewController.m in Sources */,
+				8F9FAF0519FEA1F3006964FD /* SUPTableViewController.m in Sources */,
+				8F9FAF0119FEA161006964FD /* FREEViewController.m in Sources */,
 				8F2A4E6019FD162B00098925 /* _129vday.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -277,13 +269,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F2A4E9819FD1CE000098925 /* MoreTableViewController.m in Sources */,
+				8F9FAF0A19FEA212006964FD /* CONNViewController.m in Sources */,
+				8F9FAF0619FEA1F3006964FD /* SUPTableViewController.m in Sources */,
 				8F2A4E7719FD162C00098925 /* _129vdayTests.m in Sources */,
-				8F2A4E8819FD18DE00098925 /* IntroViewController.m in Sources */,
+				8F2A4E8819FD18DE00098925 /* MSViewController.m in Sources */,
 				8F2A4E8419FD185800098925 /* TabBarController.m in Sources */,
-				8F2A4E9419FD1CB400098925 /* MapViewController.m in Sources */,
-				8F2A4E8C19FD1C5900098925 /* BlogTableViewController.m in Sources */,
-				8F2A4E9019FD1C7C00098925 /* OccupyTableViewController.m in Sources */,
+				8F2A4E8C19FD1C5900098925 /* BLOGTableViewController.m in Sources */,
+				8F9FAF0219FEA161006964FD /* FREEViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,17 +288,6 @@
 			targetProxy = 8F2A4E7119FD162C00098925 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		8F2A4E6919FD162B00098925 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8F2A4E6A19FD162B00098925 /* Base */,
-			);
-			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		8F2A4E7819FD162C00098925 /* Debug */ = {
@@ -391,6 +372,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = 1129vday/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -401,6 +383,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = 1129vday/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

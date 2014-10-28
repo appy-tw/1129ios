@@ -1,5 +1,5 @@
 //
-//  OccupyTableViewController.h
+//  BlogTableViewController.h
 //  1129vday
 //
 //  Created by lololol on 26/Oct/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface OccupyTableViewController : UITableViewController
+@interface BLOGTableViewController : UITableViewController
 
 @end

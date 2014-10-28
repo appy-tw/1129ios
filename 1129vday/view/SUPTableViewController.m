@@ -1,18 +1,18 @@
 //
-//  MoreTableViewController.m
+//  SUPTableViewController.m
 //  1129vday
 //
-//  Created by lololol on 26/Oct/14.
+//  Created by lololol on 27/Oct/14.
 //  Copyright (c) 2014 appy.tw. All rights reserved.
 //
 
-#import "MoreTableViewController.h"
+#import "SUPTableViewController.h"
 
-@interface MoreTableViewController ()
+@interface SUPTableViewController ()
 
 @end
 
-@implementation MoreTableViewController
+@implementation SUPTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

@@ -1,18 +1,18 @@
 //
-//  MapViewController.m
+//  FREEViewController.m
 //  1129vday
 //
-//  Created by lololol on 26/Oct/14.
+//  Created by lololol on 27/Oct/14.
 //  Copyright (c) 2014 appy.tw. All rights reserved.
 //
 
-#import "MapViewController.h"
+#import "FREEViewController.h"
 
-@interface MapViewController ()
+@interface FREEViewController ()
 
 @end
 
-@implementation MapViewController
+@implementation FREEViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

@@ -9,24 +9,24 @@
 #import "AppDelegate.h"
 
 #import "TabBarController.h"
-#import "IntroViewController.h"
-#import "BlogTableViewController.h"
-#import "OccupyTableViewController.h"
-#import "MapViewController.h"
-#import "MoreTableViewController.h"
+#import "MSViewController.h"
+#import "BLOGTableViewController.h"
+#import "FREEViewController.h"
+#import "SUPTableViewController.h"
+#import "CONNViewController.h"
 
 @interface AppDelegate ()
 {
     TabBarController *tabBarController;
-    IntroViewController *introViewController;
+    MSViewController *msViewController;
     //簡介，uiview
-    BlogTableViewController *blogTableViewController;
+    BLOGTableViewController *blogTableViewController;
     //戰況，魔王，uitableview
-    OccupyTableViewController *occupyTableViewController;
+    FREEViewController *freeViewController;
     //佔領，各投開票所資料，uitableview
-    MapViewController *mapViewController;
+    SUPTableViewController *supTableViewController;
     //地圖，各票所分佈(最後弄)
-    MoreTableViewController *moreTableViewController;
+    CONNViewController *connViewController;
     //其他，uitableview
 }
 
@@ -35,26 +35,42 @@
 @implementation AppDelegate
 
 - (void)setMyViewController {
-    introViewController = [[IntroViewController alloc]init];
-    introViewController.title = NSLocalizedString(@"簡介", nil);
+    msViewController = [[MSViewController alloc]init];
+    msViewController.title = NSLocalizedString(@"任務設定", nil);
 //    introViewController.tabBarItem = [UIImage imageNamed:<#(NSString *)#>];
-    blogTableViewController = [[BlogTableViewController alloc]init];
-    blogTableViewController.title = NSLocalizedString(@"戰況", nil);
+    blogTableViewController = [[BLOGTableViewController alloc]init];
+    blogTableViewController.title = NSLocalizedString(@"即時戰況", nil);
     //戰況，魔王，uitableview
-    occupyTableViewController = [[OccupyTableViewController alloc]init];
-    occupyTableViewController.title = NSLocalizedString(@"佔領", nil);
+    freeViewController = [[FREEViewController alloc]init];
+    freeViewController.title = NSLocalizedString(@"罷免示範區", nil);
     //佔領，各投開票所資料，uitableview
-    mapViewController = [[MapViewController alloc]init];
-    mapViewController.title = NSLocalizedString(@"地圖", nil);
+    supTableViewController = [[SUPTableViewController alloc]init];
+    supTableViewController.title = NSLocalizedString(@"支援公民V", nil);
     //地圖，各票所分佈(最後弄)
-    moreTableViewController = [[MoreTableViewController alloc]init];
-    moreTableViewController.title = NSLocalizedString(@"更多", nil);
+    connViewController = [[CONNViewController alloc]init];
+    connViewController.title = NSLocalizedString(@"聯絡主堡", nil);
     //其他，uitableview
 
-    NSArray *nsaViewControllers = [[NSArray alloc]initWithObjects:introViewController, blogTableViewController, occupyTableViewController, mapViewController, moreTableViewController, nil];
+    NSArray *nsaViewControllers = [[NSArray alloc]initWithObjects:msViewController, blogTableViewController, freeViewController, supTableViewController, connViewController, nil];
     tabBarController = [[TabBarController alloc]init];
     [tabBarController setViewControllers:nsaViewControllers];
     [self.window addSubview:tabBarController.view];
+    
+    [[UITabBar appearance]setTintColor:[UIColor redColor]];
+    [[UITabBar appearance]setBarTintColor:[UIColor yellowColor]];
+}
+
+- (void)setNotification:(UIApplication *)application
+{
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
+    {
+        [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+    }
+    else
+    {
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert)];
+    }
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {

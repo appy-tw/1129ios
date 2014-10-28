@@ -1,18 +1,18 @@
 //
-//  OccupyTableViewController.m
+//  BlogTableViewController.m
 //  1129vday
 //
 //  Created by lololol on 26/Oct/14.
 //  Copyright (c) 2014 appy.tw. All rights reserved.
 //
 
-#import "OccupyTableViewController.h"
+#import "BLOGTableViewController.h"
 
-@interface OccupyTableViewController ()
+@interface BLOGTableViewController ()
 
 @end
 
-@implementation OccupyTableViewController
+@implementation BLOGTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
