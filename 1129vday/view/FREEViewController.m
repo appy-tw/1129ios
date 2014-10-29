@@ -65,27 +65,33 @@
 }
 
 - (void)uibClickedTsai {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://www.facebook.com/pages/內湖南港割闌尾-正元手術房/320272928135607"]];
+//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://www.facebook.com/pages/內湖南港割闌尾-正元手術房/320272928135607"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"fb://profile/320272928135607"]];
 }
 
 - (void)uibClickedWu {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://www.facebook.com/AppendectomyWEGO?fref=ts"]];
+//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://www.facebook.com/AppendectomyWEGO?fref=ts"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"fb://profile/804848699526673"]];
 }
 
 - (void)uibClickedLin {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://www.facebook.com/AppendectomyDeWhip?fref=ts"]];
+//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://www.facebook.com/AppendectomyDeWhip?fref=ts"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"fb://profile/602996456475061"]];
 }
 
 - (void)uibClickedDragon {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://www.facebook.com/TotalRecall2014"]];
+//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://www.facebook.com/TotalRecall2014"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"fb://profile/620780968013532"]];
 }
 
 - (void)uibClickedHuang {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://www.facebook.com/apkh.tw"]];
+//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://www.facebook.com/apkh.tw"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"fb://profile/337299219755438"]];
 }
 
 - (void)uibClickedCountry {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://www.facebook.com/apkh.tw"]];
+//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://www.facebook.com/apkh.tw"]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"fb://profile/337299219755438"]];
 }
 
 - (void)setButton {
@@ -107,7 +113,7 @@
     uibLin.frame = CGRectMake(cgfAvailableWidth * 0.06, cgfAvailableHeight * 0.15 + cgfAvailableHeightStart, cgfAvailableWidth * 0.78, cgfAvailableWidth * 0.88 * 154.0 / 1315.0);
     [uibLin addTarget:self action:@selector(uibClickedLin) forControlEvents:UIControlEventTouchUpInside];
     uibLin.tintColor = [UIColor blackColor];
-    [uibLin setTitle:@"吳育昇選區：海口夯社" forState:UIControlStateNormal];
+    [uibLin setTitle:@"林鴻池選區：板橋手術中" forState:UIControlStateNormal];
     [self.view addSubview:uibLin];
 
     UIButton *uibDragon = [UIButton buttonWithType:UIButtonTypeRoundedRect];
