@@ -48,7 +48,7 @@
     supViewController.title = NSLocalizedString(@"加入公民V", nil);
     //地圖，各票所分佈(最後弄)
     mapViewController = [[MAPViewController alloc]init];
-    mapViewController.title = NSLocalizedString(@"待", nil);
+    mapViewController.title = NSLocalizedString(@"即時戰況", nil);
     //其他，uitableview
 
     NSArray *nsaViewControllers = [[NSArray alloc]initWithObjects:msViewController, blogTableViewController, freeViewController, supViewController, mapViewController, nil];
