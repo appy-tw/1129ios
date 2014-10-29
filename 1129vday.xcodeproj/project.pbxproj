@@ -144,10 +144,10 @@
 				8F2A4E8619FD18DE00098925 /* MSViewController.m */,
 				8F2A4E8919FD1C5900098925 /* BLOGTableViewController.h */,
 				8F2A4E8A19FD1C5900098925 /* BLOGTableViewController.m */,
-				8F5775BD19FFEDB300A613E9 /* SUPViewController.h */,
-				8F5775BE19FFEDB300A613E9 /* SUPViewController.m */,
 				8F9FAEFF19FEA161006964FD /* FREEViewController.h */,
 				8F9FAF0019FEA161006964FD /* FREEViewController.m */,
+				8F5775BD19FFEDB300A613E9 /* SUPViewController.h */,
+				8F5775BE19FFEDB300A613E9 /* SUPViewController.m */,
 				8F5775C31A0010C800A613E9 /* MAPViewController.h */,
 				8F5775C41A0010C800A613E9 /* MAPViewController.m */,
 			);
