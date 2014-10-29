@@ -65,7 +65,27 @@
 }
 
 - (void)uibClickedTsai {
-    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://www.facebook.com/pages/內湖南港割闌尾-正元手術房/320272928135607"]];
+}
+
+- (void)uibClickedWu {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://www.facebook.com/AppendectomyWEGO?fref=ts"]];
+}
+
+- (void)uibClickedLin {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://www.facebook.com/AppendectomyDeWhip?fref=ts"]];
+}
+
+- (void)uibClickedDragon {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://www.facebook.com/TotalRecall2014"]];
+}
+
+- (void)uibClickedHuang {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://www.facebook.com/apkh.tw"]];
+}
+
+- (void)uibClickedCountry {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://www.facebook.com/apkh.tw"]];
 }
 
 - (void)setButton {
@@ -78,35 +98,35 @@
     
     UIButton *uibWu = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     uibWu.frame = CGRectMake(cgfAvailableWidth * 0.06, cgfAvailableHeight * 0.12 + cgfAvailableHeightStart, cgfAvailableWidth * 0.78, cgfAvailableWidth * 0.88 * 154.0 / 1315.0);
-    [uibWu addTarget:self action:@selector(uibClickedTsai) forControlEvents:UIControlEventTouchUpInside];
+    [uibWu addTarget:self action:@selector(uibClickedWu) forControlEvents:UIControlEventTouchUpInside];
     uibWu.tintColor = [UIColor blackColor];
     [uibWu setTitle:@"吳育昇選區：海口夯社" forState:UIControlStateNormal];
     [self.view addSubview:uibWu];
     
     UIButton *uibLin = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     uibLin.frame = CGRectMake(cgfAvailableWidth * 0.06, cgfAvailableHeight * 0.15 + cgfAvailableHeightStart, cgfAvailableWidth * 0.78, cgfAvailableWidth * 0.88 * 154.0 / 1315.0);
-    [uibLin addTarget:self action:@selector(uibClickedTsai) forControlEvents:UIControlEventTouchUpInside];
+    [uibLin addTarget:self action:@selector(uibClickedLin) forControlEvents:UIControlEventTouchUpInside];
     uibLin.tintColor = [UIColor blackColor];
     [uibLin setTitle:@"吳育昇選區：海口夯社" forState:UIControlStateNormal];
     [self.view addSubview:uibLin];
 
     UIButton *uibDragon = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     uibDragon.frame = CGRectMake(cgfAvailableWidth * 0.06, cgfAvailableHeight * 0.29 + cgfAvailableHeightStart, cgfAvailableWidth * 0.78, cgfAvailableWidth * 0.88 * 154.0 / 1315.0);
-    [uibDragon addTarget:self action:@selector(uibClickedTsai) forControlEvents:UIControlEventTouchUpInside];
+    [uibDragon addTarget:self action:@selector(uibClickedDragon) forControlEvents:UIControlEventTouchUpInside];
     uibDragon.tintColor = [UIColor blackColor];
     [uibDragon setTitle:@"蔡錦龍選區" forState:UIControlStateNormal];
     [self.view addSubview:uibDragon];
 
     UIButton *uibHuang = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     uibHuang.frame = CGRectMake(cgfAvailableWidth * 0.06, cgfAvailableHeight * 0.56 + cgfAvailableHeightStart, cgfAvailableWidth * 0.78, cgfAvailableWidth * 0.88 * 154.0 / 1315.0);
-    [uibHuang addTarget:self action:@selector(uibClickedTsai) forControlEvents:UIControlEventTouchUpInside];
+    [uibHuang addTarget:self action:@selector(uibClickedHuang) forControlEvents:UIControlEventTouchUpInside];
     uibHuang.tintColor = [UIColor blackColor];
     [uibHuang setTitle:@"黃昭順選區" forState:UIControlStateNormal];
     [self.view addSubview:uibHuang];
 
     UIButton *uibCountry = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     uibCountry.frame = CGRectMake(cgfAvailableWidth * 0.06, cgfAvailableHeight * 0.59 + cgfAvailableHeightStart, cgfAvailableWidth * 0.78, cgfAvailableWidth * 0.88 * 154.0 / 1315.0);
-    [uibCountry addTarget:self action:@selector(uibClickedTsai) forControlEvents:UIControlEventTouchUpInside];
+    [uibCountry addTarget:self action:@selector(uibClickedCountry) forControlEvents:UIControlEventTouchUpInside];
     uibCountry.tintColor = [UIColor blackColor];
     [uibCountry setTitle:@"林國正選區" forState:UIControlStateNormal];
     [self.view addSubview:uibCountry];
