@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface myParseDelegate : NSObject <NSXMLParserDelegate>
+@interface MYParseDelegate : NSObject <NSXMLParserDelegate>
 {
     //<失業率>
     //<資料時期>1978</資料時期>

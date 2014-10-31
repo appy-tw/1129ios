@@ -8,12 +8,49 @@
 
 #import "BLOGTableViewController.h"
 #import "BLOGTableViewCell.h"
+#import "MYParseDelegate.h"
 
 @interface BLOGTableViewController ()
+{
+//    MYParseDelegate *myParseDelegate;
+}
 
 @end
 
 @implementation BLOGTableViewController
+
+- (void)prepareTable
+{
+    MYParseDelegate *myParseDelegate = [[MYParseDelegate alloc]init];
+    [myParseDelegate getStart:0];
+    
+    self.nsmaOutputTable = [NSMutableArray new];
+    for (int i = 0; i < [myParseDelegate.nsmaOutput count]; i++) {
+        [self.nsmaOutputTable addObject:[myParseDelegate.nsmaOutput objectAtIndex:i]];
+        //        NSLog(@"i: %d", i);
+        for (NSString* wkey in [myParseDelegate.nsmaOutput objectAtIndex:i]) {
+            //            NSLog(@"%@", key);
+        }
+    }
+    
+    
+    //    for (id idDictionary in myParse.nsmaOutput) {
+    //        [self.nsmaOutputTable addObject:idDictionary];
+    //        keys=[idDictionary allKeys];
+    //        NSLog(@"%@", keys);
+    ////        for (NSString* key in keys) {
+    ////            NSLog(@"%@", key);
+    ////        }
+    //    }
+    //    for (int i = 0; i < [[myParse nsmaOutput] count]; i++) {
+    //        if ([[[myParse nsmaOutput][i] objectForKey:@"Time"] compare:nssMyTime options:(NSNumericSearch)] == 1) {
+    //            [self.nsmaTrainTable addObject:[myParse nsmaOutputTable][i]];
+    //        }
+    //    }
+    //    [self sortTable];
+    //    [myParse releaseAll];
+    myParseDelegate = nil;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -23,6 +60,7 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self prepareTable];
 }
 
 - (void)didReceiveMemoryWarning {

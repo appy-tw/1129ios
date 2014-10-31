@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 lololol. All rights reserved.
 //
 
-#import "myParseDelegate.h"
+#import "MYParseDelegate.h"
 
-@implementation myParseDelegate
+@implementation MYParseDelegate
 - (void)getStart:(NSInteger)l_nsiUserInputSearchFunction{
 //initialize
     nsiDataCounter = 0;
@@ -16,6 +16,7 @@
     self.nsmaOutput = [[NSMutableArray alloc]init];
     NSString *BundlePath = [[NSBundle mainBundle] bundlePath];
     NSString *fileName = [NSString stringWithFormat:@"%@/失業率.xml", BundlePath];
+    http://yurenju.tumblr.com/rss
     NSLog(@"File Path: %@", fileName);
 
     NSData *data = [NSData dataWithContentsOfFile:fileName]; //the File Data

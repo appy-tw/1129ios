@@ -15,6 +15,8 @@
 #import "SUPViewController.h"
 #import "MAPViewController.h"
 
+#import "PLISTHeader.h"
+
 @interface AppDelegate ()
 {
     TabBarController *tabBarController;
@@ -60,9 +62,32 @@
     [[UITabBar appearance]setBarTintColor:[UIColor yellowColor]];
 }
 
+- (void)downloadFile{
+    NSURL *url;
+    if (_nssRSSURL == nil || [_nssRSSURL isEqual:@""] == YES) {
+        url = [NSURL URLWithString:@"http://yurenju.tumblr.com/rss"];
+    } else {
+        url = [NSURL URLWithString:_nssRSSURL];
+    }
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    NSOperationQueue *queue = [NSOperationQueue new];
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        if ([data length] > 0 && connectionError == nil) {
+            _nssRSSContent = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            [self writeToMyPlist];
+            NSLog(@"%@", _nssRSSContent);
+        } else {
+            NSLog(@"Download url error: %@", connectionError);
+        }
+    }];
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen]bounds]];
+    [self readAllFromMyPlist];
+    [self downloadFile];
     [self setMyViewController];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
@@ -197,5 +222,51 @@
 {
     NSLog(@"Remote notification error:%@", [error localizedDescription]);
 }
+
+//[[Plist
+
+- (void)initMyPlist
+{
+    NSFileManager *nsfmPlistFileManager = [[NSFileManager alloc]init];
+    NSString *nssPlistSrc = [[NSBundle mainBundle] pathForResource:@"UserData" ofType:@"plist"];
+    _nssPlistDst = [NSString stringWithFormat:@"%@/Documents/UserData.plist", NSHomeDirectory()];
+    if (! [nsfmPlistFileManager fileExistsAtPath:_nssPlistDst]) {
+        [nsfmPlistFileManager copyItemAtPath:nssPlistSrc toPath:_nssPlistDst error:nil];
+    }
+}
+
+- (void)writeToMyPlist
+{
+    if (_nssPlistDst == nil) {
+        [self initMyPlist];
+    }
+    NSMutableDictionary *nsmdPlistDictionary = [NSMutableDictionary dictionaryWithContentsOfFile:_nssPlistDst];
+    [nsmdPlistDictionary setValue:_nssUserName forKey:PLIST_USER_NAME];
+    [nsmdPlistDictionary setValue:_nssDeviceToken forKey:PLIST_USER_DEVICE_TOKEN];
+    [nsmdPlistDictionary setValue:_nssGesturePassword forKey:PLIST_USER_GESTURE_PASSWORD];
+    [nsmdPlistDictionary setValue:_nssPassword forKey:PLIST_USER_PASSWORD];
+    [nsmdPlistDictionary setValue:_nssPhone forKey:PLIST_USER_PHONE];
+    [nsmdPlistDictionary setValue:_nssRSSContent forKey:PLIST_RSS_CONTENT];
+    [nsmdPlistDictionary setValue:_nssRSSURL forKey:PLIST_RSS_URL];
+    [nsmdPlistDictionary writeToFile:_nssPlistDst atomically:YES];
+}
+
+- (void)readAllFromMyPlist {
+    if (_nssPlistDst == nil) {
+        [self initMyPlist];
+    }
+    NSMutableDictionary *nsmdPlistDictionary = [NSMutableDictionary dictionaryWithContentsOfFile:_nssPlistDst];
+    if (nsmdPlistDictionary != nil) {
+        _nssUserName = [nsmdPlistDictionary objectForKey:PLIST_USER_NAME];
+        _nssDeviceToken = [nsmdPlistDictionary objectForKey:PLIST_USER_DEVICE_TOKEN];
+        _nssGesturePassword = [nsmdPlistDictionary objectForKey:PLIST_USER_GESTURE_PASSWORD];
+        _nssPassword = [nsmdPlistDictionary objectForKey:PLIST_USER_PASSWORD];
+        _nssPhone = [nsmdPlistDictionary objectForKey:PLIST_USER_PHONE];
+        _nssRSSContent = [nsmdPlistDictionary objectForKey:PLIST_RSS_CONTENT];
+        _nssRSSURL = [nsmdPlistDictionary objectForKey:PLIST_RSS_URL];
+    }
+}
+
+//]]Plist
 
 @end

@@ -10,4 +10,6 @@
 
 @interface BLOGTableViewController : UITableViewController
 
+@property (nonatomic, strong) NSMutableArray *nsmaOutputTable;
+
 @end

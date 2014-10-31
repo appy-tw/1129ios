@@ -9,8 +9,10 @@
 /* Begin PBXBuildFile section */
 		8F3BF89B1A03DAB4002F75E9 /* UIWebView+YouTube.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3BF89A1A03DAB4002F75E9 /* UIWebView+YouTube.m */; };
 		8F3BF89C1A03DAB4002F75E9 /* UIWebView+YouTube.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3BF89A1A03DAB4002F75E9 /* UIWebView+YouTube.m */; };
-		8F3BF8A51A03F718002F75E9 /* myParseDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3BF8A41A03F718002F75E9 /* myParseDelegate.m */; };
-		8F3BF8A61A03F718002F75E9 /* myParseDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3BF8A41A03F718002F75E9 /* myParseDelegate.m */; };
+		8F3BF8A51A03F718002F75E9 /* MYParseDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3BF8A41A03F718002F75E9 /* MYParseDelegate.m */; };
+		8F3BF8A61A03F718002F75E9 /* MYParseDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3BF8A41A03F718002F75E9 /* MYParseDelegate.m */; };
+		8F3BF8A81A040970002F75E9 /* Property List.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F3BF8A71A040970002F75E9 /* Property List.plist */; };
+		8F3BF8A91A040970002F75E9 /* Property List.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F3BF8A71A040970002F75E9 /* Property List.plist */; };
 		8FBCEB4E1A029E2C00D200A0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBCEB4D1A029E2C00D200A0 /* main.m */; };
 		8FBCEB511A029E2C00D200A0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBCEB501A029E2C00D200A0 /* AppDelegate.m */; };
 		8FBCEB541A029E2C00D200A0 /* ios.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8FBCEB521A029E2C00D200A0 /* ios.xcdatamodeld */; };
@@ -46,8 +48,10 @@
 /* Begin PBXFileReference section */
 		8F3BF8991A03DAB4002F75E9 /* UIWebView+YouTube.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIWebView+YouTube.h"; path = "view/UIWebView+YouTube.h"; sourceTree = "<group>"; };
 		8F3BF89A1A03DAB4002F75E9 /* UIWebView+YouTube.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIWebView+YouTube.m"; path = "view/UIWebView+YouTube.m"; sourceTree = "<group>"; };
-		8F3BF8A31A03F718002F75E9 /* myParseDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = myParseDelegate.h; path = parse/myParseDelegate.h; sourceTree = "<group>"; };
-		8F3BF8A41A03F718002F75E9 /* myParseDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = myParseDelegate.m; path = parse/myParseDelegate.m; sourceTree = "<group>"; };
+		8F3BF8A31A03F718002F75E9 /* MYParseDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MYParseDelegate.h; path = parse/MYParseDelegate.h; sourceTree = "<group>"; };
+		8F3BF8A41A03F718002F75E9 /* MYParseDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MYParseDelegate.m; path = parse/MYParseDelegate.m; sourceTree = "<group>"; };
+		8F3BF8A71A040970002F75E9 /* Property List.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Property List.plist"; sourceTree = "<group>"; };
+		8F3BF8AA1A040BC5002F75E9 /* PLISTHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLISTHeader.h; sourceTree = "<group>"; };
 		8FBCEB481A029E2C00D200A0 /* ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FBCEB4C1A029E2C00D200A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8FBCEB4D1A029E2C00D200A0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -97,8 +101,8 @@
 		8F3BF8A21A03F6E5002F75E9 /* parse */ = {
 			isa = PBXGroup;
 			children = (
-				8F3BF8A31A03F718002F75E9 /* myParseDelegate.h */,
-				8F3BF8A41A03F718002F75E9 /* myParseDelegate.m */,
+				8F3BF8A31A03F718002F75E9 /* MYParseDelegate.h */,
+				8F3BF8A41A03F718002F75E9 /* MYParseDelegate.m */,
 			);
 			name = parse;
 			sourceTree = "<group>";
@@ -133,6 +137,7 @@
 				8FBCEB5B1A029E2C00D200A0 /* Images.xcassets */,
 				8FBCEB521A029E2C00D200A0 /* ios.xcdatamodeld */,
 				8FBCEB4B1A029E2C00D200A0 /* Supporting Files */,
+				8F3BF8AA1A040BC5002F75E9 /* PLISTHeader.h */,
 			);
 			path = ios;
 			sourceTree = "<group>";
@@ -142,6 +147,7 @@
 			children = (
 				8FBCEB4C1A029E2C00D200A0 /* Info.plist */,
 				8FBCEB4D1A029E2C00D200A0 /* main.m */,
+				8F3BF8A71A040970002F75E9 /* Property List.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -266,6 +272,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F3BF8A81A040970002F75E9 /* Property List.plist in Resources */,
 				8FBCEB5C1A029E2C00D200A0 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -274,6 +281,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F3BF8A91A040970002F75E9 /* Property List.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,7 +301,7 @@
 				8FBCEB8F1A02BDDB00D200A0 /* TabBarController.m in Sources */,
 				8FBCEB4E1A029E2C00D200A0 /* main.m in Sources */,
 				8FBCEB831A02BDDB00D200A0 /* BLOGTableViewCell.m in Sources */,
-				8F3BF8A51A03F718002F75E9 /* myParseDelegate.m in Sources */,
+				8F3BF8A51A03F718002F75E9 /* MYParseDelegate.m in Sources */,
 				8FBCEB8D1A02BDDB00D200A0 /* SUPViewController.m in Sources */,
 				8FBCEB8B1A02BDDB00D200A0 /* MSViewController.m in Sources */,
 				8FBCEB871A02BDDB00D200A0 /* FREEViewController.m in Sources */,
@@ -308,7 +316,7 @@
 				8FBCEB861A02BDDB00D200A0 /* BLOGTableViewController.m in Sources */,
 				8F3BF89C1A03DAB4002F75E9 /* UIWebView+YouTube.m in Sources */,
 				8FBCEB6B1A029E2C00D200A0 /* iosTests.m in Sources */,
-				8F3BF8A61A03F718002F75E9 /* myParseDelegate.m in Sources */,
+				8F3BF8A61A03F718002F75E9 /* MYParseDelegate.m in Sources */,
 				8FBCEB8A1A02BDDB00D200A0 /* MAPViewController.m in Sources */,
 				8FBCEB8E1A02BDDB00D200A0 /* SUPViewController.m in Sources */,
 				8FBCEB901A02BDDB00D200A0 /* TabBarController.m in Sources */,
