@@ -65,7 +65,7 @@
     freeViewController.tabBarItem.image = [UIImage imageNamed:@"free"];
     //佔領，各投開票所資料，uitableview
     supViewController = [[SUPViewController alloc]init];
-    supViewController.title = NSLocalizedString(@"攻占", nil);
+    supViewController.title = NSLocalizedString(@"攻佔", nil);
     supViewController.tabBarItem.image = [UIImage imageNamed:@"sup"];
     //地圖，各票所分佈(最後弄)
     mapViewController = [[MAPViewController alloc]init];

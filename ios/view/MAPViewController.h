@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface MAPViewController : UIViewController
+{
+    
+}
 
 @end
