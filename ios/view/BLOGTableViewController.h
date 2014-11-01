@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MYParseDelegate.h"
 
 @interface BLOGTableViewController : UITableViewController
 
 @property (nonatomic, strong) NSMutableArray *nsmaOutputTable;
+@property (nonatomic, strong) MYParseDelegate *myParseDelegate;
 
 @end

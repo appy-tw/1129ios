@@ -25,6 +25,11 @@
 @property (strong, nonatomic) NSString *nssRSSContent;
 @property (strong, nonatomic) NSString *nssRSSURL;
 @property (strong, nonatomic) NSString *nssPlistDst;
+@property (strong, nonatomic) NSString *nssTsaiWuLin;
+@property (strong, nonatomic) NSString *nssAddress;
+@property (strong, nonatomic) NSString *nssGPSX;
+@property (strong, nonatomic) NSString *nssGPSY;
+
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;

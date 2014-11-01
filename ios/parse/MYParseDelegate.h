@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AppDelegate.h"
 
 @interface MYParseDelegate : NSObject <NSXMLParserDelegate>
 {
@@ -36,33 +37,12 @@
     //<專科>3.75</專科>
     //<大學及以上>2.54</大學及以上>
     //</失業率>
-    NSString *nssDate;
-    NSString *nssGross;
-    NSString *nssBoy;
-    NSString *nssGirl;
-    NSString *nss15_19;
-    NSString *nss20_24;
-    NSString *nss25_29;
-    NSString *nss30_34;
-    NSString *nss35_39;
-    NSString *nss40_44;
-    NSString *nss45_49;
-    NSString *nss50_54;
-    NSString *nss55_59;
-    NSString *nss60_64;
-    NSString *nss65_over;
-    NSString *nssJunior_and;
-    NSString *nssElement_and;
-    NSString *nssJunior;
-    NSString *nssSenior_and_SeniorJob;
-    NSString *nssSenior;
-    NSString *nssSeniorJob;
-    NSString *nssTechUniv_and;
-    NSString *nssTechUniv;
-    NSString *nssBachelar_and;
+    NSInteger nsiCategoryCounter;
     NSInteger nsiDataCounter;
-    NSMutableDictionary *nsmdNowDictionary;
     NSString *nssNowTag;
+    NSMutableDictionary *nsmdNowDictionary;
+    AppDelegate *delegate;
+    BOOL bStartRecord;
 }
 
 @property NSMutableArray *nsmaOutput;

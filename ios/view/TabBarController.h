@@ -9,5 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface TabBarController : UITabBarController
+{
+    UIImage* uiiTabBarBackground;
+    CGRect cgrFrame;
+    UIView *uivTabBarView;
+}
 
 @end

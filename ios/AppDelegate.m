@@ -30,44 +30,63 @@
     //地圖，各票所分佈(最後弄)
     MAPViewController *mapViewController;
     //其他，uitableview
+    UIImage *uiiTabBarBackground;
 }
 
 @end
 
 @implementation AppDelegate
 
+- (void)setMyTabBarItem
+{
+    //set the tab bar title appearance for normal state
+//    [[UITabBarItem appearance]setTitleTextAttributes:@{NSFontAttributeName : [UIFont fontWithName:@"HelveticaNeue-Bold" size:10.0f], NSForegroundColorAttributeName : [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1]} forState:UIControlStateSelected];
+//    [[UITabBarItem appearance]setTitleTextAttributes:@{NSFontAttributeName : [UIFont fontWithName:@"HelveticaNeue-Bold" size:10.0f], NSForegroundColorAttributeName : [UIColor colorWithRed:0.68 green:0.68 blue:0.68 alpha:1]} forState:UIControlStateNormal];
+//    [[UITabBar appearance] setTintColor:[UIColor redColor]];
+//    [UITabBar appearance].tintColor = [UIColor whiteColor];
+//    [tabBarController.tabBar setBackgroundColor:[UIColor colorWithRed:0.79 green:0.0 blue:0.18 alpha:1.0]];
+    
+//    uiiTabBarBackground = [UIImage imageNamed:@"tabbar"];
+//    [[UITabBar appearance] setBackgroundImage:uiiTabBarBackground];
+//    [[UITabBar appearance] setShadowImage:[UIImage new]];
+//    [tabBarController.tabBar setBackgroundImage:uiiTabBarBackground];
+}
+
 - (void)setMyViewController {
     msViewController = [[MSViewController alloc]init];
-    msViewController.title = NSLocalizedString(@"罷免日計劃", nil);
-    //    introViewController.tabBarItem = [UIImage imageNamed:<#(NSString *)#>];
+    msViewController.title = NSLocalizedString(@"罷免日", nil);
+    msViewController.tabBarItem.image = [UIImage imageNamed:@"ms"];
     blogTableViewController = [[BLOGTableViewController alloc]init];
-    blogTableViewController.title = NSLocalizedString(@"戰略消息", nil);
+    blogTableViewController.title = NSLocalizedString(@"戰況", nil);
+    blogTableViewController.tabBarItem.image = [UIImage imageNamed:@"blog"];
     //戰況，魔王，uitableview
     freeViewController = [[FREEViewController alloc]init];
-    freeViewController.title = NSLocalizedString(@"自由罷免示範區", nil);
+    freeViewController.title = NSLocalizedString(@"示範區", nil);
+    freeViewController.tabBarItem.image = [UIImage imageNamed:@"free"];
     //佔領，各投開票所資料，uitableview
     supViewController = [[SUPViewController alloc]init];
-    supViewController.title = NSLocalizedString(@"加入公民V", nil);
+    supViewController.title = NSLocalizedString(@"攻占", nil);
+    supViewController.tabBarItem.image = [UIImage imageNamed:@"sup"];
     //地圖，各票所分佈(最後弄)
     mapViewController = [[MAPViewController alloc]init];
-    mapViewController.title = NSLocalizedString(@"即時戰況", nil);
+    mapViewController.title = NSLocalizedString(@"據點", nil);
+    mapViewController.tabBarItem.image = [UIImage imageNamed:@"map"];
     //其他，uitableview
-    
+
     NSArray *nsaViewControllers = [[NSArray alloc]initWithObjects:msViewController, blogTableViewController, freeViewController, supViewController, mapViewController, nil];
     tabBarController = [[TabBarController alloc]init];
-    [tabBarController setViewControllers:nsaViewControllers];
+    [tabBarController setViewControllers:nsaViewControllers];    
     [self.window addSubview:tabBarController.view];
-    
-    [[UITabBar appearance]setTintColor:[UIColor redColor]];
-    [[UITabBar appearance]setBarTintColor:[UIColor yellowColor]];
 }
 
 - (void)downloadFile{
     NSURL *url;
     if (_nssRSSURL == nil || [_nssRSSURL isEqual:@""] == YES) {
-        url = [NSURL URLWithString:@"http://yurenju.tumblr.com/rss"];
+        url = [NSURL URLWithString:@"http://appytw.tumblr.com/rss"];
+        NSLog(@"Got from url");
     } else {
         url = [NSURL URLWithString:_nssRSSURL];
+        NSLog(@"Read from plist");
     }
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     NSOperationQueue *queue = [NSOperationQueue new];
@@ -76,7 +95,7 @@
         if ([data length] > 0 && connectionError == nil) {
             _nssRSSContent = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
             [self writeToMyPlist];
-            NSLog(@"%@", _nssRSSContent);
+            NSLog(@"Content: %@", _nssRSSContent);
         } else {
             NSLog(@"Download url error: %@", connectionError);
         }
@@ -248,6 +267,10 @@
     [nsmdPlistDictionary setValue:_nssPhone forKey:PLIST_USER_PHONE];
     [nsmdPlistDictionary setValue:_nssRSSContent forKey:PLIST_RSS_CONTENT];
     [nsmdPlistDictionary setValue:_nssRSSURL forKey:PLIST_RSS_URL];
+    [nsmdPlistDictionary setValue:_nssTsaiWuLin forKey:PLIST_TSAI_WU_LIN];
+    [nsmdPlistDictionary setValue:_nssAddress forKey:PLIST_ADDRESS];
+    [nsmdPlistDictionary setValue:_nssGPSX forKey:PLIST_GPSX];
+    [nsmdPlistDictionary setValue:_nssGPSY forKey:PLIST_GPSY];
     [nsmdPlistDictionary writeToFile:_nssPlistDst atomically:YES];
 }
 
@@ -264,6 +287,10 @@
         _nssPhone = [nsmdPlistDictionary objectForKey:PLIST_USER_PHONE];
         _nssRSSContent = [nsmdPlistDictionary objectForKey:PLIST_RSS_CONTENT];
         _nssRSSURL = [nsmdPlistDictionary objectForKey:PLIST_RSS_URL];
+        _nssTsaiWuLin = [nsmdPlistDictionary objectForKey:PLIST_TSAI_WU_LIN];
+        _nssAddress = [nsmdPlistDictionary objectForKey:PLIST_ADDRESS];
+        _nssGPSX = [nsmdPlistDictionary objectForKey:PLIST_GPSX];
+        _nssGPSY = [nsmdPlistDictionary objectForKey:PLIST_GPSY];
     }
 }
 

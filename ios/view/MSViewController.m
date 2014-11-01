@@ -75,18 +75,18 @@
     [self.view addSubview:uiivTitle];
 
     UILabel *uilTitle = [[UILabel alloc]initWithFrame:CGRectMake(cgfAvailableWidth * 0.06, cgfAvailableHeight * 0.60 + cgfAvailableHeightStart, cgfAvailableWidth * 0.88, cgfAvailableWidth * 0.88 * 154.0 / 1315.0)];
-    uilTitle.text = @"誰是公民 v ?";
+    uilTitle.text = @"誰是公民 V ?";
     uilTitle.textColor = [UIColor colorWithRed:0.71 green:0.13 blue:0.25 alpha:1.0];
     uilTitle.textAlignment = NSTextAlignmentCenter;
     [uilTitle setAdjustsFontSizeToFitWidth:YES];
     [self.view addSubview:uilTitle];
 
     UITextView *uitvContent = [[UITextView alloc]initWithFrame:CGRectMake(cgfAvailableWidth * 0.06, cgfAvailableHeight * 0.65 + cgfAvailableHeightStart, cgfAvailableWidth * 0.88, cgfAvailableWidth * 0.88 * 600.0 / 1315.0)];
-    uitvContent.text = @"人機不天人媽一拿的服，萬大成人放新合麗狀場轉！許一正，笑德間日呢集心起送始、思國放地；外回費十以詩驚，書火使：報界清難料一表新，課團此意式。黨資書回用除。新由那面期公年，公過說花規的和面地花的再。叫時要也展綠師合大事條帶理是老就。";
+    uitvContent.text = @"這是一場全民覺醒的運動，超越了議會，從家庭、從巷口、從網路，從社會的各個角落開始綻放，罷免不再是瀕死的法條，而是活著的行動。割去發炎的「闌尾」，從體制內去影響、去改變現今有缺陷的代議制度，讓我們一起締造台灣新型態的社會運動。不論你是想擔任當天擺攤志工、物資提供或純粹想要鍵盤參戰，亦或是您想要長期熱情參與，你都可以成為割闌尾V計劃的公民V，";
     [self.view addSubview:uitvContent];
     
     UIImageView *uiivTitleEnd =
-    [[UIImageView alloc]initWithFrame:CGRectMake(cgfAvailableWidth * 0.06, cgfAvailableHeight * 0.88 + cgfAvailableHeightStart, cgfAvailableWidth * 0.88, cgfAvailableWidth * 0.88 * 56.0 / 1315.0)];
+    [[UIImageView alloc]initWithFrame:CGRectMake(cgfAvailableWidth * 0.06, cgfAvailableHeight * 0.92 + cgfAvailableHeightStart, cgfAvailableWidth * 0.88, cgfAvailableWidth * 0.88 * 56.0 / 1315.0)];
     uiivTitleEnd.image = [UIImage imageNamed:@"msp_title_end"];
     [self.view addSubview:uiivTitleEnd];
 }

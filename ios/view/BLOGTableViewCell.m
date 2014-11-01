@@ -27,10 +27,10 @@
     if (self) {
         // Initialization code
         [self initCellWidthAndWidth];
-        self.uiivNewsTypeLogo = [[UIImageView alloc]initWithFrame:CGRectMake(cgfW * 0.04, cgfH * 0.04, cgfW * 0.06, cgfH * 0.21)];
-        self.uiivNewsTypeBackground = [[UIImageView alloc]initWithFrame:CGRectMake(cgfW * 0.10, cgfH * 0.04, cgfW * 0.18, cgfH * 0.21)];
-        self.uilNewsTypeTip = [[UILabel alloc]initWithFrame:CGRectMake(cgfW * 0.12, cgfH * 0.05, cgfW * 0.14, cgfH * 0.19)];
-        self.uilTitle = [[UILabel alloc]initWithFrame:CGRectMake(cgfW * 0.36, cgfH * 0.04, cgfW * 0.60, cgfH * 0.21)];
+//        self.uiivNewsTypeLogo = [[UIImageView alloc]initWithFrame:CGRectMake(cgfW * 0.04, cgfH * 0.04, cgfW * 0.06, cgfH * 0.21)];
+//        self.uiivNewsTypeBackground = [[UIImageView alloc]initWithFrame:CGRectMake(cgfW * 0.10, cgfH * 0.04, cgfW * 0.18, cgfH * 0.21)];
+//        self.uilNewsTypeTip = [[UILabel alloc]initWithFrame:CGRectMake(cgfW * 0.12, cgfH * 0.05, cgfW * 0.14, cgfH * 0.19)];
+        self.uilTitle = [[UILabel alloc]initWithFrame:CGRectMake(cgfW * 0.04, cgfH * 0.04, cgfW * 0.92, cgfH * 0.21)];
         self.uitvContent = [[UITextView alloc]initWithFrame:CGRectMake(cgfW * 0.04, cgfH * 0.29, cgfW * 0.92, cgfH * 0.42)];
         self.uibReadMore = [[UIButton alloc]initWithFrame:CGRectMake(cgfW * 0.78, cgfH * 0.75, cgfW * 0.18, cgfH * 0.21)];
         

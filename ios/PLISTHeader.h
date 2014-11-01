@@ -16,5 +16,15 @@
 #define PLIST_USER_PHONE @"userPhone"
 #define PLIST_RSS_CONTENT @"RSSContent"
 #define PLIST_RSS_URL @"RSSURL"
+#define PLIST_TSAI_WU_LIN @"TsaiWuLin"
+#define PLIST_ADDRESS @"address"
+#define PLIST_GPSX @"gpsx"
+#define PLIST_GPSY @"gpsy"
+
+#define TAG_ITEM @"item"
+#define TAG_TITLE @"title"
+#define TAG_PUB_DATE @"pubDate"
+#define TAG_CATEGORY @"category"
+#define TAG_DESCRIPTION @"description"
 
 #endif

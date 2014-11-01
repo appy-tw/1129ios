@@ -8,7 +8,9 @@
 
 #import "BLOGTableViewController.h"
 #import "BLOGTableViewCell.h"
-#import "MYParseDelegate.h"
+//#import "MYParseDelegate.h"
+
+#import "PLISTHeader.h"
 
 @interface BLOGTableViewController ()
 {
@@ -21,14 +23,14 @@
 
 - (void)prepareTable
 {
-    MYParseDelegate *myParseDelegate = [[MYParseDelegate alloc]init];
-    [myParseDelegate getStart:0];
+    _myParseDelegate = [[MYParseDelegate alloc]init];
+    [_myParseDelegate getStart:0];
     
     self.nsmaOutputTable = [NSMutableArray new];
-    for (int i = 0; i < [myParseDelegate.nsmaOutput count]; i++) {
-        [self.nsmaOutputTable addObject:[myParseDelegate.nsmaOutput objectAtIndex:i]];
+    for (int i = 0; i < [_myParseDelegate.nsmaOutput count]; i++) {
+        [self.nsmaOutputTable addObject:[_myParseDelegate.nsmaOutput objectAtIndex:i]];
         //        NSLog(@"i: %d", i);
-        for (NSString* wkey in [myParseDelegate.nsmaOutput objectAtIndex:i]) {
+        for (NSString* wkey in [_myParseDelegate.nsmaOutput objectAtIndex:i]) {
             //            NSLog(@"%@", key);
         }
     }
@@ -49,7 +51,7 @@
     //    }
     //    [self sortTable];
     //    [myParse releaseAll];
-    myParseDelegate = nil;
+//    _myParseDelegate = nil;
 }
 
 - (void)viewDidLoad {
@@ -78,7 +80,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 20;
+    return [_myParseDelegate.nsmaOutput count];
 }
 
 
@@ -90,12 +92,16 @@
     }
     
     // Configure the cell...
-    [cell.uilNewsTypeTip setText:@"魔王狀況"];
-    [cell.uilTitle setText:@"【蔡正元Ａ錢，罪證明確】－罷免Ａ錢蔡，全國都喊讚"];
+//    [cell.uilNewsTypeTip setText:@"魔王狀況"];
+//    [cell.uilTitle setText:@"【蔡正元Ａ錢，罪證明確】－罷免Ａ錢蔡，全國都喊讚"];
     [cell.uitvContent setText:@"資深司法記者黃越宏按鈴控告【蔡正元Ａ錢，罪證明確】，憲法133實踐聯盟發起人馮光遠、割闌尾計畫聯手到場聲援，號召全民罷免爛立委。蔡正元利用擔任中影董事長期間，犯下「業務侵占」罪，並經士林地方法院判刑一年在案，卻由中影與檢方聯手吃案，"];
     //        UIImage *image = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@""]]];
     [cell.uiivNewsTypeLogo setImage:[UIImage imageNamed:@"blogp_NewsTypeLogo"]];
     [cell.uiivNewsTypeBackground setImage:[UIImage imageNamed:@"blogp_NewsTypeBackground"]];
+    
+    [cell.uilTitle setText:[[_myParseDelegate.nsmaOutput objectAtIndex:indexPath.row]valueForKey:TAG_TITLE]];
+//    [cell.uitvContent setText:[[_myParseDelegate.nsmaOutput objectAtIndex:indexPath.row]valueForKey:TAG_DESCRIPTION]];
+
 
     return cell;
 }

@@ -11,8 +11,8 @@
 		8F3BF89C1A03DAB4002F75E9 /* UIWebView+YouTube.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3BF89A1A03DAB4002F75E9 /* UIWebView+YouTube.m */; };
 		8F3BF8A51A03F718002F75E9 /* MYParseDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3BF8A41A03F718002F75E9 /* MYParseDelegate.m */; };
 		8F3BF8A61A03F718002F75E9 /* MYParseDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3BF8A41A03F718002F75E9 /* MYParseDelegate.m */; };
-		8F3BF8A81A040970002F75E9 /* Property List.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F3BF8A71A040970002F75E9 /* Property List.plist */; };
-		8F3BF8A91A040970002F75E9 /* Property List.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F3BF8A71A040970002F75E9 /* Property List.plist */; };
+		8F3BF8A81A040970002F75E9 /* UserData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F3BF8A71A040970002F75E9 /* UserData.plist */; };
+		8F3BF8A91A040970002F75E9 /* UserData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F3BF8A71A040970002F75E9 /* UserData.plist */; };
 		8FBCEB4E1A029E2C00D200A0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBCEB4D1A029E2C00D200A0 /* main.m */; };
 		8FBCEB511A029E2C00D200A0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBCEB501A029E2C00D200A0 /* AppDelegate.m */; };
 		8FBCEB541A029E2C00D200A0 /* ios.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8FBCEB521A029E2C00D200A0 /* ios.xcdatamodeld */; };
@@ -50,7 +50,7 @@
 		8F3BF89A1A03DAB4002F75E9 /* UIWebView+YouTube.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIWebView+YouTube.m"; path = "view/UIWebView+YouTube.m"; sourceTree = "<group>"; };
 		8F3BF8A31A03F718002F75E9 /* MYParseDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MYParseDelegate.h; path = parse/MYParseDelegate.h; sourceTree = "<group>"; };
 		8F3BF8A41A03F718002F75E9 /* MYParseDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MYParseDelegate.m; path = parse/MYParseDelegate.m; sourceTree = "<group>"; };
-		8F3BF8A71A040970002F75E9 /* Property List.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Property List.plist"; sourceTree = "<group>"; };
+		8F3BF8A71A040970002F75E9 /* UserData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = UserData.plist; sourceTree = "<group>"; };
 		8F3BF8AA1A040BC5002F75E9 /* PLISTHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLISTHeader.h; sourceTree = "<group>"; };
 		8FBCEB481A029E2C00D200A0 /* ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FBCEB4C1A029E2C00D200A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -147,7 +147,7 @@
 			children = (
 				8FBCEB4C1A029E2C00D200A0 /* Info.plist */,
 				8FBCEB4D1A029E2C00D200A0 /* main.m */,
-				8F3BF8A71A040970002F75E9 /* Property List.plist */,
+				8F3BF8A71A040970002F75E9 /* UserData.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -241,6 +241,7 @@
 				TargetAttributes = {
 					8FBCEB471A029E2C00D200A0 = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = DEATJ76XRX;
 					};
 					8FBCEB631A029E2C00D200A0 = {
 						CreatedOnToolsVersion = 6.1;
@@ -272,7 +273,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F3BF8A81A040970002F75E9 /* Property List.plist in Resources */,
+				8F3BF8A81A040970002F75E9 /* UserData.plist in Resources */,
 				8FBCEB5C1A029E2C00D200A0 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -281,7 +282,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F3BF8A91A040970002F75E9 /* Property List.plist in Resources */,
+				8F3BF8A91A040970002F75E9 /* UserData.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,7 +420,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ios/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -431,7 +435,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ios/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
