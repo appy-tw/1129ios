@@ -14,6 +14,7 @@
 #import "FREEViewController.h"
 #import "SUPViewController.h"
 #import "MAPViewController.h"
+#import "GOViewController.h"
 
 #import "PLISTHeader.h"
 
@@ -29,6 +30,7 @@
     FREEViewController *freeViewController;
     //佔領，各投開票所資料，uitableview
     SUPViewController *supViewController;
+    GOViewController *goViewController;
     //地圖，各票所分佈(最後弄)
     MAPViewController *mapViewController;
     //其他，uitableview
@@ -64,18 +66,21 @@
     //戰況，魔王，uitableview
     freeViewController = [[FREEViewController alloc]init];
     freeViewController.title = NSLocalizedString(@"示範區", nil);
-    freeViewController.tabBarItem.image = [UIImage imageNamed:@"free"];
+    freeViewController.tabBarItem.image = [UIImage imageNamed:@"sup"];
     //佔領，各投開票所資料，uitableview
-    supViewController = [[SUPViewController alloc]init];
-    supViewController.title = NSLocalizedString(@"攻佔", nil);
-    supViewController.tabBarItem.image = [UIImage imageNamed:@"sup"];
+//    supViewController = [[SUPViewController alloc]init];
+//    supViewController.title = NSLocalizedString(@"攻佔", nil);
+//    supViewController.tabBarItem.image = [UIImage imageNamed:@"sup"];
     //地圖，各票所分佈(最後弄)
     mapViewController = [[MAPViewController alloc]init];
     mapViewController.title = NSLocalizedString(@"據點", nil);
     mapViewController.tabBarItem.image = [UIImage imageNamed:@"map"];
     //其他，uitableview
+    goViewController = [[GOViewController alloc]init];
+    goViewController.title = NSLocalizedString(@"召集令", nil);
+    goViewController.tabBarItem.image = [UIImage imageNamed:@"free"];
 
-    NSArray *nsaViewControllers = [[NSArray alloc]initWithObjects:msViewController, blogTableViewController, freeViewController, supViewController, mapViewController, nil];
+    NSArray *nsaViewControllers = [[NSArray alloc]initWithObjects:msViewController, blogTableViewController, freeViewController, mapViewController, goViewController, nil];
     tabBarController = [[TabBarController alloc]init];
     [tabBarController setViewControllers:nsaViewControllers];    
     [self.window addSubview:tabBarController.view];
