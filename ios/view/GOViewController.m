@@ -12,6 +12,8 @@
 
 #import <FacebookSDK/FacebookSDK.h>
 
+#import <Parse/Parse.h>
+
 
 @interface GOViewController() <FBLoginViewDelegate>
 {
@@ -263,6 +265,23 @@
 //    self.profilePic.profileID = user.objectID;
 //    self.loggedInUser = user;
     uilUserName.text = [NSString stringWithFormat:@"%@", user.name];
+    NSLog(@"user.id");
+    PFQuery *query = [PFQuery queryWithClassName:@"contact"];
+    [query whereKey:@"fid" equalTo:@"10203105010013208"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            // The find succeeded.
+            NSLog(@"Successfully retrieved %d scores.", objects.count);
+            // Do something with the found objects
+            for (PFObject *object in objects) {
+                NSLog(@"%@", object.objectId);
+                uilMission.text = object.objectId;
+            }
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
 }
 
 //
