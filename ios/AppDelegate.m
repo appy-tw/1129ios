@@ -20,6 +20,10 @@
 
 #import <FacebookSDK/FacebookSDK.h>
 
+#import <Parse/Parse.h>
+
+#import "KeyHeader.h"
+
 @interface AppDelegate ()
 {
     TabBarController *tabBarController;

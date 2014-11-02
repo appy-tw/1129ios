@@ -262,7 +262,7 @@
     // causes the control to fetch and display the profile picture for the user
 //    self.profilePic.profileID = user.objectID;
 //    self.loggedInUser = user;
-    uilUserName.text = [NSString stringWithFormat:@"Hello %@!", user.first_name];
+    uilUserName.text = [NSString stringWithFormat:@"%@", user.name];
 }
 
 //

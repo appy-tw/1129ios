@@ -47,6 +47,8 @@
 		8FE0E8491A061DD4000016D1 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8FE0E72A1A061DD3000016D1 /* README.txt */; };
 		8FE0E9771A0668A3000016D1 /* GOViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0E9761A0668A3000016D1 /* GOViewController.m */; };
 		8FE0E9781A0668A3000016D1 /* GOViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0E9761A0668A3000016D1 /* GOViewController.m */; };
+		8FE0E97C1A0699B1000016D1 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FE0E97B1A0699B1000016D1 /* Parse.framework */; };
+		8FE0E97D1A0699B1000016D1 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FE0E97B1A0699B1000016D1 /* Parse.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +103,11 @@
 		8FE0E9751A0668A3000016D1 /* GOViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GOViewController.h; path = view/GOViewController.h; sourceTree = "<group>"; };
 		8FE0E9761A0668A3000016D1 /* GOViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GOViewController.m; path = view/GOViewController.m; sourceTree = "<group>"; };
 		8FE0E97A1A068A00000016D1 /* KeyHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyHeader.h; sourceTree = "<group>"; };
+		8FE0E97B1A0699B1000016D1 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		8FE0E97E1A0699E2000016D1 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		8FE0E9801A0699EA000016D1 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		8FE0E9821A0699F5000016D1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		8FE0E9841A0699FD000016D1 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +117,7 @@
 			files = (
 				8FE0E8141A061DD4000016D1 /* FBAudienceNetwork.framework in Frameworks */,
 				8FE0E8101A061DD3000016D1 /* Bolts.framework in Frameworks */,
+				8FE0E97C1A0699B1000016D1 /* Parse.framework in Frameworks */,
 				8FE0E8121A061DD4000016D1 /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -120,6 +128,7 @@
 			files = (
 				8FE0E8151A061DD4000016D1 /* FBAudienceNetwork.framework in Frameworks */,
 				8FE0E8111A061DD3000016D1 /* Bolts.framework in Frameworks */,
+				8FE0E97D1A0699B1000016D1 /* Parse.framework in Frameworks */,
 				8FE0E8131A061DD4000016D1 /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -228,6 +237,11 @@
 		8FE0E6F81A061DAD000016D1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8FE0E9841A0699FD000016D1 /* CoreLocation.framework */,
+				8FE0E9821A0699F5000016D1 /* CoreGraphics.framework */,
+				8FE0E9801A0699EA000016D1 /* CFNetwork.framework */,
+				8FE0E97E1A0699E2000016D1 /* AudioToolbox.framework */,
+				8FE0E97B1A0699B1000016D1 /* Parse.framework */,
 				8FE0E6F91A061DD3000016D1 /* FacebookSDK */,
 			);
 			name = Frameworks;
@@ -497,6 +511,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/FacebookSDK",
 					"$(PROJECT_DIR)/FacebookSDK/FBAudienceNetwork",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
@@ -517,6 +532,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/FacebookSDK",
 					"$(PROJECT_DIR)/FacebookSDK/FBAudienceNetwork",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
@@ -535,6 +551,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/FacebookSDK",
 					"$(PROJECT_DIR)/FacebookSDK/FBAudienceNetwork",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -556,6 +573,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/FacebookSDK",
 					"$(PROJECT_DIR)/FacebookSDK/FBAudienceNetwork",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = iosTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
