@@ -265,6 +265,8 @@
     uilUserName.text = [NSString stringWithFormat:@"Hello %@!", user.first_name];
 }
 
+//
+
 - (void)loginViewShowingLoggedOutUser:(FBLoginView *)loginView {
     // test to see if we can use the share dialog built into the Facebook application
     FBLinkShareParams *p = [[FBLinkShareParams alloc] init];

@@ -100,6 +100,7 @@
 		8FE0E72A1A061DD3000016D1 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		8FE0E9751A0668A3000016D1 /* GOViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GOViewController.h; path = view/GOViewController.h; sourceTree = "<group>"; };
 		8FE0E9761A0668A3000016D1 /* GOViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GOViewController.m; path = view/GOViewController.m; sourceTree = "<group>"; };
+		8FE0E97A1A068A00000016D1 /* KeyHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyHeader.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +139,7 @@
 		8FBCEB3F1A029E2C00D200A0 = {
 			isa = PBXGroup;
 			children = (
+				8FE0E97A1A068A00000016D1 /* KeyHeader.h */,
 				8FBCEB4A1A029E2C00D200A0 /* ios */,
 				8FBCEB671A029E2C00D200A0 /* iosTests */,
 				8FBCEB491A029E2C00D200A0 /* Products */,
