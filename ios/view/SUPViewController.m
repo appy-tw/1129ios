@@ -9,6 +9,8 @@
 #import "SUPViewController.h"
 #import "AppDelegate.h"
 
+#import <FacebookSDK/FacebookSDK.h>
+
 @interface SUPViewController ()
 {
     CGFloat cgfAvailableWidth;
@@ -90,6 +92,12 @@
 - (void)drawScreen {
     [self setMyScreenSize];
     [self setImageAndButton];
+}
+
+- (void)setFacebook {
+    FBLoginView *loginView = [[FBLoginView alloc] init];
+    loginView.center = self.view.center;
+    [self.view addSubview:loginView];
 }
 
 - (void)viewDidLoad {

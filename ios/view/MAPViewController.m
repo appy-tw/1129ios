@@ -47,7 +47,8 @@
 - (void)setMyMapView {
     UIWebView *uiwvMap = [[UIWebView alloc]initWithFrame:CGRectMake(0.0, cgfAvailableHeight * 0.04 + cgfAvailableHeightStart, cgfAvailableWidth, cgfAvailableHeight)];
     [self.view addSubview:uiwvMap];
-    [uiwvMap loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://mapsengine.google.com/map/viewer?mid=zIzWDsgdsP7k.kgKZUH6SEQhk"]]];
+//    [uiwvMap loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://mapsengine.google.com/map/viewer?mid=zIzWDsgdsP7k.kgKZUH6SEQhk"]]];
+        [uiwvMap loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://1129vday.tw/official/#/"]]];
     [uiwvMap setScalesPageToFit:YES];
     [uiwvMap.scrollView setShowsHorizontalScrollIndicator:YES];
     [uiwvMap.scrollView setScrollEnabled:YES];
