@@ -10,4 +10,6 @@
 
 @interface MSTableViewController : UITableViewController
 
+@property (strong, nonatomic) UIWebView *uiwVideoView;
+
 @end

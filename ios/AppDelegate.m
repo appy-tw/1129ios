@@ -62,14 +62,14 @@
 
 - (void)setMyViewController {
     msTableViewController = [[MSTableViewController alloc]init];
-    msTableViewController.title = NSLocalizedString(@"罷免日", nil);
+    msTableViewController.title = NSLocalizedString(@"割闌尾", nil);
     msTableViewController.tabBarItem.image = [UIImage imageNamed:@"ms"];
     blogTableViewController = [[BLOGTableViewController alloc]init];
     blogTableViewController.title = NSLocalizedString(@"戰況", nil);
     blogTableViewController.tabBarItem.image = [UIImage imageNamed:@"blog"];
     //戰況，魔王，uitableview
     freeViewController = [[FREEViewController alloc]init];
-    freeViewController.title = NSLocalizedString(@"示範區", nil);
+    freeViewController.title = NSLocalizedString(@"魔王領地", nil);
     freeViewController.tabBarItem.image = [UIImage imageNamed:@"sup"];
     //佔領，各投開票所資料，uitableview
 //    supViewController = [[SUPViewController alloc]init];
