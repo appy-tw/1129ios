@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 
 #import "TabBarController.h"
-#import "MSViewController.h"
+#import "MSTableViewController.h"
 #import "BLOGTableViewController.h"
 #import "FREEViewController.h"
 #import "SUPViewController.h"
@@ -27,7 +27,7 @@
 @interface AppDelegate ()
 {
     TabBarController *tabBarController;
-    MSViewController *msViewController;
+    MSTableViewController *msTableViewController;
     //簡介，uiview
     BLOGTableViewController *blogTableViewController;
     //戰況，魔王，uitableview
@@ -61,9 +61,9 @@
 }
 
 - (void)setMyViewController {
-    msViewController = [[MSViewController alloc]init];
-    msViewController.title = NSLocalizedString(@"罷免日", nil);
-    msViewController.tabBarItem.image = [UIImage imageNamed:@"ms"];
+    msTableViewController = [[MSTableViewController alloc]init];
+    msTableViewController.title = NSLocalizedString(@"罷免日", nil);
+    msTableViewController.tabBarItem.image = [UIImage imageNamed:@"ms"];
     blogTableViewController = [[BLOGTableViewController alloc]init];
     blogTableViewController.title = NSLocalizedString(@"戰況", nil);
     blogTableViewController.tabBarItem.image = [UIImage imageNamed:@"blog"];
@@ -81,10 +81,10 @@
     mapViewController.tabBarItem.image = [UIImage imageNamed:@"map"];
     //其他，uitableview
     goViewController = [[GOViewController alloc]init];
-    goViewController.title = NSLocalizedString(@"召集令", nil);
+    goViewController.title = NSLocalizedString(@"討伐令", nil);
     goViewController.tabBarItem.image = [UIImage imageNamed:@"free"];
 
-    NSArray *nsaViewControllers = [[NSArray alloc]initWithObjects:msViewController, blogTableViewController, freeViewController, mapViewController, goViewController, nil];
+    NSArray *nsaViewControllers = [[NSArray alloc]initWithObjects:msTableViewController, blogTableViewController, freeViewController, mapViewController, goViewController, nil];
     tabBarController = [[TabBarController alloc]init];
     [tabBarController setViewControllers:nsaViewControllers];    
     [self.window addSubview:tabBarController.view];
