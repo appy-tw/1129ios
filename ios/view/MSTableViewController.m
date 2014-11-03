@@ -13,6 +13,15 @@
 {
     CGFloat cgfW;
     
+    CGFloat cgfScreenWidth;
+    CGFloat cgfScreenHeight;
+    CGFloat cgfScreenHeightBase;
+    
+    CGFloat cgfHigh0;
+    CGFloat cgfHigh1;
+    CGFloat cgfHigh2;
+    CGFloat cgfHigh3;
+    
     AppDelegate *delegate;
 }
 
@@ -20,23 +29,15 @@
 
 @implementation MSTableViewController
 
-- (void)embedYouTube:(NSString *)nssUrlString frame:(CGRect)cgrRrame {
-    NSString *nssEmbedHTML = @"\
-    <html><head>\
-    <style type=\"text/css\">\
-    body {\
-    background-color: transparent;\
-    color: white;\
-    }\
-    </style>\
-    </head><body style=\"margin:0\">\
-    <embed id=\"yt\" src=\"%@\" type=\"application/x-shockwave-flash\" \
-    width=\"%0.0f\" height=\"%0.0f\"></embed>\
-    </body></html>";
-    NSString *nssHtml = [NSString stringWithFormat:nssEmbedHTML, nssUrlString, cgrRrame.size.width, cgrRrame.size.height];
-    UIWebView *uiwVideoView = [[UIWebView alloc] initWithFrame:cgrRrame];
-    [uiwVideoView loadHTMLString:nssHtml baseURL:nil];
-    [self.view addSubview:uiwVideoView];
+- (void)setMyScreen
+{
+    delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    cgfScreenWidth = [[UIScreen mainScreen] bounds].size.width;
+    cgfScreenHeight = [[UIScreen mainScreen] bounds].size.height - [[UIApplication sharedApplication] statusBarFrame].size.height - self.tabBarController.tabBar.frame.size.height - self.navigationController.navigationBar.frame.size.height - [UIApplication sharedApplication].statusBarFrame.size.height;
+    cgfScreenHeightBase = self.navigationController.navigationBar.frame.size.height + [UIApplication sharedApplication].statusBarFrame.size.height;
+    NSLog(@"status bar height:%f",[UIApplication sharedApplication].statusBarFrame.size.height);
+    NSLog(@"width:%f, height:%f, tabbar:%f, navigationbarcontroller:%f", cgfScreenWidth, cgfScreenHeight, self.tabBarController.tabBar.frame.size.height, self.navigationController.navigationBar.frame.size.height);
 }
 
 - (void)setImage {
@@ -45,6 +46,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setMyScreen];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 }
 
@@ -69,7 +71,7 @@
     }
     if (indexPath.row == 0) {
         UIImage *uiim = [UIImage imageNamed:@"ms1_1"];
-        UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 5.0, uiim.size.width, uiim.size.height)];
+        UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, cgfScreenHeightBase, uiim.size.width, uiim.size.height)];
         uiimv.image = uiim;
         [cell.contentView addSubview:uiimv];
 
@@ -87,12 +89,15 @@
         </body></html>";
         NSLog(@"%f %f",self.tableView.frame.size.width, cell.frame.size.width);
         NSString *nssHtml = [NSString stringWithFormat:nssEmbedHTML, @"https://www.youtube.com/watch?feature=player_embedded&v=OtvbZscM90A", self.tableView.frame.size.width * 0.92, self.tableView.frame.size.width * .92 * 9.0 / 16.0];
-        UIWebView *uiwVideoView = [[UIWebView alloc] initWithFrame:CGRectMake(self.tableView.frame.size.width * 0.04, 5.0 + uiim.size.height + 5.0, self.tableView.frame.size.width * 0.92, self.tableView.frame.size.width * 0.92 * 9.0 / 16.0)];
-
+        UIWebView *uiwVideoView = [[UIWebView alloc] initWithFrame:CGRectMake(self.tableView.frame.size.width * 0.04, 5.0 + uiim.size.height + 5.0 + cgfScreenHeightBase, self.tableView.frame.size.width * 0.92, self.tableView.frame.size.width * 0.92 * 9.0 / 16.0)];
         [uiwVideoView loadHTMLString:nssHtml baseURL:nil];
         [cell.contentView addSubview:uiwVideoView];
+        cgfHigh0 = cgfScreenHeightBase + uiim.size.height + 5.0 + cgfScreenHeightBase + self.tableView.frame.size.width * 0.92 * 9.0 / 16.0;
     } else if (indexPath.row == 1) {
-
+        UIImage *uiim = [UIImage imageNamed:@"ms2_1"];
+        UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, cgfScreenHeightBase, uiim.size.width, uiim.size.height)];
+        uiimv.image = uiim;
+        [cell.contentView addSubview:uiimv];
     } else if (indexPath.row == 2) {
 
     } else if (indexPath.row == 3) {
@@ -117,9 +122,15 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //    NSString *theText=[[_loadedNames objectAtIndex: indexPath.row] name];
-    //    CGSize labelSize = [theText sizeWithFont:[UIFont fontWithName: @"FontA" size: 15.0f] constrainedToSize:kLabelFrameMaxSize];
-    return 200;
+    if (indexPath.row == 0) {
+        return cgfScreenHeightBase + [UIImage imageNamed:@"ms1_1"].size.height + 5.0 + cgfScreenHeightBase + self.tableView.frame.size.width * 0.92 * 9.0 / 16.0 +5.0;
+    } else if (indexPath.row == 1) {
+        return 300;
+    } else if (indexPath.row == 2) {
+        return 300;
+    } else {
+        return 300;
+    }
 }
 
 @end
