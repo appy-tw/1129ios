@@ -77,7 +77,7 @@
 //    supViewController.tabBarItem.image = [UIImage imageNamed:@"sup"];
     //地圖，各票所分佈(最後弄)
     mapViewController = [[MAPViewController alloc]init];
-    mapViewController.title = NSLocalizedString(@"據點", nil);
+    mapViewController.title = NSLocalizedString(@"補給據點", nil);
     mapViewController.tabBarItem.image = [UIImage imageNamed:@"map"];
     //其他，uitableview
     goViewController = [[GOViewController alloc]init];

@@ -14,7 +14,8 @@
 @property (strong, nonatomic) UIImageView *uiivNewsTypeBackground;
 @property (strong, nonatomic) UILabel *uilNewsTypeTip;
 @property (strong, nonatomic) UILabel *uilTitle;
-@property (strong, nonatomic) UITextView *uitvContent;
+@property (strong, nonatomic) UIWebView *uitvContent;
 @property (strong, nonatomic) UIButton *uibReadMore;
+@property (strong, nonatomic) UIImageView *uiimvBorder;
 
 @end

@@ -37,6 +37,9 @@
 //        NSLog(@"my: %d", nsiDataCounter);
         nsmdNowDictionary = [[NSMutableDictionary alloc]init];
         bStartRecord = YES;
+        NSLog(@"elementName: %@", elementName);
+        NSLog(@"namespaceURI: %@", namespaceURI);
+        NSLog(@"qualifiedName: %@", qualifiedName);
     } else if ([elementName isEqual:@"category"]) {
 //        nsiCategoryCounter ++;
         nssNowTag = [NSString stringWithString:elementName];
