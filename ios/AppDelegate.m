@@ -71,19 +71,19 @@
     //戰況，魔王，uitableview
     kgTableViewController = [[KGTableViewController alloc]init];
     kgTableViewController.title = NSLocalizedString(@"魔王領地", nil);
-    kgTableViewController.tabBarItem.image = [UIImage imageNamed:@"sup"];
+    kgTableViewController.tabBarItem.image = [UIImage imageNamed:@"kg"];
     //魔王的各領地資料
     supTableViewController = [[SUPTableViewController alloc]init];
     supTableViewController.title = NSLocalizedString(@"補給據點", nil);
-    supTableViewController.tabBarItem.image = [UIImage imageNamed:@"map"];
+    supTableViewController.tabBarItem.image = [UIImage imageNamed:@"sup"];
     //代收據點
     goViewController = [[GOViewController alloc]init];
     goViewController.title = NSLocalizedString(@"討伐令", nil);
-    goViewController.tabBarItem.image = [UIImage imageNamed:@"free"];
+    goViewController.tabBarItem.image = [UIImage imageNamed:@"att"];
 
     attTableViewController = [[ATTTableViewController alloc]init];
     attTableViewController.title = NSLocalizedString(@"討伐令", nil);
-    attTableViewController.tabBarItem.image = [UIImage imageNamed:@"free"];
+    attTableViewController.tabBarItem.image = [UIImage imageNamed:@"att"];
     //行前通知
 
     NSArray *nsaViewControllers = [[NSArray alloc]initWithObjects:msTableViewController, blogTableViewController, kgTableViewController, supTableViewController, goViewController, attTableViewController, nil];

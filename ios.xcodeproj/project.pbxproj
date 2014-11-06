@@ -41,8 +41,6 @@
 		8FBCEB8A1A02BDDB00D200A0 /* MAPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBCEB7C1A02BDDB00D200A0 /* MAPViewController.m */; };
 		8FBCEB8B1A02BDDB00D200A0 /* MSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBCEB7E1A02BDDB00D200A0 /* MSViewController.m */; };
 		8FBCEB8C1A02BDDB00D200A0 /* MSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBCEB7E1A02BDDB00D200A0 /* MSViewController.m */; };
-		8FBCEB8D1A02BDDB00D200A0 /* SUPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBCEB801A02BDDB00D200A0 /* SUPViewController.m */; };
-		8FBCEB8E1A02BDDB00D200A0 /* SUPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBCEB801A02BDDB00D200A0 /* SUPViewController.m */; };
 		8FBCEB8F1A02BDDB00D200A0 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBCEB821A02BDDB00D200A0 /* TabBarController.m */; };
 		8FBCEB901A02BDDB00D200A0 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBCEB821A02BDDB00D200A0 /* TabBarController.m */; };
 		8FE0E8101A061DD3000016D1 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FE0E6FA1A061DD3000016D1 /* Bolts.framework */; };
@@ -124,8 +122,6 @@
 		8FBCEB7C1A02BDDB00D200A0 /* MAPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MAPViewController.m; path = view/MAPViewController.m; sourceTree = "<group>"; };
 		8FBCEB7D1A02BDDB00D200A0 /* MSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MSViewController.h; path = view/MSViewController.h; sourceTree = "<group>"; };
 		8FBCEB7E1A02BDDB00D200A0 /* MSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MSViewController.m; path = view/MSViewController.m; sourceTree = "<group>"; };
-		8FBCEB7F1A02BDDB00D200A0 /* SUPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SUPViewController.h; path = view/SUPViewController.h; sourceTree = "<group>"; };
-		8FBCEB801A02BDDB00D200A0 /* SUPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SUPViewController.m; path = view/SUPViewController.m; sourceTree = "<group>"; };
 		8FBCEB811A02BDDB00D200A0 /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TabBarController.h; path = view/TabBarController.h; sourceTree = "<group>"; };
 		8FBCEB821A02BDDB00D200A0 /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TabBarController.m; path = view/TabBarController.m; sourceTree = "<group>"; };
 		8FE0E6FA1A061DD3000016D1 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
@@ -278,8 +274,6 @@
 				8FBCEB7C1A02BDDB00D200A0 /* MAPViewController.m */,
 				8FBCEB7D1A02BDDB00D200A0 /* MSViewController.h */,
 				8FBCEB7E1A02BDDB00D200A0 /* MSViewController.m */,
-				8FBCEB7F1A02BDDB00D200A0 /* SUPViewController.h */,
-				8FBCEB801A02BDDB00D200A0 /* SUPViewController.m */,
 				8FBCEB811A02BDDB00D200A0 /* TabBarController.h */,
 				8FBCEB821A02BDDB00D200A0 /* TabBarController.m */,
 				8FE0E9751A0668A3000016D1 /* GOViewController.h */,
@@ -460,7 +454,6 @@
 				8F3A12981A0B392700C10C5D /* KGTableViewController.m in Sources */,
 				8F3A129C1A0B393500C10C5D /* SUPTableViewController.m in Sources */,
 				8F3BF8A51A03F718002F75E9 /* MYParseDelegate.m in Sources */,
-				8FBCEB8D1A02BDDB00D200A0 /* SUPViewController.m in Sources */,
 				8F3A12A01A0B394200C10C5D /* ATTTableViewController.m in Sources */,
 				8FBCEB8B1A02BDDB00D200A0 /* MSViewController.m in Sources */,
 				8FBCEB871A02BDDB00D200A0 /* FREEViewController.m in Sources */,
@@ -481,7 +474,6 @@
 				8FBCEB8A1A02BDDB00D200A0 /* MAPViewController.m in Sources */,
 				8FE0E9781A0668A3000016D1 /* GOViewController.m in Sources */,
 				8F3A129D1A0B393500C10C5D /* SUPTableViewController.m in Sources */,
-				8FBCEB8E1A02BDDB00D200A0 /* SUPViewController.m in Sources */,
 				8FBCEB901A02BDDB00D200A0 /* TabBarController.m in Sources */,
 				8F839D231A07B77E0071654C /* MSTableViewController.m in Sources */,
 				8FBCEB8C1A02BDDB00D200A0 /* MSViewController.m in Sources */,

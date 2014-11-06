@@ -9,6 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface SUPTableViewController : UITableViewController
-@property (strong, nonatomic) UIWebView *uiwVideoView;
 
 @end
