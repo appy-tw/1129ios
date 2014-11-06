@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8F3A12801A0B320000C10C5D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8F3A12831A0B320000C10C5D /* Localizable.strings */; };
+		8F3A12811A0B320000C10C5D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8F3A12831A0B320000C10C5D /* Localizable.strings */; };
+		8F3A12851A0B322A00C10C5D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8F3A12881A0B322A00C10C5D /* InfoPlist.strings */; };
+		8F3A12861A0B322A00C10C5D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8F3A12881A0B322A00C10C5D /* InfoPlist.strings */; };
+		8F3A128C1A0B342F00C10C5D /* KGTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3A128B1A0B342F00C10C5D /* KGTableViewCell.m */; };
+		8F3A128D1A0B342F00C10C5D /* KGTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3A128B1A0B342F00C10C5D /* KGTableViewCell.m */; };
+		8F3A12901A0B344F00C10C5D /* SUPTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3A128F1A0B344F00C10C5D /* SUPTableViewCell.m */; };
+		8F3A12911A0B344F00C10C5D /* SUPTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3A128F1A0B344F00C10C5D /* SUPTableViewCell.m */; };
+		8F3A12941A0B348100C10C5D /* ATTTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3A12931A0B348100C10C5D /* ATTTableViewCell.m */; };
+		8F3A12951A0B348100C10C5D /* ATTTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3A12931A0B348100C10C5D /* ATTTableViewCell.m */; };
 		8F3BF89B1A03DAB4002F75E9 /* UIWebView+YouTube.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3BF89A1A03DAB4002F75E9 /* UIWebView+YouTube.m */; };
 		8F3BF89C1A03DAB4002F75E9 /* UIWebView+YouTube.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3BF89A1A03DAB4002F75E9 /* UIWebView+YouTube.m */; };
 		8F3BF8A51A03F718002F75E9 /* MYParseDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3BF8A41A03F718002F75E9 /* MYParseDelegate.m */; };
@@ -74,6 +84,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8F3A12821A0B320000C10C5D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8F3A12841A0B321000C10C5D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		8F3A12871A0B322A00C10C5D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8F3A12891A0B322D00C10C5D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		8F3A128A1A0B342F00C10C5D /* KGTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KGTableViewCell.h; path = view/KGTableViewCell.h; sourceTree = "<group>"; };
+		8F3A128B1A0B342F00C10C5D /* KGTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KGTableViewCell.m; path = view/KGTableViewCell.m; sourceTree = "<group>"; };
+		8F3A128E1A0B344F00C10C5D /* SUPTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SUPTableViewCell.h; path = view/SUPTableViewCell.h; sourceTree = "<group>"; };
+		8F3A128F1A0B344F00C10C5D /* SUPTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SUPTableViewCell.m; path = view/SUPTableViewCell.m; sourceTree = "<group>"; };
+		8F3A12921A0B348100C10C5D /* ATTTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATTTableViewCell.h; path = view/ATTTableViewCell.h; sourceTree = "<group>"; };
+		8F3A12931A0B348100C10C5D /* ATTTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATTTableViewCell.m; path = view/ATTTableViewCell.m; sourceTree = "<group>"; };
 		8F3BF8991A03DAB4002F75E9 /* UIWebView+YouTube.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIWebView+YouTube.h"; path = "view/UIWebView+YouTube.h"; sourceTree = "<group>"; };
 		8F3BF89A1A03DAB4002F75E9 /* UIWebView+YouTube.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIWebView+YouTube.m"; path = "view/UIWebView+YouTube.m"; sourceTree = "<group>"; };
 		8F3BF8A31A03F718002F75E9 /* MYParseDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MYParseDelegate.h; path = parse/MYParseDelegate.h; sourceTree = "<group>"; };
@@ -218,6 +238,8 @@
 				8FBCEB4C1A029E2C00D200A0 /* Info.plist */,
 				8FBCEB4D1A029E2C00D200A0 /* main.m */,
 				8F3BF8A71A040970002F75E9 /* UserData.plist */,
+				8F3A12831A0B320000C10C5D /* Localizable.strings */,
+				8F3A12881A0B322A00C10C5D /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -262,6 +284,12 @@
 				8FBCEB821A02BDDB00D200A0 /* TabBarController.m */,
 				8FE0E9751A0668A3000016D1 /* GOViewController.h */,
 				8FE0E9761A0668A3000016D1 /* GOViewController.m */,
+				8F3A128A1A0B342F00C10C5D /* KGTableViewCell.h */,
+				8F3A128B1A0B342F00C10C5D /* KGTableViewCell.m */,
+				8F3A128E1A0B344F00C10C5D /* SUPTableViewCell.h */,
+				8F3A128F1A0B344F00C10C5D /* SUPTableViewCell.m */,
+				8F3A12921A0B348100C10C5D /* ATTTableViewCell.h */,
+				8F3A12931A0B348100C10C5D /* ATTTableViewCell.m */,
 			);
 			name = "\bview";
 			sourceTree = "<group>";
@@ -370,7 +398,7 @@
 			knownRegions = (
 				en,
 				Base,
-				he,
+				"zh-Hant",
 			);
 			mainGroup = 8FBCEB3F1A029E2C00D200A0;
 			productRefGroup = 8FBCEB491A029E2C00D200A0 /* Products */;
@@ -389,6 +417,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F3BF8A81A040970002F75E9 /* UserData.plist in Resources */,
+				8F3A12851A0B322A00C10C5D /* InfoPlist.strings in Resources */,
+				8F3A12801A0B320000C10C5D /* Localizable.strings in Resources */,
 				8FE0E8161A061DD4000016D1 /* README.txt in Resources */,
 				8FE0E8461A061DD4000016D1 /* LICENSE in Resources */,
 				8FE0E8481A061DD4000016D1 /* README.txt in Resources */,
@@ -400,6 +430,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F3A12811A0B320000C10C5D /* Localizable.strings in Resources */,
+				8F3A12861A0B322A00C10C5D /* InfoPlist.strings in Resources */,
 				8FE0E8471A061DD4000016D1 /* LICENSE in Resources */,
 				8FE0E8171A061DD4000016D1 /* README.txt in Resources */,
 				8F3BF8A91A040970002F75E9 /* UserData.plist in Resources */,
@@ -415,18 +447,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F839D221A07B77E0071654C /* MSTableViewController.m in Sources */,
+				8F3A128C1A0B342F00C10C5D /* KGTableViewCell.m in Sources */,
 				8FBCEB541A029E2C00D200A0 /* ios.xcdatamodeld in Sources */,
 				8FBCEB511A029E2C00D200A0 /* AppDelegate.m in Sources */,
 				8FE0E9771A0668A3000016D1 /* GOViewController.m in Sources */,
 				8FBCEB571A029E2C00D200A0 /* ViewController.m in Sources */,
 				8FBCEB891A02BDDB00D200A0 /* MAPViewController.m in Sources */,
 				8FBCEB851A02BDDB00D200A0 /* BLOGTableViewController.m in Sources */,
+				8F3A12901A0B344F00C10C5D /* SUPTableViewCell.m in Sources */,
 				8F3BF89B1A03DAB4002F75E9 /* UIWebView+YouTube.m in Sources */,
 				8FBCEB8F1A02BDDB00D200A0 /* TabBarController.m in Sources */,
 				8FBCEB4E1A029E2C00D200A0 /* main.m in Sources */,
 				8FBCEB831A02BDDB00D200A0 /* BLOGTableViewCell.m in Sources */,
 				8F3BF8A51A03F718002F75E9 /* MYParseDelegate.m in Sources */,
 				8FBCEB8D1A02BDDB00D200A0 /* SUPViewController.m in Sources */,
+				8F3A12941A0B348100C10C5D /* ATTTableViewCell.m in Sources */,
 				8FBCEB8B1A02BDDB00D200A0 /* MSViewController.m in Sources */,
 				8FBCEB871A02BDDB00D200A0 /* FREEViewController.m in Sources */,
 			);
@@ -439,6 +474,7 @@
 				8FBCEB881A02BDDB00D200A0 /* FREEViewController.m in Sources */,
 				8FBCEB861A02BDDB00D200A0 /* BLOGTableViewController.m in Sources */,
 				8F3BF89C1A03DAB4002F75E9 /* UIWebView+YouTube.m in Sources */,
+				8F3A12951A0B348100C10C5D /* ATTTableViewCell.m in Sources */,
 				8FBCEB6B1A029E2C00D200A0 /* iosTests.m in Sources */,
 				8F3BF8A61A03F718002F75E9 /* MYParseDelegate.m in Sources */,
 				8FBCEB8A1A02BDDB00D200A0 /* MAPViewController.m in Sources */,
@@ -446,7 +482,9 @@
 				8FBCEB8E1A02BDDB00D200A0 /* SUPViewController.m in Sources */,
 				8FBCEB901A02BDDB00D200A0 /* TabBarController.m in Sources */,
 				8F839D231A07B77E0071654C /* MSTableViewController.m in Sources */,
+				8F3A128D1A0B342F00C10C5D /* KGTableViewCell.m in Sources */,
 				8FBCEB8C1A02BDDB00D200A0 /* MSViewController.m in Sources */,
+				8F3A12911A0B344F00C10C5D /* SUPTableViewCell.m in Sources */,
 				8FBCEB841A02BDDB00D200A0 /* BLOGTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -460,6 +498,27 @@
 			targetProxy = 8FBCEB651A029E2C00D200A0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8F3A12831A0B320000C10C5D /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8F3A12821A0B320000C10C5D /* en */,
+				8F3A12841A0B321000C10C5D /* zh-Hant */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		8F3A12881A0B322A00C10C5D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8F3A12871A0B322A00C10C5D /* en */,
+				8F3A12891A0B322D00C10C5D /* zh-Hant */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		8FBCEB6C1A029E2C00D200A0 /* Debug */ = {
