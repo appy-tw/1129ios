@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
+#import <MapKit/MapKit.h>
 
-@interface SUPTableViewController : UITableViewController
+@interface SUPTableViewController : UITableViewController <CLLocationManagerDelegate, MKMapViewDelegate>
+@property (strong, nonatomic) MKMapView *mkmvMapView;
+@property (strong, nonatomic) CLLocationManager *cllmLocation;
 
 @end

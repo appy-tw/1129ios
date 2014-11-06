@@ -290,8 +290,8 @@
     [nsmdPlistDictionary setValue:_nssRSSURL forKey:PLIST_RSS_URL];
     [nsmdPlistDictionary setValue:_nssTsaiWuLin forKey:PLIST_TSAI_WU_LIN];
     [nsmdPlistDictionary setValue:_nssAddress forKey:PLIST_ADDRESS];
-    [nsmdPlistDictionary setValue:_nssGPSX forKey:PLIST_GPSX];
-    [nsmdPlistDictionary setValue:_nssGPSY forKey:PLIST_GPSY];
+//    [nsmdPlistDictionary setValue:_nssGPSX forKey:PLIST_GPSX];
+//    [nsmdPlistDictionary setValue:_nssGPSY forKey:PLIST_GPSY];
     [nsmdPlistDictionary writeToFile:_nssPlistDst atomically:YES];
 }
 
@@ -310,8 +310,8 @@
         _nssRSSURL = [nsmdPlistDictionary objectForKey:PLIST_RSS_URL];
         _nssTsaiWuLin = [nsmdPlistDictionary objectForKey:PLIST_TSAI_WU_LIN];
         _nssAddress = [nsmdPlistDictionary objectForKey:PLIST_ADDRESS];
-        _nssGPSX = [nsmdPlistDictionary objectForKey:PLIST_GPSX];
-        _nssGPSY = [nsmdPlistDictionary objectForKey:PLIST_GPSY];
+//        _nssGPSX = [nsmdPlistDictionary objectForKey:PLIST_GPSX];
+//        _nssGPSY = [nsmdPlistDictionary objectForKey:PLIST_GPSY];
     }
 }
 
@@ -328,5 +328,4 @@
 }
 
 //]]Facebook
-
 @end

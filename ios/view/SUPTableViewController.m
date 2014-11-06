@@ -9,6 +9,10 @@
 #import "SUPTableViewController.h"
 #import "AppDelegate.h"
 
+//Code omitted
+#define IS_OS_8_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
+//Code omitted
+
 @interface SUPTableViewController ()
 {
     CGFloat cgfW;
@@ -22,8 +26,13 @@
     CGFloat cgfHigh2;
     CGFloat cgfHigh3;
     
+    UIImage *uiiSUP1;
+    UIImage *uiiSUP2;
+    UIImage *uiiSUP3;
+    
     AppDelegate *delegate;
 }
+
 @end
 
 @implementation SUPTableViewController
@@ -40,29 +49,73 @@
 }
 
 - (void)setImage {
+    uiiSUP1 = [UIImage imageNamed:@"sup1"];
+    uiiSUP2 = [UIImage imageNamed:@"sup2"];
+    uiiSUP3 = [UIImage imageNamed:@"sup3"];
+}
+
+- (void)setMap {
+    if (delegate.cllMLocation == nil) {
+        NSLog(@"cllocationInit start");
+//        [delegate.cllMLocation requestAlwaysAuthorization];
+        delegate.cllMLocation = [[CLLocationManager alloc]init];
+//        [delegate.cllMLocation requestAlwaysAuthorization];
+        delegate.cllMLocation.delegate = self;
+        delegate.cllMLocation.desiredAccuracy = kCLLocationAccuracyBest;
+//        delegate.cllMLocation.distanceFilter = 3;
+        // New property for iOS6
+//        if ([delegate.cllMLocation respondsToSelector:@selector(activityType)]) {
+//            delegate.cllMLocation.activityType = CLActivityTypeFitness;
+//        }
+        // New method for iOS8
+//        if ([delegate.cllMLocation respondsToSelector:@selector(requestAlwaysAuthorization)]) {
+//            [delegate.cllMLocation requestAlwaysAuthorization];
+//        }
+
+        [delegate.cllMLocation startUpdatingLocation];
+        NSLog(@"cllocationInit end");
+
+        NSLog(@"latitude: %f, longitude: %f", delegate.clldLatitude, delegate.clldLongitude);
+        NSLog(@"test");
+    }
+//    NSString *routeString = [NSString stringWithFormat:@"http://maps.google.com/maps?saddr=%f,%f&daddr=%f,%f&view=map&output=html",[myData.myLat doubleValue],[myData.myLng doubleValue],[view.annotation coordinate].latitude,[view.annotation coordinate].longitude];
+}
+
+- (void)setMyAnotherMap {
+    self.cllmLocation = [[CLLocationManager alloc] init];
+    self.cllmLocation.delegate = self;
     
+    if(IS_OS_8_OR_LATER) {
+        //[self.locationManager requestWhenInUseAuthorization];
+        [self.cllmLocation requestAlwaysAuthorization];
+        [self.cllmLocation startUpdatingLocation];
+    }
+    [self.mkmvMapView setShowsUserLocation:YES];
+    [self.mkmvMapView setUserTrackingMode:MKUserTrackingModeFollow animated:YES];
+}
+
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    MKCoordinateRegion region = { { 0.0, 0.0 }, { 0.0, 0.0 } };
+    region.center.latitude = self.cllmLocation.location.coordinate.latitude;
+    region.center.longitude = self.cllmLocation.location.coordinate.longitude;
+    region.span.latitudeDelta = 0.0187f;
+    region.span.longitudeDelta = 0.0137f;
+    [self.mkmvMapView setRegion:region animated:YES];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setImage];
     [self setMyScreen];
+//    [self setMap];
+    [self setMyAnotherMap];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    NSString *nssEmbedHTML = @"\
-    <html><head>\
-    <style type=\"text/css\">\
-    body {\
-    background-color: transparent;\
-    color: white;\
-    }\
-    </style>\
-    </head><body style=\"margin:0\">\
-    <embed id=\"yt\" src=\"%@\" type=\"application/x-shockwave-flash\" \
-    width=\"%0.0f\" height=\"%0.0f\"></embed>\
-    </body></html>";
-    NSString *nssHtml = [NSString stringWithFormat:nssEmbedHTML, @"https://www.youtube.com/watch?feature=player_embedded&v=OtvbZscM90A", self.tableView.frame.size.width * 0.92, self.tableView.frame.size.width * .92 * 9.0 / 16.0];
-    _uiwVideoView = [[UIWebView alloc] initWithFrame:CGRectMake(self.tableView.frame.size.width * 0.04, self.tableView.frame.size.width * 90 / 640 + 15.0 + cgfScreenHeightBase, self.tableView.frame.size.width * 0.92, self.tableView.frame.size.width * 0.92 * 9.0 / 16.0)];
-    [_uiwVideoView loadHTMLString:nssHtml baseURL:nil];
-    
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [delegate.cllMLocation stopUpdatingLocation];
+    [super viewDidDisappear:animated];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -70,7 +123,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    return 41;
 }
 
 - (void)uibClickedTsai {
@@ -154,51 +207,49 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *identifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-    }
+    static NSString *nssIDSUP1 = @"SUP1";
+    static NSString *nssIDSUP2 = @"SUP2";
+    static NSString *nssIDSUP3 = @"SUP3";
+    static NSString *nssIDSUP4 = @"SUP4";
+    UITableViewCell *cell;
     if (indexPath.row == 0) {
-        UIImage *uiim = [UIImage imageNamed:@"ms1_1"];
+        cell = [tableView dequeueReusableCellWithIdentifier:nssIDSUP1];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDSUP1];
+        }
         UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, cgfScreenHeightBase, self.tableView.frame.size.width, self.tableView.frame.size.width * 90 / 640)];
-        uiimv.image = uiim;
+        uiimv.image = uiiSUP1;
         [cell.contentView addSubview:uiimv];
-        
-        [cell.contentView addSubview:_uiwVideoView];
-        cgfHigh0 = cgfScreenHeightBase + self.tableView.frame.size.width * 90 / 640 + 15.0 + cgfScreenHeightBase + self.tableView.frame.size.width * 0.92 * 9.0 / 16.0;
     } else if (indexPath.row == 1) {
-        UIImage *uiim = [UIImage imageNamed:@"ms2_1"];
-        UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.tableView.frame.size.width, self.tableView.frame.size.width * 114 / 640)];
-        uiimv.image = uiim;
-        [cell.contentView addSubview:uiimv];
-        
-        UITextView *uitvContent = [[UITextView alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 0.04, self.tableView.frame.size.width * 114 / 640 + 15.0, self.tableView.frame.size.width * 0.92, self.tableView.frame.size.width * 1.7 / 4.0)];
-        [uitvContent setText:@"這是一場全民覺醒的運動，超越了議會，從家庭、從巷口、從網路，從社會的各個角落開始綻放，罷免不再是瀕死的法條，而是活著的行動。割去發炎的「闌尾」，從體制內去影響、去改變現今有缺陷的代議制度，讓我們一起締造台灣新型態的社會運動。不論你是想擔任當天擺攤志工、物資提供或純粹想要鍵盤參戰，亦或是您想要長期熱情參與，你都可以成為割闌尾V計劃的公民V。"];
-        uitvContent.editable = NO;
-        [cell.contentView addSubview:uitvContent];
+        cell = [tableView dequeueReusableCellWithIdentifier:nssIDSUP2];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDSUP2];
+        }
+//        UIWebView *uiwvMap;
+//        cell = [tableView dequeueReusableCellWithIdentifier:nssIDSUP2];
+//        if (cell == nil) {
+//            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDSUP2];
+//        }
+//        UIImage *uiim = [UIImage imageNamed:@"sup2"];
+//        UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.tableView.frame.size.width, self.tableView.frame.size.width * 398 / 640)];
+//        uiimv.image = uiiSUP2;
+//        [cell.contentView addSubview:uiimv];
     } else if (indexPath.row == 2) {
-        UIImage *uiim = [UIImage imageNamed:@"ms3_1"];
-        UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.tableView.frame.size.width, self.tableView.frame.size.width * 114 / 640)];
-        uiimv.image = uiim;
+        cell = [tableView dequeueReusableCellWithIdentifier:nssIDSUP3];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDSUP3];
+        }
+        UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.tableView.frame.size.width, self.tableView.frame.size.width * 16 / 640)];
+        uiimv.image = uiiSUP2;
         [cell.contentView addSubview:uiimv];
-        
-        UITextView *uitvContent = [[UITextView alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 0.04, self.tableView.frame.size.width * 114 / 640 + 15.0, self.tableView.frame.size.width * 0.92, self.tableView.frame.size.width * 1.7 / 4.0)];
-        [uitvContent setText:@"這一天，就是今年的選舉日：1129。\n1129，台灣有七成的選民會去投票；1129這一天我們將在投票所外擺攤簽署罷免連署書，讓選舉日變成罷免日，因此割闌尾V計劃就是為了讓罷免第二階段看似不可能的任務變成可能，這一天我們將實踐屬於人民的參政權！"];
-        uitvContent.editable = NO;
-        [cell.contentView addSubview:uitvContent];
-    } else if (indexPath.row == 3) {
-        UIImage *uiim = [UIImage imageNamed:@"ms4_1"];
-        UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.tableView.frame.size.width, self.tableView.frame.size.width * 114 / 640)];
-        uiimv.image = uiim;
+    } else {
+        cell = [tableView dequeueReusableCellWithIdentifier:nssIDSUP4];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDSUP4];
+        }
+        UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.tableView.frame.size.width, self.tableView.frame.size.width * 78 / 640)];
+        uiimv.image = uiiSUP3;
         [cell.contentView addSubview:uiimv];
-        
-        UIImage *uiim2 = [UIImage imageNamed:@"ms4_2"];
-        UIImageView *uiimv2 = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, self.tableView.frame.size.width * 114 / 640 + 15.0, self.tableView.frame.size.width, self.tableView.frame.size.width * 772 / 640)];
-        uiimv2.image = uiim2;
-        [cell.contentView addSubview:uiimv2];
-        
-        [self setButton:cell offset:self.tableView.frame.size.width * 114 / 640 + 15.0];
     }
     return cell;
 }
@@ -206,14 +257,87 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
-        return cgfScreenHeightBase + self.tableView.frame.size.width * 90 / 640 + 5.0 + cgfScreenHeightBase + self.tableView.frame.size.width * 0.92 * 9.0 / 16.0;
+        return cgfScreenHeightBase + self.tableView.frame.size.width * 90 / 640 + 20.0;
     } else if (indexPath.row == 1) {
-        return self.tableView.frame.size.width * 114 / 640 + 15.0 + self.tableView.frame.size.width * 1.7 / 4.0;
+        return self.tableView.frame.size.width * 380 / 640;
     } else if (indexPath.row == 2) {
-        return self.tableView.frame.size.width * 114 / 640 + 15.0 + self.tableView.frame.size.width * 1.7 / 4.0;;
-    } else if (indexPath.row == 3) {
-        return self.tableView.frame.size.width * 114 / 640 + 15.0 + self.tableView.frame.size.width * 772 / 640 + 15.0;
-    } return 0;
+        return self.tableView.frame.size.width * 36 / 640;
+    } else {
+        return self.tableView.frame.size.width * 98 / 640;
+    }
 }
+
+//[[CLLocationInit
+//- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+//    NSLog(@"locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations start");
+//    CLLocation *c = [locations objectAtIndex:0];
+//    delegate.clldLongitude = c.coordinate.longitude;
+//    delegate.clldLatitude = c.coordinate.latitude;
+//    NSLog(@"latitude: %f, longitude: %f, altitude: %f", delegate.clldLatitude, delegate.clldLongitude, c.altitude);
+//    NSLog(@"locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations end");
+//}
+//
+//
+//- (void) startMonitoring:(LocationChangeCallback)callback {
+//    if ([CLLocationManager locationServicesEnabled] && [CLLocationManager significantLocationChangeMonitoringAvailable]) {
+//        // Register an observer for if/when this app goes into background & comes back to foreground
+//        // NOTE: THIS CODE IS iOS4.0+ ONLY.
+//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(switchToLowEnergyMode) name:UIApplicationDidEnterBackgroundNotification object:nil];
+//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(switchToAccurateMode) name:UIApplicationDidFinishLaunchingNotification object:nil];
+//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(switchToAccurateMode) name:UIApplicationWillEnterForegroundNotification object:nil];
+//        
+//        UIApplicationState state = [[UIApplication sharedApplication] applicationState];
+//        
+//        self.locationUpdateCallback = callback;
+//        
+//        if (state == UIApplicationStateActive) {
+//            [self switchToAccurateMode];
+//        } else {
+//            [self switchToLowEnergyMode];
+//        }
+//    }
+//}
+//
+//- (void) switchToAccurateMode {
+//    NSLog(@"Accurate");
+//    [self.locationManager stopMonitoringSignificantLocationChanges];
+//    
+//    // Find the current location
+//    [self.locationManager startUpdatingLocation];
+//}
+//
+//- (void) switchToLowEnergyMode {
+//    NSLog(@"Low Energy");
+//    [self.locationManager stopUpdatingLocation];
+//    
+//    // Find the current location
+//    [self.locationManager startMonitoringSignificantLocationChanges];
+//}
+//
+//
+//#pragma mark - CLLocationDelegate Methods
+//
+//- (void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+//    // locations contains an array of recent locations, but this app only cares about the most recent
+//    // which is also "manager.location"
+//    if (self.locationUpdateCallback != nil) {
+//        self.locationUpdateCallback(manager.location);
+//    }
+//}
+-(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
+    UIAlertView *errorAlert = [[UIAlertView alloc]initWithTitle:@"Error" message:@"There was an error retrieving your location" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    [errorAlert show];
+    NSLog(@"Error: %@",error.description);
+}
+//-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+//{
+//    CLLocation *crnLoc = [locations lastObject];
+//    NSLog(@"%@", [NSString stringWithFormat:@"%.8f",crnLoc.coordinate.latitude]);
+//    NSLog(@"%@", [NSString stringWithFormat:@"%.8f",crnLoc.coordinate.longitude]);
+//    NSLog(@"%@", [NSString stringWithFormat:@"%.0f m",crnLoc.altitude]);
+//    NSLog(@"%@", [NSString stringWithFormat:@"%.1f m/s", crnLoc.speed]);
+//}
+//]]CLLocationinit
+
 
 @end

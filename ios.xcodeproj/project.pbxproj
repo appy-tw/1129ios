@@ -17,6 +17,7 @@
 		8F3A129D1A0B393500C10C5D /* SUPTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3A129B1A0B393500C10C5D /* SUPTableViewController.m */; };
 		8F3A12A01A0B394200C10C5D /* ATTTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3A129F1A0B394200C10C5D /* ATTTableViewController.m */; };
 		8F3A12A11A0B394200C10C5D /* ATTTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3A129F1A0B394200C10C5D /* ATTTableViewController.m */; };
+		8F3A12A71A0B58B400C10C5D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F3A12A61A0B58B400C10C5D /* MapKit.framework */; };
 		8F3BF89B1A03DAB4002F75E9 /* UIWebView+YouTube.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3BF89A1A03DAB4002F75E9 /* UIWebView+YouTube.m */; };
 		8F3BF89C1A03DAB4002F75E9 /* UIWebView+YouTube.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3BF89A1A03DAB4002F75E9 /* UIWebView+YouTube.m */; };
 		8F3BF8A51A03F718002F75E9 /* MYParseDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3BF8A41A03F718002F75E9 /* MYParseDelegate.m */; };
@@ -92,6 +93,7 @@
 		8F3A129B1A0B393500C10C5D /* SUPTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SUPTableViewController.m; path = view/SUPTableViewController.m; sourceTree = "<group>"; };
 		8F3A129E1A0B394200C10C5D /* ATTTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATTTableViewController.h; path = view/ATTTableViewController.h; sourceTree = "<group>"; };
 		8F3A129F1A0B394200C10C5D /* ATTTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATTTableViewController.m; path = view/ATTTableViewController.m; sourceTree = "<group>"; };
+		8F3A12A61A0B58B400C10C5D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		8F3BF8991A03DAB4002F75E9 /* UIWebView+YouTube.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIWebView+YouTube.h"; path = "view/UIWebView+YouTube.h"; sourceTree = "<group>"; };
 		8F3BF89A1A03DAB4002F75E9 /* UIWebView+YouTube.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIWebView+YouTube.m"; path = "view/UIWebView+YouTube.m"; sourceTree = "<group>"; };
 		8F3BF8A31A03F718002F75E9 /* MYParseDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MYParseDelegate.h; path = parse/MYParseDelegate.h; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F3A12A71A0B58B400C10C5D /* MapKit.framework in Frameworks */,
 				8FE0E9961A069D3C000016D1 /* SystemConfiguration.framework in Frameworks */,
 				8FE0E9941A069D33000016D1 /* StoreKit.framework in Frameworks */,
 				8FE0E9921A069D2B000016D1 /* Security.framework in Frameworks */,
@@ -291,6 +294,7 @@
 		8FE0E6F81A061DAD000016D1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8F3A12A61A0B58B400C10C5D /* MapKit.framework */,
 				8FE0E9951A069D3C000016D1 /* SystemConfiguration.framework */,
 				8FE0E9931A069D33000016D1 /* StoreKit.framework */,
 				8FE0E9911A069D2B000016D1 /* Security.framework */,
@@ -378,6 +382,11 @@
 					8FBCEB471A029E2C00D200A0 = {
 						CreatedOnToolsVersion = 6.1;
 						DevelopmentTeam = DEATJ76XRX;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					8FBCEB631A029E2C00D200A0 = {
 						CreatedOnToolsVersion = 6.1;

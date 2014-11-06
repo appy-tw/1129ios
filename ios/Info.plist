@@ -56,5 +56,11 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+    <!-- for requestAlwaysAuthorization -->
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>Explain for what are you using the user location</string>
+    <!-- for requestWhenInUseAuthorization -->
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Explain for what are you using the user location</string>
 </dict>
 </plist>

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
+#import <CoreLocation/CoreLocation.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -27,9 +28,13 @@
 @property (strong, nonatomic) NSString *nssPlistDst;
 @property (strong, nonatomic) NSString *nssTsaiWuLin;
 @property (strong, nonatomic) NSString *nssAddress;
-@property (strong, nonatomic) NSString *nssGPSX;
-@property (strong, nonatomic) NSString *nssGPSY;
 
+@property (strong, nonatomic) CLLocationManager *cllMLocation;
+@property (assign, nonatomic) CLLocationDegrees clldLatitude;
+@property (assign, nonatomic) CLLocationDegrees clldLongitude;
+
+//- (void)cllocationInit;
+//- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations;
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;

@@ -10,6 +10,4 @@
 
 @interface KGTableViewController : UITableViewController
 
-@property (strong, nonatomic) UIWebView *uiwVideoView;
-
 @end
