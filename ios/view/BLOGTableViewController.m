@@ -32,6 +32,11 @@
     BOOL bHasMoreCell;
     
     NSString *nssNowTag;
+    
+    NSMutableArray *nsmaImageURL;
+    NSMutableArray *nsmaSpan;
+    NSMutableArray *nsmaTime;
+    NSMutableArray *nsmaLink;
 }
 
 @end
@@ -59,32 +64,28 @@
     _myParseDelegate = [[MYParseDelegate alloc]init];
     [_myParseDelegate getStart:0];
     
+    
+    nsmaImageURL = [NSMutableArray new];
+    nsmaLink = [NSMutableArray new];
+    nsmaSpan = [NSMutableArray new];
+    nsmaTime = [NSMutableArray new];
+    
+    
     self.nsmaOutputTable = [NSMutableArray new];
-    for (int i = 0; i < [_myParseDelegate.nsmaOutput count]; i++) {
-        [self.nsmaOutputTable addObject:[_myParseDelegate.nsmaOutput objectAtIndex:i]];
-        //        NSLog(@"i: %d", i);
-        for (NSString* wkey in [_myParseDelegate.nsmaOutput objectAtIndex:i]) {
-            //            NSLog(@"%@", key);
-        }
+    for (NSInteger i = 0; i < [_myParseDelegate.nsmaOutput count]; i++) {
+        [nsmaTime addObject:[[_myParseDelegate.nsmaOutput objectAtIndex:i]valueForKey:@"pubDate"]];
+        [nsmaSpan addObject:[[_myParseDelegate.nsmaOutput objectAtIndex:i]valueForKey:@"span"]];
+        [nsmaImageURL addObject:[[_myParseDelegate.nsmaOutput objectAtIndex:i]valueForKey:@"img"]];
+        [nsmaLink addObject:[[_myParseDelegate.nsmaOutput objectAtIndex:i]valueForKey:@"link"]];
     }
     
-    
-    //    for (id idDictionary in myParse.nsmaOutput) {
-    //        [self.nsmaOutputTable addObject:idDictionary];
-    //        keys=[idDictionary allKeys];
-    //        NSLog(@"%@", keys);
-    ////        for (NSString* key in keys) {
-    ////            NSLog(@"%@", key);
-    ////        }
-    //    }
-    //    for (int i = 0; i < [[myParse nsmaOutput] count]; i++) {
-    //        if ([[[myParse nsmaOutput][i] objectForKey:@"Time"] compare:nssMyTime options:(NSNumericSearch)] == 1) {
-    //            [self.nsmaTrainTable addObject:[myParse nsmaOutputTable][i]];
-    //        }
-    //    }
-    //    [self sortTable];
-    //    [myParse releaseAll];
-//    _myParseDelegate = nil;
+//    for (NSInteger i = 0; i < [nsmaLink count]; i++) {
+//        NSLog(@"nsmaTime: %@", [nsmaTime objectAtIndex:i]);
+//        NSLog(@"nsmaSpan: %@", [nsmaSpan objectAtIndex:i]);
+//        NSLog(@"nsmaImageURL: %@", [nsmaImageURL objectAtIndex:i]);
+//        NSLog(@"nsmaLink: %@", [nsmaLink objectAtIndex:i]);
+//    }
+    _myParseDelegate = nil;
 }
 
 - (void)prepareTheInitImage {
