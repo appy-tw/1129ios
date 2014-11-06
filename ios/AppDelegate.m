@@ -11,10 +11,10 @@
 #import "TabBarController.h"
 #import "MSTableViewController.h"
 #import "BLOGTableViewController.h"
-#import "FREEViewController.h"
-#import "SUPViewController.h"
-#import "MAPViewController.h"
+#import "KGTableViewController.h"
+#import "SUPTableViewController.h"
 #import "GOViewController.h"
+#import "ATTTableViewController.h"
 
 #import "PLISTHeader.h"
 
@@ -31,13 +31,14 @@
     //簡介，uiview
     BLOGTableViewController *blogTableViewController;
     //戰況，魔王，uitableview
-    FREEViewController *freeViewController;
-    //佔領，各投開票所資料，uitableview
-    SUPViewController *supViewController;
+    KGTableViewController *kgTableViewController;
+    //魔王的各領地資料
+    SUPTableViewController *supTableViewController;
+    //代收據點
     GOViewController *goViewController;
     //地圖，各票所分佈(最後弄)
-    MAPViewController *mapViewController;
-    //其他，uitableview
+    ATTTableViewController *attTableViewController;
+    //討伐令，含行前事項
     UIImage *uiiTabBarBackground;
 }
 
@@ -68,23 +69,24 @@
     blogTableViewController.title = NSLocalizedString(@"戰況", nil);
     blogTableViewController.tabBarItem.image = [UIImage imageNamed:@"blog"];
     //戰況，魔王，uitableview
-    freeViewController = [[FREEViewController alloc]init];
-    freeViewController.title = NSLocalizedString(@"魔王領地", nil);
-    freeViewController.tabBarItem.image = [UIImage imageNamed:@"sup"];
-    //佔領，各投開票所資料，uitableview
-//    supViewController = [[SUPViewController alloc]init];
-//    supViewController.title = NSLocalizedString(@"攻佔", nil);
-//    supViewController.tabBarItem.image = [UIImage imageNamed:@"sup"];
-    //地圖，各票所分佈(最後弄)
-    mapViewController = [[MAPViewController alloc]init];
-    mapViewController.title = NSLocalizedString(@"補給據點", nil);
-    mapViewController.tabBarItem.image = [UIImage imageNamed:@"map"];
-    //其他，uitableview
+    kgTableViewController = [[KGTableViewController alloc]init];
+    kgTableViewController.title = NSLocalizedString(@"魔王領地", nil);
+    kgTableViewController.tabBarItem.image = [UIImage imageNamed:@"sup"];
+    //魔王的各領地資料
+    supTableViewController = [[SUPTableViewController alloc]init];
+    supTableViewController.title = NSLocalizedString(@"補給據點", nil);
+    supTableViewController.tabBarItem.image = [UIImage imageNamed:@"map"];
+    //代收據點
     goViewController = [[GOViewController alloc]init];
     goViewController.title = NSLocalizedString(@"討伐令", nil);
     goViewController.tabBarItem.image = [UIImage imageNamed:@"free"];
 
-    NSArray *nsaViewControllers = [[NSArray alloc]initWithObjects:msTableViewController, blogTableViewController, freeViewController, mapViewController, goViewController, nil];
+    attTableViewController = [[ATTTableViewController alloc]init];
+    attTableViewController.title = NSLocalizedString(@"討伐令", nil);
+    attTableViewController.tabBarItem.image = [UIImage imageNamed:@"free"];
+    //行前通知
+
+    NSArray *nsaViewControllers = [[NSArray alloc]initWithObjects:msTableViewController, blogTableViewController, kgTableViewController, supTableViewController, goViewController, attTableViewController, nil];
     tabBarController = [[TabBarController alloc]init];
     [tabBarController setViewControllers:nsaViewControllers];    
     [self.window addSubview:tabBarController.view];
