@@ -9,6 +9,8 @@
 #import "KGTableViewController.h"
 #import "AppDelegate.h"
 
+#import "BATTLEGROUNDViewController.h"
+
 @interface KGTableViewController ()
 {
     CGFloat cgfW;
@@ -48,6 +50,13 @@
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.0];
     self.view.center = CGPointMake(self.view.center.x, self.view.center.y - 40);
+    [UIView commitAnimations];
+}
+
+- (void) makeKeyboardOffsetBack {
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.0];
+    self.view.center = CGPointMake(self.view.center.x, self.view.center.y);
     [UIView commitAnimations];
 }
 
@@ -144,6 +153,16 @@
     uibCountry.tintColor = [UIColor blackColor];
     [uibCountry setTitle:@"林國正選區" forState:UIControlStateNormal];
     [cell.contentView addSubview:uibCountry];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ((long)indexPath.row == 1) {
+        NSLog(@"%ld", (long)indexPath.row);
+        [delegate.navigationController setNavigationBarHidden:NO animated:NO];
+        [self makeKeyboardOffsetBack];
+        [delegate.navigationController pushViewController:[BATTLEGROUNDViewController new] animated:NO];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

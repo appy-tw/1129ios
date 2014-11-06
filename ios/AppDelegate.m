@@ -42,7 +42,7 @@
     ATTTableViewController *attTableViewController;
     //討伐令，含行前事項
     PointerViewController *pointerViewController;
-    UINavigationController *navigationController;
+//    UINavigationController *navigationController;
     UIImage *uiiTabBarBackground;
 }
 
@@ -75,10 +75,10 @@
     //戰況，魔王，uitableview
     kgTableViewController = [[KGTableViewController alloc]init];
     pointerViewController = [[PointerViewController alloc]initWithViewController:kgTableViewController];
-    navigationController = [[UINavigationController alloc]initWithRootViewController:pointerViewController];
-    navigationController.title = NSLocalizedString(@"魔王領地", nil);
-    navigationController.tabBarItem.image = [UIImage imageNamed:@"kg"];
-    navigationController.navigationBarHidden = YES;
+    _navigationController = [[UINavigationController alloc]initWithRootViewController:pointerViewController];
+    _navigationController.title = NSLocalizedString(@"魔王領地", nil);
+    _navigationController.tabBarItem.image = [UIImage imageNamed:@"kg"];
+    _navigationController.navigationBarHidden = YES;
 
     //魔王的各領地資料
     supTableViewController = [[SUPTableViewController alloc]init];
@@ -94,7 +94,7 @@
     attTableViewController.tabBarItem.image = [UIImage imageNamed:@"att"];
     //行前通知
 
-    NSArray *nsaViewControllers = [[NSArray alloc]initWithObjects:msTableViewController, blogTableViewController, navigationController, supTableViewController, attTableViewController, nil];
+    NSArray *nsaViewControllers = [[NSArray alloc]initWithObjects:msTableViewController, blogTableViewController, _navigationController, supTableViewController, attTableViewController, nil];
     tabBarController = [[TabBarController alloc]init];
     [tabBarController setViewControllers:nsaViewControllers];    
     [self.window addSubview:tabBarController.view];

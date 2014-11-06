@@ -33,6 +33,8 @@
 @property (assign, nonatomic) CLLocationDegrees clldLatitude;
 @property (assign, nonatomic) CLLocationDegrees clldLongitude;
 
+@property (strong, nonatomic) UINavigationController *navigationController;
+
 //- (void)cllocationInit;
 //- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations;
 
