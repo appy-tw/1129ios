@@ -1,5 +1,5 @@
 //
-//  ATTTableViewCell.h
+//  KGTableViewController.h
 //  ios
 //
 //  Created by lololol on 6/Nov/14.
@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ATTTableViewCell : UITableViewCell
+@interface KGTableViewController : UITableViewController
+
+@property (strong, nonatomic) UIWebView *uiwVideoView;
 
 @end

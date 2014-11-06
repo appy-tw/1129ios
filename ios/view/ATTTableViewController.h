@@ -1,5 +1,5 @@
 //
-//  SUPTableViewCell.h
+//  ATTTableViewController.h
 //  ios
 //
 //  Created by lololol on 6/Nov/14.
@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SUPTableViewCell : UITableViewCell
+@interface ATTTableViewController : UITableViewController
+
+@property (strong, nonatomic) UIWebView *uiwVideoView;
 
 @end
