@@ -8,7 +8,8 @@
 
 #import "BLOGTableViewController.h"
 #import "BLOGTableViewCell.h"
-//#import "MYParseDelegate.h"
+#import "MYParseDelegate.h"
+#import "AppDelegate.h"
 
 #define LOADING_CELL_TAG 1000
 
@@ -29,6 +30,8 @@
     NSInteger nsiCurrentMaximum;
     
     BOOL bHasMoreCell;
+    
+    NSString *nssNowTag;
 }
 
 @end

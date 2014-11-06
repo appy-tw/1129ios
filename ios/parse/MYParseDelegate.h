@@ -7,18 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "AppDelegate.h"
 
 @interface MYParseDelegate : NSObject <NSXMLParserDelegate>
-{
-    NSInteger nsiDataCounter;
-    NSString *nssNowTag;
-    NSMutableDictionary *nsmdNowDictionary;
-    AppDelegate *delegate;
-    BOOL bImageStartRecord;
-    BOOL bSpanStartRecord;
-    BOOL bLinkStartRecord;
-}
 
 @property NSMutableArray *nsmaOutput;
 

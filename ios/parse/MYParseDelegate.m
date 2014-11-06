@@ -8,24 +8,38 @@
 
 #import "MYParseDelegate.h"
 #import "PLISTHeader.h"
+#import "AppDelegate.h"
+
+@interface MYParseDelegate()
+{
+    AppDelegate *delegate;
+    NSMutableDictionary *nsmdNowDictionary;
+    BOOL bItemStartRecord;
+    BOOL bImageStartRecord;
+    BOOL bSpanStartRecord;
+    NSString *nssNowTag;
+    NSMutableString *nsmsSpan;
+}
+
+@end
 
 @implementation MYParseDelegate
+
+- (void)setInit {
+    bItemStartRecord = YES;
+    bImageStartRecord = NO;
+    bSpanStartRecord = NO;
+}
+
 - (void)getStart:(NSInteger)sl_nsiUserInputSearchFunction{
-//initialize
-    nsiDataCounter = 0;
-    nssNowTag = [NSString stringWithFormat:@""];
     self.nsmaOutput = [[NSMutableArray alloc]init];
-    if (delegate == nil) {
-        delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    }
+    delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSData *data = [delegate.nssRSSContent dataUsingEncoding:NSUTF8StringEncoding];
     NSXMLParser *parser = [[NSXMLParser alloc] initWithData:data];
     [parser setDelegate:self];
     [parser parse];
     parser = nil;
-    bImageStartRecord = NO;
-    bSpanStartRecord = NO;
-    bLinkStartRecord = NO;
+    bItemStartRecord = NO;
 }
 
 - (void)     parser:(NSXMLParser *)parser
@@ -33,81 +47,56 @@
        namespaceURI:(NSString *)namespaceURI
       qualifiedName:(NSString *)qualifiedName
          attributes:(NSDictionary *)attributeDict {
-//    NSLog(@"%@", elementName);
-    if ([elementName isEqual:@"item"] == YES){
-        nsiDataCounter ++;
-        bImageStartRecord = YES;
+    if ([elementName isEqual:@"item"] == YES) {
+        bItemStartRecord = YES;
         nsmdNowDictionary = [[NSMutableDictionary alloc]init];
-        NSLog(@"item: %ld", (long)nsiDataCounter);
-    } else if ([elementName isEqual:@"link"] == YES) {
-        bLinkStartRecord = YES;
+        nsmsSpan = [NSMutableString new];
     }
-//    if ([elementName isEqual:@"img"] == YES){
-//        nsiDataCounter ++;
-//        bImageStartRecord = YES;
-//        nsmdNowDictionary = [[NSMutableDictionary alloc]init];
-//        NSLog(@"elementName: %@", elementName);
-//        NSLog(@"namespaceURI: %@", namespaceURI);
-//        NSLog(@"qualifiedName: %@", qualifiedName);
-//        NSLog(@"xxxxx");
-//    } else if ([elementName isEqual:@"img"] == YES) {
-//        [nsmdNowDictionary setObject:elementName forKey:[attributeDict objectForKey:@"src"]];
-//        bImageStartRecord = NO;
-//        NSLog(@"elementName: %@", elementName);
-//        NSLog(@"namespaceURI: %@", namespaceURI);
-//        NSLog(@"qualifiedName: %@", qualifiedName);
-//    } else if ([elementName isEqual:@"span"] == YES) {
-//        [nsmdNowDictionary setObject:elementName forKey:[attributeDict objectForKey:@"span"]];
-//        bSpanStartRecord = YES;
-//        NSLog(@"elementName: %@", elementName);
-//        NSLog(@"namespaceURI: %@", namespaceURI);
-//        NSLog(@"qualifiedName: %@", qualifiedName);
-//    } else if ([elementName isEqual:@"p"]) {
-//        NSLog(@"xxx");
-//    }
-    
+    nssNowTag = [NSString stringWithString:elementName];
 }
 
 - (void)parser:(NSXMLParser *)parser
 foundCharacters:(NSString *)string {
-//    NSLog(@"foundCharacters: %@", string);
-    if (bLinkStartRecord == YES) {
-        NSLog(@"link: %@", string);
-        bLinkStartRecord = NO;
-    }
-//    if ([string rangeOfString:@"img src="].location != NSNotFound) {
-//        nsiDataCounter ++;
-//        bImageStartRecord = YES;
-//        NSLog(@"%@", [string componentsSeparatedByString:@"\""][1]);
-//    } else if (bImageStartRecord == YES) {
-//        if ([string isEqualToString:@"<"] == NO && [string isEqualToString:@"p"] == NO && [string isEqualToString:@">"] == NO && [string isEqualToString:@"/p"] == NO && [string isEqualToString:@"br/"] == NO && [string isEqualToString:@"span"] == NO && [string isEqualToString:@"!-- more --"] == NO && [string isEqualToString:@"/span"] == NO && [string isEqualToString:@"/a"] == NO){
-//            if ([string rangeOfString:@"="].location == NSNotFound && [string rangeOfString:@"&"].location == NSNotFound && [string rangeOfString:@"#"].location == NSNotFound && [string rangeOfString:@";"].location == NSNotFound && [string rangeOfString:@"//"].location == NSNotFound) {
+    if (bItemStartRecord == YES && [nssNowTag isEqualToString:@"title"] == YES) {
+        [nsmsSpan appendString:string];
+        bImageStartRecord = YES;
+    } else if (bItemStartRecord == YES && [nssNowTag isEqualToString:@"link"] == YES) {
+        [nsmdNowDictionary setObject:string forKey:@"link"];
+    } else if (bItemStartRecord == YES && [nssNowTag isEqualToString:@"pubDate"] == YES) {
+        [nsmdNowDictionary setObject:string forKey:@"pubDate"];
+        [nsmdNowDictionary setObject:[NSString stringWithString:nsmsSpan] forKey:@"span"];
+        [self.nsmaOutput addObject:nsmdNowDictionary];
+        NSLog(@"%ld", (unsigned long)[self.nsmaOutput count]);
+        NSLog(@"img: %@", [nsmdNowDictionary objectForKey:@"img"]);
+        NSLog(@"link: %@", [nsmdNowDictionary objectForKey:@"link"]);
+        NSLog(@"pubDate: %@", [nsmdNowDictionary objectForKey:@"pubDate"]);
+        NSLog(@"span: %@", [nsmdNowDictionary objectForKey:@"span"]);
+        bItemStartRecord = NO;
+        nsmdNowDictionary = nil;
+    } else if (bItemStartRecord == YES && bImageStartRecord == YES) {
+        if ([string rangeOfString:@"img src="].location != NSNotFound) {
+            [nsmdNowDictionary setObject:[string componentsSeparatedByString:@"\""][1] forKey:@"img"];
+            bImageStartRecord = NO;
+            bSpanStartRecord = YES;
+        } else if ([string rangeOfString:@"img alt="].location != NSNotFound) {
+            [nsmdNowDictionary setObject:[string componentsSeparatedByString:@"\""][3] forKey:@"img"];
+            bImageStartRecord = NO;
+            bSpanStartRecord = YES;
+        }
+    } else if (bItemStartRecord == YES && bSpanStartRecord == YES) {
+        if ([string isEqualToString:@"<"] == NO && [string isEqualToString:@"p"] == NO && [string isEqualToString:@">"] == NO && [string isEqualToString:@"/p"] == NO && [string isEqualToString:@"br/"] == NO && [string isEqualToString:@"span"] == NO && [string isEqualToString:@"!-- more --"] == NO && [string isEqualToString:@"/span"] == NO && [string isEqualToString:@"/a"] == NO){
+            if ([string rangeOfString:@"="].location == NSNotFound && [string rangeOfString:@"&"].location == NSNotFound && [string rangeOfString:@"#"].location == NSNotFound && [string rangeOfString:@";"].location == NSNotFound && [string rangeOfString:@"//"].location == NSNotFound && [string rangeOfString:@"\n"].location == NSNotFound && [string rangeOfString:@"\\"].location == NSNotFound && [string rangeOfString:@"\t"].location == NSNotFound) {
+                [nsmsSpan appendString:string];
 //                NSLog(@"foundCharacters: %@", string);
-//            }
-//        }
-//    }
-    
-    
-    
-    nsmdNowDictionary = [[NSMutableDictionary alloc]init];
+            }
+        }
+    }
 }
 
 - (void)parser:(NSXMLParser *)parser
  didEndElement:(NSString *)elementName
   namespaceURI:(NSString *)namespaceURI
  qualifiedName:(NSString *)qName {
-//    if ([elementName isEqual:@"item"]){
-//        [self.nsmaOutput addObject:nsmdNowDictionary];
-//        for (NSString* key in nsmdNowDictionary) {
-//            NSLog(@"%@", key);
-//        }
-//        bImageStartRecord = NO;
-//        bSpanStartRecord = NO;
-//    } else if ([elementName isEqual:@"img"]) {
-//        bImageStartRecord = NO;
-//    } else if ([elementName isEqual:@"span"]) {
-//        bSpanStartRecord = NO;
-//    }
 }
 
 @end
