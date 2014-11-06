@@ -18,6 +18,8 @@
 		8F3A12A01A0B394200C10C5D /* ATTTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3A129F1A0B394200C10C5D /* ATTTableViewController.m */; };
 		8F3A12A11A0B394200C10C5D /* ATTTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3A129F1A0B394200C10C5D /* ATTTableViewController.m */; };
 		8F3A12A71A0B58B400C10C5D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F3A12A61A0B58B400C10C5D /* MapKit.framework */; };
+		8F3A12AE1A0B73DE00C10C5D /* PointerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3A12AD1A0B73DE00C10C5D /* PointerViewController.m */; };
+		8F3A12AF1A0B73DE00C10C5D /* PointerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3A12AD1A0B73DE00C10C5D /* PointerViewController.m */; };
 		8F3BF89B1A03DAB4002F75E9 /* UIWebView+YouTube.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3BF89A1A03DAB4002F75E9 /* UIWebView+YouTube.m */; };
 		8F3BF89C1A03DAB4002F75E9 /* UIWebView+YouTube.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3BF89A1A03DAB4002F75E9 /* UIWebView+YouTube.m */; };
 		8F3BF8A51A03F718002F75E9 /* MYParseDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3BF8A41A03F718002F75E9 /* MYParseDelegate.m */; };
@@ -94,6 +96,8 @@
 		8F3A129E1A0B394200C10C5D /* ATTTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATTTableViewController.h; path = view/ATTTableViewController.h; sourceTree = "<group>"; };
 		8F3A129F1A0B394200C10C5D /* ATTTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATTTableViewController.m; path = view/ATTTableViewController.m; sourceTree = "<group>"; };
 		8F3A12A61A0B58B400C10C5D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		8F3A12AC1A0B73DE00C10C5D /* PointerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PointerViewController.h; path = view/PointerViewController.h; sourceTree = "<group>"; };
+		8F3A12AD1A0B73DE00C10C5D /* PointerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PointerViewController.m; path = view/PointerViewController.m; sourceTree = "<group>"; };
 		8F3BF8991A03DAB4002F75E9 /* UIWebView+YouTube.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIWebView+YouTube.h"; path = "view/UIWebView+YouTube.h"; sourceTree = "<group>"; };
 		8F3BF89A1A03DAB4002F75E9 /* UIWebView+YouTube.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIWebView+YouTube.m"; path = "view/UIWebView+YouTube.m"; sourceTree = "<group>"; };
 		8F3BF8A31A03F718002F75E9 /* MYParseDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MYParseDelegate.h; path = parse/MYParseDelegate.h; sourceTree = "<group>"; };
@@ -287,6 +291,8 @@
 				8F3A129B1A0B393500C10C5D /* SUPTableViewController.m */,
 				8F3A129E1A0B394200C10C5D /* ATTTableViewController.h */,
 				8F3A129F1A0B394200C10C5D /* ATTTableViewController.m */,
+				8F3A12AC1A0B73DE00C10C5D /* PointerViewController.h */,
+				8F3A12AD1A0B73DE00C10C5D /* PointerViewController.m */,
 			);
 			name = "\bview";
 			sourceTree = "<group>";
@@ -460,6 +466,7 @@
 				8FBCEB8F1A02BDDB00D200A0 /* TabBarController.m in Sources */,
 				8FBCEB4E1A029E2C00D200A0 /* main.m in Sources */,
 				8FBCEB831A02BDDB00D200A0 /* BLOGTableViewCell.m in Sources */,
+				8F3A12AE1A0B73DE00C10C5D /* PointerViewController.m in Sources */,
 				8F3A12981A0B392700C10C5D /* KGTableViewController.m in Sources */,
 				8F3A129C1A0B393500C10C5D /* SUPTableViewController.m in Sources */,
 				8F3BF8A51A03F718002F75E9 /* MYParseDelegate.m in Sources */,
@@ -487,6 +494,7 @@
 				8F839D231A07B77E0071654C /* MSTableViewController.m in Sources */,
 				8FBCEB8C1A02BDDB00D200A0 /* MSViewController.m in Sources */,
 				8FBCEB841A02BDDB00D200A0 /* BLOGTableViewCell.m in Sources */,
+				8F3A12AF1A0B73DE00C10C5D /* PointerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

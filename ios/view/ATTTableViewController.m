@@ -9,6 +9,10 @@
 #import "ATTTableViewController.h"
 #import "AppDelegate.h"
 
+#import <FacebookSDK/FacebookSDK.h>
+#import <Parse/Parse.h>
+
+
 @interface ATTTableViewController ()
 {
     CGFloat cgfW;
@@ -23,6 +27,12 @@
     CGFloat cgfHigh3;
     
     AppDelegate *delegate;
+    
+    UIImage* uiiATT1;
+    UIImage* uiiATT2;
+    UIImage* uiiATT3;
+    UIImage* uiiATT4;
+    UIImage* uiiATT6;
 }
 @end
 
@@ -40,29 +50,18 @@
 }
 
 - (void)setImage {
-    
+    uiiATT1 = [UIImage imageNamed:@"att1"];
+    uiiATT2 = [UIImage imageNamed:@"att2"];
+    uiiATT3 = [UIImage imageNamed:@"att3"];
+    uiiATT4 = [UIImage imageNamed:@"att4"];
+    uiiATT6 = [UIImage imageNamed:@"att6"];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setImage];
     [self setMyScreen];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    NSString *nssEmbedHTML = @"\
-    <html><head>\
-    <style type=\"text/css\">\
-    body {\
-    background-color: transparent;\
-    color: white;\
-    }\
-    </style>\
-    </head><body style=\"margin:0\">\
-    <embed id=\"yt\" src=\"%@\" type=\"application/x-shockwave-flash\" \
-    width=\"%0.0f\" height=\"%0.0f\"></embed>\
-    </body></html>";
-    NSString *nssHtml = [NSString stringWithFormat:nssEmbedHTML, @"https://www.youtube.com/watch?feature=player_embedded&v=OtvbZscM90A", self.tableView.frame.size.width * 0.92, self.tableView.frame.size.width * .92 * 9.0 / 16.0];
-    _uiwVideoView = [[UIWebView alloc] initWithFrame:CGRectMake(self.tableView.frame.size.width * 0.04, self.tableView.frame.size.width * 90 / 640 + 15.0 + cgfScreenHeightBase, self.tableView.frame.size.width * 0.92, self.tableView.frame.size.width * 0.92 * 9.0 / 16.0)];
-    [_uiwVideoView loadHTMLString:nssHtml baseURL:nil];
-    
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -70,135 +69,66 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
-}
-
-- (void)uibClickedTsai {
-    //    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://www.facebook.com/pages/內湖南港割闌尾-正元手術房/320272928135607"]];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"fb://profile/320272928135607"]];
-}
-
-- (void)uibClickedWu {
-    //    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://www.facebook.com/AppendectomyWEGO?fref=ts"]];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"fb://profile/804848699526673"]];
-}
-
-- (void)uibClickedLin {
-    //    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://www.facebook.com/AppendectomyDeWhip?fref=ts"]];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"fb://profile/602996456475061"]];
-}
-
-- (void)uibClickedDragon {
-    //    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://www.facebook.com/TotalRecall2014"]];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"fb://profile/620780968013532"]];
-}
-
-- (void)uibClickedHuang {
-    //    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://www.facebook.com/apkh.tw"]];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"fb://profile/337299219755438"]];
-}
-
-- (void)uibClickedCountry {
-    //    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://www.facebook.com/apkh.tw"]];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"fb://profile/337299219755438"]];
-}
-
-- (void)setButton:(UITableViewCell *)cell offset:(CGFloat)cgfBaseHeight {
-    UIButton *uibTsai = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    uibTsai.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    uibTsai.frame = CGRectMake(self.tableView.frame.size.width * 0.06, self.tableView.frame.size.width * 0.14 + cgfBaseHeight, self.tableView.frame.size.width * 0.78, self.tableView.frame.size.width * 0.88 * 154.0 / 1315.0);
-    [uibTsai addTarget:self action:@selector(uibClickedTsai) forControlEvents:UIControlEventTouchUpInside];
-    uibTsai.tintColor = [UIColor blackColor];
-    [uibTsai setTitle:@"蔡正元選區：正元手術房" forState:UIControlStateNormal];
-    [cell.contentView addSubview:uibTsai];
-    
-    UIButton *uibWu = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    uibWu.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    uibWu.frame = CGRectMake(self.tableView.frame.size.width * 0.06, self.tableView.frame.size.width * 0.21 + cgfBaseHeight, self.tableView.frame.size.width * 0.78, self.tableView.frame.size.width * 0.88 * 154.0 / 1315.0);
-    [uibWu addTarget:self action:@selector(uibClickedWu) forControlEvents:UIControlEventTouchUpInside];
-    uibWu.tintColor = [UIColor blackColor];
-    [uibWu setTitle:@"吳育昇選區：海口夯社" forState:UIControlStateNormal];
-    [cell.contentView addSubview:uibWu];
-    
-    UIButton *uibLin = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    uibLin.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    uibLin.frame = CGRectMake(self.tableView.frame.size.width * 0.06, self.tableView.frame.size.width * 0.28 + cgfBaseHeight, self.tableView.frame.size.width * 0.78, self.tableView.frame.size.width * 0.88 * 154.0 / 1315.0);
-    [uibLin addTarget:self action:@selector(uibClickedLin) forControlEvents:UIControlEventTouchUpInside];
-    uibLin.tintColor = [UIColor blackColor];
-    [uibLin setTitle:@"林鴻池選區：板橋手術中" forState:UIControlStateNormal];
-    [cell.contentView addSubview:uibLin];
-    
-    UIButton *uibDragon = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    uibDragon.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    uibDragon.frame = CGRectMake(self.tableView.frame.size.width * 0.06, self.tableView.frame.size.width * 0.46 + cgfBaseHeight, self.tableView.frame.size.width * 0.78, self.tableView.frame.size.width * 0.88 * 154.0 / 1315.0);
-    [uibDragon addTarget:self action:@selector(uibClickedDragon) forControlEvents:UIControlEventTouchUpInside];
-    uibDragon.tintColor = [UIColor blackColor];
-    [uibDragon setTitle:@"蔡錦龍選區" forState:UIControlStateNormal];
-    [cell.contentView addSubview:uibDragon];
-    
-    UIButton *uibHuang = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    uibHuang.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    uibHuang.frame = CGRectMake(self.tableView.frame.size.width * 0.06, self.tableView.frame.size.width * 0.90 + cgfBaseHeight, self.tableView.frame.size.width * 0.78, self.tableView.frame.size.width * 0.88 * 154.0 / 1315.0);
-    [uibHuang addTarget:self action:@selector(uibClickedHuang) forControlEvents:UIControlEventTouchUpInside];
-    uibHuang.tintColor = [UIColor blackColor];
-    [uibHuang setTitle:@"黃昭順選區" forState:UIControlStateNormal];
-    [cell.contentView addSubview:uibHuang];
-    
-    UIButton *uibCountry = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    uibCountry.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    uibCountry.frame = CGRectMake(self.tableView.frame.size.width * 0.06, self.tableView.frame.size.width * 0.97 + cgfBaseHeight, self.tableView.frame.size.width * 0.78, self.tableView.frame.size.width * 0.88 * 154.0 / 1315.0);
-    [uibCountry addTarget:self action:@selector(uibClickedCountry) forControlEvents:UIControlEventTouchUpInside];
-    uibCountry.tintColor = [UIColor blackColor];
-    [uibCountry setTitle:@"林國正選區" forState:UIControlStateNormal];
-    [cell.contentView addSubview:uibCountry];
+    return 8;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *identifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-    }
+    static NSString *nssIDATT1 = @"ATT1";
+    static NSString *nssIDATT2 = @"ATT2";
+    static NSString *nssIDATT3 = @"ATT3";
+    static NSString *nssIDATT4 = @"ATT4";
+    static NSString *nssIDATT5 = @"ATT5";
+    static NSString *nssIDATT6 = @"ATT6";
+    static NSString *nssIDATT7 = @"ATT7";
+    UITableViewCell *cell;
     if (indexPath.row == 0) {
-        UIImage *uiim = [UIImage imageNamed:@"ms1_1"];
+        cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT1];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT1];
+        }
         UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, cgfScreenHeightBase, self.tableView.frame.size.width, self.tableView.frame.size.width * 90 / 640)];
-        uiimv.image = uiim;
+        uiimv.image = uiiATT1;
         [cell.contentView addSubview:uiimv];
-        
-        [cell.contentView addSubview:_uiwVideoView];
-        cgfHigh0 = cgfScreenHeightBase + self.tableView.frame.size.width * 90 / 640 + 15.0 + cgfScreenHeightBase + self.tableView.frame.size.width * 0.92 * 9.0 / 16.0;
     } else if (indexPath.row == 1) {
-        UIImage *uiim = [UIImage imageNamed:@"ms2_1"];
-        UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.tableView.frame.size.width, self.tableView.frame.size.width * 114 / 640)];
-        uiimv.image = uiim;
+        cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT3];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT3];
+        }
+        UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.tableView.frame.size.width, self.tableView.frame.size.width * 410 / 640)];
+        uiimv.image = uiiATT2;
         [cell.contentView addSubview:uiimv];
-        
-        UITextView *uitvContent = [[UITextView alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 0.04, self.tableView.frame.size.width * 114 / 640 + 15.0, self.tableView.frame.size.width * 0.92, self.tableView.frame.size.width * 1.7 / 4.0)];
-        [uitvContent setText:@"這是一場全民覺醒的運動，超越了議會，從家庭、從巷口、從網路，從社會的各個角落開始綻放，罷免不再是瀕死的法條，而是活著的行動。割去發炎的「闌尾」，從體制內去影響、去改變現今有缺陷的代議制度，讓我們一起締造台灣新型態的社會運動。不論你是想擔任當天擺攤志工、物資提供或純粹想要鍵盤參戰，亦或是您想要長期熱情參與，你都可以成為割闌尾V計劃的公民V。"];
-        uitvContent.editable = NO;
-        [cell.contentView addSubview:uitvContent];
     } else if (indexPath.row == 2) {
-        UIImage *uiim = [UIImage imageNamed:@"ms3_1"];
-        UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.tableView.frame.size.width, self.tableView.frame.size.width * 114 / 640)];
-        uiimv.image = uiim;
+        cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT2];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT2];
+        }
+        UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 40 / 640, 0.0, self.tableView.frame.size.width * 83 / 640, self.tableView.frame.size.width * 95 / 640)];
+        uiimv.image = uiiATT3;
         [cell.contentView addSubview:uiimv];
-        
-        UITextView *uitvContent = [[UITextView alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 0.04, self.tableView.frame.size.width * 114 / 640 + 15.0, self.tableView.frame.size.width * 0.92, self.tableView.frame.size.width * 1.7 / 4.0)];
-        [uitvContent setText:@"這一天，就是今年的選舉日：1129。\n1129，台灣有七成的選民會去投票；1129這一天我們將在投票所外擺攤簽署罷免連署書，讓選舉日變成罷免日，因此割闌尾V計劃就是為了讓罷免第二階段看似不可能的任務變成可能，這一天我們將實踐屬於人民的參政權！"];
-        uitvContent.editable = NO;
-        [cell.contentView addSubview:uitvContent];
     } else if (indexPath.row == 3) {
-        UIImage *uiim = [UIImage imageNamed:@"ms4_1"];
-        UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.tableView.frame.size.width, self.tableView.frame.size.width * 114 / 640)];
-        uiimv.image = uiim;
+        cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT4];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT4];
+        }
+        UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 0.2867, 0.0, self.tableView.frame.size.width * 273.0 / 640.0, self.tableView.frame.size.width * 78 / 640)];
+        uiimv.image = uiiATT4;
         [cell.contentView addSubview:uiimv];
-        
-        UIImage *uiim2 = [UIImage imageNamed:@"ms4_2"];
-        UIImageView *uiimv2 = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, self.tableView.frame.size.width * 114 / 640 + 15.0, self.tableView.frame.size.width, self.tableView.frame.size.width * 772 / 640)];
-        uiimv2.image = uiim2;
-        [cell.contentView addSubview:uiimv2];
-        
-        [self setButton:cell offset:self.tableView.frame.size.width * 114 / 640 + 15.0];
+    } else if (indexPath.row == 4) {
+        cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT2];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT2];
+        }
+        UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 40 / 640, 0.0, self.tableView.frame.size.width * 83 / 640, self.tableView.frame.size.width * 95 / 640)];
+        uiimv.image = [UIImage imageNamed:@"att5-1"];
+        [cell.contentView addSubview:uiimv];
+    } else {
+        cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT5];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT5];
+        }
+        UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.tableView.frame.size.width, self.tableView.frame.size.width * 112 / 640)];
+        uiimv.image = uiiATT6;
+        [cell.contentView addSubview:uiimv];
     }
     return cell;
 }
@@ -206,14 +136,20 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
-        return cgfScreenHeightBase + self.tableView.frame.size.width * 90 / 640 + 5.0 + cgfScreenHeightBase + self.tableView.frame.size.width * 0.92 * 9.0 / 16.0;
+        return cgfScreenHeightBase + self.tableView.frame.size.width * 90 / 640 + 20.0;
     } else if (indexPath.row == 1) {
-        return self.tableView.frame.size.width * 114 / 640 + 15.0 + self.tableView.frame.size.width * 1.7 / 4.0;
+        return self.tableView.frame.size.width * 410 / 640 + 20.0;
     } else if (indexPath.row == 2) {
-        return self.tableView.frame.size.width * 114 / 640 + 15.0 + self.tableView.frame.size.width * 1.7 / 4.0;;
+        return self.tableView.frame.size.width * 95 / 640 + 20.0;
     } else if (indexPath.row == 3) {
-        return self.tableView.frame.size.width * 114 / 640 + 15.0 + self.tableView.frame.size.width * 772 / 640 + 15.0;
-    } return 0;
+        return self.tableView.frame.size.width * 78 / 640 + 20.0;
+    } else if (indexPath.row == 4) {
+        return self.tableView.frame.size.width * 95 / 640 + 20.0;
+    } else if (indexPath.row == 5) {
+        return self.tableView.frame.size.width * 112 / 640 + 20.0;
+    } else {
+        return self.tableView.frame.size.width * 300 / 640 + 20.0;
+    }
 }
 
 @end

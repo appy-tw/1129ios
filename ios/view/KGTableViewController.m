@@ -44,10 +44,18 @@
     
 }
 
+- (void) makeKeyboardOffset {
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.0];
+    self.view.center = CGPointMake(self.view.center.x, self.view.center.y - 40);
+    [UIView commitAnimations];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setMyScreen];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [self makeKeyboardOffset];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -205,9 +213,9 @@
     } else if (indexPath.row == 3) {
         return self.tableView.frame.size.width * 418 / 640;
     } else if (indexPath.row == 4) {
-        return self.tableView.frame.size.width * 418 / 640;
+        return self.tableView.frame.size.width * 418 / 640 + 60;
     } else {
-        return self.tableView.frame.size.width * 418 / 640;
+        return self.tableView.frame.size.width * 418 / 640 + 80;
     }
 }
 

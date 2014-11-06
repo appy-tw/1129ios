@@ -16,6 +16,8 @@
 #import "GOViewController.h"
 #import "ATTTableViewController.h"
 
+#import "PointerViewController.h"
+
 #import "PLISTHeader.h"
 
 #import <FacebookSDK/FacebookSDK.h>
@@ -39,6 +41,8 @@
     //地圖，各票所分佈(最後弄)
     ATTTableViewController *attTableViewController;
     //討伐令，含行前事項
+    PointerViewController *pointerViewController;
+    UINavigationController *navigationController;
     UIImage *uiiTabBarBackground;
 }
 
@@ -70,23 +74,27 @@
     blogTableViewController.tabBarItem.image = [UIImage imageNamed:@"blog"];
     //戰況，魔王，uitableview
     kgTableViewController = [[KGTableViewController alloc]init];
-    kgTableViewController.title = NSLocalizedString(@"魔王領地", nil);
-    kgTableViewController.tabBarItem.image = [UIImage imageNamed:@"kg"];
+    pointerViewController = [[PointerViewController alloc]initWithViewController:kgTableViewController];
+    navigationController = [[UINavigationController alloc]initWithRootViewController:pointerViewController];
+    navigationController.title = NSLocalizedString(@"魔王領地", nil);
+    navigationController.tabBarItem.image = [UIImage imageNamed:@"kg"];
+    navigationController.navigationBarHidden = YES;
+
     //魔王的各領地資料
     supTableViewController = [[SUPTableViewController alloc]init];
     supTableViewController.title = NSLocalizedString(@"補給據點", nil);
     supTableViewController.tabBarItem.image = [UIImage imageNamed:@"sup"];
     //代收據點
-    goViewController = [[GOViewController alloc]init];
-    goViewController.title = NSLocalizedString(@"討伐令", nil);
-    goViewController.tabBarItem.image = [UIImage imageNamed:@"att"];
+//    goViewController = [[GOViewController alloc]init];
+//    goViewController.title = NSLocalizedString(@"討伐令", nil);
+//    goViewController.tabBarItem.image = [UIImage imageNamed:@"att"];
 
     attTableViewController = [[ATTTableViewController alloc]init];
     attTableViewController.title = NSLocalizedString(@"討伐令", nil);
     attTableViewController.tabBarItem.image = [UIImage imageNamed:@"att"];
     //行前通知
 
-    NSArray *nsaViewControllers = [[NSArray alloc]initWithObjects:msTableViewController, blogTableViewController, kgTableViewController, supTableViewController, goViewController, attTableViewController, nil];
+    NSArray *nsaViewControllers = [[NSArray alloc]initWithObjects:msTableViewController, blogTableViewController, navigationController, supTableViewController, attTableViewController, nil];
     tabBarController = [[TabBarController alloc]init];
     [tabBarController setViewControllers:nsaViewControllers];    
     [self.window addSubview:tabBarController.view];

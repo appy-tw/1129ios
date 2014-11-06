@@ -10,6 +10,4 @@
 
 @interface ATTTableViewController : UITableViewController
 
-@property (strong, nonatomic) UIWebView *uiwVideoView;
-
 @end
