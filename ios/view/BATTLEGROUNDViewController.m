@@ -9,8 +9,32 @@
 #import "BATTLEGROUNDViewController.h"
 #import "AppDelegate.h"
 
+#import <FacebookSDK/FacebookSDK.h>
+
+#import <Parse/Parse.h>
+
+
 @interface BATTLEGROUNDViewController ()
 {
+    CGFloat cgfAvailableWidth;
+    CGFloat cgfAvailableHeight;
+    CGFloat cgfAvailableHeightStart;
+    CGFloat cgfAvailableHeightEnd;
+    
+    CGFloat cgfStatusBarHeight;
+    CGFloat cgfNavigationBarHeight;
+    CGFloat cgfTabBarHeight;
+    
+    UILabel *uilUserNameTip;
+    UILabel *uilUserName;
+    UILabel *uilMissionTip;
+    UILabel *uilMission;
+    UILabel *uilMaterialTip;
+    UILabel *uilMaterial;
+    UILabel *uilLocationTip;
+    UILabel *uilLocation;
+    UIImageView *uiivProfile;
+
     AppDelegate *delegate;
     UIWebView *uiwWebView;
 }

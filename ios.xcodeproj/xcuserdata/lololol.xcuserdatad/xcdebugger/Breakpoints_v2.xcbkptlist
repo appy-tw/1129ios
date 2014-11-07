@@ -72,28 +72,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ios/view/BLOGTableViewController.m"
-            timestampString = "436990030.960728"
+            timestampString = "437072857.549316"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
-            landmarkName = "-prepareTheInitImage"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ios/view/BLOGTableViewController.m"
-            timestampString = "436990030.960728"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
-            landmarkName = "-prepareTheInitImage"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
+            landmarkName = "-prepareImage:lastToAdd:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

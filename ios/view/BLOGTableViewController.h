@@ -13,7 +13,5 @@
 
 @property (nonatomic, strong) NSMutableArray *nsmaOutputTable;
 @property (nonatomic, strong) MYParseDelegate *myParseDelegate;
-@property (nonatomic, strong) NSMutableArray *nsmaCellImage;
-@property (nonatomic, strong) NSMutableArray *nsmaCellSize;
 
 @end

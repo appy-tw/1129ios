@@ -67,10 +67,10 @@
 
 - (void)setMyViewController {
     msTableViewController = [[MSTableViewController alloc]init];
-    msTableViewController.title = NSLocalizedString(@"割闌尾", nil);
+    msTableViewController.title = NSLocalizedString(@"割闌尾計劃", nil);
     msTableViewController.tabBarItem.image = [UIImage imageNamed:@"ms"];
     blogTableViewController = [[BLOGTableViewController alloc]init];
-    blogTableViewController.title = NSLocalizedString(@"戰況", nil);
+    blogTableViewController.title = NSLocalizedString(@"即時戰況", nil);
     blogTableViewController.tabBarItem.image = [UIImage imageNamed:@"blog"];
     //戰況，魔王，uitableview
     kgTableViewController = [[KGTableViewController alloc]init];
