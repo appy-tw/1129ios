@@ -31,6 +31,10 @@
     UIImage *uiiSUP3;
     
     AppDelegate *delegate;
+    
+    MKMapView *mkmvMap;
+    
+    NSString *nssPlistDst;
 }
 
 @end
@@ -103,10 +107,29 @@
     [self.mkmvMapView setRegion:region animated:YES];
 }
 
+- (void)setAllLocation {
+    
+}
+
+- (void)setPinMap {
+    MKPointAnnotation *mkpaPoint;
+    mkpaPoint = [[MKPointAnnotation alloc] init];
+    mkpaPoint.coordinate = CLLocationCoordinate2DMake(25.0335, 121.5651);
+    mkpaPoint.title = @"台北市";
+    mkpaPoint.subtitle = @"台灣首都";
+    
+    mkmvMap = [[MKMapView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, cgfScreenWidth * 1.195)];
+    [mkmvMap addAnnotation:mkpaPoint];
+    mkmvMap.centerCoordinate = CLLocationCoordinate2DMake(25.0335, 121.5651);
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setImage];
     [self setMyScreen];
+    [self setPinMap];
+    [self setAllLocation];
+    [self setImage];
+
 //    [self setMap];
     [self setMyAnotherMap];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
@@ -234,6 +257,7 @@
 //        UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.tableView.frame.size.width, self.tableView.frame.size.width * 398 / 640)];
 //        uiimv.image = uiiSUP2;
 //        [cell.contentView addSubview:uiimv];
+        [cell.contentView addSubview:mkmvMap];
     } else if (indexPath.row == 2) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDSUP3];
         if (cell == nil) {
@@ -259,7 +283,7 @@
     if (indexPath.row == 0) {
         return cgfScreenHeightBase + self.tableView.frame.size.width * 90 / 640 + 20.0;
     } else if (indexPath.row == 1) {
-        return self.tableView.frame.size.width * 380 / 640;
+        return self.tableView.frame.size.width * 1.2;
     } else if (indexPath.row == 2) {
         return self.tableView.frame.size.width * 36 / 640;
     } else {
@@ -339,5 +363,26 @@
 //}
 //]]CLLocationinit
 
+//[[Plist
+
+- (void)initMyPlist
+{
+    NSFileManager *nsfmPlistFileManager = [[NSFileManager alloc]init];
+    NSString *nssPlistSrc = [[NSBundle mainBundle] pathForResource:@"sup" ofType:@"plist"];
+    nssPlistDst = [NSString stringWithFormat:@"%@/Documents/sup", NSHomeDirectory()];
+    if (! [nsfmPlistFileManager fileExistsAtPath:nssPlistDst]) {
+        [nsfmPlistFileManager copyItemAtPath:nssPlistSrc toPath:nssPlistDst error:nil];
+    }
+}
+
+- (void)readAllFromMyPlist {
+    if (nssPlistDst == nil) {
+        [self initMyPlist];
+    }
+    NSMutableDictionary *nsmdPlistDictionary = [NSMutableDictionary dictionaryWithContentsOfFile:nssPlistDst];
+    NSLog(@"", );
+}
+
+//]]Plist
 
 @end

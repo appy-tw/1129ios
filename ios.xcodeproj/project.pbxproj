@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8F2C57031A0E6507007A24A4 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F2C57021A0E6507007A24A4 /* GoogleMaps.framework */; };
+		8F2C57051A0E671C007A24A4 /* sup.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F2C57041A0E671C007A24A4 /* sup.plist */; };
+		8F2C57061A0E671C007A24A4 /* sup.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F2C57041A0E671C007A24A4 /* sup.plist */; };
 		8F3A12801A0B320000C10C5D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8F3A12831A0B320000C10C5D /* Localizable.strings */; };
 		8F3A12811A0B320000C10C5D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8F3A12831A0B320000C10C5D /* Localizable.strings */; };
 		8F3A12851A0B322A00C10C5D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8F3A12881A0B322A00C10C5D /* InfoPlist.strings */; };
@@ -87,6 +90,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8F2C57021A0E6507007A24A4 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = "../../../Downloads/GoogleMaps-iOS-1.9.0/GoogleMaps.framework"; sourceTree = "<group>"; };
+		8F2C57041A0E671C007A24A4 /* sup.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sup.plist; sourceTree = "<group>"; };
 		8F3A12821A0B320000C10C5D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8F3A12841A0B321000C10C5D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		8F3A12871A0B322A00C10C5D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -161,6 +166,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F2C57031A0E6507007A24A4 /* GoogleMaps.framework in Frameworks */,
 				8F3A12A71A0B58B400C10C5D /* MapKit.framework in Frameworks */,
 				8FE0E9961A069D3C000016D1 /* SystemConfiguration.framework in Frameworks */,
 				8FE0E9941A069D33000016D1 /* StoreKit.framework in Frameworks */,
@@ -247,6 +253,7 @@
 				8F3BF8A71A040970002F75E9 /* UserData.plist */,
 				8F3A12831A0B320000C10C5D /* Localizable.strings */,
 				8F3A12881A0B322A00C10C5D /* InfoPlist.strings */,
+				8F2C57041A0E671C007A24A4 /* sup.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -306,6 +313,7 @@
 		8FE0E6F81A061DAD000016D1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8F2C57021A0E6507007A24A4 /* GoogleMaps.framework */,
 				8F3A12A61A0B58B400C10C5D /* MapKit.framework */,
 				8FE0E9951A069D3C000016D1 /* SystemConfiguration.framework */,
 				8FE0E9931A069D33000016D1 /* StoreKit.framework */,
@@ -434,6 +442,7 @@
 				8F3BF8A81A040970002F75E9 /* UserData.plist in Resources */,
 				8F3A12851A0B322A00C10C5D /* InfoPlist.strings in Resources */,
 				8F3A12801A0B320000C10C5D /* Localizable.strings in Resources */,
+				8F2C57051A0E671C007A24A4 /* sup.plist in Resources */,
 				8FE0E8161A061DD4000016D1 /* README.txt in Resources */,
 				8FE0E8461A061DD4000016D1 /* LICENSE in Resources */,
 				8FE0E8481A061DD4000016D1 /* README.txt in Resources */,
@@ -447,6 +456,7 @@
 			files = (
 				8F3A12811A0B320000C10C5D /* Localizable.strings in Resources */,
 				8F3A12861A0B322A00C10C5D /* InfoPlist.strings in Resources */,
+				8F2C57061A0E671C007A24A4 /* sup.plist in Resources */,
 				8FE0E8471A061DD4000016D1 /* LICENSE in Resources */,
 				8FE0E8171A061DD4000016D1 /* README.txt in Resources */,
 				8F3BF8A91A040970002F75E9 /* UserData.plist in Resources */,
@@ -628,6 +638,7 @@
 					"$(PROJECT_DIR)/FacebookSDK",
 					"$(PROJECT_DIR)/FacebookSDK/FBAudienceNetwork",
 					"$(PROJECT_DIR)",
+					"/Users/lololol/Downloads/GoogleMaps-iOS-1.9.0",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
@@ -649,6 +660,7 @@
 					"$(PROJECT_DIR)/FacebookSDK",
 					"$(PROJECT_DIR)/FacebookSDK/FBAudienceNetwork",
 					"$(PROJECT_DIR)",
+					"/Users/lololol/Downloads/GoogleMaps-iOS-1.9.0",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
