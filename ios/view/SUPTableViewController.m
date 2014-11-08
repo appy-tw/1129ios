@@ -9,6 +9,13 @@
 #import "SUPTableViewController.h"
 #import "AppDelegate.h"
 
+#import "MKMapView+ZoomLevel.h"
+
+#define GEORGIA_TECH_LATITUDE 33.777328
+#define GEORGIA_TECH_LONGITUDE -84.397348
+
+#define ZOOM_LEVEL 14
+
 //Code omitted
 #define IS_OS_8_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
 //Code omitted
@@ -35,6 +42,7 @@
     MKMapView *mkmvMap;
     
     NSString *nssPlistDst;
+    NSMutableArray *nsmaPlistArray;
 }
 
 @end
@@ -113,19 +121,32 @@
 
 - (void)setPinMap {
     MKPointAnnotation *mkpaPoint;
-    mkpaPoint = [[MKPointAnnotation alloc] init];
-    mkpaPoint.coordinate = CLLocationCoordinate2DMake(25.0335, 121.5651);
-    mkpaPoint.title = @"台北市";
-    mkpaPoint.subtitle = @"台灣首都";
+//    mkpaPoint = [[MKPointAnnotation alloc] init];
+//    mkpaPoint.coordinate = CLLocationCoordinate2DMake(25.0335, 121.5651);
+//    mkpaPoint.title = @"台北市";
+//    mkpaPoint.subtitle = @"台灣首都";
+    
     
     mkmvMap = [[MKMapView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, cgfScreenWidth * 1.195)];
     [mkmvMap addAnnotation:mkpaPoint];
-    mkmvMap.centerCoordinate = CLLocationCoordinate2DMake(25.0335, 121.5651);
+//    mkmvMap.centerCoordinate = CLLocationCoordinate2DMake(25.0335, 121.5651);
+    [mkmvMap setCenterCoordinate:CLLocationCoordinate2DMake(25.0335, 121.5651) zoomLevel:10 animated:YES];
+    for (NSInteger i = 0; i < [nsmaPlistArray count]; i++) {
+//        MKPointAnnotation *mkpaPoint;
+        mkpaPoint = [[MKPointAnnotation alloc] init];
+        NSLog(@"%f, %f", [[[nsmaPlistArray objectAtIndex:i]valueForKey:@"lat"]floatValue], [[[nsmaPlistArray objectAtIndex:i]valueForKey:@"lon"]floatValue]);
+        mkpaPoint.coordinate = CLLocationCoordinate2DMake([[[nsmaPlistArray objectAtIndex:i]valueForKey:@"lat"]floatValue], [[[nsmaPlistArray objectAtIndex:i]valueForKey:@"lon"]floatValue]);
+        mkpaPoint.title = [[nsmaPlistArray objectAtIndex:i]valueForKey:@"title"];
+        mkpaPoint.subtitle = [[nsmaPlistArray objectAtIndex:i]valueForKey:@"address"];
+        [mkmvMap addAnnotation:mkpaPoint];
+        NSLog(@"%ld", (long)i);
+    }
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setMyScreen];
+    [self readAllFromMyPlist];
     [self setPinMap];
     [self setAllLocation];
     [self setImage];
@@ -138,6 +159,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [delegate.cllMLocation stopUpdatingLocation];
+    [self initMyPlist];
     [super viewDidDisappear:animated];
 }
 
@@ -146,7 +168,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 41;
+    return 30 + 3;
 }
 
 - (void)uibClickedTsai {
@@ -239,6 +261,11 @@
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDSUP1];
         if (cell == nil) {
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDSUP1];
+        } else {
+            for (UIView *subView in cell.contentView.subviews)
+            {
+                [subView removeFromSuperview];
+            }
         }
         UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, cgfScreenHeightBase, self.tableView.frame.size.width, self.tableView.frame.size.width * 90 / 640)];
         uiimv.image = uiiSUP1;
@@ -274,6 +301,16 @@
         UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.tableView.frame.size.width, self.tableView.frame.size.width * 78 / 640)];
         uiimv.image = uiiSUP3;
         [cell.contentView addSubview:uiimv];
+        UILabel *uilTitle = [[UILabel alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 0.18, self.tableView.frame.size.width * 0.002, self.tableView.frame.size.width * 0.45, 12.0)];
+        [uilTitle setText:[[nsmaPlistArray objectAtIndex:indexPath.row - 3]valueForKey:@"title"]];
+        [uilTitle setBackgroundColor:[UIColor whiteColor]];
+        [uilTitle setFont:[UIFont systemFontOfSize:12]];
+        [cell.contentView addSubview:uilTitle];
+        UILabel *uilAddress = [[UILabel alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 0.18, self.tableView.frame.size.width * 0.06, self.tableView.frame.size.width * 0.45, 12.0)];
+        [uilAddress setText:[[nsmaPlistArray objectAtIndex:indexPath.row - 3]valueForKey:@"address"]];
+        [uilAddress setBackgroundColor:[UIColor whiteColor]];
+        [uilAddress setFont:[UIFont systemFontOfSize:12]];
+        [cell.contentView addSubview:uilAddress];
     }
     return cell;
 }
@@ -379,8 +416,8 @@
     if (nssPlistDst == nil) {
         [self initMyPlist];
     }
-    NSMutableDictionary *nsmdPlistDictionary = [NSMutableDictionary dictionaryWithContentsOfFile:nssPlistDst];
-    NSLog(@"", );
+    nsmaPlistArray = [NSMutableArray arrayWithContentsOfFile:nssPlistDst];
+    NSLog(@"%lu", (unsigned long)[nsmaPlistArray count]);
 }
 
 //]]Plist

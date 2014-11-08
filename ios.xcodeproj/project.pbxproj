@@ -10,6 +10,8 @@
 		8F2C57031A0E6507007A24A4 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F2C57021A0E6507007A24A4 /* GoogleMaps.framework */; };
 		8F2C57051A0E671C007A24A4 /* sup.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F2C57041A0E671C007A24A4 /* sup.plist */; };
 		8F2C57061A0E671C007A24A4 /* sup.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F2C57041A0E671C007A24A4 /* sup.plist */; };
+		8F2C570A1A0EAA22007A24A4 /* MKMapView+ZoomLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2C57091A0EAA22007A24A4 /* MKMapView+ZoomLevel.m */; };
+		8F2C570B1A0EAA22007A24A4 /* MKMapView+ZoomLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2C57091A0EAA22007A24A4 /* MKMapView+ZoomLevel.m */; };
 		8F3A12801A0B320000C10C5D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8F3A12831A0B320000C10C5D /* Localizable.strings */; };
 		8F3A12811A0B320000C10C5D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8F3A12831A0B320000C10C5D /* Localizable.strings */; };
 		8F3A12851A0B322A00C10C5D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8F3A12881A0B322A00C10C5D /* InfoPlist.strings */; };
@@ -92,6 +94,8 @@
 /* Begin PBXFileReference section */
 		8F2C57021A0E6507007A24A4 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = "../../../Downloads/GoogleMaps-iOS-1.9.0/GoogleMaps.framework"; sourceTree = "<group>"; };
 		8F2C57041A0E671C007A24A4 /* sup.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sup.plist; sourceTree = "<group>"; };
+		8F2C57081A0EAA22007A24A4 /* MKMapView+ZoomLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MKMapView+ZoomLevel.h"; path = "map/MKMapView+ZoomLevel.h"; sourceTree = "<group>"; };
+		8F2C57091A0EAA22007A24A4 /* MKMapView+ZoomLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MKMapView+ZoomLevel.m"; path = "map/MKMapView+ZoomLevel.m"; sourceTree = "<group>"; };
 		8F3A12821A0B320000C10C5D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8F3A12841A0B321000C10C5D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		8F3A12871A0B322A00C10C5D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -199,6 +203,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8F2C57071A0EA973007A24A4 /* map */ = {
+			isa = PBXGroup;
+			children = (
+				8F2C57081A0EAA22007A24A4 /* MKMapView+ZoomLevel.h */,
+				8F2C57091A0EAA22007A24A4 /* MKMapView+ZoomLevel.m */,
+			);
+			name = map;
+			sourceTree = "<group>";
+		};
 		8F3BF8A21A03F6E5002F75E9 /* parse */ = {
 			isa = PBXGroup;
 			children = (
@@ -230,6 +243,7 @@
 		8FBCEB4A1A029E2C00D200A0 /* ios */ = {
 			isa = PBXGroup;
 			children = (
+				8F2C57071A0EA973007A24A4 /* map */,
 				8F3BF8A21A03F6E5002F75E9 /* parse */,
 				8FBCEB741A02BDB200D200A0 /* view */,
 				8FBCEB4F1A029E2C00D200A0 /* AppDelegate.h */,
@@ -476,6 +490,7 @@
 				8FBCEB511A029E2C00D200A0 /* AppDelegate.m in Sources */,
 				8FE0E9771A0668A3000016D1 /* GOViewController.m in Sources */,
 				8FBCEB571A029E2C00D200A0 /* ViewController.m in Sources */,
+				8F2C570A1A0EAA22007A24A4 /* MKMapView+ZoomLevel.m in Sources */,
 				8FBCEB891A02BDDB00D200A0 /* MAPViewController.m in Sources */,
 				8FBCEB851A02BDDB00D200A0 /* BLOGTableViewController.m in Sources */,
 				8F3BF89B1A03DAB4002F75E9 /* UIWebView+YouTube.m in Sources */,
@@ -507,6 +522,7 @@
 				8F3A12991A0B392700C10C5D /* KGTableViewController.m in Sources */,
 				8FBCEB8A1A02BDDB00D200A0 /* MAPViewController.m in Sources */,
 				8FE0E9781A0668A3000016D1 /* GOViewController.m in Sources */,
+				8F2C570B1A0EAA22007A24A4 /* MKMapView+ZoomLevel.m in Sources */,
 				8F3A129D1A0B393500C10C5D /* SUPTableViewController.m in Sources */,
 				8FBCEB901A02BDDB00D200A0 /* TabBarController.m in Sources */,
 				8F839D231A07B77E0071654C /* MSTableViewController.m in Sources */,
