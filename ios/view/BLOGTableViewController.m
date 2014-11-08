@@ -17,10 +17,10 @@
 
 @interface BLOGTableViewController ()
 {
-    CGFloat cgfAvailableWidth;
-    CGFloat cgfAvailableHeight;
-    CGFloat cgfAvailableHeightStart;
-    CGFloat cgfAvailableHeightEnd;
+    CGFloat cgfScreenWidth;
+    CGFloat cgfScreenHeight;
+    CGFloat cgfScreenHeightBase;
+    CGFloat cgfKeyboardOffset;
     
     CGFloat cgfStatusBarHeight;
     CGFloat cgfNavigationBarHeight;
@@ -47,18 +47,18 @@
 
 - (void)setMyScreenSize
 {
-    cgfStatusBarHeight = [[UIApplication sharedApplication] statusBarFrame].size.height;
-    cgfNavigationBarHeight = self.navigationController.navigationBar.frame.size.height;
-    cgfTabBarHeight = [[[self tabBarController]tabBar]bounds].size.height;
-    
-    cgfAvailableHeight = [[UIScreen mainScreen] bounds].size.height - cgfStatusBarHeight - cgfTabBarHeight - cgfNavigationBarHeight;
-    cgfAvailableWidth = [[UIScreen mainScreen] bounds].size.width;
-    
-    cgfAvailableHeightStart = cgfStatusBarHeight + cgfNavigationBarHeight;
-    cgfAvailableHeightEnd = cgfAvailableHeight - cgfTabBarHeight;
-    
-    NSLog(@"AvailableScreen:%fx%f",cgfAvailableWidth,cgfAvailableHeight);
-    NSLog(@"Available High:%f-%f",cgfAvailableHeightStart,cgfAvailableHeightEnd);
+    cgfScreenWidth = [[UIScreen mainScreen] bounds].size.width;
+    cgfScreenHeight = [[UIScreen mainScreen] bounds].size.height - [[UIApplication sharedApplication] statusBarFrame].size.height - self.tabBarController.tabBar.frame.size.height - self.navigationController.navigationBar.frame.size.height - [UIApplication sharedApplication].statusBarFrame.size.height;
+    cgfScreenHeightBase = [UIApplication sharedApplication].statusBarFrame.size.height;
+    if ([UIApplication sharedApplication].statusBarFrame.size.height == 20.0) {
+        //without Hotspot: 64
+        cgfKeyboardOffset =  cgfScreenHeightBase;
+    } else {
+        //with Hotspot: 104
+        cgfKeyboardOffset = cgfScreenHeightBase + [UIApplication sharedApplication].statusBarFrame.size.height / 2.0;
+    }
+    NSLog(@"status bar height:%f",[UIApplication sharedApplication].statusBarFrame.size.height);
+    NSLog(@"width:%f, height:%f, tabbar:%f, navigationbarcontroller:%f, keyboardOffset: %f", cgfScreenWidth, cgfScreenHeight, self.tabBarController.tabBar.frame.size.height, delegate.navigationController.navigationBar.frame.size.height, cgfKeyboardOffset);
 }
 
 - (void)prepareTable
@@ -98,8 +98,8 @@
         NSLog(@"%ld: %@", (long)i,[NSURL URLWithString:[nsmaImageURL objectAtIndex:i]]);
         UIImage *uiiTmp = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[nsmaImageURL objectAtIndex:i]]]];
         [nsmaUImage addObject:uiiTmp];
-        [nsmaCellHeight addObject:[NSString stringWithFormat: @"%.f", cgfAvailableWidth * uiiTmp.size.height / uiiTmp.size.width]];
-        NSLog(@"cgfAvailableWidth * uiiTmp.size.height / uiiTmp.size.width: %@", [NSString stringWithFormat: @"%.f", cgfAvailableWidth * uiiTmp.size.height / uiiTmp.size.width]);
+        [nsmaCellHeight addObject:[NSString stringWithFormat: @"%.f", cgfScreenWidth * uiiTmp.size.height / uiiTmp.size.width]];
+        NSLog(@"cgfAvailableWidth * uiiTmp.size.height / uiiTmp.size.width: %@", [NSString stringWithFormat: @"%.f", cgfScreenWidth * uiiTmp.size.height / uiiTmp.size.width]);
     }
 }
 
@@ -143,7 +143,7 @@
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssTitleCell];
         }
         UIImage *uiimage = [UIImage imageNamed:@"blog1-1"];
-        UIImageView *uiivJumbotron = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, cgfAvailableHeightStart, cgfAvailableWidth, self.tableView.frame.size.width * 45 / 320)];
+        UIImageView *uiivJumbotron = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, cgfScreenHeightBase, cgfScreenWidth, self.tableView.frame.size.width * 45 / 320)];
         uiivJumbotron.image = uiimage;
         [cell.contentView addSubview:uiivJumbotron];
         return cell;
@@ -154,20 +154,20 @@
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssGeneralCell];
         }
         UIImage *uiiTmp = [nsmaUImage objectAtIndex:indexPath.row - 1];
-        UIImageView *uiivJumbotron = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfAvailableWidth, cgfAvailableWidth * uiiTmp.size.height / uiiTmp.size.width)];
+        UIImageView *uiivJumbotron = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, cgfScreenWidth * uiiTmp.size.height / uiiTmp.size.width)];
         uiivJumbotron.image = [nsmaUImage objectAtIndex:indexPath.row - 1];
         [cell.contentView addSubview:uiivJumbotron];
-        UIView *uivBlackView = [[UIView alloc]initWithFrame:CGRectMake(0.0, [[nsmaCellHeight objectAtIndex:indexPath.row - 1]floatValue] - 49, cgfAvailableWidth, 50.0)];
+        UIView *uivBlackView = [[UIView alloc]initWithFrame:CGRectMake(0.0, [[nsmaCellHeight objectAtIndex:indexPath.row - 1]floatValue] - 49, cgfScreenWidth, 50.0)];
         [uivBlackView setBackgroundColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.6]];
         [cell.contentView addSubview:uivBlackView];
-        UITextView *uitvSpan = [[UITextView alloc]initWithFrame:CGRectMake(cgfAvailableWidth * 0.04, [[nsmaCellHeight objectAtIndex:indexPath.row - 1]floatValue] - 55, cgfAvailableWidth * 0.92, 55.0)];
+        UITextView *uitvSpan = [[UITextView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 0.04, [[nsmaCellHeight objectAtIndex:indexPath.row - 1]floatValue] - 55, cgfScreenWidth * 0.92, 55.0)];
         uitvSpan.editable = NO;
         [uitvSpan setFont:[UIFont systemFontOfSize:12]];
         [uitvSpan setBackgroundColor:[UIColor clearColor]];
         [uitvSpan setText:[NSString stringWithFormat:@"%@...", [[nsmaSpan objectAtIndex:indexPath.row - 1]substringToIndex:45]]];
         [uitvSpan setTextColor:[UIColor whiteColor]];
         [cell.contentView addSubview:uitvSpan];
-        UITextView *uitvPubDate = [[UITextView alloc]initWithFrame:CGRectMake(cgfAvailableWidth * 0.04, [[nsmaCellHeight objectAtIndex:indexPath.row - 1]floatValue] - 25, cgfAvailableWidth * 0.90, 35.0)];
+        UITextView *uitvPubDate = [[UITextView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 0.04, [[nsmaCellHeight objectAtIndex:indexPath.row - 1]floatValue] - 25, cgfScreenWidth * 0.90, 35.0)];
         uitvPubDate.editable = NO;
         [uitvPubDate setFont:[UIFont systemFontOfSize:12]];
         [uitvPubDate setBackgroundColor:[UIColor clearColor]];
@@ -208,7 +208,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
-        return cgfAvailableHeightStart + self.tableView.frame.size.width * 45 / 320 + cgfAvailableHeight * 0.04;
+        return cgfScreenHeightBase + self.tableView.frame.size.width * 45 / 320 + cgfScreenHeight * 0.04;
     } else {
         return [[nsmaCellHeight objectAtIndex:indexPath.row - 1]floatValue] + 10;
     }

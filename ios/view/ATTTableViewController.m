@@ -20,6 +20,7 @@
     CGFloat cgfScreenWidth;
     CGFloat cgfScreenHeight;
     CGFloat cgfScreenHeightBase;
+    CGFloat cgfKeyboardOffset;
     
     CGFloat cgfHigh0;
     CGFloat cgfHigh1;
@@ -43,10 +44,17 @@
     delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     cgfScreenWidth = [[UIScreen mainScreen] bounds].size.width;
-    cgfScreenHeight = [[UIScreen mainScreen] bounds].size.height - [[UIApplication sharedApplication] statusBarFrame].size.height - self.tabBarController.tabBar.frame.size.height - self.navigationController.navigationBar.frame.size.height - [UIApplication sharedApplication].statusBarFrame.size.height;
-    cgfScreenHeightBase = self.navigationController.navigationBar.frame.size.height + [UIApplication sharedApplication].statusBarFrame.size.height;
+    cgfScreenHeight = [[UIScreen mainScreen] bounds].size.height - [[UIApplication sharedApplication] statusBarFrame].size.height - self.tabBarController.tabBar.frame.size.height - delegate.navigationController.navigationBar.frame.size.height - [UIApplication sharedApplication].statusBarFrame.size.height;
+    cgfScreenHeightBase = [UIApplication sharedApplication].statusBarFrame.size.height;
+    if ([UIApplication sharedApplication].statusBarFrame.size.height == 20.0) {
+        //without Hotspot: 64
+        cgfKeyboardOffset =  cgfScreenHeightBase;
+    } else {
+        //with Hotspot: 104
+        cgfKeyboardOffset = cgfScreenHeightBase + [UIApplication sharedApplication].statusBarFrame.size.height / 2.0;
+    }
     NSLog(@"status bar height:%f",[UIApplication sharedApplication].statusBarFrame.size.height);
-    NSLog(@"width:%f, height:%f, tabbar:%f, navigationbarcontroller:%f", cgfScreenWidth, cgfScreenHeight, self.tabBarController.tabBar.frame.size.height, self.navigationController.navigationBar.frame.size.height);
+    NSLog(@"width:%f, height:%f, tabbar:%f, navigationbarcontroller:%f, keyboardOffset: %f", cgfScreenWidth, cgfScreenHeight, self.tabBarController.tabBar.frame.size.height, delegate.navigationController.navigationBar.frame.size.height, cgfKeyboardOffset);
 }
 
 - (void)setImage {
