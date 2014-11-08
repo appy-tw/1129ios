@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+#import <FacebookSDK/FacebookSDK.h>
+
 @interface ATTTableViewController : UITableViewController
+
+@property (nonatomic, strong) FBProfilePictureView *fbProfilePic;
 
 @end

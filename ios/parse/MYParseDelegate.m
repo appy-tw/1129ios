@@ -58,7 +58,7 @@
 - (void)parser:(NSXMLParser *)parser
 foundCharacters:(NSString *)string {
     if (bItemStartRecord == YES && [nssNowTag isEqualToString:@"title"] == YES) {
-        [nsmsSpan appendString:string];
+//        [nsmsSpan appendString:string];
         bImageStartRecord = YES;
     } else if (bItemStartRecord == YES && [nssNowTag isEqualToString:@"link"] == YES) {
         [nsmdNowDictionary setObject:string forKey:@"link"];

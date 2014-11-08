@@ -9,7 +9,6 @@
 #import "ATTTableViewController.h"
 #import "AppDelegate.h"
 
-#import <FacebookSDK/FacebookSDK.h>
 #import <Parse/Parse.h>
 
 
@@ -36,6 +35,7 @@
     UIImage* uiiATT6;
     
     FBLoginView *fbLoginView;
+    UIImage *uiiFBImage;
     UILabel *uilFBUserName;
 }
 @end
@@ -89,9 +89,12 @@
 }
 
 - (void)viewDidLoad {
+    [self setMyScreen];
+    NSLog(@"cgfScreenWidth * 0.58: %f", cgfScreenWidth * 0.58);
+    _fbProfilePic = [[FBProfilePictureView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 402 / 640 -1, cgfScreenWidth * 98 / 640 - 1, 200 * cgfScreenWidth / 640 + 2, 200 * cgfScreenWidth / 640 + 2)];
+    [_fbProfilePic.layer setCornerRadius:50.0f];
     [super viewDidLoad];
     [self setImage];
-    [self setMyScreen];
     [self setFBView];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 }
@@ -131,13 +134,12 @@
         [cell.contentView addSubview:uiimv];
         [uilFBUserName setTextAlignment:NSTextAlignmentCenter];
         [cell.contentView addSubview:uilFBUserName];
+        [cell.contentView addSubview:_fbProfilePic];
     } else if (indexPath.row == 2) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT2];
         if (cell == nil) {
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT2];
         }
-        //    loginView.center = self.view.center;
-        //    [self.view addSubview:loginView];
         fbLoginView.center = cell.contentView.center;
         [cell.contentView addSubview:fbLoginView];
     } else if (indexPath.row == 3) {
@@ -191,7 +193,7 @@
     } else if (indexPath.row == 5) {
         return self.tableView.frame.size.width * 95 / 640 + 20.0;
     } else if (indexPath.row == 6) {
-        return self.tableView.frame.size.width * 112 / 640 + 20.0;
+        return self.tableView.frame.size.width * 112 / 640 + 200.0;
     } else {
         return self.tableView.frame.size.width * 300 / 640 + 20.0;
     }
@@ -210,6 +212,17 @@
     //    [self.buttonPostStatus setTitle:@"Post Status Update (Logged On)" forState:self.buttonPostStatus.state];
 }
 
+- (void)setFBImage {
+//    for (NSObject *obj in [_fbProfilePic subviews]) {
+//        if ([obj isMemberOfClass:[UIImageView class]]) {
+//            UIImageView *objImg = (UIImageView *)obj;
+//            uiiFBImage = objImg.image;
+//            break;
+//        }
+//    }
+//    uiivFBImageView.image = uiiFBImage;
+}
+
 - (void)loginViewFetchedUserInfo:(FBLoginView *)loginView
                             user:(id<FBGraphUser>)user {
     // here we use helper properties of FBGraphUser to dot-through to first_name and
@@ -218,11 +231,12 @@
     //    self.labelFirstName.text = [NSString stringWithFormat:@"Hello %@!", user.first_name];
     // setting the profileID property of the FBProfilePictureView instance
     // causes the control to fetch and display the profile picture for the user
-    //    self.profilePic.profileID = user.objectID;
-    //    self.loggedInUser = user;
-    //    uilFBUserName.text = [NSString stringWithFormat:@"%@", user.name];
+    NSLog(@"user.objectID: %@", user.objectID);
+    _fbProfilePic.profileID = user.objectID;
+    [self setFBImage];
     NSLog(@"loginViewFetchedUserInfo:(FBLoginView *)loginView");
     [uilFBUserName setText:[NSString stringWithFormat:@"%@", user.name]];
+    
     NSLog(@"user.id");
     PFQuery *query = [PFQuery queryWithClassName:@"pollstartWithGraphPath"];
     [query whereKey:@"poll" equalTo:@"tpq0***"];
@@ -239,7 +253,7 @@
                                                       NSError *error
                                                       ) {
                                       /* handle the result */
-                                      NSLog(@"%@", [nsdMe objectForKey:@"id"]);
+                                      NSLog(@"fbID: %@", [nsdMe objectForKey:@"id"]);
                                   }];
             // Do something with the found objects
             for (PFObject *object in objects) {
@@ -271,7 +285,7 @@
     // "Post Status" available when logged on and potentially when logged off.  Differentiate in the label.
     //    [self.buttonPostStatus setTitle:@"Post Status Update (Logged Off)" forState:self.buttonPostStatus.state];
     
-    //    self.profilePic.profileID = nil;
+//    fbProfilePic.profileID = nil;
     //    self.labelFirstName.text = nil;
     //    self.loggedInUser = nil;
 }
