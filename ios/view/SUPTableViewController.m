@@ -121,18 +121,10 @@
 
 - (void)setPinMap {
     MKPointAnnotation *mkpaPoint;
-//    mkpaPoint = [[MKPointAnnotation alloc] init];
-//    mkpaPoint.coordinate = CLLocationCoordinate2DMake(25.0335, 121.5651);
-//    mkpaPoint.title = @"台北市";
-//    mkpaPoint.subtitle = @"台灣首都";
-    
-    
     mkmvMap = [[MKMapView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, cgfScreenWidth * 1.195)];
     [mkmvMap addAnnotation:mkpaPoint];
-//    mkmvMap.centerCoordinate = CLLocationCoordinate2DMake(25.0335, 121.5651);
-    [mkmvMap setCenterCoordinate:CLLocationCoordinate2DMake(25.0335, 121.5651) zoomLevel:10 animated:YES];
+    [mkmvMap setCenterCoordinate:CLLocationCoordinate2DMake(25.042594, 121.614642) zoomLevel:10 animated:YES];
     for (NSInteger i = 0; i < [nsmaPlistArray count]; i++) {
-//        MKPointAnnotation *mkpaPoint;
         mkpaPoint = [[MKPointAnnotation alloc] init];
         NSLog(@"%f, %f", [[[nsmaPlistArray objectAtIndex:i]valueForKey:@"lat"]floatValue], [[[nsmaPlistArray objectAtIndex:i]valueForKey:@"lon"]floatValue]);
         mkpaPoint.coordinate = CLLocationCoordinate2DMake([[[nsmaPlistArray objectAtIndex:i]valueForKey:@"lat"]floatValue], [[[nsmaPlistArray objectAtIndex:i]valueForKey:@"lon"]floatValue]);
@@ -168,7 +160,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 30 + 3;
+    return [nsmaPlistArray count] + 3;
 }
 
 - (void)uibClickedTsai {
@@ -301,16 +293,25 @@
         UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.tableView.frame.size.width, self.tableView.frame.size.width * 78 / 640)];
         uiimv.image = uiiSUP3;
         [cell.contentView addSubview:uiimv];
-        UILabel *uilTitle = [[UILabel alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 0.18, self.tableView.frame.size.width * 0.002, self.tableView.frame.size.width * 0.45, 12.0)];
+        UILabel *uilTitle = [[UILabel alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 0.18, self.tableView.frame.size.width * 0.002, self.tableView.frame.size.width * 0.45, 18.0)];
         [uilTitle setText:[[nsmaPlistArray objectAtIndex:indexPath.row - 3]valueForKey:@"title"]];
         [uilTitle setBackgroundColor:[UIColor whiteColor]];
         [uilTitle setFont:[UIFont systemFontOfSize:12]];
         [cell.contentView addSubview:uilTitle];
-        UILabel *uilAddress = [[UILabel alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 0.18, self.tableView.frame.size.width * 0.06, self.tableView.frame.size.width * 0.45, 12.0)];
+        UILabel *uilAddress = [[UILabel alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 0.18, self.tableView.frame.size.width * 0.06, self.tableView.frame.size.width * 0.45, 18.0)];
         [uilAddress setText:[[nsmaPlistArray objectAtIndex:indexPath.row - 3]valueForKey:@"address"]];
         [uilAddress setBackgroundColor:[UIColor whiteColor]];
         [uilAddress setFont:[UIFont systemFontOfSize:12]];
         [cell.contentView addSubview:uilAddress];
+        UILabel *uilDistance = [[UILabel alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 0.82, self.tableView.frame.size.width * 0.027, self.tableView.frame.size.width * 0.2, 18.0)];
+        CLLocation *cllNow = [[CLLocation alloc]initWithLatitude:25.042594 longitude:121.614642];
+        CLLocation *cllTarget = [[CLLocation alloc]initWithLatitude:[[[nsmaPlistArray objectAtIndex:indexPath.row - 3]valueForKey:@"lat"]floatValue]
+                                                          longitude:[[[nsmaPlistArray objectAtIndex:indexPath.row - 3]valueForKey:@"lon"]floatValue]];
+        CLLocationDistance dist = [cllNow distanceFromLocation:cllTarget];
+        [uilDistance setText:[NSString stringWithFormat:@"%.1fKM", dist / 1000]];
+        [uilDistance setBackgroundColor:[UIColor whiteColor]];
+        [uilDistance setFont:[UIFont systemFontOfSize:16]];
+        [cell.contentView addSubview:uilDistance];
     }
     return cell;
 }
