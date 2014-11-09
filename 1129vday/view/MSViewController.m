@@ -83,6 +83,9 @@
 
     UITextView *uitvContent = [[UITextView alloc]initWithFrame:CGRectMake(cgfAvailableWidth * 0.06, cgfAvailableHeight * 0.65 + cgfAvailableHeightStart, cgfAvailableWidth * 0.88, cgfAvailableWidth * 0.88 * 600.0 / 1315.0)];
     uitvContent.text = @"人機不天人媽一拿的服，萬大成人放新合麗狀場轉！許一正，笑德間日呢集心起送始、思國放地；外回費十以詩驚，書火使：報界清難料一表新，課團此意式。黨資書回用除。新由那面期公年，公過說花規的和面地花的再。叫時要也展綠師合大事條帶理是老就。";
+    // Don't need been editable
+    uitvContent.editable = NO;
+
     [self.view addSubview:uitvContent];
     
     UIImageView *uiivTitleEnd =
