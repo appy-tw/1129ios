@@ -157,6 +157,12 @@
         UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 40 / 640, 0.0, self.tableView.frame.size.width * 83 / 640, self.tableView.frame.size.width * 95 / 640)];
         uiimv.image = uiiATT3;
         [cell.contentView addSubview:uiimv];
+        UILabel *uilLocationName = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 5.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.40, 15.0)];
+        [uilLocationName setText:@"西湖國小"];
+        [cell.contentView addSubview:uilLocationName];
+        UILabel *uilAddress = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 55.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.76, 15.0)];
+        [uilAddress setText:@"臺北市內湖區環山路一段25號"];
+        [cell.contentView addSubview:uilAddress];
     } else if (indexPath.row == 4) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT4];
         if (cell == nil) {
@@ -165,6 +171,7 @@
         UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 0.2867, 0.0, self.tableView.frame.size.width * 273.0 / 640.0, self.tableView.frame.size.width * 78 / 640)];
         uiimv.image = uiiATT4;
         [cell.contentView addSubview:uiimv];
+        
     } else if (indexPath.row == 5) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT2];
         if (cell == nil) {
