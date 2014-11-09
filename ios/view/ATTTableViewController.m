@@ -135,6 +135,11 @@
         [uilFBUserName setTextAlignment:NSTextAlignmentCenter];
         [cell.contentView addSubview:uilFBUserName];
         [cell.contentView addSubview:_fbProfilePic];
+        //蔡吳林的圖
+        UIImageView *uiimvTsaiWuLin = [[UIImageView alloc] initWithFrame:CGRectMake(cgfScreenWidth * 38.0 / 640.0, cgfScreenWidth * 87.0 / 640.0, cgfScreenWidth * 217.0 / 640.0, cgfScreenWidth * 217.0 / 640.0)];
+        [uiimvTsaiWuLin setImage:[UIImage imageNamed:@"tsai"]];
+        [cell.contentView addSubview:uiimvTsaiWuLin];
+//        UILabel *uil
     } else if (indexPath.row == 2) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT2];
         if (cell == nil) {
@@ -212,16 +217,10 @@
     //    [self.buttonPostStatus setTitle:@"Post Status Update (Logged On)" forState:self.buttonPostStatus.state];
 }
 
-- (void)setFBImage {
-//    for (NSObject *obj in [_fbProfilePic subviews]) {
-//        if ([obj isMemberOfClass:[UIImageView class]]) {
-//            UIImageView *objImg = (UIImageView *)obj;
-//            uiiFBImage = objImg.image;
-//            break;
-//        }
-//    }
-//    uiivFBImageView.image = uiiFBImage;
-}
+//- (UIImage *)setTsaiWuLinImage:(NSString *nssTsaiWuLin) {
+//    //蔡給tsai，吳給wu，林給lin，全給all。回傳目標的圖
+//    return 
+//}
 
 - (void)loginViewFetchedUserInfo:(FBLoginView *)loginView
                             user:(id<FBGraphUser>)user {
@@ -233,7 +232,6 @@
     // causes the control to fetch and display the profile picture for the user
     NSLog(@"user.objectID: %@", user.objectID);
     _fbProfilePic.profileID = user.objectID;
-    [self setFBImage];
     NSLog(@"loginViewFetchedUserInfo:(FBLoginView *)loginView");
     [uilFBUserName setText:[NSString stringWithFormat:@"%@", user.name]];
     
@@ -258,7 +256,6 @@
             // Do something with the found objects
             for (PFObject *object in objects) {
                 NSLog(@"%@", object.objectId);
-                //                uilMission.text = object.objectId;
             }
         } else {
             // Log details of the failure
@@ -276,18 +273,6 @@
     BOOL canShareFB = [FBDialogs canPresentShareDialogWithParams:p];
     BOOL canShareiOS6 = [FBDialogs canPresentOSIntegratedShareDialogWithSession:nil];
     BOOL canShareFBPhoto = [FBDialogs canPresentShareDialogWithPhotos];
-    
-    //    self.buttonPostStatus.enabled = canShareFB || canShareiOS6;
-    //    self.buttonPostPhoto.enabled = canShareFBPhoto;
-    //    self.buttonPickFriends.enabled = NO;
-    //    self.buttonPickPlace.enabled = NO;
-    
-    // "Post Status" available when logged on and potentially when logged off.  Differentiate in the label.
-    //    [self.buttonPostStatus setTitle:@"Post Status Update (Logged Off)" forState:self.buttonPostStatus.state];
-    
-//    fbProfilePic.profileID = nil;
-    //    self.labelFirstName.text = nil;
-    //    self.loggedInUser = nil;
 }
 
 - (void)loginView:(FBLoginView *)loginView handleError:(NSError *)error {
