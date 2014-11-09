@@ -139,6 +139,9 @@
         UIImageView *uiimvTsaiWuLin = [[UIImageView alloc] initWithFrame:CGRectMake(cgfScreenWidth * 38.0 / 640.0, cgfScreenWidth * 87.0 / 640.0, cgfScreenWidth * 217.0 / 640.0, cgfScreenWidth * 217.0 / 640.0)];
         [uiimvTsaiWuLin setImage:[UIImage imageNamed:@"tsai"]];
         [cell.contentView addSubview:uiimvTsaiWuLin];
+        UILabel *uilTsaiWuLin = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 0.15, 410.0 * cgfScreenWidth / 640.0 * 0.85, cgfScreenWidth * 0.40, 30.0)];
+        [uilTsaiWuLin setText:@"蔡正元"];
+        [cell.contentView addSubview:uilTsaiWuLin];
     } else if (indexPath.row == 2) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT2];
         if (cell == nil) {
