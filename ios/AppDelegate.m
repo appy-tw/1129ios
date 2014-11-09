@@ -13,7 +13,6 @@
 #import "BLOGTableViewController.h"
 #import "KGTableViewController.h"
 #import "SUPTableViewController.h"
-#import "GOViewController.h"
 #import "ATTTableViewController.h"
 
 #import "PointerViewController.h"
@@ -37,8 +36,6 @@
     //魔王的各領地資料
     SUPTableViewController *supTableViewController;
     //代收據點
-    GOViewController *goViewController;
-    //地圖，各票所分佈(最後弄)
     ATTTableViewController *attTableViewController;
     //討伐令，含行前事項
     PointerViewController *pointerViewController;
