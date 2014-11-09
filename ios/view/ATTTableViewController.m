@@ -139,7 +139,7 @@
         UIImageView *uiimvTsaiWuLin = [[UIImageView alloc] initWithFrame:CGRectMake(cgfScreenWidth * 38.0 / 640.0, cgfScreenWidth * 87.0 / 640.0, cgfScreenWidth * 217.0 / 640.0, cgfScreenWidth * 217.0 / 640.0)];
         [uiimvTsaiWuLin setImage:[UIImage imageNamed:@"tsai"]];
         [cell.contentView addSubview:uiimvTsaiWuLin];
-//        UILabel *uil
+        UILabel *uilgit
     } else if (indexPath.row == 2) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT2];
         if (cell == nil) {
