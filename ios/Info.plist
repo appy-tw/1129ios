@@ -15,7 +15,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1.0.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
@@ -28,13 +28,17 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>1.0.0</string>
 	<key>FacebookAppID</key>
 	<string>244089402325240</string>
 	<key>FacebookDisplayName</key>
 	<string>projectV</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Explain for what are you using the user location</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Explain for what are you using the user location</string>
 	<key>NSMainNibFile</key>
 	<string></string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -56,11 +60,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-    <!-- for requestAlwaysAuthorization -->
-    <key>NSLocationAlwaysUsageDescription</key>
-    <string>Explain for what are you using the user location</string>
-    <!-- for requestWhenInUseAuthorization -->
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>Explain for what are you using the user location</string>
 </dict>
 </plist>

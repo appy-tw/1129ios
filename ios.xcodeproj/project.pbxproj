@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8F286CE21A0F52F200CA923D /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F286CDF1A0F52F200CA923D /* UIScrollView+SVInfiniteScrolling.m */; };
+		8F286CE31A0F52F200CA923D /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F286CDF1A0F52F200CA923D /* UIScrollView+SVInfiniteScrolling.m */; };
+		8F286CE41A0F52F200CA923D /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F286CE11A0F52F200CA923D /* UIScrollView+SVPullToRefresh.m */; };
+		8F286CE51A0F52F200CA923D /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F286CE11A0F52F200CA923D /* UIScrollView+SVPullToRefresh.m */; };
 		8F2C57031A0E6507007A24A4 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F2C57021A0E6507007A24A4 /* GoogleMaps.framework */; };
 		8F2C57051A0E671C007A24A4 /* sup.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F2C57041A0E671C007A24A4 /* sup.plist */; };
 		8F2C57061A0E671C007A24A4 /* sup.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F2C57041A0E671C007A24A4 /* sup.plist */; };
@@ -92,6 +96,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8F286CDD1A0F52F200CA923D /* SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVPullToRefresh.h; sourceTree = "<group>"; };
+		8F286CDE1A0F52F200CA923D /* UIScrollView+SVInfiniteScrolling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVInfiniteScrolling.h"; sourceTree = "<group>"; };
+		8F286CDF1A0F52F200CA923D /* UIScrollView+SVInfiniteScrolling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVInfiniteScrolling.m"; sourceTree = "<group>"; };
+		8F286CE01A0F52F200CA923D /* UIScrollView+SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVPullToRefresh.h"; sourceTree = "<group>"; };
+		8F286CE11A0F52F200CA923D /* UIScrollView+SVPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVPullToRefresh.m"; sourceTree = "<group>"; };
 		8F2C57021A0E6507007A24A4 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = "../../../Downloads/GoogleMaps-iOS-1.9.0/GoogleMaps.framework"; sourceTree = "<group>"; };
 		8F2C57041A0E671C007A24A4 /* sup.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sup.plist; sourceTree = "<group>"; };
 		8F2C57081A0EAA22007A24A4 /* MKMapView+ZoomLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MKMapView+ZoomLevel.h"; path = "map/MKMapView+ZoomLevel.h"; sourceTree = "<group>"; };
@@ -203,6 +212,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8F286CDB1A0F52D900CA923D /* scroll */ = {
+			isa = PBXGroup;
+			children = (
+				8F286CDC1A0F52F200CA923D /* SVPullToRefresh */,
+			);
+			name = scroll;
+			sourceTree = "<group>";
+		};
+		8F286CDC1A0F52F200CA923D /* SVPullToRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				8F286CDD1A0F52F200CA923D /* SVPullToRefresh.h */,
+				8F286CDE1A0F52F200CA923D /* UIScrollView+SVInfiniteScrolling.h */,
+				8F286CDF1A0F52F200CA923D /* UIScrollView+SVInfiniteScrolling.m */,
+				8F286CE01A0F52F200CA923D /* UIScrollView+SVPullToRefresh.h */,
+				8F286CE11A0F52F200CA923D /* UIScrollView+SVPullToRefresh.m */,
+			);
+			path = SVPullToRefresh;
+			sourceTree = "<group>";
+		};
 		8F2C57071A0EA973007A24A4 /* map */ = {
 			isa = PBXGroup;
 			children = (
@@ -243,6 +272,7 @@
 		8FBCEB4A1A029E2C00D200A0 /* ios */ = {
 			isa = PBXGroup;
 			children = (
+				8F286CDB1A0F52D900CA923D /* scroll */,
 				8F2C57071A0EA973007A24A4 /* map */,
 				8F3BF8A21A03F6E5002F75E9 /* parse */,
 				8FBCEB741A02BDB200D200A0 /* view */,
@@ -490,12 +520,14 @@
 				8FBCEB511A029E2C00D200A0 /* AppDelegate.m in Sources */,
 				8FE0E9771A0668A3000016D1 /* GOViewController.m in Sources */,
 				8FBCEB571A029E2C00D200A0 /* ViewController.m in Sources */,
+				8F286CE21A0F52F200CA923D /* UIScrollView+SVInfiniteScrolling.m in Sources */,
 				8F2C570A1A0EAA22007A24A4 /* MKMapView+ZoomLevel.m in Sources */,
 				8FBCEB891A02BDDB00D200A0 /* MAPViewController.m in Sources */,
 				8FBCEB851A02BDDB00D200A0 /* BLOGTableViewController.m in Sources */,
 				8F3BF89B1A03DAB4002F75E9 /* UIWebView+YouTube.m in Sources */,
 				8FBCEB8F1A02BDDB00D200A0 /* TabBarController.m in Sources */,
 				8FBCEB4E1A029E2C00D200A0 /* main.m in Sources */,
+				8F286CE41A0F52F200CA923D /* UIScrollView+SVPullToRefresh.m in Sources */,
 				8FBCEB831A02BDDB00D200A0 /* BLOGTableViewCell.m in Sources */,
 				8F3A12AE1A0B73DE00C10C5D /* PointerViewController.m in Sources */,
 				8F3A12981A0B392700C10C5D /* KGTableViewController.m in Sources */,
@@ -514,7 +546,9 @@
 			files = (
 				8F3A12A11A0B394200C10C5D /* ATTTableViewController.m in Sources */,
 				8FD262181A0B8353000B8D59 /* BATTLEGROUNDViewController.m in Sources */,
+				8F286CE31A0F52F200CA923D /* UIScrollView+SVInfiniteScrolling.m in Sources */,
 				8FBCEB881A02BDDB00D200A0 /* FREEViewController.m in Sources */,
+				8F286CE51A0F52F200CA923D /* UIScrollView+SVPullToRefresh.m in Sources */,
 				8FBCEB861A02BDDB00D200A0 /* BLOGTableViewController.m in Sources */,
 				8F3BF89C1A03DAB4002F75E9 /* UIWebView+YouTube.m in Sources */,
 				8FBCEB6B1A029E2C00D200A0 /* iosTests.m in Sources */,
@@ -657,10 +691,11 @@
 					"/Users/lololol/Downloads/GoogleMaps-iOS-1.9.0",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -679,10 +714,11 @@
 					"/Users/lololol/Downloads/GoogleMaps-iOS-1.9.0",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

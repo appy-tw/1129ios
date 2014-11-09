@@ -119,6 +119,10 @@
     
 }
 
+- (void)setDistance {
+    
+}
+
 - (void)setPinMap {
     MKPointAnnotation *mkpaPoint;
     mkmvMap = [[MKMapView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, cgfScreenWidth * 1.195)];

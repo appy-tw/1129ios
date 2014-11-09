@@ -11,6 +11,8 @@
 #import "MYParseDelegate.h"
 #import "AppDelegate.h"
 
+#import "SVPullToRefresh.h"
+
 #define LOADING_CELL_TAG 1000
 
 #import "PLISTHeader.h"
@@ -93,14 +95,21 @@
            lastToAdd:(NSInteger)nsiIndexOfLastToAdd{
 //    NSInteger nsiIndexOfFirstToAdd = 0;
 //    NSInteger nsiIndexOfLastToAdd = 1;
-    NSLog(@"nsiIndexOfFirstToAdd: %ld, nsiIndexOfLastToAdd: %ld", (long)nsiIndexOfFirstToAdd, (long)nsiIndexOfLastToAdd);
-    for (NSInteger i = nsiIndexOfFirstToAdd; i <= nsiIndexOfLastToAdd; i ++) {
-        NSLog(@"%ld: %@", (long)i,[NSURL URLWithString:[nsmaImageURL objectAtIndex:i]]);
-        UIImage *uiiTmp = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[nsmaImageURL objectAtIndex:i]]]];
-        [nsmaUImage addObject:uiiTmp];
-        [nsmaCellHeight addObject:[NSString stringWithFormat: @"%.f", cgfScreenWidth * uiiTmp.size.height / uiiTmp.size.width]];
-        NSLog(@"cgfAvailableWidth * uiiTmp.size.height / uiiTmp.size.width: %@", [NSString stringWithFormat: @"%.f", cgfScreenWidth * uiiTmp.size.height / uiiTmp.size.width]);
-    }
+    
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        NSLog(@"nsiIndexOfFirstToAdd: %ld, nsiIndexOfLastToAdd: %ld", (long)nsiIndexOfFirstToAdd, (long)nsiIndexOfLastToAdd);
+        for (NSInteger i = nsiIndexOfFirstToAdd; i <= nsiIndexOfLastToAdd && i <= nsiGlobalMaximum; i ++) {
+            NSLog(@"%ld: %@", (long)i,[NSURL URLWithString:[nsmaImageURL objectAtIndex:i]]);
+            UIImage *uiiTmp = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[nsmaImageURL objectAtIndex:i]]]];
+            [nsmaUImage addObject:uiiTmp];
+            [nsmaCellHeight addObject:[NSString stringWithFormat: @"%.f", cgfScreenWidth * uiiTmp.size.height / uiiTmp.size.width]];
+            NSLog(@"cgfAvailableWidth * uiiTmp.size.height / uiiTmp.size.width: %@", [NSString stringWithFormat: @"%.f", cgfScreenWidth * uiiTmp.size.height / uiiTmp.size.width]);
+            nsiCurrentCellMaximum ++;
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
+    });
 }
 
 - (void)viewDidLoad {
@@ -109,10 +118,14 @@
     [self prepareTable];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     bHasMoreCell = YES;
-    nsiCurrentCellMaximum = 5;
+    nsiCurrentCellMaximum = 0;
     nsmaUImage = [NSMutableArray array];
     nsmaCellHeight = [NSMutableArray array];
-    [self prepareImage:0 lastToAdd:5];
+    [self prepareImage:0 lastToAdd:2];
+    [self.tableView addPullToRefreshWithActionHandler:^{
+        [self prepareImage:nsiCurrentCellMaximum + 1 lastToAdd:nsiCurrentCellMaximum + 5];
+        [self.tableView.infiniteScrollingView stopAnimating];
+    } position:SVPullToRefreshPositionBottom];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -122,12 +135,16 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete method implementation.
 //    return [_myParseDelegate.nsmaOutput count];
+    if (section == 0) {
+        return 1;
+    }
+    NSLog(@"nsiCurrentCellMaximum: %d", nsiCurrentCellMaximum);
     return nsiCurrentCellMaximum;
 }
 
@@ -137,7 +154,7 @@
     static NSString *nssGeneralCell = @"GeneralCell";
     static NSString *nssMoreCell = @"MoreCell";
     
-    if (indexPath.row == 0) {
+    if (indexPath.section == 0) {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:nssTitleCell];
         if (cell == nil) {
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssTitleCell];
@@ -148,31 +165,33 @@
         [cell.contentView addSubview:uiivJumbotron];
         return cell;
     }
+    
+    
     if (indexPath.row < nsiCurrentCellMaximum) {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:nssGeneralCell];
         if (cell == nil) {
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssGeneralCell];
         }
-        UIImage *uiiTmp = [nsmaUImage objectAtIndex:indexPath.row - 1];
+        UIImage *uiiTmp = [nsmaUImage objectAtIndex:indexPath.row];
         UIImageView *uiivJumbotron = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, cgfScreenWidth * uiiTmp.size.height / uiiTmp.size.width)];
-        uiivJumbotron.image = [nsmaUImage objectAtIndex:indexPath.row - 1];
+        uiivJumbotron.image = [nsmaUImage objectAtIndex:indexPath.row];
         [cell.contentView addSubview:uiivJumbotron];
-        UIView *uivBlackView = [[UIView alloc]initWithFrame:CGRectMake(0.0, [[nsmaCellHeight objectAtIndex:indexPath.row - 1]floatValue] - 49, cgfScreenWidth, 50.0)];
+        UIView *uivBlackView = [[UIView alloc]initWithFrame:CGRectMake(0.0, [[nsmaCellHeight objectAtIndex:indexPath.row]floatValue] - 49, cgfScreenWidth, 50.0)];
         [uivBlackView setBackgroundColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.6]];
         [cell.contentView addSubview:uivBlackView];
-        UITextView *uitvSpan = [[UITextView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 0.04, [[nsmaCellHeight objectAtIndex:indexPath.row - 1]floatValue] - 55, cgfScreenWidth * 0.92, 55.0)];
+        UITextView *uitvSpan = [[UITextView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 0.04, [[nsmaCellHeight objectAtIndex:indexPath.row]floatValue] - 55, cgfScreenWidth * 0.92, 55.0)];
         uitvSpan.editable = NO;
         [uitvSpan setFont:[UIFont systemFontOfSize:12]];
         [uitvSpan setBackgroundColor:[UIColor clearColor]];
-        [uitvSpan setText:[NSString stringWithFormat:@"%@...", [[nsmaSpan objectAtIndex:indexPath.row - 1]substringToIndex:45]]];
+        [uitvSpan setText:[NSString stringWithFormat:@"%@...", [[nsmaSpan objectAtIndex:indexPath.row]substringToIndex:45]]];
         [uitvSpan setTextColor:[UIColor whiteColor]];
         [cell.contentView addSubview:uitvSpan];
-        UITextView *uitvPubDate = [[UITextView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 0.04, [[nsmaCellHeight objectAtIndex:indexPath.row - 1]floatValue] - 25, cgfScreenWidth * 0.90, 35.0)];
+        UITextView *uitvPubDate = [[UITextView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 0.04, [[nsmaCellHeight objectAtIndex:indexPath.row]floatValue] - 25, cgfScreenWidth * 0.90, 35.0)];
         uitvPubDate.editable = NO;
         [uitvPubDate setFont:[UIFont systemFontOfSize:12]];
         [uitvPubDate setBackgroundColor:[UIColor clearColor]];
         [uitvPubDate setTextAlignment:NSTextAlignmentRight];
-        [uitvPubDate setText:[[nsmaTime objectAtIndex:indexPath.row - 1]substringToIndex:22]];
+        [uitvPubDate setText:[[nsmaTime objectAtIndex:indexPath.row]substringToIndex:22]];
         [uitvPubDate setTextColor:[UIColor whiteColor]];
         [cell.contentView addSubview:uitvPubDate];
         return cell;
@@ -207,10 +226,10 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0) {
+    if (indexPath.section == 0) {
         return cgfScreenHeightBase + self.tableView.frame.size.width * 45 / 320 + cgfScreenHeight * 0.04;
     } else {
-        return [[nsmaCellHeight objectAtIndex:indexPath.row - 1]floatValue] + 10;
+        return [[nsmaCellHeight objectAtIndex:indexPath.row]floatValue] + 10;
     }
 }
 
