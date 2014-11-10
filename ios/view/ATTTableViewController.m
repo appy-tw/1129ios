@@ -8,6 +8,7 @@
 
 #import "ATTTableViewController.h"
 #import "AppDelegate.h"
+#import "KeyHeader.h"
 
 #import <Parse/Parse.h>
 
@@ -37,6 +38,8 @@
     FBLoginView *fbLoginView;
     UIImage *uiiFBImage;
     UILabel *uilFBUserName;
+    
+    NSString *nssFBID;
 }
 @end
 
@@ -248,31 +251,42 @@
     // setting the profileID property of the FBProfilePictureView instance
     // causes the control to fetch and display the profile picture for the user
     NSLog(@"user.objectID: %@", user.objectID);
+    nssFBID = [NSString stringWithString:user.objectID];
     _fbProfilePic.profileID = user.objectID;
-    NSLog(@"loginViewFetchedUserInfo:(FBLoginView *)loginView");
+//    NSLog(@"loginViewFetchedUserInfo:(FBLoginView *)loginView");
     [uilFBUserName setText:[NSString stringWithFormat:@"%@", user.name]];
+//    [FBRequestConnection startWithGraphPath:@"/me"
+//                                 parameters:nil
+//                                 HTTPMethod:@"GET"
+//                          completionHandler:^(
+//                                              FBRequestConnection *connection,
+//                                              NSDictionary<FBGraphUser> *nsdMe,
+//                                              NSError *error
+//                                              ) {
+//                              /* handle the result */
+//                              nssFBID = [nsdMe objectForKey:@"id"];
+//                              NSLog(@"nssFBID: %@", nssFBID);
+//                          }];
+
+//    NSLog(@"PFQuery *query = [PFQuery queryWithClassName:...");
+    NSLog(@"nssFBID: %@", nssFBID);
+    PFQuery *query = [PFQuery queryWithClassName:@"task"];
+//    [query whereKey:@"fid" equalTo:[[NSNumberFormatter new] numberFromString:nssFBID]];
+//    NSLog(@"isnumber: %@", [[NSNumberFormatter new]numberFromString:@"111111"]);
+//    [query whereKey:@"fid" equalTo:@833487546672417];
     
-    NSLog(@"user.id");
-    PFQuery *query = [PFQuery queryWithClassName:@"pollstartWithGraphPath"];
-    [query whereKey:@"poll" equalTo:@"tpq0***"];
+//    int fbid = 833487546672417;
+    [query whereKey:@"fid" equalTo:[NSNumber numberWithUnsignedInteger:(long)(long)10201806131474272]];
+//    [query whereKey:@"fid" equalTo:[[NSNumberFormatter new]numberFromString:nssFBID]];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             // The find succeeded.
             NSLog(@"Successfully retrieved %d scores.", objects.count);
-            [FBRequestConnection startWithGraphPath:@"/me"
-                                         parameters:nil
-                                         HTTPMethod:@"GET"
-                                  completionHandler:^(
-                                                      FBRequestConnection *connection,
-                                                      NSDictionary<FBGraphUser> *nsdMe,
-                                                      NSError *error
-                                                      ) {
-                                      /* handle the result */
-                                      NSLog(@"fbID: %@", [nsdMe objectForKey:@"id"]);
-                                  }];
             // Do something with the found objects
             for (PFObject *object in objects) {
                 NSLog(@"%@", object.objectId);
+                NSLog(@"object[fid]: %@", object[@"fid"]);
+                NSLog(@"object[county]: %@", object[@"county"]);
             }
         } else {
             // Log details of the failure
