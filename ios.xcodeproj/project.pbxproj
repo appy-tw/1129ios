@@ -76,6 +76,7 @@
 		8FE0E9921A069D2B000016D1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FE0E9911A069D2B000016D1 /* Security.framework */; };
 		8FE0E9941A069D33000016D1 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FE0E9931A069D33000016D1 /* StoreKit.framework */; };
 		8FE0E9961A069D3C000016D1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FE0E9951A069D3C000016D1 /* SystemConfiguration.framework */; };
+		E70860FE1A1101BF00D087E0 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E70860FD1A1101BF00D087E0 /* MapViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -162,6 +163,8 @@
 		8FE0E9911A069D2B000016D1 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		8FE0E9931A069D33000016D1 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		8FE0E9951A069D3C000016D1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		E70860FC1A1101BF00D087E0 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapViewController.h; path = view/MapViewController.h; sourceTree = "<group>"; };
+		E70860FD1A1101BF00D087E0 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapViewController.m; path = view/MapViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -352,6 +355,8 @@
 				8F3A12AD1A0B73DE00C10C5D /* PointerViewController.m */,
 				8FD262151A0B8353000B8D59 /* BATTLEGROUNDViewController.h */,
 				8FD262161A0B8353000B8D59 /* BATTLEGROUNDViewController.m */,
+				E70860FC1A1101BF00D087E0 /* MapViewController.h */,
+				E70860FD1A1101BF00D087E0 /* MapViewController.m */,
 			);
 			name = "\bview";
 			sourceTree = "<group>";
@@ -523,6 +528,7 @@
 				8FBCEB511A029E2C00D200A0 /* AppDelegate.m in Sources */,
 				8F286CE21A0F52F200CA923D /* UIScrollView+SVInfiniteScrolling.m in Sources */,
 				8F2C570A1A0EAA22007A24A4 /* MKMapView+ZoomLevel.m in Sources */,
+				E70860FE1A1101BF00D087E0 /* MapViewController.m in Sources */,
 				8FBCEB851A02BDDB00D200A0 /* BLOGTableViewController.m in Sources */,
 				8F3BF89B1A03DAB4002F75E9 /* UIWebView+YouTube.m in Sources */,
 				497FC99C1A109BA6009787E9 /* VGeoManager.m in Sources */,
