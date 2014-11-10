@@ -8,8 +8,10 @@
 
 #import "SUPTableViewController.h"
 #import "AppDelegate.h"
+#import "VGeoManager.h"
 
 #import "MKMapView+ZoomLevel.h"
+#import "Utils.h"
 
 #define GEORGIA_TECH_LATITUDE 33.777328
 #define GEORGIA_TECH_LONGITUDE -84.397348
@@ -19,6 +21,10 @@
 //Code omitted
 #define IS_OS_8_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
 //Code omitted
+
+#define __MAP_HEIGHT__      280     // dir : 縮短 mapview 高度，避免 4s 下根本看不到下面的資訊
+
+#define CELL_OFFSET 3 //water: offset of first cell in shop array
 
 @interface SUPTableViewController ()
 {
@@ -39,15 +45,35 @@
     
     AppDelegate *delegate;
     
-    MKMapView *mkmvMap;
-    
     NSString *nssPlistDst;
     NSMutableArray *nsmaPlistArray;
 }
 
+@property (nonatomic, strong) MKMapView *mapView;
+
 @end
 
 @implementation SUPTableViewController
+
+- (MKMapView*)mapView
+{
+    if (_mapView)
+        return _mapView;
+    self.mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, 300)];
+    self.mapView.delegate = self;
+    
+    MKPointAnnotation *mkpaPoint;
+    [_mapView setCenterCoordinate:CLLocationCoordinate2DMake(25.042594, 121.614642) zoomLevel:10 animated:YES];
+    for(VShop* aShop in self.mShopArray){
+        mkpaPoint = [[MKPointAnnotation alloc] init];
+        mkpaPoint.coordinate = aShop.mGeoPoint.coordinate;
+        mkpaPoint.title = aShop.mTitle;
+        mkpaPoint.subtitle = aShop.mAddress;
+        [_mapView addAnnotation:mkpaPoint];
+        aShop.mAnnotation = mkpaPoint;
+    }
+    return _mapView;
+}
 
 - (void)setMyScreen
 {
@@ -59,6 +85,21 @@
     NSLog(@"status bar height:%f",[UIApplication sharedApplication].statusBarFrame.size.height);
     NSLog(@"width:%f, height:%f, tabbar:%f, navigationbarcontroller:%f", cgfScreenWidth, cgfScreenHeight, self.tabBarController.tabBar.frame.size.height, self.navigationController.navigationBar.frame.size.height);
 }
+-(void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control{
+    NSLog(@"call out tapped");
+}
+-(void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view{
+    NSLog(@"anno tapped %@", view.annotation.title);
+}
+-(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
+    if([annotation isKindOfClass:MKPointAnnotation.class]){
+        MKAnnotationView *newAnnotation=[[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"annotation1"];
+        newAnnotation.image = [UIImage imageNamed:@"sup"];
+        newAnnotation.canShowCallout=YES;
+        return newAnnotation;
+    }else // user pin
+        return nil;
+}
 
 - (void)setImage {
     uiiSUP1 = [UIImage imageNamed:@"sup1"];
@@ -66,53 +107,21 @@
     uiiSUP3 = [UIImage imageNamed:@"sup3"];
 }
 
-- (void)setMap {
-    if (delegate.cllMLocation == nil) {
-        NSLog(@"cllocationInit start");
-//        [delegate.cllMLocation requestAlwaysAuthorization];
-        delegate.cllMLocation = [[CLLocationManager alloc]init];
-//        [delegate.cllMLocation requestAlwaysAuthorization];
-        delegate.cllMLocation.delegate = self;
-        delegate.cllMLocation.desiredAccuracy = kCLLocationAccuracyBest;
-//        delegate.cllMLocation.distanceFilter = 3;
-        // New property for iOS6
-//        if ([delegate.cllMLocation respondsToSelector:@selector(activityType)]) {
-//            delegate.cllMLocation.activityType = CLActivityTypeFitness;
-//        }
-        // New method for iOS8
-//        if ([delegate.cllMLocation respondsToSelector:@selector(requestAlwaysAuthorization)]) {
-//            [delegate.cllMLocation requestAlwaysAuthorization];
-//        }
-
-        [delegate.cllMLocation startUpdatingLocation];
-        NSLog(@"cllocationInit end");
-
-        NSLog(@"latitude: %f, longitude: %f", delegate.clldLatitude, delegate.clldLongitude);
-        NSLog(@"test");
-    }
-//    NSString *routeString = [NSString stringWithFormat:@"http://maps.google.com/maps?saddr=%f,%f&daddr=%f,%f&view=map&output=html",[myData.myLat doubleValue],[myData.myLng doubleValue],[view.annotation coordinate].latitude,[view.annotation coordinate].longitude];
-}
-
 - (void)setMyAnotherMap {
-    self.cllmLocation = [[CLLocationManager alloc] init];
-    self.cllmLocation.delegate = self;
-    
-    if(IS_OS_8_OR_LATER) {
-        //[self.locationManager requestWhenInUseAuthorization];
-        [self.cllmLocation requestAlwaysAuthorization];
-        [self.cllmLocation startUpdatingLocation];
-    }
-    [self.mkmvMapView setShowsUserLocation:YES];
-    [self.mkmvMapView setUserTrackingMode:MKUserTrackingModeFollow animated:YES];
+    [self.mapView setShowsUserLocation:YES];
+    [self.mapView setUserTrackingMode:MKUserTrackingModeFollow animated:YES];
 }
-
--(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+-(void)locateUserLocation{
+    VGeoManager* geoManager = [VGeoManager sharedInstance];
+    [self locateLocation:geoManager.cllmLocation.location];
+}
+-(void)locateLocation:(CLLocation*)location{
     MKCoordinateRegion region = { { 0.0, 0.0 }, { 0.0, 0.0 } };
-    region.center.latitude = self.cllmLocation.location.coordinate.latitude;
-    region.center.longitude = self.cllmLocation.location.coordinate.longitude;
+    region.center.latitude = location.coordinate.latitude;
+    region.center.longitude = location.coordinate.longitude;
     region.span.latitudeDelta = 0.0187f;
     region.span.longitudeDelta = 0.0137f;
-    [self.mkmvMapView setRegion:region animated:YES];
+    [self.mapView setRegion:region animated:YES];
 }
 
 - (void)setAllLocation {
@@ -123,32 +132,20 @@
     
 }
 
-- (void)setPinMap {
-    MKPointAnnotation *mkpaPoint;
-    mkmvMap = [[MKMapView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, cgfScreenWidth * 1.195)];
-    [mkmvMap addAnnotation:mkpaPoint];
-    [mkmvMap setCenterCoordinate:CLLocationCoordinate2DMake(25.042594, 121.614642) zoomLevel:10 animated:YES];
-    for (NSInteger i = 0; i < [nsmaPlistArray count]; i++) {
-        mkpaPoint = [[MKPointAnnotation alloc] init];
-        NSLog(@"%f, %f", [[[nsmaPlistArray objectAtIndex:i]valueForKey:@"lat"]floatValue], [[[nsmaPlistArray objectAtIndex:i]valueForKey:@"lon"]floatValue]);
-        mkpaPoint.coordinate = CLLocationCoordinate2DMake([[[nsmaPlistArray objectAtIndex:i]valueForKey:@"lat"]floatValue], [[[nsmaPlistArray objectAtIndex:i]valueForKey:@"lon"]floatValue]);
-        mkpaPoint.title = [[nsmaPlistArray objectAtIndex:i]valueForKey:@"title"];
-        mkpaPoint.subtitle = [[nsmaPlistArray objectAtIndex:i]valueForKey:@"address"];
-        [mkmvMap addAnnotation:mkpaPoint];
-        NSLog(@"%ld", (long)i);
-    }
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.mShopArray = [NSMutableArray array];
+    [[VGeoManager sharedInstance]setup];
+    
     [self setMyScreen];
     [self readAllFromMyPlist];
-    [self setPinMap];
+//    [self setPinMap];
     [self setAllLocation];
     [self setImage];
 
 //    [self setMap];
     [self setMyAnotherMap];
+    
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 }
 
@@ -156,96 +153,107 @@
 {
     [delegate.cllMLocation stopUpdatingLocation];
     [self initMyPlist];
+    [[VGeoManager sharedInstance]start];
     [super viewDidDisappear:animated];
 }
-
+-(void)viewWillDisappear:(BOOL)animated{
+    [[VGeoManager sharedInstance]stop];
+}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [nsmaPlistArray count] + 3;
+    return [nsmaPlistArray count] + CELL_OFFSET;
 }
 
-- (void)uibClickedTsai {
-    //    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://www.facebook.com/pages/內湖南港割闌尾-正元手術房/320272928135607"]];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"fb://profile/320272928135607"]];
-}
+// dir : 這些 functions 似乎根本沒用到...
 
-- (void)uibClickedWu {
-    //    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://www.facebook.com/AppendectomyWEGO?fref=ts"]];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"fb://profile/804848699526673"]];
-}
 
-- (void)uibClickedLin {
-    //    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://www.facebook.com/AppendectomyDeWhip?fref=ts"]];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"fb://profile/602996456475061"]];
-}
+//- (void)uibClickedTsai {
+//    //    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://www.facebook.com/pages/內湖南港割闌尾-正元手術房/320272928135607"]];
+//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"fb://profile/320272928135607"]];
+//}
+//
+//- (void)uibClickedWu {
+//    //    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://www.facebook.com/AppendectomyWEGO?fref=ts"]];
+//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"fb://profile/804848699526673"]];
+//}
+//
+//- (void)uibClickedLin {
+//    //    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://www.facebook.com/AppendectomyDeWhip?fref=ts"]];
+//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"fb://profile/602996456475061"]];
+//}
+//
+//- (void)uibClickedDragon {
+//    //    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://www.facebook.com/TotalRecall2014"]];
+//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"fb://profile/620780968013532"]];
+//}
+//
+//- (void)uibClickedHuang {
+//    //    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://www.facebook.com/apkh.tw"]];
+//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"fb://profile/337299219755438"]];
+//}
+//
+//- (void)uibClickedCountry {
+//    //    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://www.facebook.com/apkh.tw"]];
+//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"fb://profile/337299219755438"]];
+//}
 
-- (void)uibClickedDragon {
-    //    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://www.facebook.com/TotalRecall2014"]];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"fb://profile/620780968013532"]];
-}
 
-- (void)uibClickedHuang {
-    //    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://www.facebook.com/apkh.tw"]];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"fb://profile/337299219755438"]];
-}
+//- (void)setButton:(UITableViewCell *)cell offset:(CGFloat)cgfBaseHeight {
+//    UIButton *uibTsai = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//    uibTsai.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+//    uibTsai.frame = CGRectMake(self.tableView.frame.size.width * 0.06, self.tableView.frame.size.width * 0.14 + cgfBaseHeight, self.tableView.frame.size.width * 0.78, self.tableView.frame.size.width * 0.88 * 154.0 / 1315.0);
+//    [uibTsai addTarget:self action:@selector(uibClickedTsai) forControlEvents:UIControlEventTouchUpInside];
+//    uibTsai.tintColor = [UIColor blackColor];
+//    [uibTsai setTitle:@"蔡正元選區：正元手術房" forState:UIControlStateNormal];
+//    [cell.contentView addSubview:uibTsai];
+//    
+//    UIButton *uibWu = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//    uibWu.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+//    uibWu.frame = CGRectMake(self.tableView.frame.size.width * 0.06, self.tableView.frame.size.width * 0.21 + cgfBaseHeight, self.tableView.frame.size.width * 0.78, self.tableView.frame.size.width * 0.88 * 154.0 / 1315.0);
+//    [uibWu addTarget:self action:@selector(uibClickedWu) forControlEvents:UIControlEventTouchUpInside];
+//    uibWu.tintColor = [UIColor blackColor];
+//    [uibWu setTitle:@"吳育昇選區：海口夯社" forState:UIControlStateNormal];
+//    [cell.contentView addSubview:uibWu];
+//    
+//    UIButton *uibLin = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//    uibLin.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+//    uibLin.frame = CGRectMake(self.tableView.frame.size.width * 0.06, self.tableView.frame.size.width * 0.28 + cgfBaseHeight, self.tableView.frame.size.width * 0.78, self.tableView.frame.size.width * 0.88 * 154.0 / 1315.0);
+//    [uibLin addTarget:self action:@selector(uibClickedLin) forControlEvents:UIControlEventTouchUpInside];
+//    uibLin.tintColor = [UIColor blackColor];
+//    [uibLin setTitle:@"林鴻池選區：板橋手術中" forState:UIControlStateNormal];
+//    [cell.contentView addSubview:uibLin];
+//    
+//    UIButton *uibDragon = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//    uibDragon.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+//    uibDragon.frame = CGRectMake(self.tableView.frame.size.width * 0.06, self.tableView.frame.size.width * 0.46 + cgfBaseHeight, self.tableView.frame.size.width * 0.78, self.tableView.frame.size.width * 0.88 * 154.0 / 1315.0);
+//    [uibDragon addTarget:self action:@selector(uibClickedDragon) forControlEvents:UIControlEventTouchUpInside];
+//    uibDragon.tintColor = [UIColor blackColor];
+//    [uibDragon setTitle:@"蔡錦龍選區" forState:UIControlStateNormal];
+//    [cell.contentView addSubview:uibDragon];
+//    
+//    UIButton *uibHuang = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//    uibHuang.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+//    uibHuang.frame = CGRectMake(self.tableView.frame.size.width * 0.06, self.tableView.frame.size.width * 0.90 + cgfBaseHeight, self.tableView.frame.size.width * 0.78, self.tableView.frame.size.width * 0.88 * 154.0 / 1315.0);
+//    [uibHuang addTarget:self action:@selector(uibClickedHuang) forControlEvents:UIControlEventTouchUpInside];
+//    uibHuang.tintColor = [UIColor blackColor];
+//    [uibHuang setTitle:@"黃昭順選區" forState:UIControlStateNormal];
+//    [cell.contentView addSubview:uibHuang];
+//    
+//    UIButton *uibCountry = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//    uibCountry.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+//    uibCountry.frame = CGRectMake(self.tableView.frame.size.width * 0.06, self.tableView.frame.size.width * 0.97 + cgfBaseHeight, self.tableView.frame.size.width * 0.78, self.tableView.frame.size.width * 0.88 * 154.0 / 1315.0);
+//    [uibCountry addTarget:self action:@selector(uibClickedCountry) forControlEvents:UIControlEventTouchUpInside];
+//    uibCountry.tintColor = [UIColor blackColor];
+//    [uibCountry setTitle:@"林國正選區" forState:UIControlStateNormal];
+//    [cell.contentView addSubview:uibCountry];
+//}
 
-- (void)uibClickedCountry {
-    //    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://www.facebook.com/apkh.tw"]];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"fb://profile/337299219755438"]];
-}
-
-- (void)setButton:(UITableViewCell *)cell offset:(CGFloat)cgfBaseHeight {
-    UIButton *uibTsai = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    uibTsai.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    uibTsai.frame = CGRectMake(self.tableView.frame.size.width * 0.06, self.tableView.frame.size.width * 0.14 + cgfBaseHeight, self.tableView.frame.size.width * 0.78, self.tableView.frame.size.width * 0.88 * 154.0 / 1315.0);
-    [uibTsai addTarget:self action:@selector(uibClickedTsai) forControlEvents:UIControlEventTouchUpInside];
-    uibTsai.tintColor = [UIColor blackColor];
-    [uibTsai setTitle:@"蔡正元選區：正元手術房" forState:UIControlStateNormal];
-    [cell.contentView addSubview:uibTsai];
-    
-    UIButton *uibWu = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    uibWu.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    uibWu.frame = CGRectMake(self.tableView.frame.size.width * 0.06, self.tableView.frame.size.width * 0.21 + cgfBaseHeight, self.tableView.frame.size.width * 0.78, self.tableView.frame.size.width * 0.88 * 154.0 / 1315.0);
-    [uibWu addTarget:self action:@selector(uibClickedWu) forControlEvents:UIControlEventTouchUpInside];
-    uibWu.tintColor = [UIColor blackColor];
-    [uibWu setTitle:@"吳育昇選區：海口夯社" forState:UIControlStateNormal];
-    [cell.contentView addSubview:uibWu];
-    
-    UIButton *uibLin = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    uibLin.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    uibLin.frame = CGRectMake(self.tableView.frame.size.width * 0.06, self.tableView.frame.size.width * 0.28 + cgfBaseHeight, self.tableView.frame.size.width * 0.78, self.tableView.frame.size.width * 0.88 * 154.0 / 1315.0);
-    [uibLin addTarget:self action:@selector(uibClickedLin) forControlEvents:UIControlEventTouchUpInside];
-    uibLin.tintColor = [UIColor blackColor];
-    [uibLin setTitle:@"林鴻池選區：板橋手術中" forState:UIControlStateNormal];
-    [cell.contentView addSubview:uibLin];
-    
-    UIButton *uibDragon = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    uibDragon.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    uibDragon.frame = CGRectMake(self.tableView.frame.size.width * 0.06, self.tableView.frame.size.width * 0.46 + cgfBaseHeight, self.tableView.frame.size.width * 0.78, self.tableView.frame.size.width * 0.88 * 154.0 / 1315.0);
-    [uibDragon addTarget:self action:@selector(uibClickedDragon) forControlEvents:UIControlEventTouchUpInside];
-    uibDragon.tintColor = [UIColor blackColor];
-    [uibDragon setTitle:@"蔡錦龍選區" forState:UIControlStateNormal];
-    [cell.contentView addSubview:uibDragon];
-    
-    UIButton *uibHuang = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    uibHuang.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    uibHuang.frame = CGRectMake(self.tableView.frame.size.width * 0.06, self.tableView.frame.size.width * 0.90 + cgfBaseHeight, self.tableView.frame.size.width * 0.78, self.tableView.frame.size.width * 0.88 * 154.0 / 1315.0);
-    [uibHuang addTarget:self action:@selector(uibClickedHuang) forControlEvents:UIControlEventTouchUpInside];
-    uibHuang.tintColor = [UIColor blackColor];
-    [uibHuang setTitle:@"黃昭順選區" forState:UIControlStateNormal];
-    [cell.contentView addSubview:uibHuang];
-    
-    UIButton *uibCountry = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    uibCountry.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    uibCountry.frame = CGRectMake(self.tableView.frame.size.width * 0.06, self.tableView.frame.size.width * 0.97 + cgfBaseHeight, self.tableView.frame.size.width * 0.78, self.tableView.frame.size.width * 0.88 * 154.0 / 1315.0);
-    [uibCountry addTarget:self action:@selector(uibClickedCountry) forControlEvents:UIControlEventTouchUpInside];
-    uibCountry.tintColor = [UIColor blackColor];
-    [uibCountry setTitle:@"林國正選區" forState:UIControlStateNormal];
-    [cell.contentView addSubview:uibCountry];
-}
+#define __Title_Tag__       55
+#define __Address_Tag__     66
+#define __Distance_Tag__    77
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *nssIDSUP1 = @"SUP1";
@@ -280,7 +288,8 @@
 //        UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.tableView.frame.size.width, self.tableView.frame.size.width * 398 / 640)];
 //        uiimv.image = uiiSUP2;
 //        [cell.contentView addSubview:uiimv];
-        [cell.contentView addSubview:mkmvMap];
+        [cell.contentView addSubview:self.mapView];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     } else if (indexPath.row == 2) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDSUP3];
         if (cell == nil) {
@@ -293,29 +302,37 @@
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDSUP4];
         if (cell == nil) {
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDSUP4];
+            UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.tableView.frame.size.width, self.tableView.frame.size.width * 78 / 640)];
+            uiimv.image = uiiSUP3;
+            [cell.contentView addSubview:uiimv];
+            UILabel *uilTitle = [[UILabel alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 0.18, self.tableView.frame.size.width * 0.002, self.tableView.frame.size.width * 0.45, 18.0)];
+            UILabel *uilAddress = [[UILabel alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 0.18, self.tableView.frame.size.width * 0.06, self.tableView.frame.size.width * 0.45, 18.0)];
+            UILabel *uilDistance = [[UILabel alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 0.82, self.tableView.frame.size.width * 0.027, self.tableView.frame.size.width * 0.2, 18.0)];
+            uilTitle.tag = __Title_Tag__;
+            uilAddress.tag = __Address_Tag__;
+            uilDistance.tag = __Distance_Tag__;
+            [cell.contentView addSubview:uilTitle];
+            [cell.contentView addSubview:uilAddress];
+            [cell.contentView addSubview:uilDistance];
+            [uilTitle setBackgroundColor:[UIColor whiteColor]];
+            [uilTitle setFont:[UIFont systemFontOfSize:12]];
+            [uilAddress setBackgroundColor:[UIColor whiteColor]];
+            [uilAddress setFont:[UIFont systemFontOfSize:12]];
+            [uilDistance setBackgroundColor:[UIColor whiteColor]];
+            [uilDistance setFont:[UIFont systemFontOfSize:16]];
         }
-        UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.tableView.frame.size.width, self.tableView.frame.size.width * 78 / 640)];
-        uiimv.image = uiiSUP3;
-        [cell.contentView addSubview:uiimv];
-        UILabel *uilTitle = [[UILabel alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 0.18, self.tableView.frame.size.width * 0.002, self.tableView.frame.size.width * 0.45, 18.0)];
-        [uilTitle setText:[[nsmaPlistArray objectAtIndex:indexPath.row - 3]valueForKey:@"title"]];
-        [uilTitle setBackgroundColor:[UIColor whiteColor]];
-        [uilTitle setFont:[UIFont systemFontOfSize:12]];
-        [cell.contentView addSubview:uilTitle];
-        UILabel *uilAddress = [[UILabel alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 0.18, self.tableView.frame.size.width * 0.06, self.tableView.frame.size.width * 0.45, 18.0)];
-        [uilAddress setText:[[nsmaPlistArray objectAtIndex:indexPath.row - 3]valueForKey:@"address"]];
-        [uilAddress setBackgroundColor:[UIColor whiteColor]];
-        [uilAddress setFont:[UIFont systemFontOfSize:12]];
-        [cell.contentView addSubview:uilAddress];
-        UILabel *uilDistance = [[UILabel alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 0.82, self.tableView.frame.size.width * 0.027, self.tableView.frame.size.width * 0.2, 18.0)];
-        CLLocation *cllNow = [[CLLocation alloc]initWithLatitude:25.042594 longitude:121.614642];
-        CLLocation *cllTarget = [[CLLocation alloc]initWithLatitude:[[[nsmaPlistArray objectAtIndex:indexPath.row - 3]valueForKey:@"lat"]floatValue]
-                                                          longitude:[[[nsmaPlistArray objectAtIndex:indexPath.row - 3]valueForKey:@"lon"]floatValue]];
-        CLLocationDistance dist = [cllNow distanceFromLocation:cllTarget];
-        [uilDistance setText:[NSString stringWithFormat:@"%.1fKM", dist / 1000]];
-        [uilDistance setBackgroundColor:[UIColor whiteColor]];
-        [uilDistance setFont:[UIFont systemFontOfSize:16]];
-        [cell.contentView addSubview:uilDistance];
+        
+        UILabel *titleLabel = (UILabel*)[cell viewWithTag:__Title_Tag__];
+        UILabel *addressLabel = (UILabel*)[cell viewWithTag:__Address_Tag__];
+        UILabel *distanceLabel = (UILabel*)[cell viewWithTag:__Distance_Tag__];
+        
+        VShop* aShop = [self.mShopArray objectAtIndex:indexPath.row-CELL_OFFSET];
+        
+        [titleLabel setText:aShop.mTitle];
+        [addressLabel setText:aShop.mAddress];
+        CLLocationDistance dist = aShop.mDistance;
+        [distanceLabel setText:[NSString stringWithFormat:@"%.1fKM", dist / 1000]];
+        cell.tag = [self.mShopArray indexOfObject: aShop];
     }
     return cell;
 }
@@ -325,12 +342,26 @@
     if (indexPath.row == 0) {
         return cgfScreenHeightBase + self.tableView.frame.size.width * 90 / 640 + 20.0;
     } else if (indexPath.row == 1) {
-        return self.tableView.frame.size.width * 1.2;
+        return __MAP_HEIGHT__;
+//        return self.tableView.frame.size.width * 1.2;
     } else if (indexPath.row == 2) {
         return self.tableView.frame.size.width * 36 / 640;
     } else {
         return self.tableView.frame.size.width * 98 / 640;
     }
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(indexPath.row == 0){
+        [self locateUserLocation];
+    }else if(indexPath.row > 1){ // click on VShop
+        UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
+        VShop* aShop = [self.mShopArray objectAtIndex:cell.tag];
+        [self toggleShop:aShop];
+    }
+}
+-(void)toggleShop:(VShop*)aShop{
+    [self locateLocation:aShop.mGeoPoint];
+    [_mapView selectAnnotation:aShop.mAnnotation animated:YES];
 }
 
 //[[CLLocationInit
@@ -423,6 +454,15 @@
     }
     nsmaPlistArray = [NSMutableArray arrayWithContentsOfFile:nssPlistDst];
     NSLog(@"%lu", (unsigned long)[nsmaPlistArray count]);
+    for(NSDictionary* obj in nsmaPlistArray){
+        VShop* aShop = [[VShop alloc]init];
+        aShop.mTitle = [obj valueForKey:@"title"];
+        aShop.mAddress = [obj valueForKey:@"address"];
+        aShop.mGeoPoint = [[CLLocation alloc]initWithLatitude:[[obj valueForKey:@"lat"]floatValue]
+                                                    longitude:[[obj valueForKey:@"lon"]floatValue]];
+        [self.mShopArray addObject:aShop];
+    }
+    self.mShopArray = [NSMutableArray arrayWithArray:[self.mShopArray sortedArrayUsingSelector:@selector(compare:)]];
 }
 
 //]]Plist

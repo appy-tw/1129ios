@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		497FC9961A108B9A009787E9 /* VShop.m in Sources */ = {isa = PBXBuildFile; fileRef = 497FC9951A108B9A009787E9 /* VShop.m */; };
+		497FC9991A109286009787E9 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 497FC9981A109286009787E9 /* Utils.m */; };
+		497FC99C1A109BA6009787E9 /* VGeoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 497FC99B1A109BA6009787E9 /* VGeoManager.m */; };
 		8F286CE21A0F52F200CA923D /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F286CDF1A0F52F200CA923D /* UIScrollView+SVInfiniteScrolling.m */; };
 		8F286CE31A0F52F200CA923D /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F286CDF1A0F52F200CA923D /* UIScrollView+SVInfiniteScrolling.m */; };
 		8F286CE41A0F52F200CA923D /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F286CE11A0F52F200CA923D /* UIScrollView+SVPullToRefresh.m */; };
 		8F286CE51A0F52F200CA923D /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F286CE11A0F52F200CA923D /* UIScrollView+SVPullToRefresh.m */; };
-		8F2C57031A0E6507007A24A4 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F2C57021A0E6507007A24A4 /* GoogleMaps.framework */; };
 		8F2C57051A0E671C007A24A4 /* sup.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F2C57041A0E671C007A24A4 /* sup.plist */; };
 		8F2C57061A0E671C007A24A4 /* sup.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F2C57041A0E671C007A24A4 /* sup.plist */; };
 		8F2C570A1A0EAA22007A24A4 /* MKMapView+ZoomLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2C57091A0EAA22007A24A4 /* MKMapView+ZoomLevel.m */; };
@@ -40,19 +42,12 @@
 		8FBCEB4E1A029E2C00D200A0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBCEB4D1A029E2C00D200A0 /* main.m */; };
 		8FBCEB511A029E2C00D200A0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBCEB501A029E2C00D200A0 /* AppDelegate.m */; };
 		8FBCEB541A029E2C00D200A0 /* ios.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8FBCEB521A029E2C00D200A0 /* ios.xcdatamodeld */; };
-		8FBCEB571A029E2C00D200A0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBCEB561A029E2C00D200A0 /* ViewController.m */; };
 		8FBCEB5C1A029E2C00D200A0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8FBCEB5B1A029E2C00D200A0 /* Images.xcassets */; };
 		8FBCEB6B1A029E2C00D200A0 /* iosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBCEB6A1A029E2C00D200A0 /* iosTests.m */; };
 		8FBCEB831A02BDDB00D200A0 /* BLOGTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBCEB761A02BDDB00D200A0 /* BLOGTableViewCell.m */; };
 		8FBCEB841A02BDDB00D200A0 /* BLOGTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBCEB761A02BDDB00D200A0 /* BLOGTableViewCell.m */; };
 		8FBCEB851A02BDDB00D200A0 /* BLOGTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBCEB781A02BDDB00D200A0 /* BLOGTableViewController.m */; };
 		8FBCEB861A02BDDB00D200A0 /* BLOGTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBCEB781A02BDDB00D200A0 /* BLOGTableViewController.m */; };
-		8FBCEB871A02BDDB00D200A0 /* FREEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBCEB7A1A02BDDB00D200A0 /* FREEViewController.m */; };
-		8FBCEB881A02BDDB00D200A0 /* FREEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBCEB7A1A02BDDB00D200A0 /* FREEViewController.m */; };
-		8FBCEB891A02BDDB00D200A0 /* MAPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBCEB7C1A02BDDB00D200A0 /* MAPViewController.m */; };
-		8FBCEB8A1A02BDDB00D200A0 /* MAPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBCEB7C1A02BDDB00D200A0 /* MAPViewController.m */; };
-		8FBCEB8B1A02BDDB00D200A0 /* MSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBCEB7E1A02BDDB00D200A0 /* MSViewController.m */; };
-		8FBCEB8C1A02BDDB00D200A0 /* MSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBCEB7E1A02BDDB00D200A0 /* MSViewController.m */; };
 		8FBCEB8F1A02BDDB00D200A0 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBCEB821A02BDDB00D200A0 /* TabBarController.m */; };
 		8FBCEB901A02BDDB00D200A0 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBCEB821A02BDDB00D200A0 /* TabBarController.m */; };
 		8FD262171A0B8353000B8D59 /* BATTLEGROUNDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD262161A0B8353000B8D59 /* BATTLEGROUNDViewController.m */; };
@@ -69,8 +64,6 @@
 		8FE0E8471A061DD4000016D1 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 8FE0E7291A061DD3000016D1 /* LICENSE */; };
 		8FE0E8481A061DD4000016D1 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8FE0E72A1A061DD3000016D1 /* README.txt */; };
 		8FE0E8491A061DD4000016D1 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8FE0E72A1A061DD3000016D1 /* README.txt */; };
-		8FE0E9771A0668A3000016D1 /* GOViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0E9761A0668A3000016D1 /* GOViewController.m */; };
-		8FE0E9781A0668A3000016D1 /* GOViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0E9761A0668A3000016D1 /* GOViewController.m */; };
 		8FE0E97C1A0699B1000016D1 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FE0E97B1A0699B1000016D1 /* Parse.framework */; };
 		8FE0E97D1A0699B1000016D1 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FE0E97B1A0699B1000016D1 /* Parse.framework */; };
 		8FE0E9871A069CF3000016D1 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FE0E97E1A0699E2000016D1 /* AudioToolbox.framework */; };
@@ -96,6 +89,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		497FC9941A108B9A009787E9 /* VShop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VShop.h; sourceTree = "<group>"; };
+		497FC9951A108B9A009787E9 /* VShop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VShop.m; sourceTree = "<group>"; };
+		497FC9971A109286009787E9 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		497FC9981A109286009787E9 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		497FC99A1A109BA6009787E9 /* VGeoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VGeoManager.h; sourceTree = "<group>"; };
+		497FC99B1A109BA6009787E9 /* VGeoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VGeoManager.m; sourceTree = "<group>"; };
+		497FC99E1A109C75009787E9 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynthesizeSingleton.h; sourceTree = "<group>"; };
 		8F286CDD1A0F52F200CA923D /* SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVPullToRefresh.h; sourceTree = "<group>"; };
 		8F286CDE1A0F52F200CA923D /* UIScrollView+SVInfiniteScrolling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVInfiniteScrolling.h"; sourceTree = "<group>"; };
 		8F286CDF1A0F52F200CA923D /* UIScrollView+SVInfiniteScrolling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVInfiniteScrolling.m"; sourceTree = "<group>"; };
@@ -132,8 +132,6 @@
 		8FBCEB4F1A029E2C00D200A0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8FBCEB501A029E2C00D200A0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		8FBCEB531A029E2C00D200A0 /* ios.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ios.xcdatamodel; sourceTree = "<group>"; };
-		8FBCEB551A029E2C00D200A0 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		8FBCEB561A029E2C00D200A0 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		8FBCEB5B1A029E2C00D200A0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		8FBCEB641A029E2C00D200A0 /* iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FBCEB691A029E2C00D200A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -142,12 +140,6 @@
 		8FBCEB761A02BDDB00D200A0 /* BLOGTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BLOGTableViewCell.m; path = view/BLOGTableViewCell.m; sourceTree = "<group>"; };
 		8FBCEB771A02BDDB00D200A0 /* BLOGTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BLOGTableViewController.h; path = view/BLOGTableViewController.h; sourceTree = "<group>"; };
 		8FBCEB781A02BDDB00D200A0 /* BLOGTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BLOGTableViewController.m; path = view/BLOGTableViewController.m; sourceTree = "<group>"; };
-		8FBCEB791A02BDDB00D200A0 /* FREEViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FREEViewController.h; path = view/FREEViewController.h; sourceTree = "<group>"; };
-		8FBCEB7A1A02BDDB00D200A0 /* FREEViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FREEViewController.m; path = view/FREEViewController.m; sourceTree = "<group>"; };
-		8FBCEB7B1A02BDDB00D200A0 /* MAPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MAPViewController.h; path = view/MAPViewController.h; sourceTree = "<group>"; };
-		8FBCEB7C1A02BDDB00D200A0 /* MAPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MAPViewController.m; path = view/MAPViewController.m; sourceTree = "<group>"; };
-		8FBCEB7D1A02BDDB00D200A0 /* MSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MSViewController.h; path = view/MSViewController.h; sourceTree = "<group>"; };
-		8FBCEB7E1A02BDDB00D200A0 /* MSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MSViewController.m; path = view/MSViewController.m; sourceTree = "<group>"; };
 		8FBCEB811A02BDDB00D200A0 /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TabBarController.h; path = view/TabBarController.h; sourceTree = "<group>"; };
 		8FBCEB821A02BDDB00D200A0 /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TabBarController.m; path = view/TabBarController.m; sourceTree = "<group>"; };
 		8FD262151A0B8353000B8D59 /* BATTLEGROUNDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BATTLEGROUNDViewController.h; path = view/BATTLEGROUNDViewController.h; sourceTree = "<group>"; };
@@ -158,8 +150,6 @@
 		8FE0E6FE1A061DD3000016D1 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		8FE0E7291A061DD3000016D1 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		8FE0E72A1A061DD3000016D1 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
-		8FE0E9751A0668A3000016D1 /* GOViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GOViewController.h; path = view/GOViewController.h; sourceTree = "<group>"; };
-		8FE0E9761A0668A3000016D1 /* GOViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GOViewController.m; path = view/GOViewController.m; sourceTree = "<group>"; };
 		8FE0E97A1A068A00000016D1 /* KeyHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyHeader.h; path = ../KeyHeader.h; sourceTree = "<group>"; };
 		8FE0E97B1A0699B1000016D1 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		8FE0E97E1A0699E2000016D1 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -179,7 +169,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F2C57031A0E6507007A24A4 /* GoogleMaps.framework in Frameworks */,
 				8F3A12A71A0B58B400C10C5D /* MapKit.framework in Frameworks */,
 				8FE0E9961A069D3C000016D1 /* SystemConfiguration.framework in Frameworks */,
 				8FE0E9941A069D33000016D1 /* StoreKit.framework in Frameworks */,
@@ -212,6 +201,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		497FC9931A108B72009787E9 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				497FC9941A108B9A009787E9 /* VShop.h */,
+				497FC9951A108B9A009787E9 /* VShop.m */,
+				497FC99A1A109BA6009787E9 /* VGeoManager.h */,
+				497FC99B1A109BA6009787E9 /* VGeoManager.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		497FC99D1A109C75009787E9 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				497FC99E1A109C75009787E9 /* SynthesizeSingleton.h */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		8F286CDB1A0F52D900CA923D /* scroll */ = {
 			isa = PBXGroup;
 			children = (
@@ -272,19 +280,21 @@
 		8FBCEB4A1A029E2C00D200A0 /* ios */ = {
 			isa = PBXGroup;
 			children = (
+				497FC99D1A109C75009787E9 /* Common */,
+				497FC9931A108B72009787E9 /* model */,
 				8F286CDB1A0F52D900CA923D /* scroll */,
 				8F2C57071A0EA973007A24A4 /* map */,
 				8F3BF8A21A03F6E5002F75E9 /* parse */,
 				8FBCEB741A02BDB200D200A0 /* view */,
 				8FBCEB4F1A029E2C00D200A0 /* AppDelegate.h */,
 				8FBCEB501A029E2C00D200A0 /* AppDelegate.m */,
-				8FBCEB551A029E2C00D200A0 /* ViewController.h */,
-				8FBCEB561A029E2C00D200A0 /* ViewController.m */,
 				8FBCEB5B1A029E2C00D200A0 /* Images.xcassets */,
 				8FBCEB521A029E2C00D200A0 /* ios.xcdatamodeld */,
 				8FBCEB4B1A029E2C00D200A0 /* Supporting Files */,
 				8F3BF8AA1A040BC5002F75E9 /* PLISTHeader.h */,
 				8FE0E97A1A068A00000016D1 /* KeyHeader.h */,
+				497FC9971A109286009787E9 /* Utils.h */,
+				497FC9981A109286009787E9 /* Utils.m */,
 			);
 			path = ios;
 			sourceTree = "<group>";
@@ -330,16 +340,8 @@
 				8FBCEB761A02BDDB00D200A0 /* BLOGTableViewCell.m */,
 				8FBCEB771A02BDDB00D200A0 /* BLOGTableViewController.h */,
 				8FBCEB781A02BDDB00D200A0 /* BLOGTableViewController.m */,
-				8FBCEB791A02BDDB00D200A0 /* FREEViewController.h */,
-				8FBCEB7A1A02BDDB00D200A0 /* FREEViewController.m */,
-				8FBCEB7B1A02BDDB00D200A0 /* MAPViewController.h */,
-				8FBCEB7C1A02BDDB00D200A0 /* MAPViewController.m */,
-				8FBCEB7D1A02BDDB00D200A0 /* MSViewController.h */,
-				8FBCEB7E1A02BDDB00D200A0 /* MSViewController.m */,
 				8FBCEB811A02BDDB00D200A0 /* TabBarController.h */,
 				8FBCEB821A02BDDB00D200A0 /* TabBarController.m */,
-				8FE0E9751A0668A3000016D1 /* GOViewController.h */,
-				8FE0E9761A0668A3000016D1 /* GOViewController.m */,
 				8F3A12961A0B392700C10C5D /* KGTableViewController.h */,
 				8F3A12971A0B392700C10C5D /* KGTableViewController.m */,
 				8F3A129A1A0B393500C10C5D /* SUPTableViewController.h */,
@@ -445,7 +447,6 @@
 				TargetAttributes = {
 					8FBCEB471A029E2C00D200A0 = {
 						CreatedOnToolsVersion = 6.1;
-						DevelopmentTeam = DEATJ76XRX;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
 								enabled = 1;
@@ -454,6 +455,7 @@
 					};
 					8FBCEB631A029E2C00D200A0 = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = 9SFGMQE6W6;
 						TestTargetID = 8FBCEB471A029E2C00D200A0;
 					};
 				};
@@ -515,19 +517,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				497FC9961A108B9A009787E9 /* VShop.m in Sources */,
 				8F839D221A07B77E0071654C /* MSTableViewController.m in Sources */,
 				8FBCEB541A029E2C00D200A0 /* ios.xcdatamodeld in Sources */,
 				8FBCEB511A029E2C00D200A0 /* AppDelegate.m in Sources */,
-				8FE0E9771A0668A3000016D1 /* GOViewController.m in Sources */,
-				8FBCEB571A029E2C00D200A0 /* ViewController.m in Sources */,
 				8F286CE21A0F52F200CA923D /* UIScrollView+SVInfiniteScrolling.m in Sources */,
 				8F2C570A1A0EAA22007A24A4 /* MKMapView+ZoomLevel.m in Sources */,
-				8FBCEB891A02BDDB00D200A0 /* MAPViewController.m in Sources */,
 				8FBCEB851A02BDDB00D200A0 /* BLOGTableViewController.m in Sources */,
 				8F3BF89B1A03DAB4002F75E9 /* UIWebView+YouTube.m in Sources */,
+				497FC99C1A109BA6009787E9 /* VGeoManager.m in Sources */,
 				8FBCEB8F1A02BDDB00D200A0 /* TabBarController.m in Sources */,
 				8FBCEB4E1A029E2C00D200A0 /* main.m in Sources */,
 				8F286CE41A0F52F200CA923D /* UIScrollView+SVPullToRefresh.m in Sources */,
+				497FC9991A109286009787E9 /* Utils.m in Sources */,
 				8FBCEB831A02BDDB00D200A0 /* BLOGTableViewCell.m in Sources */,
 				8F3A12AE1A0B73DE00C10C5D /* PointerViewController.m in Sources */,
 				8F3A12981A0B392700C10C5D /* KGTableViewController.m in Sources */,
@@ -535,8 +537,6 @@
 				8FD262171A0B8353000B8D59 /* BATTLEGROUNDViewController.m in Sources */,
 				8F3BF8A51A03F718002F75E9 /* MYParseDelegate.m in Sources */,
 				8F3A12A01A0B394200C10C5D /* ATTTableViewController.m in Sources */,
-				8FBCEB8B1A02BDDB00D200A0 /* MSViewController.m in Sources */,
-				8FBCEB871A02BDDB00D200A0 /* FREEViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -547,20 +547,16 @@
 				8F3A12A11A0B394200C10C5D /* ATTTableViewController.m in Sources */,
 				8FD262181A0B8353000B8D59 /* BATTLEGROUNDViewController.m in Sources */,
 				8F286CE31A0F52F200CA923D /* UIScrollView+SVInfiniteScrolling.m in Sources */,
-				8FBCEB881A02BDDB00D200A0 /* FREEViewController.m in Sources */,
 				8F286CE51A0F52F200CA923D /* UIScrollView+SVPullToRefresh.m in Sources */,
 				8FBCEB861A02BDDB00D200A0 /* BLOGTableViewController.m in Sources */,
 				8F3BF89C1A03DAB4002F75E9 /* UIWebView+YouTube.m in Sources */,
 				8FBCEB6B1A029E2C00D200A0 /* iosTests.m in Sources */,
 				8F3BF8A61A03F718002F75E9 /* MYParseDelegate.m in Sources */,
 				8F3A12991A0B392700C10C5D /* KGTableViewController.m in Sources */,
-				8FBCEB8A1A02BDDB00D200A0 /* MAPViewController.m in Sources */,
-				8FE0E9781A0668A3000016D1 /* GOViewController.m in Sources */,
 				8F2C570B1A0EAA22007A24A4 /* MKMapView+ZoomLevel.m in Sources */,
 				8F3A129D1A0B393500C10C5D /* SUPTableViewController.m in Sources */,
 				8FBCEB901A02BDDB00D200A0 /* TabBarController.m in Sources */,
 				8F839D231A07B77E0071654C /* MSTableViewController.m in Sources */,
-				8FBCEB8C1A02BDDB00D200A0 /* MSViewController.m in Sources */,
 				8FBCEB841A02BDDB00D200A0 /* BLOGTableViewCell.m in Sources */,
 				8F3A12AF1A0B73DE00C10C5D /* PointerViewController.m in Sources */,
 			);
