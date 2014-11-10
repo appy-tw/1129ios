@@ -7,12 +7,12 @@
 //
 
 #import "Utils.h"
+#import "VGeoManager.h"
 
 @implementation Utils
 
 +(CLLocation*)getUserLocation{
-    CLLocation *cllNow = [[CLLocation alloc]initWithLatitude:25.042594 longitude:121.614642];
-    return cllNow;
+    return [VGeoManager sharedInstance].cllmLocation.location;
 }
 
 @end

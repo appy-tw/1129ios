@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 @import CoreLocation;
+@import MapKit;
 
 @interface VShop : NSObject
 
@@ -15,5 +16,6 @@
 @property (nonatomic, strong) NSString* mAddress;
 @property (nonatomic, strong) CLLocation* mGeoPoint;
 @property (nonatomic, readonly) NSInteger mDistance;
+@property (nonatomic, strong) MKPointAnnotation* mAnnotation;
 
 @end

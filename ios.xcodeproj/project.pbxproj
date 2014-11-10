@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		497FC9961A108B9A009787E9 /* VShop.m in Sources */ = {isa = PBXBuildFile; fileRef = 497FC9951A108B9A009787E9 /* VShop.m */; };
 		497FC9991A109286009787E9 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 497FC9981A109286009787E9 /* Utils.m */; };
+		497FC99C1A109BA6009787E9 /* VGeoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 497FC99B1A109BA6009787E9 /* VGeoManager.m */; };
 		8F286CE21A0F52F200CA923D /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F286CDF1A0F52F200CA923D /* UIScrollView+SVInfiniteScrolling.m */; };
 		8F286CE31A0F52F200CA923D /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F286CDF1A0F52F200CA923D /* UIScrollView+SVInfiniteScrolling.m */; };
 		8F286CE41A0F52F200CA923D /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F286CE11A0F52F200CA923D /* UIScrollView+SVPullToRefresh.m */; };
@@ -92,6 +93,9 @@
 		497FC9951A108B9A009787E9 /* VShop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VShop.m; sourceTree = "<group>"; };
 		497FC9971A109286009787E9 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		497FC9981A109286009787E9 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		497FC99A1A109BA6009787E9 /* VGeoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VGeoManager.h; sourceTree = "<group>"; };
+		497FC99B1A109BA6009787E9 /* VGeoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VGeoManager.m; sourceTree = "<group>"; };
+		497FC99E1A109C75009787E9 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynthesizeSingleton.h; sourceTree = "<group>"; };
 		8F286CDD1A0F52F200CA923D /* SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVPullToRefresh.h; sourceTree = "<group>"; };
 		8F286CDE1A0F52F200CA923D /* UIScrollView+SVInfiniteScrolling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVInfiniteScrolling.h"; sourceTree = "<group>"; };
 		8F286CDF1A0F52F200CA923D /* UIScrollView+SVInfiniteScrolling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVInfiniteScrolling.m"; sourceTree = "<group>"; };
@@ -202,8 +206,18 @@
 			children = (
 				497FC9941A108B9A009787E9 /* VShop.h */,
 				497FC9951A108B9A009787E9 /* VShop.m */,
+				497FC99A1A109BA6009787E9 /* VGeoManager.h */,
+				497FC99B1A109BA6009787E9 /* VGeoManager.m */,
 			);
 			path = model;
+			sourceTree = "<group>";
+		};
+		497FC99D1A109C75009787E9 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				497FC99E1A109C75009787E9 /* SynthesizeSingleton.h */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		8F286CDB1A0F52D900CA923D /* scroll */ = {
@@ -266,6 +280,7 @@
 		8FBCEB4A1A029E2C00D200A0 /* ios */ = {
 			isa = PBXGroup;
 			children = (
+				497FC99D1A109C75009787E9 /* Common */,
 				497FC9931A108B72009787E9 /* model */,
 				8F286CDB1A0F52D900CA923D /* scroll */,
 				8F2C57071A0EA973007A24A4 /* map */,
@@ -510,6 +525,7 @@
 				8F2C570A1A0EAA22007A24A4 /* MKMapView+ZoomLevel.m in Sources */,
 				8FBCEB851A02BDDB00D200A0 /* BLOGTableViewController.m in Sources */,
 				8F3BF89B1A03DAB4002F75E9 /* UIWebView+YouTube.m in Sources */,
+				497FC99C1A109BA6009787E9 /* VGeoManager.m in Sources */,
 				8FBCEB8F1A02BDDB00D200A0 /* TabBarController.m in Sources */,
 				8FBCEB4E1A029E2C00D200A0 /* main.m in Sources */,
 				8F286CE41A0F52F200CA923D /* UIScrollView+SVPullToRefresh.m in Sources */,

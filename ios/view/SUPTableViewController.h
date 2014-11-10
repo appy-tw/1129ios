@@ -12,8 +12,7 @@
 
 #import "VShop.h"
 
-@interface SUPTableViewController : UITableViewController <CLLocationManagerDelegate, MKMapViewDelegate>
-@property (strong, nonatomic) CLLocationManager *cllmLocation;
+@interface SUPTableViewController : UITableViewController <MKMapViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray* mShopArray;
 
