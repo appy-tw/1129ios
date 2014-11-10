@@ -139,11 +139,12 @@
         [cell.contentView addSubview:uilFBUserName];
         [cell.contentView addSubview:_fbProfilePic];
         //蔡吳林的圖
-        UIImageView *uiimvTsaiWuLin = [[UIImageView alloc] initWithFrame:CGRectMake(cgfScreenWidth * 38.0 / 640.0, cgfScreenWidth * 87.0 / 640.0, cgfScreenWidth * 217.0 / 640.0, cgfScreenWidth * 217.0 / 640.0)];
+        UIImageView *uiimvTsaiWuLin = [[UIImageView alloc] initWithFrame:CGRectMake(cgfScreenWidth * 32.0 / 640.0, cgfScreenWidth * 87.0 / 640.0, cgfScreenWidth * 217.0 / 640.0, cgfScreenWidth * 217.0 / 640.0)];
         [uiimvTsaiWuLin setImage:[UIImage imageNamed:@"tsai"]];
         [cell.contentView addSubview:uiimvTsaiWuLin];
-        UILabel *uilTsaiWuLin = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 0.15, 410.0 * cgfScreenWidth / 640.0 * 0.85, cgfScreenWidth * 0.40, 30.0)];
-        [uilTsaiWuLin setText:@"蔡正元"];
+        UILabel *uilTsaiWuLin = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 32.0 / 640.0, 410.0 * cgfScreenWidth / 640.0 * 0.85, cgfScreenWidth * 217.0 / 640.0, 30.0)];
+        [uilTsaiWuLin setText:@"任務尚未登入"];
+        [uilTsaiWuLin setTextAlignment:NSTextAlignmentCenter];
         [cell.contentView addSubview:uilTsaiWuLin];
     } else if (indexPath.row == 2) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT2];
@@ -161,10 +162,10 @@
         uiimv.image = uiiATT3;
         [cell.contentView addSubview:uiimv];
         UILabel *uilLocationName = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 5.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.40, 15.0)];
-        [uilLocationName setText:@"西湖國小"];
+        [uilLocationName setText:@"地點尚未登入"];
         [cell.contentView addSubview:uilLocationName];
         UILabel *uilAddress = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 55.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.76, 15.0)];
-        [uilAddress setText:@"臺北市內湖區環山路一段25號"];
+        [uilAddress setText:@"地址尚未登入"];
         [cell.contentView addSubview:uilAddress];
     } else if (indexPath.row == 4) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT4];
@@ -183,10 +184,10 @@
         uiimv.image = [UIImage imageNamed:@"att5-1"];
         [cell.contentView addSubview:uiimv];
         UILabel *uilLocationNameForItem = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 5.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.40, 15.0)];
-        [uilLocationNameForItem setText:@"西湖國小"];
+        [uilLocationNameForItem setText:@"目前無物資據點"];
         [cell.contentView addSubview:uilLocationNameForItem];
         UILabel *uilItemName = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 55.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.76, 15.0)];
-        [uilItemName setText:@"礦泉水"];
+        [uilItemName setText:@"無前無物資"];
         [cell.contentView addSubview:uilItemName];
     } else {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT5];
@@ -197,7 +198,7 @@
         uiimv.image = uiiATT6;
         [cell.contentView addSubview:uiimv];
         UITextView *uitvBeforeDeparture = [[UITextView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 0.04, cgfScreenWidth * 120.0 / 640.0, cgfScreenWidth * 0.92, cgfScreenWidth * 400.0 / 640.0)];
-        [uitvBeforeDeparture setText:@"這是一場全民覺醒的運動，超越了議會，從家庭、從巷口、從網路，從社會的各個角落開始綻放，罷免不再是瀕死的法條，而是活著的行動。割去發炎的「闌尾」，從體制內去影響、去改變現今有缺陷的代議制度，讓我們一起締造台灣新型態的社會運動。不論你是想擔任當天擺攤志工、物資提供或純粹想要鍵盤參戰，亦或是您想要長期熱情參與，你都可以成為割闌尾V計劃的公民V，"];
+        [uitvBeforeDeparture setText:@"尚未登入"];
         [cell.contentView addSubview:uitvBeforeDeparture];
     }
     return cell;
