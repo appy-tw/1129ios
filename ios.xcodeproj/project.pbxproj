@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		497FC9961A108B9A009787E9 /* VShop.m in Sources */ = {isa = PBXBuildFile; fileRef = 497FC9951A108B9A009787E9 /* VShop.m */; };
+		497FC9991A109286009787E9 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 497FC9981A109286009787E9 /* Utils.m */; };
+		497FC99C1A109BA6009787E9 /* VGeoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 497FC99B1A109BA6009787E9 /* VGeoManager.m */; };
 		8F286CE21A0F52F200CA923D /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F286CDF1A0F52F200CA923D /* UIScrollView+SVInfiniteScrolling.m */; };
 		8F286CE31A0F52F200CA923D /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F286CDF1A0F52F200CA923D /* UIScrollView+SVInfiniteScrolling.m */; };
 		8F286CE41A0F52F200CA923D /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F286CE11A0F52F200CA923D /* UIScrollView+SVPullToRefresh.m */; };
 		8F286CE51A0F52F200CA923D /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F286CE11A0F52F200CA923D /* UIScrollView+SVPullToRefresh.m */; };
-		8F2C57031A0E6507007A24A4 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F2C57021A0E6507007A24A4 /* GoogleMaps.framework */; };
 		8F2C57051A0E671C007A24A4 /* sup.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F2C57041A0E671C007A24A4 /* sup.plist */; };
 		8F2C57061A0E671C007A24A4 /* sup.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F2C57041A0E671C007A24A4 /* sup.plist */; };
 		8F2C570A1A0EAA22007A24A4 /* MKMapView+ZoomLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F2C57091A0EAA22007A24A4 /* MKMapView+ZoomLevel.m */; };
@@ -87,6 +89,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		497FC9941A108B9A009787E9 /* VShop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VShop.h; sourceTree = "<group>"; };
+		497FC9951A108B9A009787E9 /* VShop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VShop.m; sourceTree = "<group>"; };
+		497FC9971A109286009787E9 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		497FC9981A109286009787E9 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		497FC99A1A109BA6009787E9 /* VGeoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VGeoManager.h; sourceTree = "<group>"; };
+		497FC99B1A109BA6009787E9 /* VGeoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VGeoManager.m; sourceTree = "<group>"; };
+		497FC99E1A109C75009787E9 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynthesizeSingleton.h; sourceTree = "<group>"; };
 		8F286CDD1A0F52F200CA923D /* SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVPullToRefresh.h; sourceTree = "<group>"; };
 		8F286CDE1A0F52F200CA923D /* UIScrollView+SVInfiniteScrolling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVInfiniteScrolling.h"; sourceTree = "<group>"; };
 		8F286CDF1A0F52F200CA923D /* UIScrollView+SVInfiniteScrolling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVInfiniteScrolling.m"; sourceTree = "<group>"; };
@@ -160,7 +169,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F2C57031A0E6507007A24A4 /* GoogleMaps.framework in Frameworks */,
 				8F3A12A71A0B58B400C10C5D /* MapKit.framework in Frameworks */,
 				8FE0E9961A069D3C000016D1 /* SystemConfiguration.framework in Frameworks */,
 				8FE0E9941A069D33000016D1 /* StoreKit.framework in Frameworks */,
@@ -193,6 +201,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		497FC9931A108B72009787E9 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				497FC9941A108B9A009787E9 /* VShop.h */,
+				497FC9951A108B9A009787E9 /* VShop.m */,
+				497FC99A1A109BA6009787E9 /* VGeoManager.h */,
+				497FC99B1A109BA6009787E9 /* VGeoManager.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		497FC99D1A109C75009787E9 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				497FC99E1A109C75009787E9 /* SynthesizeSingleton.h */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		8F286CDB1A0F52D900CA923D /* scroll */ = {
 			isa = PBXGroup;
 			children = (
@@ -253,6 +280,8 @@
 		8FBCEB4A1A029E2C00D200A0 /* ios */ = {
 			isa = PBXGroup;
 			children = (
+				497FC99D1A109C75009787E9 /* Common */,
+				497FC9931A108B72009787E9 /* model */,
 				8F286CDB1A0F52D900CA923D /* scroll */,
 				8F2C57071A0EA973007A24A4 /* map */,
 				8F3BF8A21A03F6E5002F75E9 /* parse */,
@@ -264,6 +293,8 @@
 				8FBCEB4B1A029E2C00D200A0 /* Supporting Files */,
 				8F3BF8AA1A040BC5002F75E9 /* PLISTHeader.h */,
 				8FE0E97A1A068A00000016D1 /* KeyHeader.h */,
+				497FC9971A109286009787E9 /* Utils.h */,
+				497FC9981A109286009787E9 /* Utils.m */,
 			);
 			path = ios;
 			sourceTree = "<group>";
@@ -416,7 +447,6 @@
 				TargetAttributes = {
 					8FBCEB471A029E2C00D200A0 = {
 						CreatedOnToolsVersion = 6.1;
-						DevelopmentTeam = DEATJ76XRX;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
 								enabled = 1;
@@ -425,6 +455,7 @@
 					};
 					8FBCEB631A029E2C00D200A0 = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = 9SFGMQE6W6;
 						TestTargetID = 8FBCEB471A029E2C00D200A0;
 					};
 				};
@@ -486,6 +517,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				497FC9961A108B9A009787E9 /* VShop.m in Sources */,
 				8F839D221A07B77E0071654C /* MSTableViewController.m in Sources */,
 				8FBCEB541A029E2C00D200A0 /* ios.xcdatamodeld in Sources */,
 				8FBCEB511A029E2C00D200A0 /* AppDelegate.m in Sources */,
@@ -493,9 +525,11 @@
 				8F2C570A1A0EAA22007A24A4 /* MKMapView+ZoomLevel.m in Sources */,
 				8FBCEB851A02BDDB00D200A0 /* BLOGTableViewController.m in Sources */,
 				8F3BF89B1A03DAB4002F75E9 /* UIWebView+YouTube.m in Sources */,
+				497FC99C1A109BA6009787E9 /* VGeoManager.m in Sources */,
 				8FBCEB8F1A02BDDB00D200A0 /* TabBarController.m in Sources */,
 				8FBCEB4E1A029E2C00D200A0 /* main.m in Sources */,
 				8F286CE41A0F52F200CA923D /* UIScrollView+SVPullToRefresh.m in Sources */,
+				497FC9991A109286009787E9 /* Utils.m in Sources */,
 				8FBCEB831A02BDDB00D200A0 /* BLOGTableViewCell.m in Sources */,
 				8F3A12AE1A0B73DE00C10C5D /* PointerViewController.m in Sources */,
 				8F3A12981A0B392700C10C5D /* KGTableViewController.m in Sources */,

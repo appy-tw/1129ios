@@ -8,8 +8,10 @@
 
 #import "SUPTableViewController.h"
 #import "AppDelegate.h"
+#import "VGeoManager.h"
 
 #import "MKMapView+ZoomLevel.h"
+#import "Utils.h"
 
 #define GEORGIA_TECH_LATITUDE 33.777328
 #define GEORGIA_TECH_LONGITUDE -84.397348
@@ -21,6 +23,8 @@
 //Code omitted
 
 #define __MAP_HEIGHT__      280     // dir : 縮短 mapview 高度，避免 4s 下根本看不到下面的資訊
+
+#define CELL_OFFSET 3 //water: offset of first cell in shop array
 
 @interface SUPTableViewController ()
 {
@@ -59,15 +63,13 @@
     
     MKPointAnnotation *mkpaPoint;
     [_mapView setCenterCoordinate:CLLocationCoordinate2DMake(25.042594, 121.614642) zoomLevel:10 animated:YES];
-//    for (NSInteger i = 0; i < [nsmaPlistArray count]; i++) {
-    for (NSInteger i = 0; i < [nsmaPlistArray count]; i++) {
+    for(VShop* aShop in self.mShopArray){
         mkpaPoint = [[MKPointAnnotation alloc] init];
-        NSLog(@"%f, %f", [[[nsmaPlistArray objectAtIndex:i]valueForKey:@"lat"]floatValue], [[[nsmaPlistArray objectAtIndex:i]valueForKey:@"lon"]floatValue]);
-        mkpaPoint.coordinate = CLLocationCoordinate2DMake([[[nsmaPlistArray objectAtIndex:i]valueForKey:@"lat"]floatValue], [[[nsmaPlistArray objectAtIndex:i]valueForKey:@"lon"]floatValue]);
-        mkpaPoint.title = [[nsmaPlistArray objectAtIndex:i]valueForKey:@"title"];
-        mkpaPoint.subtitle = [[nsmaPlistArray objectAtIndex:i]valueForKey:@"address"];
+        mkpaPoint.coordinate = aShop.mGeoPoint.coordinate;
+        mkpaPoint.title = aShop.mTitle;
+        mkpaPoint.subtitle = aShop.mAddress;
         [_mapView addAnnotation:mkpaPoint];
-        NSLog(@"%ld", (long)i);
+        aShop.mAnnotation = mkpaPoint;
     }
     return _mapView;
 }
@@ -89,50 +91,18 @@
     uiiSUP3 = [UIImage imageNamed:@"sup3"];
 }
 
-- (void)setMap {
-    if (delegate.cllMLocation == nil) {
-        NSLog(@"cllocationInit start");
-//        [delegate.cllMLocation requestAlwaysAuthorization];
-        delegate.cllMLocation = [[CLLocationManager alloc]init];
-//        [delegate.cllMLocation requestAlwaysAuthorization];
-        delegate.cllMLocation.delegate = self;
-        delegate.cllMLocation.desiredAccuracy = kCLLocationAccuracyBest;
-//        delegate.cllMLocation.distanceFilter = 3;
-        // New property for iOS6
-//        if ([delegate.cllMLocation respondsToSelector:@selector(activityType)]) {
-//            delegate.cllMLocation.activityType = CLActivityTypeFitness;
-//        }
-        // New method for iOS8
-//        if ([delegate.cllMLocation respondsToSelector:@selector(requestAlwaysAuthorization)]) {
-//            [delegate.cllMLocation requestAlwaysAuthorization];
-//        }
-
-        [delegate.cllMLocation startUpdatingLocation];
-        NSLog(@"cllocationInit end");
-
-        NSLog(@"latitude: %f, longitude: %f", delegate.clldLatitude, delegate.clldLongitude);
-        NSLog(@"test");
-    }
-//    NSString *routeString = [NSString stringWithFormat:@"http://maps.google.com/maps?saddr=%f,%f&daddr=%f,%f&view=map&output=html",[myData.myLat doubleValue],[myData.myLng doubleValue],[view.annotation coordinate].latitude,[view.annotation coordinate].longitude];
-}
-
 - (void)setMyAnotherMap {
-    self.cllmLocation = [[CLLocationManager alloc] init];
-    self.cllmLocation.delegate = self;
-    
-    if(IS_OS_8_OR_LATER) {
-        //[self.locationManager requestWhenInUseAuthorization];
-        [self.cllmLocation requestAlwaysAuthorization];
-        [self.cllmLocation startUpdatingLocation];
-    }
     [self.mapView setShowsUserLocation:YES];
     [self.mapView setUserTrackingMode:MKUserTrackingModeFollow animated:YES];
 }
-
--(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+-(void)locateUserLocation{
+    VGeoManager* geoManager = [VGeoManager sharedInstance];
+    [self locateLocation:geoManager.cllmLocation.location];
+}
+-(void)locateLocation:(CLLocation*)location{
     MKCoordinateRegion region = { { 0.0, 0.0 }, { 0.0, 0.0 } };
-    region.center.latitude = self.cllmLocation.location.coordinate.latitude;
-    region.center.longitude = self.cllmLocation.location.coordinate.longitude;
+    region.center.latitude = location.coordinate.latitude;
+    region.center.longitude = location.coordinate.longitude;
     region.span.latitudeDelta = 0.0187f;
     region.span.longitudeDelta = 0.0137f;
     [self.mapView setRegion:region animated:YES];
@@ -148,6 +118,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.mShopArray = [NSMutableArray array];
+    [[VGeoManager sharedInstance]setup];
+    
     [self setMyScreen];
     [self readAllFromMyPlist];
 //    [self setPinMap];
@@ -156,6 +129,7 @@
 
 //    [self setMap];
     [self setMyAnotherMap];
+    
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 }
 
@@ -163,15 +137,18 @@
 {
     [delegate.cllMLocation stopUpdatingLocation];
     [self initMyPlist];
+    [[VGeoManager sharedInstance]start];
     [super viewDidDisappear:animated];
 }
-
+-(void)viewWillDisappear:(BOOL)animated{
+    [[VGeoManager sharedInstance]stop];
+}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [nsmaPlistArray count] + 3;
+    return [nsmaPlistArray count] + CELL_OFFSET;
 }
 
 // dir : 這些 functions 似乎根本沒用到...
@@ -333,13 +310,13 @@
         UILabel *addressLabel = (UILabel*)[cell viewWithTag:__Address_Tag__];
         UILabel *distanceLabel = (UILabel*)[cell viewWithTag:__Distance_Tag__];
         
-        [titleLabel setText:[[nsmaPlistArray objectAtIndex:indexPath.row - 3]valueForKey:@"title"]];
-        [addressLabel setText:[[nsmaPlistArray objectAtIndex:indexPath.row - 3]valueForKey:@"address"]];
-        CLLocation *cllNow = [[CLLocation alloc]initWithLatitude:25.042594 longitude:121.614642];
-        CLLocation *cllTarget = [[CLLocation alloc]initWithLatitude:[[[nsmaPlistArray objectAtIndex:indexPath.row - 3]valueForKey:@"lat"]floatValue]
-                                                          longitude:[[[nsmaPlistArray objectAtIndex:indexPath.row - 3]valueForKey:@"lon"]floatValue]];
-        CLLocationDistance dist = [cllNow distanceFromLocation:cllTarget];
+        VShop* aShop = [self.mShopArray objectAtIndex:indexPath.row-CELL_OFFSET];
+        
+        [titleLabel setText:aShop.mTitle];
+        [addressLabel setText:aShop.mAddress];
+        CLLocationDistance dist = aShop.mDistance;
         [distanceLabel setText:[NSString stringWithFormat:@"%.1fKM", dist / 1000]];
+        cell.tag = [self.mShopArray indexOfObject: aShop];
     }
     return cell;
 }
@@ -356,6 +333,20 @@
     } else {
         return self.tableView.frame.size.width * 98 / 640;
     }
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(indexPath.row == 0){
+        [self locateUserLocation];
+    }else if(indexPath.row > 1){ // click on VShop
+        UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
+        VShop* aShop = [self.mShopArray objectAtIndex:cell.tag];
+        NSLog(@"click on shop:%@",aShop.mTitle);
+        [self toggleShop:aShop];
+    }
+}
+-(void)toggleShop:(VShop*)aShop{
+    [self locateLocation:aShop.mGeoPoint];
+    [_mapView selectAnnotation:aShop.mAnnotation animated:YES];
 }
 
 //[[CLLocationInit
@@ -448,6 +439,15 @@
     }
     nsmaPlistArray = [NSMutableArray arrayWithContentsOfFile:nssPlistDst];
     NSLog(@"%lu", (unsigned long)[nsmaPlistArray count]);
+    for(NSDictionary* obj in nsmaPlistArray){
+        VShop* aShop = [[VShop alloc]init];
+        aShop.mTitle = [obj valueForKey:@"title"];
+        aShop.mAddress = [obj valueForKey:@"address"];
+        aShop.mGeoPoint = [[CLLocation alloc]initWithLatitude:[[obj valueForKey:@"lat"]floatValue]
+                                                    longitude:[[obj valueForKey:@"lon"]floatValue]];
+        [self.mShopArray addObject:aShop];
+    }
+    self.mShopArray = [NSMutableArray arrayWithArray:[self.mShopArray sortedArrayUsingSelector:@selector(compare:)]];
 }
 
 //]]Plist
