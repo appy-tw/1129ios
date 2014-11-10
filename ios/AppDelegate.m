@@ -70,6 +70,7 @@
     blogTableViewController.title = NSLocalizedString(@"即時戰況", nil);
     blogTableViewController.tabBarItem.image = [UIImage imageNamed:@"blog"];
     //戰況，魔王，uitableview
+    
     kgTableViewController = [[KGTableViewController alloc]init];
     pointerViewController = [[PointerViewController alloc]initWithViewController:kgTableViewController];
     _navigationController = [[UINavigationController alloc]initWithRootViewController:pointerViewController];
@@ -91,7 +92,7 @@
     attTableViewController.tabBarItem.image = [UIImage imageNamed:@"att"];
     //行前通知
 
-    NSArray *nsaViewControllers = [[NSArray alloc]initWithObjects:msTableViewController, blogTableViewController, _navigationController, supTableViewController, attTableViewController, nil];
+    NSArray *nsaViewControllers = [[NSArray alloc]initWithObjects:msTableViewController, blogTableViewController, /*_navigationController,*/ supTableViewController, attTableViewController, nil];
     tabBarController = [[TabBarController alloc]init];
     [tabBarController setViewControllers:nsaViewControllers];    
     [self.window addSubview:tabBarController.view];

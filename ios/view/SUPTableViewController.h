@@ -10,7 +10,11 @@
 #import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
 
+#import "VShop.h"
+
 @interface SUPTableViewController : UITableViewController <CLLocationManagerDelegate, MKMapViewDelegate>
 @property (strong, nonatomic) CLLocationManager *cllmLocation;
+
+@property (nonatomic, strong) NSMutableArray* mShopArray;
 
 @end

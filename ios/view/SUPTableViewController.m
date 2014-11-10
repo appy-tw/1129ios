@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 
 #import "MKMapView+ZoomLevel.h"
+#import "Utils.h"
 
 #define GEORGIA_TECH_LATITUDE 33.777328
 #define GEORGIA_TECH_LONGITUDE -84.397348
@@ -21,6 +22,8 @@
 //Code omitted
 
 #define __MAP_HEIGHT__      280     // dir : 縮短 mapview 高度，避免 4s 下根本看不到下面的資訊
+
+#define CELL_OFFSET 3 //water: offset of first cell in shop array
 
 @interface SUPTableViewController ()
 {
@@ -148,6 +151,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.mShopArray = [NSMutableArray array];
+    
     [self setMyScreen];
     [self readAllFromMyPlist];
 //    [self setPinMap];
@@ -156,6 +161,7 @@
 
 //    [self setMap];
     [self setMyAnotherMap];
+    
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 }
 
@@ -171,7 +177,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [nsmaPlistArray count] + 3;
+    return [nsmaPlistArray count] + CELL_OFFSET;
 }
 
 // dir : 這些 functions 似乎根本沒用到...
@@ -333,12 +339,11 @@
         UILabel *addressLabel = (UILabel*)[cell viewWithTag:__Address_Tag__];
         UILabel *distanceLabel = (UILabel*)[cell viewWithTag:__Distance_Tag__];
         
-        [titleLabel setText:[[nsmaPlistArray objectAtIndex:indexPath.row - 3]valueForKey:@"title"]];
-        [addressLabel setText:[[nsmaPlistArray objectAtIndex:indexPath.row - 3]valueForKey:@"address"]];
-        CLLocation *cllNow = [[CLLocation alloc]initWithLatitude:25.042594 longitude:121.614642];
-        CLLocation *cllTarget = [[CLLocation alloc]initWithLatitude:[[[nsmaPlistArray objectAtIndex:indexPath.row - 3]valueForKey:@"lat"]floatValue]
-                                                          longitude:[[[nsmaPlistArray objectAtIndex:indexPath.row - 3]valueForKey:@"lon"]floatValue]];
-        CLLocationDistance dist = [cllNow distanceFromLocation:cllTarget];
+        VShop* aShop = [self.mShopArray objectAtIndex:indexPath.row-CELL_OFFSET];
+        
+        [titleLabel setText:aShop.mTitle];
+        [addressLabel setText:aShop.mAddress];
+        CLLocationDistance dist = aShop.mDistance;
         [distanceLabel setText:[NSString stringWithFormat:@"%.1fKM", dist / 1000]];
     }
     return cell;
@@ -448,6 +453,15 @@
     }
     nsmaPlistArray = [NSMutableArray arrayWithContentsOfFile:nssPlistDst];
     NSLog(@"%lu", (unsigned long)[nsmaPlistArray count]);
+    for(NSDictionary* obj in nsmaPlistArray){
+        VShop* aShop = [[VShop alloc]init];
+        aShop.mTitle = [obj valueForKey:@"title"];
+        aShop.mAddress = [obj valueForKey:@"address"];
+        aShop.mGeoPoint = [[CLLocation alloc]initWithLatitude:[[obj valueForKey:@"lat"]floatValue]
+                                                    longitude:[[obj valueForKey:@"lon"]floatValue]];
+        [self.mShopArray addObject:aShop];
+    }
+    self.mShopArray = [NSMutableArray arrayWithArray:[self.mShopArray sortedArrayUsingSelector:@selector(compare:)]];
 }
 
 //]]Plist
