@@ -60,6 +60,7 @@
     if (_mapView)
         return _mapView;
     self.mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, 300)];
+    self.mapView.delegate = self;
     
     MKPointAnnotation *mkpaPoint;
     [_mapView setCenterCoordinate:CLLocationCoordinate2DMake(25.042594, 121.614642) zoomLevel:10 animated:YES];
@@ -83,6 +84,21 @@
     cgfScreenHeightBase = self.navigationController.navigationBar.frame.size.height + 20;// + [UIApplication sharedApplication].statusBarFrame.size.height;
     NSLog(@"status bar height:%f",[UIApplication sharedApplication].statusBarFrame.size.height);
     NSLog(@"width:%f, height:%f, tabbar:%f, navigationbarcontroller:%f", cgfScreenWidth, cgfScreenHeight, self.tabBarController.tabBar.frame.size.height, self.navigationController.navigationBar.frame.size.height);
+}
+-(void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control{
+    NSLog(@"call out tapped");
+}
+-(void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view{
+    NSLog(@"anno tapped %@", view.annotation.title);
+}
+-(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
+    if([annotation isKindOfClass:MKPointAnnotation.class]){
+        MKAnnotationView *newAnnotation=[[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"annotation1"];
+        newAnnotation.image = [UIImage imageNamed:@"sup"];
+        newAnnotation.canShowCallout=YES;
+        return newAnnotation;
+    }else // user pin
+        return nil;
 }
 
 - (void)setImage {
@@ -340,7 +356,6 @@
     }else if(indexPath.row > 1){ // click on VShop
         UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
         VShop* aShop = [self.mShopArray objectAtIndex:cell.tag];
-        NSLog(@"click on shop:%@",aShop.mTitle);
         [self toggleShop:aShop];
     }
 }
