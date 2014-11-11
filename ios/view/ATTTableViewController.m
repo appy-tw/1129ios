@@ -36,6 +36,7 @@
     UIImage* uiiATT3;
     UIImage* uiiATT4;
     UIImage* uiiATT6;
+    UIImage* uiiATT7;
     
     FBLoginView *fbLoginView;
     UIImage *uiiFBImage;
@@ -71,15 +72,34 @@
 
 @implementation ATTTableViewController
 
-- (void)setMyScreen
+- (void)setMyScreenSize
 {
-    delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
     cgfScreenWidth = [[UIScreen mainScreen] bounds].size.width;
     cgfScreenHeight = [[UIScreen mainScreen] bounds].size.height - [[UIApplication sharedApplication] statusBarFrame].size.height - self.tabBarController.tabBar.frame.size.height - self.navigationController.navigationBar.frame.size.height - [UIApplication sharedApplication].statusBarFrame.size.height;
-    cgfScreenHeightBase = self.navigationController.navigationBar.frame.size.height + 20;// + [UIApplication sharedApplication].statusBarFrame.size.height;
+    cgfScreenHeightBase = [UIApplication sharedApplication].statusBarFrame.size.height;
+    if ([UIApplication sharedApplication].statusBarFrame.size.height == 20.0) {
+        //without Hotspot: 64
+        cgfKeyboardOffset =  cgfScreenHeightBase;
+    } else {
+        //with Hotspot: 104
+        cgfKeyboardOffset = cgfScreenHeightBase + [UIApplication sharedApplication].statusBarFrame.size.height / 2.0;
+    }
     NSLog(@"status bar height:%f",[UIApplication sharedApplication].statusBarFrame.size.height);
-    NSLog(@"width:%f, height:%f, tabbar:%f, navigationbarcontroller:%f", cgfScreenWidth, cgfScreenHeight, self.tabBarController.tabBar.frame.size.height, self.navigationController.navigationBar.frame.size.height);
+    NSLog(@"width:%f, height:%f, tabbar:%f, navigationbarcontroller:%f, keyboardOffset: %f", cgfScreenWidth, cgfScreenHeight, self.tabBarController.tabBar.frame.size.height, delegate.navigationController.navigationBar.frame.size.height, cgfKeyboardOffset);
+}
+
+- (void) makeKeyboardOffset {
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.0];
+    self.view.center = CGPointMake(self.view.center.x, self.view.center.y - cgfKeyboardOffset);
+    [UIView commitAnimations];
+}
+
+- (void) makeKeyboardOffsetBack {
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.0];
+    self.view.center = CGPointMake(self.view.center.x, self.view.center.y);
+    [UIView commitAnimations];
 }
 
 - (void)setImage {
@@ -88,6 +108,7 @@
     uiiATT3 = [UIImage imageNamed:@"att3"];
     uiiATT4 = [UIImage imageNamed:@"att4"];
     uiiATT6 = [UIImage imageNamed:@"att6"];
+    uiiATT7 = [UIImage imageNamed:@"att7"];
 }
 
 - (void)setFBView {
@@ -110,8 +131,16 @@
     [fbLoginView sizeToFit];
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    [super viewWillAppear:animated];
+}
+
 - (void)viewDidLoad {
-    [self setMyScreen];
+    delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [self setMyScreenSize];
+    [self makeKeyboardOffset];
     nssIOSToken = delegate.nssDeviceToken;
     NSLog(@"delegate.nssDeviceToken: %@", delegate.nssDeviceToken);
     NSLog(@"cgfScreenWidth * 0.58: %f", cgfScreenWidth * 0.58);
@@ -353,6 +382,7 @@
     static NSString *nssIDATT11 = @"ATT";
     static NSString *nssIDATT12 = @"ATT";
     static NSString *nssIDATT13 = @"ATT";
+    static NSString *nssIDATT14 = @"ATT";
     UITableViewCell *cell;
 //    這份註解請勿刪
 //    for (id subview in [cell.contentView subviews])
@@ -369,15 +399,15 @@
         UIView *uiClearView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, self.tableView.frame.size.width * 90 / 640 + 20.0)];
         [uiClearView setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
         [cell.contentView addSubview:uiClearView];
-        UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, cgfScreenHeightBase, self.tableView.frame.size.width, self.tableView.frame.size.width * 90 / 640)];
+        UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.tableView.frame.size.width, self.tableView.frame.size.width * 90 / 640)];
         uiimv.image = uiiATT1;
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [cell.contentView addSubview:uiimv];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     } else if (indexPath.row == 1) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT2];
         cell = nil;
         if (cell == nil) {
-            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT3];
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT2];
         }
         UIView *uiClearView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, self.tableView.frame.size.width * 410 / 640 + 20.0)];
         [uiClearView setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
@@ -415,25 +445,25 @@
             [uilTsaiWuLin setText:@"任務尚未登入"];
         }
         [uilTsaiWuLin setTextAlignment:NSTextAlignmentCenter];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [cell.contentView addSubview:uilTsaiWuLin];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     } else if (indexPath.row == 2) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT3];
         cell = nil;
         if (cell == nil) {
-            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT2];
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT3];
         }
         UIView *uiClearView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, self.tableView.frame.size.width * 95 / 640 + 20.0)];
         [uiClearView setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
         [cell.contentView addSubview:uiClearView];
         fbLoginView.center = cell.contentView.center;
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [cell.contentView addSubview:fbLoginView];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     } else if (indexPath.row == 3) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT4];
         cell = nil;
         if (cell == nil) {
-            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT2];
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT4];
         }
         UIView *uiClearView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, self.tableView.frame.size.width * 95 / 640 + 20.0)];
         [uiClearView setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
@@ -447,11 +477,12 @@
         UILabel *uilAddress = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 55.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.76, 15.0)];
         [uilAddress setText:nssAddress];
         [cell.contentView addSubview:uilAddress];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     } else if (indexPath.row == 4) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT5];
         cell = nil;
         if (cell == nil) {
-            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT4];
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT5];
         }
         UIView *uiClearView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, self.tableView.frame.size.width * 78 / 640 + 20.0)];
         [uiClearView setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
@@ -463,7 +494,7 @@
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT6];
         cell = nil;
         if (cell == nil) {
-            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT2];
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT6];
         }
         UIView *uiClearView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, self.tableView.frame.size.width * 95 / 640 + 20.0)];
         [uiClearView setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
@@ -477,11 +508,12 @@
         UILabel *uilItemName = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 55.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.76, 15.0)];
         [uilItemName setText:[nssResourceBoard componentsSeparatedByString:@";"][1]];
         [cell.contentView addSubview:uilItemName];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     } else if (indexPath.row == 6) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT7];
         cell = nil;
         if (cell == nil) {
-            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT2];
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT7];
         }
         UIView *uiClearView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, self.tableView.frame.size.width * 95 / 640 + 20.0)];
         [uiClearView setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
@@ -495,11 +527,12 @@
         UILabel *uilItemName = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 55.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.76, 15.0)];
         [uilItemName setText:[nssResourceChair componentsSeparatedByString:@";"][1]];
         [cell.contentView addSubview:uilItemName];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     } else if (indexPath.row == 7) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT8];
         cell = nil;
         if (cell == nil) {
-            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT2];
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT8];
         }
         UIView *uiClearView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, self.tableView.frame.size.width * 95 / 640 + 20.0)];
         [uiClearView setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
@@ -513,11 +546,12 @@
         UILabel *uilItemName = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 55.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.76, 15.0)];
         [uilItemName setText:[nssResourceDesk componentsSeparatedByString:@";"][1]];
         [cell.contentView addSubview:uilItemName];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     } else if (indexPath.row == 8) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT9];
         cell = nil;
         if (cell == nil) {
-            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT2];
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT9];
         }
         UIView *uiClearView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, self.tableView.frame.size.width * 95 / 640 + 20.0)];
         [uiClearView setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
@@ -531,11 +565,12 @@
         UILabel *uilItemName = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 55.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.76, 15.0)];
         [uilItemName setText:[nssResourcePen componentsSeparatedByString:@";"][1]];
         [cell.contentView addSubview:uilItemName];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     } else if (indexPath.row == 9) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT10];
         cell = nil;
         if (cell == nil) {
-            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT2];
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT10];
         }
         UIView *uiClearView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, self.tableView.frame.size.width * 95 / 640 + 20.0)];
         [uiClearView setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
@@ -549,11 +584,12 @@
         UILabel *uilItemName = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 55.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.76, 15.0)];
         [uilItemName setText:[nssResourceUmbrella componentsSeparatedByString:@";"][1]];
         [cell.contentView addSubview:uilItemName];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     } else if (indexPath.row == 10) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT11];
         cell = nil;
         if (cell == nil) {
-            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT2];
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT11];
         }
         UIView *uiClearView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, self.tableView.frame.size.width * 95 / 640 + 20.0)];
         [uiClearView setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
@@ -567,11 +603,12 @@
         UILabel *uilItemName = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 55.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.76, 15.0)];
         [uilItemName setText:[nssResourceWater componentsSeparatedByString:@";"][1]];
         [cell.contentView addSubview:uilItemName];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     } else if (indexPath.row == 11) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT12];
         cell = nil;
         if (cell == nil) {
-            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT2];
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT12];
         }
         UIView *uiClearView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, self.tableView.frame.size.width * 95 / 640 + 20.0)];
         [uiClearView setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
@@ -585,29 +622,53 @@
         UILabel *uilItemName = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 55.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.76, 15.0)];
         [uilItemName setText:[nssResourceOthers componentsSeparatedByString:@";"][1]];
         [cell.contentView addSubview:uilItemName];
-    } else {
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    } else if (indexPath.row == 12) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT13];
         cell = nil;
         if (cell == nil) {
-            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT5];
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT13];
         }
-        UIView *uiClearView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, self.tableView.frame.size.width * 112 / 640 + 400.0)];
-        [uiClearView setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
-        [cell.contentView addSubview:uiClearView];
+//        UIView *uiClearView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, self.tableView.frame.size.width * 300 / 640 + 20.0)];
+//        [uiClearView setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
+//        [cell.contentView addSubview:uiClearView];
         UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.tableView.frame.size.width, self.tableView.frame.size.width * 112 / 640)];
         uiimv.image = uiiATT6;
         [cell.contentView addSubview:uiimv];
-        UITextView *uitvBeforeDeparture = [[UITextView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 0.04, cgfScreenWidth * 120.0 / 640.0, cgfScreenWidth * 0.92, cgfScreenWidth * 400.0 / 640.0)];
-        [uitvBeforeDeparture setText:[nssResourceDesk componentsSeparatedByString:@";"][1]];
+//        UITextView *uitvInfoURL = [[UITextView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 0.04, cgfScreenWidth * 120.0 / 640.0, self.tableView.frame.size.width * 0.92, self.tableView.frame.size.width * 40 / 640)];
+//        [uitvInfoURL setText:nssInfoURL];
+//        [uitvInfoURL setFont:[UIFont systemFontOfSize:12]];
+//        [uitvInfoURL setEditable:NO];
+//        [cell.contentView addSubview:uitvInfoURL];
+        UITextView *uitvBeforeDeparture = [[UITextView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 0.04, cgfScreenWidth * 120.0 / 640.0, cgfScreenWidth * 0.92, cgfScreenWidth * 180.0 / 640.0)];
+        [uitvBeforeDeparture setText:nssInfo];
         [uitvBeforeDeparture setEditable:NO];
         [cell.contentView addSubview:uitvBeforeDeparture];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    } else {
+        cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT14];
+        cell = nil;
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT14];
+        }
+//        UIView *uiClearView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, self.tableView.frame.size.width * 300 / 640 + 20.0)];
+//        [uiClearView setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
+//        [cell.contentView addSubview:uiClearView];
+        UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.tableView.frame.size.width, self.tableView.frame.size.width * 112 / 640)];
+        uiimv.image = uiiATT7;
+        [cell.contentView addSubview:uiimv];
+        UITextView *uitvPush = [[UITextView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 0.04, cgfScreenWidth * 120.0 / 640.0, cgfScreenWidth * 0.92, cgfScreenWidth * 180.0 / 640.0)];
+        [uitvPush setText:nssPush];
+        [uitvPush setEditable:NO];
+        [cell.contentView addSubview:uitvPush];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath");
     // Select on show value on map
     if (indexPath.row == 4) {
         CGFloat latitude = [nssLat floatValue];
@@ -617,8 +678,10 @@
             MapViewController *mapVC = [[MapViewController alloc] init];
             mapVC.location = targetLocation;
             // FIXME: this have problem can't show |navigationController|
-            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self];
-            [navigationController pushViewController:mapVC animated:YES];
+//            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self];
+            [self makeKeyboardOffsetBack];
+            self.navigationController.navigationBarHidden = NO;
+            [self.navigationController pushViewController:mapVC animated:YES];
         } else {
             NSLog(@"location is not valid");
         }
@@ -628,7 +691,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
-        return cgfScreenHeightBase + self.tableView.frame.size.width * 90 / 640 + 20.0;
+        return self.tableView.frame.size.width * 90 / 640 + 20.0;
     } else if (indexPath.row == 1) {
         return self.tableView.frame.size.width * 410 / 640 + 20.0;
     } else if (indexPath.row == 2) {
@@ -652,7 +715,7 @@
     } else if (indexPath.row == 11) {
         return self.tableView.frame.size.width * 95 / 640 + 20.0;
     } else if (indexPath.row == 12) {
-        return self.tableView.frame.size.width * 112 / 640 + 200.0;
+        return self.tableView.frame.size.width * 300 / 640 + 20.0;
     } else {
         return self.tableView.frame.size.width * 300 / 640 + 20.0;
     }

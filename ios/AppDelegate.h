@@ -33,10 +33,25 @@
 @property (assign, nonatomic) CLLocationDegrees clldLatitude;
 @property (assign, nonatomic) CLLocationDegrees clldLongitude;
 
+@property (strong, nonatomic) UINavigationController *navigationControllerMS;
+@property (strong, nonatomic) UINavigationController *navigationControllerBlog;
+@property (strong, nonatomic) UINavigationController *navigationControllerSUP;
+//@property (strong, nonatomic) UINavigationController *navigationControllerKG;
+@property (strong, nonatomic) UINavigationController *navigationControllerATT;
 @property (strong, nonatomic) UINavigationController *navigationController;
 
 //- (void)cllocationInit;
 //- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations;
+
+//[[forBLOG
+@property (strong, nonatomic) NSString *nssBLOGLink;
+//]]forBLOG
+
+//[[forSUP
+//]]forSUP
+
+//[[forATT
+//]]forATT
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
