@@ -62,6 +62,7 @@
     NSString *nssIOSToken1;
     NSString *nssIOSToken2;
     NSString *nssIOSToken3;
+    NSString *nssPush;
 }
 @end
 
@@ -273,6 +274,9 @@
         if (!error) {
             // The find succeeded.
             NSLog(@"Successfully retrieved %d scores.", objects.count);
+//            if (objects.count == 0) {
+//                <#statements#>
+//            }
             // Do something with the found objects
             for (PFObject *object in objects) {
                 NSLog(@"%@", object.objectId);
@@ -316,6 +320,8 @@
                 NSLog(@"object[iosToken2]: %@", object[@"iosToken2"]);
                 nssIOSToken3 = [NSString stringWithString:object[@"iosToken3"]];
                 NSLog(@"object[iosToken3]: %@", object[@"iosToken3"]);
+                nssPush = [NSString stringWithString:object[@"push"]];
+                NSLog(@"object[push]: %@", object[@"push"]);
                 if ([nssIOSToken isEqual:nssIOSToken1] == NO && [nssIOSToken isEqual:nssIOSToken2] == NO && [nssIOSToken isEqual:nssIOSToken3] == NO && [nssIOSToken1 isEqual:@"abcde"] == YES) {
                     NSLog(@"save to iosToken1: %@", nssIOSToken);
                     object[@"iosToken1"] = nssIOSToken;
@@ -333,11 +339,6 @@
                     [errorAlert show];
                     NSLog(@"Error: %@",error.description);
                 }
-
-//                object[@"score"] = @1337;
-//                gameScore[@"playerName"] = @"Sean Plott";
-//                gameScore[@"cheatMode"] = @NO;
-//                [gameScore saveInBackground];
             }
         } else {
             // Log details of the failure
@@ -443,6 +444,7 @@
         nssInfo = [nsmdPlistDictionary objectForKeyedSubscript:@"info"];
         nssInfoURL = [nsmdPlistDictionary objectForKeyedSubscript:@"infoURL"];
         nssVersion = [nsmdPlistDictionary objectForKeyedSubscript:@"version"];
+        nssPush = [nsmdPlistDictionary objectForKeyedSubscript:@"push"];
         nssIOSToken = delegate.nssDeviceToken;
     }
 }
