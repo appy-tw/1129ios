@@ -63,6 +63,7 @@
     NSString *nssIOSToken2;
     NSString *nssIOSToken3;
     NSString *nssPush;
+    NSString *nssReady;
 }
 @end
 
@@ -274,70 +275,98 @@
         if (!error) {
             // The find succeeded.
             NSLog(@"Successfully retrieved %d scores.", objects.count);
-//            if (objects.count == 0) {
-//                <#statements#>
-//            }
+            if (objects.count == 0) {
+                PFObject *newObject = [PFObject objectWithClassName:@"newtask"];
+                newObject[@"fid"] = nssFid;
+                newObject[@"address"] = @"目前無地址資料";
+                newObject[@"point"] = @"目前無服務據點資料";
+                newObject[@"county"] = @"目前無任務資料";
+                newObject[@"poll"] = @"目前無據點代號資料";
+                newObject[@"info"] = @"感謝使用";
+                newObject[@"infoURL"] = @"http://1129vday.tw";
+                newObject[@"version"] = @"0.0";
+                newObject[@"board"] = @"無物資;0";
+                newObject[@"chair"] = @"無物資;0";
+                newObject[@"desk"] = @"無物資;0";
+                newObject[@"others"] = @"無物資;0";
+                newObject[@"pen"] = @"無物資;0";
+                newObject[@"umbrella"] = @"無物資;0";
+                newObject[@"water"] = @"無物資;0";
+                newObject[@"lon"] = @"121.567257";
+                newObject[@"lat"] = @"25.082179";
+                newObject[@"push"] = @"現在沒有推播訊息";
+                newObject[@"iosToken1"] = nssIOSToken;
+                newObject[@"iosToken2"] = @"abcde";
+                newObject[@"iosToken3"] = @"abcde";
+                newObject[@"ready"] = @"NO";
+                NSLog(@"[newObject saveEventually];");
+                [newObject saveEventually];
+            }
             // Do something with the found objects
-            for (PFObject *object in objects) {
-                NSLog(@"%@", object.objectId);
-                NSLog(@"object[fid]: %@", object[@"fid"]);
-                NSLog(@"object[address]: %@", object[@"address"]);
-                nssAddress = [NSString stringWithString:object[@"address"]];
-                NSLog(@"object[lat]: %@", object[@"lat"]);
-                nssLat = [NSString stringWithString:object[@"lat"]];
-                NSLog(@"object[lon]: %@", object[@"lon"]);
-                nssLon = [NSString stringWithString:object[@"lon"]];
-                NSLog(@"object[point]: %@", object[@"point"]);
-                nssPoint = [NSString stringWithString:object[@"point"]];
-                NSLog(@"object[county]: %@", object[@"county"]);
-                nssCounty = [NSString stringWithString:object[@"county"]];
-                NSLog(@"object[board]: %@", object[@"board"]);
-                nssResourceBoard = [NSString stringWithString:object[@"board"]];
-                NSLog(@"object[chair]: %@", object[@"chair"]);
-                nssResourceChair = [NSString stringWithString:object[@"chair"]];
-                NSLog(@"object[desk]: %@", object[@"desk"]);
-                nssResourceDesk = [NSString stringWithString:object[@"desk"]];
-                NSLog(@"object[others]: %@", object[@"others"]);
-                nssResourceOthers = [NSString stringWithString:object[@"others"]];
-                NSLog(@"object[pen]: %@", object[@"pen"]);
-                nssResourcePen = [NSString stringWithString:object[@"pen"]];
-                NSLog(@"object[umbrella]: %@", object[@"umbrella"]);
-                nssResourceUmbrella = [NSString stringWithString:object[@"umbrella"]];
-                NSLog(@"object[water]: %@", object[@"water"]);
-                nssResourceWater = [NSString stringWithString:object[@"water"]];
-                NSLog(@"object[poll]: %@", object[@"poll"]);
-                nssPoll = [NSString stringWithString:object[@"poll"]];
-                NSLog(@"object[info]: %@", object[@"info"]);
-                nssInfo = [NSString stringWithString:object[@"info"]];
-                NSLog(@"object[infoURL]: %@", object[@"infoURL"]);
-                nssInfoURL = [NSString stringWithString:object[@"infoURL"]];
-                NSLog(@"object[version]: %@", object[@"version"]);
-                nssVersion = [NSString stringWithString:object[@"version"]];
-                NSLog(@"object[version]: %@", object[@"version"]);
-                nssIOSToken1 = [NSString stringWithString:object[@"iosToken1"]];
-                NSLog(@"object[iosToken1]: %@", object[@"iosToken1"]);
-                nssIOSToken2 = [NSString stringWithString:object[@"iosToken2"]];
-                NSLog(@"object[iosToken2]: %@", object[@"iosToken2"]);
-                nssIOSToken3 = [NSString stringWithString:object[@"iosToken3"]];
-                NSLog(@"object[iosToken3]: %@", object[@"iosToken3"]);
-                nssPush = [NSString stringWithString:object[@"push"]];
-                NSLog(@"object[push]: %@", object[@"push"]);
-                if ([nssIOSToken isEqual:nssIOSToken1] == NO && [nssIOSToken isEqual:nssIOSToken2] == NO && [nssIOSToken isEqual:nssIOSToken3] == NO && [nssIOSToken1 isEqual:@"abcde"] == YES) {
-                    NSLog(@"save to iosToken1: %@", nssIOSToken);
-                    object[@"iosToken1"] = nssIOSToken;
-                    [object saveInBackground];
-                } else if ([nssIOSToken isEqual:nssIOSToken1] == NO && [nssIOSToken isEqual:nssIOSToken2] == NO && [nssIOSToken isEqual:nssIOSToken3] == NO && [nssIOSToken2 isEqual:@"abcde"] == YES) {
-                    NSLog(@"save to iosToken2: %@", nssIOSToken);
-                    object[@"iosToken2"] = nssIOSToken;
-                    [object saveInBackground];
-                } else if ([nssIOSToken isEqual:nssIOSToken1] == NO && [nssIOSToken isEqual:nssIOSToken2] == NO && [nssIOSToken isEqual:nssIOSToken3] == NO && [nssIOSToken3 isEqual:@"abcde"] == YES) {
-                    NSLog(@"save to iosToken3: %@", nssIOSToken);
-                    object[@"iosToken3"] = nssIOSToken;
-                    [object saveInBackground];
-                } else {
-                    UIAlertView *errorAlert = [[UIAlertView alloc]initWithTitle:@"iOS裝置註冊已滿" message:@"您所註冊的iOS裝置已超過3個，如需要變更註冊請洽割闌尾計劃email：appy.service@gmail.com" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-                    [errorAlert show];
-                    NSLog(@"Error: %@",error.description);
+            else {
+                for (PFObject *object in objects) {
+                    NSLog(@"%@", object.objectId);
+                    NSLog(@"object[fid]: %@", object[@"fid"]);
+                    NSLog(@"object[address]: %@", object[@"address"]);
+                    nssAddress = [NSString stringWithString:object[@"address"]];
+                    NSLog(@"object[lat]: %@", object[@"lat"]);
+                    nssLat = [NSString stringWithString:object[@"lat"]];
+                    NSLog(@"object[lon]: %@", object[@"lon"]);
+                    nssLon = [NSString stringWithString:object[@"lon"]];
+                    NSLog(@"object[point]: %@", object[@"point"]);
+                    nssPoint = [NSString stringWithString:object[@"point"]];
+                    NSLog(@"object[county]: %@", object[@"county"]);
+                    nssCounty = [NSString stringWithString:object[@"county"]];
+                    NSLog(@"object[board]: %@", object[@"board"]);
+                    nssResourceBoard = [NSString stringWithString:object[@"board"]];
+                    NSLog(@"object[chair]: %@", object[@"chair"]);
+                    nssResourceChair = [NSString stringWithString:object[@"chair"]];
+                    NSLog(@"object[desk]: %@", object[@"desk"]);
+                    nssResourceDesk = [NSString stringWithString:object[@"desk"]];
+                    NSLog(@"object[others]: %@", object[@"others"]);
+                    nssResourceOthers = [NSString stringWithString:object[@"others"]];
+                    NSLog(@"object[pen]: %@", object[@"pen"]);
+                    nssResourcePen = [NSString stringWithString:object[@"pen"]];
+                    NSLog(@"object[umbrella]: %@", object[@"umbrella"]);
+                    nssResourceUmbrella = [NSString stringWithString:object[@"umbrella"]];
+                    NSLog(@"object[water]: %@", object[@"water"]);
+                    nssResourceWater = [NSString stringWithString:object[@"water"]];
+                    NSLog(@"object[poll]: %@", object[@"poll"]);
+                    nssPoll = [NSString stringWithString:object[@"poll"]];
+                    NSLog(@"object[info]: %@", object[@"info"]);
+                    nssInfo = [NSString stringWithString:object[@"info"]];
+                    NSLog(@"object[infoURL]: %@", object[@"infoURL"]);
+                    nssInfoURL = [NSString stringWithString:object[@"infoURL"]];
+                    NSLog(@"object[version]: %@", object[@"version"]);
+                    nssVersion = [NSString stringWithString:object[@"version"]];
+                    NSLog(@"object[version]: %@", object[@"version"]);
+                    nssIOSToken1 = [NSString stringWithString:object[@"iosToken1"]];
+                    NSLog(@"object[iosToken1]: %@", object[@"iosToken1"]);
+                    nssIOSToken2 = [NSString stringWithString:object[@"iosToken2"]];
+                    NSLog(@"object[iosToken2]: %@", object[@"iosToken2"]);
+                    nssIOSToken3 = [NSString stringWithString:object[@"iosToken3"]];
+                    NSLog(@"object[iosToken3]: %@", object[@"iosToken3"]);
+                    nssPush = [NSString stringWithString:object[@"push"]];
+                    NSLog(@"object[push]: %@", object[@"push"]);
+                    nssReady = [NSString stringWithString:object[@"ready"]];
+                    NSLog(@"object[ready]: %@", object[@"ready"]);
+                    if ([nssIOSToken isEqual:nssIOSToken1] == NO && [nssIOSToken isEqual:nssIOSToken2] == NO && [nssIOSToken isEqual:nssIOSToken3] == NO && [nssIOSToken1 isEqual:@"abcde"] == YES) {
+                        NSLog(@"save to iosToken1: %@", nssIOSToken);
+                        object[@"iosToken1"] = nssIOSToken;
+                        [object saveInBackground];
+                    } else if ([nssIOSToken isEqual:nssIOSToken1] == NO && [nssIOSToken isEqual:nssIOSToken2] == NO && [nssIOSToken isEqual:nssIOSToken3] == NO && [nssIOSToken2 isEqual:@"abcde"] == YES) {
+                        NSLog(@"save to iosToken2: %@", nssIOSToken);
+                        object[@"iosToken2"] = nssIOSToken;
+                        [object saveInBackground];
+                    } else if ([nssIOSToken isEqual:nssIOSToken1] == NO && [nssIOSToken isEqual:nssIOSToken2] == NO && [nssIOSToken isEqual:nssIOSToken3] == NO && [nssIOSToken3 isEqual:@"abcde"] == YES) {
+                        NSLog(@"save to iosToken3: %@", nssIOSToken);
+                        object[@"iosToken3"] = nssIOSToken;
+                        [object saveInBackground];
+                    } else if ([nssIOSToken isEqual:nssIOSToken1] == NO && [nssIOSToken isEqual:nssIOSToken2] == NO && [nssIOSToken isEqual:nssIOSToken3] == NO) {
+                        UIAlertView *errorAlert = [[UIAlertView alloc]initWithTitle:@"iOS裝置註冊已滿" message:@"您所註冊的iOS裝置已超過3個，如需要變更註冊請洽割闌尾計劃email：appy.service@gmail.com" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                        [errorAlert show];
+                        NSLog(@"Error: %@",error.description);
+                    }
                 }
             }
         } else {
@@ -417,6 +446,7 @@
     [nsmdPlistDictionary setValue:nssInfo forKey:@"info"];
     [nsmdPlistDictionary setValue:nssInfoURL forKey:@"infoURL"];
     [nsmdPlistDictionary setValue:nssVersion forKey:@"version"];
+    [nsmdPlistDictionary setValue:nssReady forKey:@"ready"];
     [nsmdPlistDictionary writeToFile:_nssPlistDst atomically:YES];
 }
 
@@ -445,6 +475,7 @@
         nssInfoURL = [nsmdPlistDictionary objectForKeyedSubscript:@"infoURL"];
         nssVersion = [nsmdPlistDictionary objectForKeyedSubscript:@"version"];
         nssPush = [nsmdPlistDictionary objectForKeyedSubscript:@"push"];
+        nssReady = [nsmdPlistDictionary objectForKeyedSubscript:@"ready"];
         nssIOSToken = delegate.nssDeviceToken;
     }
 }
