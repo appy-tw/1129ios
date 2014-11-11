@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fid</key>
+	<string></string>
+	<key>address</key>
+	<string>尚無地址</string>
+	<key>point</key>
+	<string>尚無登入任務據點</string>
+	<key>county</key>
+	<string>尚無登入任務</string>
+	<key>board</key>
+	<string>0</string>
+	<key>chair</key>
+	<string>0</string>
+	<key>desk</key>
+	<string>0</string>
+	<key>other</key>
+	<string>0</string>
+	<key>pen</key>
+	<string>0</string>
+	<key>umbrella</key>
+	<string>0</string>
+	<key>water</key>
+	<string>0</string>
+	<key>poll</key>
+	<string>0</string>
+	<key>info</key>
+	<string>報名網址：http://1129vday.tw</string>
+	<key>infoURL</key>
+	<string></string>
+	<key>version</key>
+	<string>1.0</string>
+</dict>
+</plist>

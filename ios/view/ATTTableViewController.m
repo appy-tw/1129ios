@@ -39,7 +39,22 @@
     UIImage *uiiFBImage;
     UILabel *uilFBUserName;
     
-    NSString *nssFBID;
+    NSString *nssFid;
+    NSString *nssAddress;
+    NSString *nssPoint;
+    NSString *nssCountry;
+    NSString *nssPoll;
+    NSString *nssInfo;
+    NSString *nssInfoURL;
+    NSString *nssVersion;
+    
+    NSString *nssResourceBoard;
+    NSString *nssResourceChair;
+    NSString *nssResourceDesk;
+    NSString *nssResourceOthers;
+    NSString *nssResourcePen;
+    NSString *nssResourceUmbrella;
+    NSString *nssResourceWater;
 }
 @end
 
@@ -140,7 +155,7 @@
         [cell.contentView addSubview:_fbProfilePic];
         //蔡吳林的圖
         UIImageView *uiimvTsaiWuLin = [[UIImageView alloc] initWithFrame:CGRectMake(cgfScreenWidth * 32.0 / 640.0, cgfScreenWidth * 87.0 / 640.0, cgfScreenWidth * 217.0 / 640.0, cgfScreenWidth * 217.0 / 640.0)];
-        [uiimvTsaiWuLin setImage:[UIImage imageNamed:@"tsai"]];
+        [uiimvTsaiWuLin setImage:[UIImage imageNamed:@"none"]];
         [cell.contentView addSubview:uiimvTsaiWuLin];
         UILabel *uilTsaiWuLin = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 32.0 / 640.0, 410.0 * cgfScreenWidth / 640.0 * 0.85, cgfScreenWidth * 217.0 / 640.0, 30.0)];
         [uilTsaiWuLin setText:@"任務尚未登入"];
@@ -243,6 +258,53 @@
 //    return 
 //}
 
+- (void)getAllInformationFromParse {
+    PFQuery *query = [PFQuery queryWithClassName:@"newtask"];
+    [query whereKey:@"fid" equalTo:nssFid];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            // The find succeeded.
+            NSLog(@"Successfully retrieved %d scores.", objects.count);
+            // Do something with the found objects
+            for (PFObject *object in objects) {
+                NSLog(@"%@", object.objectId);
+                NSLog(@"object[fid]: %@", object[@"fid"]);
+                NSLog(@"object[address]: %@", object[@"address"]);
+                nssAddress = [NSString stringWithString:object[@"address"]];
+                NSLog(@"object[point]: %@", object[@"point"]);
+                nssPoint = [NSString stringWithString:object[@"point"]];
+                NSLog(@"object[county]: %@", object[@"county"]);
+                nssCountry = [NSString stringWithString:object[@"county"]];
+                NSLog(@"object[board]: %@", object[@"board"]);
+                nssResourceBoard = [NSString stringWithString:object[@"board"]];
+                NSLog(@"object[chair]: %@", object[@"chair"]);
+                nssResourceChair = [NSString stringWithString:object[@"chair"]];
+                NSLog(@"object[desk]: %@", object[@"desk"]);
+                nssResourceDesk = [NSString stringWithString:object[@"desk"]];
+                NSLog(@"object[others]: %@", object[@"others"]);
+                nssResourceOthers = [NSString stringWithString:object[@"others"]];
+                NSLog(@"object[pen]: %@", object[@"pen"]);
+                nssResourcePen = [NSString stringWithString:object[@"pen"]];
+                NSLog(@"object[umbrella]: %@", object[@"umbrella"]);
+                nssResourceUmbrella = [NSString stringWithString:object[@"umbrella"]];
+                NSLog(@"object[water]: %@", object[@"water"]);
+                nssResourceWater = [NSString stringWithString:object[@"water"]];
+                NSLog(@"object[poll]: %@", object[@"poll"]);
+                nssPoll = [NSString stringWithString:object[@"poll"]];
+                NSLog(@"object[info]: %@", object[@"info"]);
+                nssInfo = [NSString stringWithString:object[@"info"]];
+                NSLog(@"object[infoURL]: %@", object[@"infoURL"]);
+                nssInfoURL = [NSString stringWithString:object[@"infoURL"]];
+                NSLog(@"object[version]: %@", object[@"version"]);
+                nssVersion = [NSString stringWithString:object[@"version"]];
+            }
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+}
+
 - (void)loginViewFetchedUserInfo:(FBLoginView *)loginView
                             user:(id<FBGraphUser>)user {
     // here we use helper properties of FBGraphUser to dot-through to first_name and
@@ -252,48 +314,11 @@
     // setting the profileID property of the FBProfilePictureView instance
     // causes the control to fetch and display the profile picture for the user
     NSLog(@"user.objectID: %@", user.objectID);
-    nssFBID = [NSString stringWithString:user.objectID];
+    nssFid = [NSString stringWithString:user.objectID];
     _fbProfilePic.profileID = user.objectID;
-//    NSLog(@"loginViewFetchedUserInfo:(FBLoginView *)loginView");
+    [self getAllInformationFromParse];
     [uilFBUserName setText:[NSString stringWithFormat:@"%@", user.name]];
-//    [FBRequestConnection startWithGraphPath:@"/me"
-//                                 parameters:nil
-//                                 HTTPMethod:@"GET"
-//                          completionHandler:^(
-//                                              FBRequestConnection *connection,
-//                                              NSDictionary<FBGraphUser> *nsdMe,
-//                                              NSError *error
-//                                              ) {
-//                              /* handle the result */
-//                              nssFBID = [nsdMe objectForKey:@"id"];
-//                              NSLog(@"nssFBID: %@", nssFBID);
-//                          }];
-
-//    NSLog(@"PFQuery *query = [PFQuery queryWithClassName:...");
-    NSLog(@"nssFBID: %@", nssFBID);
-    PFQuery *query = [PFQuery queryWithClassName:@"task"];
-//    [query whereKey:@"fid" equalTo:[[NSNumberFormatter new] numberFromString:nssFBID]];
-//    NSLog(@"isnumber: %@", [[NSNumberFormatter new]numberFromString:@"111111"]);
-//    [query whereKey:@"fid" equalTo:@833487546672417];
-    
-//    int fbid = 833487546672417;
-    [query whereKey:@"fid" equalTo:[NSNumber numberWithUnsignedInteger:(long)(long)10201806131474272]];
-//    [query whereKey:@"fid" equalTo:[[NSNumberFormatter new]numberFromString:nssFBID]];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            // The find succeeded.
-            NSLog(@"Successfully retrieved %d scores.", objects.count);
-            // Do something with the found objects
-            for (PFObject *object in objects) {
-                NSLog(@"%@", object.objectId);
-                NSLog(@"object[fid]: %@", object[@"fid"]);
-                NSLog(@"object[county]: %@", object[@"county"]);
-            }
-        } else {
-            // Log details of the failure
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-    }];
+    NSLog(@"nssFid: %@", nssFid);
 }
 
 //
@@ -312,6 +337,61 @@
     // our policy here is to let the login view handle errors, but to log the results
     NSLog(@"FBLoginView encountered an error=%@", error);
 }
+
+
+//[[Plist
+
+- (void)initMyPlist
+{
+    NSFileManager *nsfmPlistFileManager = [[NSFileManager alloc]init];
+    NSString *nssPlistSrc = [[NSBundle mainBundle] pathForResource:@"UserData" ofType:@"plist"];
+    _nssPlistDst = [NSString stringWithFormat:@"%@/Documents/UserData.plist", NSHomeDirectory()];
+    if (! [nsfmPlistFileManager fileExistsAtPath:_nssPlistDst]) {
+        [nsfmPlistFileManager copyItemAtPath:nssPlistSrc toPath:_nssPlistDst error:nil];
+    }
+}
+
+- (void)writeToMyPlist
+{
+    if (_nssPlistDst == nil) {
+        [self initMyPlist];
+    }
+    NSMutableDictionary *nsmdPlistDictionary = [NSMutableDictionary dictionaryWithContentsOfFile:_nssPlistDst];
+//    [nsmdPlistDictionary setValue:_nssUserName forKey:PLIST_USER_NAME];
+//    [nsmdPlistDictionary setValue:_nssDeviceToken forKey:PLIST_USER_DEVICE_TOKEN];
+//    [nsmdPlistDictionary setValue:_nssGesturePassword forKey:PLIST_USER_GESTURE_PASSWORD];
+//    [nsmdPlistDictionary setValue:_nssPassword forKey:PLIST_USER_PASSWORD];
+//    [nsmdPlistDictionary setValue:_nssPhone forKey:PLIST_USER_PHONE];
+//    [nsmdPlistDictionary setValue:_nssRSSContent forKey:PLIST_RSS_CONTENT];
+//    [nsmdPlistDictionary setValue:_nssRSSURL forKey:PLIST_RSS_URL];
+//    [nsmdPlistDictionary setValue:_nssTsaiWuLin forKey:PLIST_TSAI_WU_LIN];
+//    [nsmdPlistDictionary setValue:_nssAddress forKey:PLIST_ADDRESS];
+    //    [nsmdPlistDictionary setValue:_nssGPSX forKey:PLIST_GPSX];
+    //    [nsmdPlistDictionary setValue:_nssGPSY forKey:PLIST_GPSY];
+    [nsmdPlistDictionary writeToFile:_nssPlistDst atomically:YES];
+}
+
+- (void)readAllFromMyPlist {
+    if (_nssPlistDst == nil) {
+        [self initMyPlist];
+    }
+    NSMutableDictionary *nsmdPlistDictionary = [NSMutableDictionary dictionaryWithContentsOfFile:_nssPlistDst];
+    if (nsmdPlistDictionary != nil) {
+//        _nssUserName = [nsmdPlistDictionary objectForKey:PLIST_USER_NAME];
+//        _nssDeviceToken = [nsmdPlistDictionary objectForKey:PLIST_USER_DEVICE_TOKEN];
+//        _nssGesturePassword = [nsmdPlistDictionary objectForKey:PLIST_USER_GESTURE_PASSWORD];
+//        _nssPassword = [nsmdPlistDictionary objectForKey:PLIST_USER_PASSWORD];
+//        _nssPhone = [nsmdPlistDictionary objectForKey:PLIST_USER_PHONE];
+//        _nssRSSContent = [nsmdPlistDictionary objectForKey:PLIST_RSS_CONTENT];
+//        _nssRSSURL = [nsmdPlistDictionary objectForKey:PLIST_RSS_URL];
+//        _nssTsaiWuLin = [nsmdPlistDictionary objectForKey:PLIST_TSAI_WU_LIN];
+//        _nssAddress = [nsmdPlistDictionary objectForKey:PLIST_ADDRESS];
+        //        _nssGPSX = [nsmdPlistDictionary objectForKey:PLIST_GPSX];
+        //        _nssGPSY = [nsmdPlistDictionary objectForKey:PLIST_GPSY];
+    }
+}
+
+//]]Plist
 
 
 @end

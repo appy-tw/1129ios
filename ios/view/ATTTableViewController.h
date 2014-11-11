@@ -14,4 +14,6 @@
 
 @property (nonatomic, strong) FBProfilePictureView *fbProfilePic;
 
+@property (strong, nonatomic) NSString *nssPlistDst;
+
 @end

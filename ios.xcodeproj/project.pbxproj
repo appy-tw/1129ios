@@ -10,6 +10,8 @@
 		497FC9961A108B9A009787E9 /* VShop.m in Sources */ = {isa = PBXBuildFile; fileRef = 497FC9951A108B9A009787E9 /* VShop.m */; };
 		497FC9991A109286009787E9 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 497FC9981A109286009787E9 /* Utils.m */; };
 		497FC99C1A109BA6009787E9 /* VGeoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 497FC99B1A109BA6009787E9 /* VGeoManager.m */; };
+		8F24C0441A11E0CD00277BAD /* att.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F24C0431A11E0CD00277BAD /* att.plist */; };
+		8F24C0451A11E0CD00277BAD /* att.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F24C0431A11E0CD00277BAD /* att.plist */; };
 		8F286CE21A0F52F200CA923D /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F286CDF1A0F52F200CA923D /* UIScrollView+SVInfiniteScrolling.m */; };
 		8F286CE31A0F52F200CA923D /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F286CDF1A0F52F200CA923D /* UIScrollView+SVInfiniteScrolling.m */; };
 		8F286CE41A0F52F200CA923D /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F286CE11A0F52F200CA923D /* UIScrollView+SVPullToRefresh.m */; };
@@ -97,6 +99,7 @@
 		497FC99A1A109BA6009787E9 /* VGeoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VGeoManager.h; sourceTree = "<group>"; };
 		497FC99B1A109BA6009787E9 /* VGeoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VGeoManager.m; sourceTree = "<group>"; };
 		497FC99E1A109C75009787E9 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynthesizeSingleton.h; sourceTree = "<group>"; };
+		8F24C0431A11E0CD00277BAD /* att.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = att.plist; sourceTree = "<group>"; };
 		8F286CDD1A0F52F200CA923D /* SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVPullToRefresh.h; sourceTree = "<group>"; };
 		8F286CDE1A0F52F200CA923D /* UIScrollView+SVInfiniteScrolling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVInfiniteScrolling.h"; sourceTree = "<group>"; };
 		8F286CDF1A0F52F200CA923D /* UIScrollView+SVInfiniteScrolling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVInfiniteScrolling.m"; sourceTree = "<group>"; };
@@ -311,6 +314,7 @@
 				8F3A12831A0B320000C10C5D /* Localizable.strings */,
 				8F3A12881A0B322A00C10C5D /* InfoPlist.strings */,
 				8F2C57041A0E671C007A24A4 /* sup.plist */,
+				8F24C0431A11E0CD00277BAD /* att.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -494,6 +498,7 @@
 				8F3A12851A0B322A00C10C5D /* InfoPlist.strings in Resources */,
 				8F3A12801A0B320000C10C5D /* Localizable.strings in Resources */,
 				8F2C57051A0E671C007A24A4 /* sup.plist in Resources */,
+				8F24C0441A11E0CD00277BAD /* att.plist in Resources */,
 				8FE0E8161A061DD4000016D1 /* README.txt in Resources */,
 				8FE0E8461A061DD4000016D1 /* LICENSE in Resources */,
 				8FE0E8481A061DD4000016D1 /* README.txt in Resources */,
@@ -509,6 +514,7 @@
 				8F3A12861A0B322A00C10C5D /* InfoPlist.strings in Resources */,
 				8F2C57061A0E671C007A24A4 /* sup.plist in Resources */,
 				8FE0E8471A061DD4000016D1 /* LICENSE in Resources */,
+				8F24C0451A11E0CD00277BAD /* att.plist in Resources */,
 				8FE0E8171A061DD4000016D1 /* README.txt in Resources */,
 				8F3BF8A91A040970002F75E9 /* UserData.plist in Resources */,
 				8FE0E8491A061DD4000016D1 /* README.txt in Resources */,
