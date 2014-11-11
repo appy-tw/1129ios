@@ -69,19 +69,16 @@
 #pragma mark - MKMapViewDelegate
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
-    static NSString *identifierPin = @"EGAttractionPin";
+    static NSString *identifierPin = @"AttractionPin";
 
     MKPinAnnotationView *pinAnnotationView = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:identifierPin];
     if (!pinAnnotationView) {
         pinAnnotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifierPin];
-        pinAnnotationView.pinColor = MKPinAnnotationColorPurple;
-        pinAnnotationView.animatesDrop = YES;
+        pinAnnotationView.image = [UIImage imageNamed:@"sup"];
         pinAnnotationView.canShowCallout = YES;
     } else {
         pinAnnotationView.annotation = annotation;
     }
-
-    pinAnnotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     return pinAnnotationView;
 }
 
