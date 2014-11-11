@@ -72,19 +72,12 @@
 - (void)setMyScreen
 {
     delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    cgfScreenWidth = [[UIScreen mainScreen] bounds].size.width;
-    cgfScreenHeight = [[UIScreen mainScreen] bounds].size.height - [[UIApplication sharedApplication] statusBarFrame].size.height - self.tabBarController.tabBar.frame.size.height - delegate.navigationController.navigationBar.frame.size.height - [UIApplication sharedApplication].statusBarFrame.size.height;
-    cgfScreenHeightBase = [UIApplication sharedApplication].statusBarFrame.size.height;
     
-    if ([UIApplication sharedApplication].statusBarFrame.size.height == 20.0) {
-        //without Hotspot: 64
-        cgfKeyboardOffset =  cgfScreenHeightBase;
-    } else {
-        //with Hotspot: 104
-        cgfKeyboardOffset = cgfScreenHeightBase + [UIApplication sharedApplication].statusBarFrame.size.height / 2.0;
-    }
+    cgfScreenWidth = [[UIScreen mainScreen] bounds].size.width;
+    cgfScreenHeight = [[UIScreen mainScreen] bounds].size.height - [[UIApplication sharedApplication] statusBarFrame].size.height - self.tabBarController.tabBar.frame.size.height - self.navigationController.navigationBar.frame.size.height - [UIApplication sharedApplication].statusBarFrame.size.height;
+    cgfScreenHeightBase = self.navigationController.navigationBar.frame.size.height + 20;// + [UIApplication sharedApplication].statusBarFrame.size.height;
     NSLog(@"status bar height:%f",[UIApplication sharedApplication].statusBarFrame.size.height);
-    NSLog(@"width:%f, height:%f, tabbar:%f, navigationbarcontroller:%f, keyboardOffset: %f", cgfScreenWidth, cgfScreenHeight, self.tabBarController.tabBar.frame.size.height, delegate.navigationController.navigationBar.frame.size.height, cgfKeyboardOffset);
+    NSLog(@"width:%f, height:%f, tabbar:%f, navigationbarcontroller:%f", cgfScreenWidth, cgfScreenHeight, self.tabBarController.tabBar.frame.size.height, self.navigationController.navigationBar.frame.size.height);
 }
 
 - (void)setImage {
@@ -136,6 +129,7 @@
     return 14;
 }
 
+//    這份註解請勿刪
 //- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 //    static NSString *nssIDATT = @"Cell";
 //    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT];
@@ -328,20 +322,35 @@
 //}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *nssIDATT1 = @"ATT1";
-    static NSString *nssIDATT2 = @"ATT2";
-    static NSString *nssIDATT3 = @"ATT3";
-    static NSString *nssIDATT4 = @"ATT4";
-    static NSString *nssIDATT5 = @"ATT5";
-    static NSString *nssIDATT6 = @"ATT6";
-    static NSString *nssIDATT7 = @"ATT7";
-    static NSString *nssIDATT8 = @"ATT8";
-    static NSString *nssIDATT9 = @"ATT9";
-    static NSString *nssIDATT10 = @"ATT10";
-    static NSString *nssIDATT11 = @"ATT11";
-    static NSString *nssIDATT12 = @"ATT12";
-    static NSString *nssIDATT13 = @"ATT13";
+//    這份註解請勿刪
+//    static NSString *nssIDATT1 = @"ATT1";
+//    static NSString *nssIDATT2 = @"ATT2";
+//    static NSString *nssIDATT3 = @"ATT3";
+//    static NSString *nssIDATT4 = @"ATT4";
+//    static NSString *nssIDATT5 = @"ATT5";
+//    static NSString *nssIDATT6 = @"ATT6";
+//    static NSString *nssIDATT7 = @"ATT7";
+//    static NSString *nssIDATT8 = @"ATT8";
+//    static NSString *nssIDATT9 = @"ATT9";
+//    static NSString *nssIDATT10 = @"ATT10";
+//    static NSString *nssIDATT11 = @"ATT11";
+//    static NSString *nssIDATT12 = @"ATT12";
+//    static NSString *nssIDATT13 = @"ATT13";
+    static NSString *nssIDATT1 = @"ATT";
+    static NSString *nssIDATT2 = @"ATT";
+    static NSString *nssIDATT3 = @"ATT";
+    static NSString *nssIDATT4 = @"ATT";
+    static NSString *nssIDATT5 = @"ATT";
+    static NSString *nssIDATT6 = @"ATT";
+    static NSString *nssIDATT7 = @"ATT";
+    static NSString *nssIDATT8 = @"ATT";
+    static NSString *nssIDATT9 = @"ATT";
+    static NSString *nssIDATT10 = @"ATT";
+    static NSString *nssIDATT11 = @"ATT";
+    static NSString *nssIDATT12 = @"ATT";
+    static NSString *nssIDATT13 = @"ATT";
     UITableViewCell *cell;
+//    這份註解請勿刪
 //    for (id subview in [cell.contentView subviews])
 //    {
 //        NSLog(@"catch subview");

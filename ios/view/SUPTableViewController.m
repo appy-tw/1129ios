@@ -59,7 +59,7 @@
 {
     if (_mapView)
         return _mapView;
-    self.mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, 300)];
+    self.mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, 280.0 * cgfScreenWidth / 320.0)];
     self.mapView.delegate = self;
     
     MKPointAnnotation *mkpaPoint;
