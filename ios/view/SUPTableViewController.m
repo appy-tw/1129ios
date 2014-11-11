@@ -45,6 +45,7 @@
     UIImage *uiiSUP2;
     UIImage *uiiSUP3;
     
+    AppDelegate *delegate;
 }
 
 @property (nonatomic, strong) MKMapView *mapView;
@@ -178,6 +179,7 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     [delegate.cllMLocation stopUpdatingLocation];
     [[VGeoManager sharedInstance]setup];
