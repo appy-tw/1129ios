@@ -88,7 +88,6 @@
     uiiATT3 = [UIImage imageNamed:@"att3"];
     uiiATT4 = [UIImage imageNamed:@"att4"];
     uiiATT6 = [UIImage imageNamed:@"att6"];
-    //abcde
 }
 
 - (void)setFBView {
