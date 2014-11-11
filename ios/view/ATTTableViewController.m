@@ -117,6 +117,7 @@
     [_fbProfilePic.layer setCornerRadius:50.0f];
     [super viewDidLoad];
     [self setImage];
+    [self readAllFromMyPlist];
     [self setFBView];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 }
