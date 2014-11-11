@@ -49,7 +49,7 @@
 - (void) makeKeyboardOffset {
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.0];
-    self.view.center = CGPointMake(self.view.center.x, -100);
+    self.view.center = CGPointMake(self.view.center.x, self.view.center.y - cgfKeyboardOffset);
     [UIView commitAnimations];
 }
 
