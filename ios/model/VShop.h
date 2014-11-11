@@ -18,4 +18,6 @@
 @property (nonatomic, readonly) NSInteger mDistance;
 @property (nonatomic, readonly) NSString* key;
 
++(NSMutableArray*)loadVShop;
+
 @end

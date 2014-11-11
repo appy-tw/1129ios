@@ -47,8 +47,6 @@
     
     AppDelegate *delegate;
     
-    NSString *nssPlistDst;
-    NSMutableArray *nsmaPlistArray;
 }
 
 @property (nonatomic, strong) MKMapView *mapView;
@@ -173,10 +171,8 @@
     [self setMyScreenSize];
     [self makeKeyboardOffset];
     [self readAllFromMyPlist];
-//    [self setPinMap];
     [self setImage];
 
-//    [self setMap];
     [self setMyAnotherMap];
     
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
@@ -184,9 +180,9 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     [delegate.cllMLocation stopUpdatingLocation];
-    [self initMyPlist];
     [[VGeoManager sharedInstance]setup];
     [VGeoManager sharedInstance].delegate = self;
     [super viewDidDisappear:animated];
@@ -199,7 +195,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [nsmaPlistArray count] + CELL_OFFSET;
+    return [self.mShopArray count] + CELL_OFFSET;
 }
 
 #define __Title_Tag__       55
@@ -345,106 +341,8 @@
     [_mapView selectAnnotation:annotation animated:YES];
 }
 
-//[[CLLocationInit
-//- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-//    NSLog(@"locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations start");
-//    CLLocation *c = [locations objectAtIndex:0];
-//    delegate.clldLongitude = c.coordinate.longitude;
-//    delegate.clldLatitude = c.coordinate.latitude;
-//    NSLog(@"latitude: %f, longitude: %f, altitude: %f", delegate.clldLatitude, delegate.clldLongitude, c.altitude);
-//    NSLog(@"locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations end");
-//}
-//
-//
-//- (void) startMonitoring:(LocationChangeCallback)callback {
-//    if ([CLLocationManager locationServicesEnabled] && [CLLocationManager significantLocationChangeMonitoringAvailable]) {
-//        // Register an observer for if/when this app goes into background & comes back to foreground
-//        // NOTE: THIS CODE IS iOS4.0+ ONLY.
-//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(switchToLowEnergyMode) name:UIApplicationDidEnterBackgroundNotification object:nil];
-//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(switchToAccurateMode) name:UIApplicationDidFinishLaunchingNotification object:nil];
-//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(switchToAccurateMode) name:UIApplicationWillEnterForegroundNotification object:nil];
-//        
-//        UIApplicationState state = [[UIApplication sharedApplication] applicationState];
-//        
-//        self.locationUpdateCallback = callback;
-//        
-//        if (state == UIApplicationStateActive) {
-//            [self switchToAccurateMode];
-//        } else {
-//            [self switchToLowEnergyMode];
-//        }
-//    }
-//}
-//
-//- (void) switchToAccurateMode {
-//    NSLog(@"Accurate");
-//    [self.locationManager stopMonitoringSignificantLocationChanges];
-//    
-//    // Find the current location
-//    [self.locationManager startUpdatingLocation];
-//}
-//
-//- (void) switchToLowEnergyMode {
-//    NSLog(@"Low Energy");
-//    [self.locationManager stopUpdatingLocation];
-//    
-//    // Find the current location
-//    [self.locationManager startMonitoringSignificantLocationChanges];
-//}
-//
-//
-//#pragma mark - CLLocationDelegate Methods
-//
-//- (void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-//    // locations contains an array of recent locations, but this app only cares about the most recent
-//    // which is also "manager.location"
-//    if (self.locationUpdateCallback != nil) {
-//        self.locationUpdateCallback(manager.location);
-//    }
-//}
-/*
--(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
-    UIAlertView *errorAlert = [[UIAlertView alloc]initWithTitle:@"Error" message:@"There was an error retrieving your location" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-    [errorAlert show];
-    NSLog(@"Error: %@",error.description);
-}*/
-//-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
-//{
-//    CLLocation *crnLoc = [locations lastObject];
-//    NSLog(@"%@", [NSString stringWithFormat:@"%.8f",crnLoc.coordinate.latitude]);
-//    NSLog(@"%@", [NSString stringWithFormat:@"%.8f",crnLoc.coordinate.longitude]);
-//    NSLog(@"%@", [NSString stringWithFormat:@"%.0f m",crnLoc.altitude]);
-//    NSLog(@"%@", [NSString stringWithFormat:@"%.1f m/s", crnLoc.speed]);
-//}
-//]]CLLocationinit
-
-//[[Plist
-
-- (void)initMyPlist
-{
-    NSFileManager *nsfmPlistFileManager = [[NSFileManager alloc]init];
-    NSString *nssPlistSrc = [[NSBundle mainBundle] pathForResource:@"sup" ofType:@"plist"];
-    nssPlistDst = [NSString stringWithFormat:@"%@/Documents/sup", NSHomeDirectory()];
-    if (! [nsfmPlistFileManager fileExistsAtPath:nssPlistDst]) {
-        [nsfmPlistFileManager copyItemAtPath:nssPlistSrc toPath:nssPlistDst error:nil];
-    }
-}
-
 - (void)readAllFromMyPlist {
-    if (nssPlistDst == nil) {
-        [self initMyPlist];
-    }
-    self.mShopArray = [NSMutableArray array];
-    nsmaPlistArray = [NSMutableArray arrayWithContentsOfFile:nssPlistDst];
-    NSLog(@"%lu", (unsigned long)[nsmaPlistArray count]);
-    for(NSDictionary* obj in nsmaPlistArray){
-        VShop* aShop = [[VShop alloc]init];
-        aShop.mTitle = [obj valueForKey:@"title"];
-        aShop.mAddress = [obj valueForKey:@"address"];
-        aShop.mGeoPoint = [[CLLocation alloc]initWithLatitude:[[obj valueForKey:@"lat"]floatValue]
-                                                    longitude:[[obj valueForKey:@"lon"]floatValue]];
-        [self.mShopArray addObject:aShop];
-    }
+    self.mShopArray = [VShop loadVShop];
     [self sortShops];
 }
 -(void)sortShops{
