@@ -46,6 +46,7 @@
     UIImage *uiiSUP3;
     
     AppDelegate *delegate;
+
 }
 
 @property (nonatomic, strong) MKMapView *mapView;
