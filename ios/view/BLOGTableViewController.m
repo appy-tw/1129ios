@@ -117,12 +117,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"%ld", (long)indexPath.row);
-    [delegate.navigationControllerBlog setNavigationBarHidden:NO animated:NO];
+    BlogItem *item = [self.blogItemsArr objectAtIndex:indexPath.row];
+    delegate.nssBLOGLink = [NSString stringWithString:item.strLink];
+    NSLog(@"%@", delegate.nssBLOGLink);
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
     [self makeKeyboardOffsetBack];
-    [delegate.navigationControllerBlog pushViewController:[UIViewController new] animated:NO];
-    
-//    BlogItem *item = [self.blogItemsArr objectAtIndex:indexPath.row];
-//    delegate.nssBLOGLink = [NSString stringWithString:item.strLink];
+    [self.navigationController pushViewController:[BLOGViewController new] animated:NO];
 //    [delegate.navigationControllerBlog pushViewController:[[UIViewController alloc]init] animated:NO];
 ////    delegate.nssBLOGLink = [self.blogItemsArr objectAtIndex:indexPath.row].strLink;
 //    UIAlertView *messageAlert = [[UIAlertView alloc]
@@ -147,8 +147,14 @@
     [UIView commitAnimations];
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    [super viewWillAppear:animated];
+}
 
 - (void)viewDidLoad {
+    delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [super viewDidLoad];
     [self setMyScreenSize];
     [self makeKeyboardOffset];

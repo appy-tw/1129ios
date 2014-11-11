@@ -17,6 +17,8 @@
     CGFloat cgfKeyboardOffset;
     
     AppDelegate *delegate;
+    
+    UIWebView *uiwvBlog;
 }
 
 @end
