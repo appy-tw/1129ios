@@ -7,8 +7,6 @@
 
 #import "MapViewController.h"
 
-#define METERS_PER_MILE 1609.344
-
 @interface MapAnnotation : NSObject <MKAnnotation>
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *subtitle;
@@ -19,7 +17,7 @@
 
 @end
 
-@interface MapViewController () <MKMapViewDelegate>
+@interface MapViewController () <MKMapViewDelegate, UIActionSheetDelegate>
 
 @end
 
@@ -36,7 +34,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.mapView = [[MKMapView alloc] initWithFrame:self.view.bounds];
     self.mapView.showsUserLocation = YES;
+    [self.view addSubview:self.mapView];
+
+    UIBarButtonItem *shareItem =
+    [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
+                                                  target:self
+                                                  action:@selector(openLocationOutSide)];
+
+    self.navigationItem.rightBarButtonItem = shareItem;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -86,7 +93,8 @@
 }
 
 - (void)updateMapViewRangeWithCenter:(CLLocationCoordinate2D)centerLocation {
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(centerLocation, 2 * METERS_PER_MILE, 2 * METERS_PER_MILE);
+    CGFloat meter = 0.5;
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(centerLocation, meter, meter);
     [self.mapView setRegion:region];
 }
 
@@ -104,42 +112,38 @@
     })];
 }
 
-//- (void)openLocationOutSide {
-//    UIActionSheet *actionSheet = [UIActionSheet bk_actionSheetWithTitle:@"Chose open location way"];
-//
-//    [actionSheet bk_addButtonWithTitle:@"Open in Google Maps" handler:^{
-//        if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"comgooglemaps-x-callback://"]]) {
-//
-//            EGAttraction *attribute = self.attraction;
-//
-//            CGFloat latitude = attribute.latitude;
-//            CGFloat longitude = attribute.longitude;
-//
-//            // We must work on right locaiton
-//            if (attribute.locationIsValid == NO) {
-//                NSLog(@"Cancel on open Google Map");
-//                return;
-//            }
-//
-//            NSMutableString *mapString = [NSMutableString stringWithString:@"comgooglemaps-x-callback://?"];
-//
-//            [mapString appendFormat:@"q=%f,%f&", latitude, longitude];
-//            [mapString appendFormat:@"center=%f,%f&", latitude, longitude];
-//            [mapString appendString:@"zoom=15&"];
-//
-//            NSString *appLocalizedString = NSLocalizedString(@"1129 割藍尾", @"show on google maple callback");
-//            [mapString appendFormat:@"x-success=com.eatgo.feelinglucky://?resume=true&x-source=%@", appLocalizedString];
-//
-//            NSLog(@"map:%@", mapString);
-//            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[mapString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
-//        } else {
-//            NSLog(@"Can't use comgooglemaps://");
-//        }
-//    }];
-//
-//    [actionSheet bk_setCancelButtonWithTitle:nil handler:nil];
-//    
-//    [actionSheet showInView:self.view];
-//}
+- (void)openLocationOutSide {
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"選擇要開啟的方式"
+                                                             delegate:self
+                                                    cancelButtonTitle:@"取消"
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:@"使用 Google Maps 打開", nil];
+    [actionSheet showInView:self.view];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"comgooglemaps-x-callback://"]]) {
+
+        // We must work on right locaiton
+        if (CLLocationCoordinate2DIsValid(self.location) == NO) {
+            NSLog(@"Cancel on open Google Map");
+            return;
+        }
+
+        NSMutableString *mapString = [NSMutableString stringWithString:@"comgooglemaps-x-callback://?"];
+
+        [mapString appendFormat:@"q=%f,%f&", self.location.latitude, self.location.longitude];
+        [mapString appendFormat:@"center=%f,%f&", self.location.latitude, self.location.longitude];
+        [mapString appendString:@"zoom=15&"];
+
+        NSString *appLocalizedString = NSLocalizedString(@"1129 割藍尾", @"show on google maple callback");
+        [mapString appendFormat:@"x-success=com.eatgo.feelinglucky://?resume=true&x-source=%@", appLocalizedString];
+
+        NSLog(@"map:%@", mapString);
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[mapString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+    } else {
+        NSLog(@"Can't use comgooglemaps://");
+    }
+}
 
 @end
