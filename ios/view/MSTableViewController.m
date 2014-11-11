@@ -16,6 +16,7 @@
     CGFloat cgfScreenWidth;
     CGFloat cgfScreenHeight;
     CGFloat cgfScreenHeightBase;
+    CGFloat cgfKeyboardOffset;
     
     CGFloat cgfHigh0;
     CGFloat cgfHigh1;
@@ -29,24 +30,39 @@
 
 @implementation MSTableViewController
 
-- (void)setMyScreen
+- (void)setMyScreenSize
 {
-    delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
     cgfScreenWidth = [[UIScreen mainScreen] bounds].size.width;
     cgfScreenHeight = [[UIScreen mainScreen] bounds].size.height - [[UIApplication sharedApplication] statusBarFrame].size.height - self.tabBarController.tabBar.frame.size.height - self.navigationController.navigationBar.frame.size.height - [UIApplication sharedApplication].statusBarFrame.size.height;
-    cgfScreenHeightBase = self.navigationController.navigationBar.frame.size.height + 20;// + [UIApplication sharedApplication].statusBarFrame.size.height;
+    cgfScreenHeightBase = [UIApplication sharedApplication].statusBarFrame.size.height;
+    if ([UIApplication sharedApplication].statusBarFrame.size.height == 20.0) {
+        //without Hotspot: 64
+        cgfKeyboardOffset =  cgfScreenHeightBase;
+    } else {
+        //with Hotspot: 104
+        cgfKeyboardOffset = cgfScreenHeightBase + [UIApplication sharedApplication].statusBarFrame.size.height / 2.0;
+    }
     NSLog(@"status bar height:%f",[UIApplication sharedApplication].statusBarFrame.size.height);
-    NSLog(@"width:%f, height:%f, tabbar:%f, navigationbarcontroller:%f", cgfScreenWidth, cgfScreenHeight, self.tabBarController.tabBar.frame.size.height, self.navigationController.navigationBar.frame.size.height);
+    NSLog(@"width:%f, height:%f, tabbar:%f, navigationbarcontroller:%f, keyboardOffset: %f", cgfScreenWidth, cgfScreenHeight, self.tabBarController.tabBar.frame.size.height, delegate.navigationController.navigationBar.frame.size.height, cgfKeyboardOffset);
 }
 
-- (void)setImage {
-    
+- (void) makeKeyboardOffset {
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.0];
+    self.view.center = CGPointMake(self.view.center.x, -100);
+    [UIView commitAnimations];
+}
+
+- (void) makeKeyboardOffsetBack {
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.0];
+    self.view.center = CGPointMake(self.view.center.x, self.view.center.y);
+    [UIView commitAnimations];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setMyScreen];
+    [self makeKeyboardOffset];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     NSString *nssEmbedHTML = @"\
     <html><head>\
@@ -63,7 +79,7 @@
     NSString *nssHtml = [NSString stringWithFormat:nssEmbedHTML, @"https://www.youtube.com/watch?feature=player_embedded&v=OtvbZscM90A", self.tableView.frame.size.width * 0.92, self.tableView.frame.size.width * .92 * 9.0 / 16.0];
     _uiwVideoView = [[UIWebView alloc] initWithFrame:CGRectMake(self.tableView.frame.size.width * 0.04, self.tableView.frame.size.width * 90 / 640 + 15.0 + cgfScreenHeightBase, self.tableView.frame.size.width * 0.92, self.tableView.frame.size.width * 0.92 * 9.0 / 16.0)];
     [_uiwVideoView loadHTMLString:nssHtml baseURL:nil];
-
+    [self makeKeyboardOffset];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -161,12 +177,12 @@
         if (cell == nil) {
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
             UIImage *uiim = [UIImage imageNamed:@"ms1_1"];
-            UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, cgfScreenHeightBase, self.tableView.frame.size.width, self.tableView.frame.size.width * 90 / 640)];
+            UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.tableView.frame.size.width, self.tableView.frame.size.width * 90 / 640)];
             uiimv.image = uiim;
             [cell.contentView addSubview:uiimv];
             
             [cell.contentView addSubview:_uiwVideoView];
-            cgfHigh0 = cgfScreenHeightBase + self.tableView.frame.size.width * 90 / 640 + 15.0 + cgfScreenHeightBase + self.tableView.frame.size.width * 0.92 * 9.0 / 16.0;
+//            cgfHigh0 = cgfScreenHeightBase + self.tableView.frame.size.width * 90 / 640 + 15.0 + self.tableView.frame.size.width * 0.92 * 9.0 / 16.0;
         }
     } else if (indexPath.row == 1) {
         if (cell == nil) {
@@ -265,7 +281,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
-        return cgfScreenHeightBase + self.tableView.frame.size.width * 90 / 640 + 5.0 + cgfScreenHeightBase + self.tableView.frame.size.width * 0.92 * 9.0 / 16.0;
+        return cgfScreenHeightBase + self.tableView.frame.size.width * 90 / 640 + 5.0 + self.tableView.frame.size.width * 0.92 * 9.0 / 16.0 + 25.0;
     } else if (indexPath.row == 1) {
         return self.tableView.frame.size.width * 114 / 640 + 15.0 + self.tableView.frame.size.width * 1.7 / 4.0;
     } else if (indexPath.row == 2) {

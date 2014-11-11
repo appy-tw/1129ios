@@ -50,10 +50,6 @@
     NSLog(@"width:%f, height:%f, tabbar:%f, navigationbarcontroller:%f, keyboardOffset: %f", cgfScreenWidth, cgfScreenHeight, self.tabBarController.tabBar.frame.size.height, delegate.navigationController.navigationBar.frame.size.height, cgfKeyboardOffset);
 }
 
-- (void)setImage {
-    
-}
-
 - (void) makeKeyboardOffset {
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.0];

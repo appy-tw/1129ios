@@ -112,6 +112,16 @@
     }];
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIAlertView *messageAlert = [[UIAlertView alloc]
+                                 initWithTitle:@"Row Selected" message:@"You've selected a row" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    
+    // Display Alert Message
+    [messageAlert show];
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setMyScreenSize];
@@ -174,7 +184,7 @@
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssTitleCell];
         }
         UIImage *uiimage = [UIImage imageNamed:@"blog1-1"];
-        UIImageView *uiivJumbotron = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, cgfScreenHeightBase, cgfScreenWidth, self.tableView.frame.size.width * 45 / 320)];
+        UIImageView *uiivJumbotron = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, self.tableView.frame.size.width * 45 / 320)];
         uiivJumbotron.image = uiimage;
         [cell.contentView addSubview:uiivJumbotron];
         return cell;
@@ -198,11 +208,11 @@
     uiivJumbotron.image = uiiTmp;
     
     UIView *uivBlackView = [cell.contentView viewWithTag:TagBlack];
-    uivBlackView.frame = CGRectMake(0.0, item.cellHeight - 49, cgfScreenWidth, 50.0);
+    uivBlackView.frame = CGRectMake(0.0, (item.cellHeight - 49) * cgfScreenWidth / 320.0, cgfScreenWidth, 50.0);
     [uivBlackView setBackgroundColor:[UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.6]];
     
     UITextView *uitvSpan = (UITextView*)[cell.contentView viewWithTag:TagSpan];
-    uitvSpan.frame =CGRectMake(cgfScreenWidth * 0.04, item.cellHeight - 55, cgfScreenWidth * 0.92, 55.0);
+    uitvSpan.frame =CGRectMake(cgfScreenWidth * 0.04, (item.cellHeight - 55) * cgfScreenWidth / 320.0, cgfScreenWidth * 0.92, 55.0 * cgfScreenWidth / 320.0);
     uitvSpan.editable = NO;
     [uitvSpan setFont:[UIFont systemFontOfSize:12]];
     [uitvSpan setBackgroundColor:[UIColor clearColor]];
@@ -210,7 +220,7 @@
     [uitvSpan setTextColor:[UIColor whiteColor]];
     
     UITextView *uitvPubDate = (UITextView*)[cell.contentView viewWithTag:TagDate];
-    uitvPubDate.frame = CGRectMake(cgfScreenWidth * 0.04, item.cellHeight - 25, cgfScreenWidth * 0.90, 35.0);
+    uitvPubDate.frame = CGRectMake(cgfScreenWidth * 0.04, (item.cellHeight - 25) * cgfScreenWidth / 320.0, cgfScreenWidth * 0.90, 35.0 * cgfScreenWidth / 320.0);
     uitvPubDate.editable = NO;
     [uitvPubDate setFont:[UIFont systemFontOfSize:12]];
     [uitvPubDate setBackgroundColor:[UIColor clearColor]];
@@ -226,7 +236,8 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
-        return cgfScreenHeightBase + self.tableView.frame.size.width * 45 / 320 + cgfScreenHeight * 0.04;
+//        return cgfScreenHeightBase + self.tableView.frame.size.width * 45 / 320 + cgfScreenHeight * 0.04;
+        return self.tableView.frame.size.width * 90 / 640 + 5.0;
     } else {
         BlogItem *item = [self.blogItemsArr objectAtIndex:indexPath.row];
         if (item.image)

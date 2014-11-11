@@ -64,15 +64,20 @@
 
 - (void)setMyViewController {
     msTableViewController = [[MSTableViewController alloc]init];
-    msTableViewController.title = NSLocalizedString(@"割闌尾計劃", nil);
-    msTableViewController.tabBarItem.image = [UIImage imageNamed:@"ms"];
+    _navigationControllerMS = [[UINavigationController alloc]initWithRootViewController:msTableViewController];
+    _navigationControllerMS.title = NSLocalizedString(@"割闌尾計劃", nil);
+    _navigationControllerMS.tabBarItem.image = [UIImage imageNamed:@"ms"];
+    _navigationControllerMS.navigationBarHidden = YES;
+    
     blogTableViewController = [[BLOGTableViewController alloc]init];
-    blogTableViewController.title = NSLocalizedString(@"即時戰況", nil);
-    blogTableViewController.tabBarItem.image = [UIImage imageNamed:@"blog"];
-    //戰況，魔王，uitableview
+    _navigationControllerBlog = [[UINavigationController alloc]initWithRootViewController:blogTableViewController];
+    _navigationControllerBlog.title = NSLocalizedString(@"即時戰況", nil);
+    _navigationControllerBlog.tabBarItem.image = [UIImage imageNamed:@"blog"];
+    _navigationControllerBlog.navigationBarHidden = YES;
     
     kgTableViewController = [[KGTableViewController alloc]init];
     pointerViewController = [[PointerViewController alloc]initWithViewController:kgTableViewController];
+    
     _navigationController = [[UINavigationController alloc]initWithRootViewController:pointerViewController];
     _navigationController.title = NSLocalizedString(@"魔王領地", nil);
     _navigationController.tabBarItem.image = [UIImage imageNamed:@"kg"];
@@ -80,19 +85,23 @@
 
     //魔王的各領地資料
     supTableViewController = [[SUPTableViewController alloc]init];
-    supTableViewController.title = NSLocalizedString(@"補給據點", nil);
-    supTableViewController.tabBarItem.image = [UIImage imageNamed:@"sup"];
+    _navigationControllerSUP = [[UINavigationController alloc]initWithRootViewController:supTableViewController];
+    _navigationControllerSUP.title = NSLocalizedString(@"補給據點", nil);
+    _navigationControllerSUP.tabBarItem.image = [UIImage imageNamed:@"sup"];
+    _navigationControllerSUP.navigationBarHidden = YES;
     //代收據點
 //    goViewController = [[GOViewController alloc]init];
 //    goViewController.title = NSLocalizedString(@"討伐令", nil);
 //    goViewController.tabBarItem.image = [UIImage imageNamed:@"att"];
 
     attTableViewController = [[ATTTableViewController alloc]init];
-    attTableViewController.title = NSLocalizedString(@"討伐令", nil);
-    attTableViewController.tabBarItem.image = [UIImage imageNamed:@"att"];
+    _navigationControllerATT = [[UINavigationController alloc]initWithRootViewController:attTableViewController];
+    _navigationControllerATT.title = NSLocalizedString(@"討伐令", nil);
+    _navigationControllerATT.tabBarItem.image = [UIImage imageNamed:@"att"];
+    _navigationControllerATT.navigationBarHidden = YES;
     //行前通知
 
-    NSArray *nsaViewControllers = [[NSArray alloc]initWithObjects:msTableViewController, blogTableViewController, /*_navigationController,*/ supTableViewController, attTableViewController, nil];
+    NSArray *nsaViewControllers = [[NSArray alloc]initWithObjects:_navigationControllerMS, _navigationControllerBlog, /*_navigationController,*/ _navigationControllerSUP, _navigationControllerATT, nil];
     tabBarController = [[TabBarController alloc]init];
     [tabBarController setViewControllers:nsaViewControllers];    
     [self.window addSubview:tabBarController.view];
