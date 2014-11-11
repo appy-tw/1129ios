@@ -17,6 +17,9 @@
     CLLocationDistance dist = [cllNow distanceFromLocation:cllTarget];
     return dist;
 }
+-(NSString*)key{
+    return [NSString stringWithFormat:@"%@-%@",self.mTitle,self.mAddress];
+}
 
 - (NSComparisonResult)compare:(VShop *)otherObject {
     if(self.mDistance > otherObject.mDistance)
@@ -24,7 +27,7 @@
     else if(self.mDistance < otherObject.mDistance)
         return NSOrderedAscending;
     else
-        return NSOrderedSame;
+        return [self.mAddress compare:otherObject.mAddress];
 }
 
 @end

@@ -25,6 +25,7 @@
 #define __MAP_HEIGHT__      280     // dir : 縮短 mapview 高度，避免 4s 下根本看不到下面的資訊
 
 #define CELL_OFFSET 3 //water: offset of first cell in shop array
+#define CELL_CONTENT_Y_OFFSET 5
 
 @interface SUPTableViewController ()
 {
@@ -50,16 +51,35 @@
 }
 
 @property (nonatomic, strong) MKMapView *mapView;
+@property (nonatomic, readonly) int mCellHeight;
+@property (nonatomic, readonly) int mMapHeight;
+@property (nonatomic, readonly) int mSeparatorHeight;
+@property (nonatomic, readonly) int mHeaderHeight;
+@property (nonatomic, readonly) int mCellContentHeight;
 
 @end
 
 @implementation SUPTableViewController
-
+-(int)mHeaderHeight{
+    return 45;//cgfScreenHeightBase + self.tableView.frame.size.width * 90 / 640 + 20.0;
+}
+-(int)mMapHeight{
+    return __MAP_HEIGHT__;
+}
+-(int)mSeparatorHeight{
+    return 18;//self.tableView.frame.size.width * 36 / 640;
+}
+-(int)mCellHeight{
+    return 50;//self.tableView.frame.size.width * 98 / 640;
+}
+-(int)mCellContentHeight{
+    return 39;
+}
 - (MKMapView*)mapView
 {
     if (_mapView)
         return _mapView;
-    self.mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, 280.0 * cgfScreenWidth / 320.0)];
+    self.mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, self.mMapHeight)];
     self.mapView.delegate = self;
     
     MKPointAnnotation *mkpaPoint;
@@ -70,7 +90,7 @@
         mkpaPoint.title = aShop.mTitle;
         mkpaPoint.subtitle = aShop.mAddress;
         [_mapView addAnnotation:mkpaPoint];
-        aShop.mAnnotation = mkpaPoint;
+        [self.mAnnotationDictionary setObject:mkpaPoint forKey:aShop.key];
     }
     return _mapView;
 }
@@ -124,23 +144,14 @@
     [self.mapView setRegion:region animated:YES];
 }
 
-- (void)setAllLocation {
-    
-}
-
-- (void)setDistance {
-    
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.mShopArray = [NSMutableArray array];
-    [[VGeoManager sharedInstance]setup];
+    self.mAnnotationDictionary = [NSMutableDictionary dictionary];
     
     [self setMyScreen];
     [self readAllFromMyPlist];
 //    [self setPinMap];
-    [self setAllLocation];
     [self setImage];
 
 //    [self setMap];
@@ -153,7 +164,8 @@
 {
     [delegate.cllMLocation stopUpdatingLocation];
     [self initMyPlist];
-    [[VGeoManager sharedInstance]start];
+    [[VGeoManager sharedInstance]setup];
+    [VGeoManager sharedInstance].delegate = self;
     [super viewDidDisappear:animated];
 }
 -(void)viewWillDisappear:(BOOL)animated{
@@ -261,7 +273,8 @@
     static NSString *nssIDSUP3 = @"SUP3";
     static NSString *nssIDSUP4 = @"SUP4";
     UITableViewCell *cell;
-    if (indexPath.row == 0) {
+    
+    if (indexPath.row == 0) { // head: "補給據點"
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDSUP1];
         if (cell == nil) {
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDSUP1];
@@ -271,10 +284,10 @@
                 [subView removeFromSuperview];
             }
         }
-        UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, cgfScreenHeightBase, self.tableView.frame.size.width, self.tableView.frame.size.width * 90 / 640)];
+        UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, cgfScreenHeightBase, self.tableView.frame.size.width, self.mHeaderHeight)];
         uiimv.image = uiiSUP1;
         [cell.contentView addSubview:uiimv];
-    } else if (indexPath.row == 1) {
+    } else if (indexPath.row == 1) { // map view
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDSUP2];
         if (cell == nil) {
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDSUP2];
@@ -289,25 +302,30 @@
 //        uiimv.image = uiiSUP2;
 //        [cell.contentView addSubview:uiimv];
         [cell.contentView addSubview:self.mapView];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    } else if (indexPath.row == 2) {
+    } else if (indexPath.row == 2) { //separator
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDSUP3];
         if (cell == nil) {
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDSUP3];
         }
-        UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.tableView.frame.size.width, self.tableView.frame.size.width * 16 / 640)];
+        UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 4.0, self.tableView.frame.size.width,8)];
         uiimv.image = uiiSUP2;
         [cell.contentView addSubview:uiimv];
-    } else {
+    } else { // VShop cells
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDSUP4];
-        if (cell == nil) {
+        if(cell!=nil){
+            for (UIView *subView in cell.contentView.subviews)
+            {
+                [subView removeFromSuperview];
+            }
+        }
+        //create cell subview
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDSUP4];
-            UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.tableView.frame.size.width, self.tableView.frame.size.width * 78 / 640)];
+            UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, CELL_CONTENT_Y_OFFSET, self.tableView.frame.size.width, self.mCellContentHeight)];
             uiimv.image = uiiSUP3;
             [cell.contentView addSubview:uiimv];
-            UILabel *uilTitle = [[UILabel alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 0.18, self.tableView.frame.size.width * 0.002, self.tableView.frame.size.width * 0.45, 18.0)];
-            UILabel *uilAddress = [[UILabel alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 0.18, self.tableView.frame.size.width * 0.06, self.tableView.frame.size.width * 0.45, 18.0)];
-            UILabel *uilDistance = [[UILabel alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 0.82, self.tableView.frame.size.width * 0.027, self.tableView.frame.size.width * 0.2, 18.0)];
+            UILabel *uilTitle = [[UILabel alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 0.18, self.tableView.frame.size.width * 0.002+CELL_CONTENT_Y_OFFSET, self.tableView.frame.size.width * 0.45, 18.0)];
+            UILabel *uilAddress = [[UILabel alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 0.18, self.tableView.frame.size.width * 0.06+CELL_CONTENT_Y_OFFSET, self.tableView.frame.size.width * 0.45, 18.0)];
+            UILabel *uilDistance = [[UILabel alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 0.82, self.tableView.frame.size.width * 0.027+CELL_CONTENT_Y_OFFSET, self.tableView.frame.size.width * 0.2, 18.0)];
             uilTitle.tag = __Title_Tag__;
             uilAddress.tag = __Address_Tag__;
             uilDistance.tag = __Distance_Tag__;
@@ -320,7 +338,6 @@
             [uilAddress setFont:[UIFont systemFontOfSize:12]];
             [uilDistance setBackgroundColor:[UIColor whiteColor]];
             [uilDistance setFont:[UIFont systemFontOfSize:16]];
-        }
         
         UILabel *titleLabel = (UILabel*)[cell viewWithTag:__Title_Tag__];
         UILabel *addressLabel = (UILabel*)[cell viewWithTag:__Address_Tag__];
@@ -334,34 +351,57 @@
         [distanceLabel setText:[NSString stringWithFormat:@"%.1fKM", dist / 1000]];
         cell.tag = [self.mShopArray indexOfObject: aShop];
     }
+    if(indexPath.row < CELL_OFFSET){
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }else{
+        cell.selectionStyle = UITableViewCellSelectionStyleGray;
+    }
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
-        return cgfScreenHeightBase + self.tableView.frame.size.width * 90 / 640 + 20.0;
+        return self.mHeaderHeight+20;
     } else if (indexPath.row == 1) {
-        return __MAP_HEIGHT__;
-//        return self.tableView.frame.size.width * 1.2;
+        return self.mMapHeight;
     } else if (indexPath.row == 2) {
-        return self.tableView.frame.size.width * 36 / 640;
+        return self.mSeparatorHeight;
     } else {
-        return self.tableView.frame.size.width * 98 / 640;
+        return self.mCellHeight;
     }
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.row == 0){
         [self locateUserLocation];
-    }else if(indexPath.row > 1){ // click on VShop
+    }else if(indexPath.row > 2){ // click on VShop
         UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
         VShop* aShop = [self.mShopArray objectAtIndex:cell.tag];
-        [self toggleShop:aShop];
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+        [self performSelector:@selector(toggleShop:) withObject:aShop afterDelay:0];
     }
 }
+-(MKPointAnnotation*)getUserLocationPin{
+    MKPointAnnotation* result = nil;
+    for(MKPointAnnotation* anno in self.mapView.annotations){
+        if ([anno isKindOfClass:[MKUserLocation class]]){
+            result = anno;
+            break;
+        }
+    }
+    return result;
+}
 -(void)toggleShop:(VShop*)aShop{
-    [self locateLocation:aShop.mGeoPoint];
-    [_mapView selectAnnotation:aShop.mAnnotation animated:YES];
+    
+    MKPointAnnotation* me = [self getUserLocationPin];
+    MKPointAnnotation* annotation = [self.mAnnotationDictionary objectForKey:aShop.key];
+    if(me != nil){
+        NSArray* pins = [NSArray arrayWithObjects:annotation,me, nil];
+        [self.mapView showAnnotations:pins animated:YES];
+    }else{
+        [self locateLocation:aShop.mGeoPoint];
+    }
+    [_mapView selectAnnotation:annotation animated:YES];
 }
 
 //[[CLLocationInit
@@ -421,11 +461,12 @@
 //        self.locationUpdateCallback(manager.location);
 //    }
 //}
+/*
 -(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
     UIAlertView *errorAlert = [[UIAlertView alloc]initWithTitle:@"Error" message:@"There was an error retrieving your location" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
     [errorAlert show];
     NSLog(@"Error: %@",error.description);
-}
+}*/
 //-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 //{
 //    CLLocation *crnLoc = [locations lastObject];
@@ -452,6 +493,7 @@
     if (nssPlistDst == nil) {
         [self initMyPlist];
     }
+    self.mShopArray = [NSMutableArray array];
     nsmaPlistArray = [NSMutableArray arrayWithContentsOfFile:nssPlistDst];
     NSLog(@"%lu", (unsigned long)[nsmaPlistArray count]);
     for(NSDictionary* obj in nsmaPlistArray){
@@ -462,9 +504,16 @@
                                                     longitude:[[obj valueForKey:@"lon"]floatValue]];
         [self.mShopArray addObject:aShop];
     }
+    [self sortShops];
+}
+-(void)sortShops{
     self.mShopArray = [NSMutableArray arrayWithArray:[self.mShopArray sortedArrayUsingSelector:@selector(compare:)]];
+    [self.tableView reloadData];
 }
 
+-(void)didRequireGeoPermission:(BOOL)bSucceed{
+    [self sortShops];
+}
 //]]Plist
 
 @end

@@ -10,8 +10,16 @@
 #import "SynthesizeSingleton.h"
 #import <CoreLocation/CoreLocation.h>
 
+@protocol GeoManagerDelegate <NSObject>
+
+-(void)didRequireGeoPermission:(BOOL)bSucceed;
+
+@end
+
 @interface VGeoManager : NSObject<CLLocationManagerDelegate>
 @property (strong, nonatomic) CLLocationManager *cllmLocation;
+@property (nonatomic, weak) id<GeoManagerDelegate>delegate;
+
 
 -(void)setup;
 -(void)start;

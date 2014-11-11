@@ -16,6 +16,6 @@
 @property (nonatomic, strong) NSString* mAddress;
 @property (nonatomic, strong) CLLocation* mGeoPoint;
 @property (nonatomic, readonly) NSInteger mDistance;
-@property (nonatomic, strong) MKPointAnnotation* mAnnotation;
+@property (nonatomic, readonly) NSString* key;
 
 @end

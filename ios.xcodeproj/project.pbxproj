@@ -553,7 +553,7 @@
 					};
 					8FBCEB631A029E2C00D200A0 = {
 						CreatedOnToolsVersion = 6.1;
-						DevelopmentTeam = DEATJ76XRX;
+						DevelopmentTeam = 9SFGMQE6W6;
 						TestTargetID = 8FBCEB471A029E2C00D200A0;
 					};
 				};
