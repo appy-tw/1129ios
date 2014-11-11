@@ -59,6 +59,9 @@
     NSString *nssResourceUmbrella;
     NSString *nssResourceWater;
     NSString *nssIOSToken;
+    NSString *nssIOSToken1;
+    NSString *nssIOSToken2;
+    NSString *nssIOSToken3;
 }
 @end
 
@@ -67,7 +70,6 @@
 - (void)setMyScreen
 {
     delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
     cgfScreenWidth = [[UIScreen mainScreen] bounds].size.width;
     cgfScreenHeight = [[UIScreen mainScreen] bounds].size.height - [[UIApplication sharedApplication] statusBarFrame].size.height - self.tabBarController.tabBar.frame.size.height - delegate.navigationController.navigationBar.frame.size.height - [UIApplication sharedApplication].statusBarFrame.size.height;
     cgfScreenHeightBase = [UIApplication sharedApplication].statusBarFrame.size.height;
@@ -112,6 +114,8 @@
 
 - (void)viewDidLoad {
     [self setMyScreen];
+    nssIOSToken = delegate.nssDeviceToken;
+    NSLog(@"delegate.nssDeviceToken: %@", delegate.nssDeviceToken);
     NSLog(@"cgfScreenWidth * 0.58: %f", cgfScreenWidth * 0.58);
     _fbProfilePic = [[FBProfilePictureView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 402 / 640 -1, cgfScreenWidth * 98 / 640 - 1, 200 * cgfScreenWidth / 640 + 2, 200 * cgfScreenWidth / 640 + 2)];
     [_fbProfilePic.layer setCornerRadius:50.0f];
@@ -305,8 +309,35 @@
                 nssInfoURL = [NSString stringWithString:object[@"infoURL"]];
                 NSLog(@"object[version]: %@", object[@"version"]);
                 nssVersion = [NSString stringWithString:object[@"version"]];
-                NSLog(@"object[iosToken]: %@", object[@"iosToken"]);
-                nssIOSToken = [NSString stringWithString:object[@"iosToken"]];
+                NSLog(@"object[version]: %@", object[@"version"]);
+                nssIOSToken1 = [NSString stringWithString:object[@"iosToken1"]];
+                NSLog(@"object[iosToken1]: %@", object[@"iosToken1"]);
+                nssIOSToken2 = [NSString stringWithString:object[@"iosToken2"]];
+                NSLog(@"object[iosToken2]: %@", object[@"iosToken2"]);
+                nssIOSToken3 = [NSString stringWithString:object[@"iosToken3"]];
+                NSLog(@"object[iosToken3]: %@", object[@"iosToken3"]);
+                if ([nssIOSToken isEqual:nssIOSToken1] == NO && [nssIOSToken isEqual:nssIOSToken2] == NO && [nssIOSToken isEqual:nssIOSToken3] == NO && [nssIOSToken1 isEqual:@"abcde"] == YES) {
+                    NSLog(@"save to iosToken1: %@", nssIOSToken);
+                    object[@"iosToken1"] = nssIOSToken;
+                    [object saveInBackground];
+                } else if ([nssIOSToken isEqual:nssIOSToken1] == NO && [nssIOSToken isEqual:nssIOSToken2] == NO && [nssIOSToken isEqual:nssIOSToken3] == NO && [nssIOSToken2 isEqual:@"abcde"] == YES) {
+                    NSLog(@"save to iosToken2: %@", nssIOSToken);
+                    object[@"iosToken2"] = nssIOSToken;
+                    [object saveInBackground];
+                } else if ([nssIOSToken isEqual:nssIOSToken1] == NO && [nssIOSToken isEqual:nssIOSToken2] == NO && [nssIOSToken isEqual:nssIOSToken3] == NO && [nssIOSToken3 isEqual:@"abcde"] == YES) {
+                    NSLog(@"save to iosToken3: %@", nssIOSToken);
+                    object[@"iosToken3"] = nssIOSToken;
+                    [object saveInBackground];
+                } else {
+                    UIAlertView *errorAlert = [[UIAlertView alloc]initWithTitle:@"iOS裝置註冊已滿" message:@"您所註冊的iOS裝置已超過3個，如需要變更註冊請洽割闌尾計劃email：appy.service@gmail.com" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                    [errorAlert show];
+                    NSLog(@"Error: %@",error.description);
+                }
+
+//                object[@"score"] = @1337;
+//                gameScore[@"playerName"] = @"Sean Plott";
+//                gameScore[@"cheatMode"] = @NO;
+//                [gameScore saveInBackground];
             }
         } else {
             // Log details of the failure
@@ -385,7 +416,6 @@
     [nsmdPlistDictionary setValue:nssInfo forKey:@"info"];
     [nsmdPlistDictionary setValue:nssInfoURL forKey:@"infoURL"];
     [nsmdPlistDictionary setValue:nssVersion forKey:@"version"];
-    [nsmdPlistDictionary setValue:nssIOSToken forKey:@"iosToken"];
     [nsmdPlistDictionary writeToFile:_nssPlistDst atomically:YES];
 }
 
@@ -413,7 +443,7 @@
         nssInfo = [nsmdPlistDictionary objectForKeyedSubscript:@"info"];
         nssInfoURL = [nsmdPlistDictionary objectForKeyedSubscript:@"infoURL"];
         nssVersion = [nsmdPlistDictionary objectForKeyedSubscript:@"version"];
-        nssIOSToken = [nsmdPlistDictionary objectForKeyedSubscript:@"iosToken"];
+        nssIOSToken = delegate.nssDeviceToken;
     }
 }
 
