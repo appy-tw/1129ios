@@ -2,35 +2,43 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key> name</key>
+	<string>尚未登入</string>
 	<key>fid</key>
 	<string></string>
 	<key>address</key>
 	<string>尚無地址</string>
+	<key>lat</key>
+	<string>25.082179</string>
+	<key>lon</key>
+	<string>121.567257</string>
 	<key>point</key>
 	<string>尚無登入任務據點</string>
 	<key>county</key>
 	<string>尚無登入任務</string>
 	<key>board</key>
-	<string>0</string>
+	<string>無物資地點;0張</string>
 	<key>chair</key>
-	<string>0</string>
+	<string>無物資地點;0張</string>
 	<key>desk</key>
-	<string>0</string>
-	<key>other</key>
-	<string>0</string>
+	<string>無物資地點;0張</string>
+	<key>others</key>
+	<string>無物資地點;0件</string>
 	<key>pen</key>
-	<string>0</string>
+	<string>無物資地點;0支</string>
 	<key>umbrella</key>
-	<string>0</string>
+	<string>無物資地點;0支</string>
 	<key>water</key>
-	<string>0</string>
+	<string>無物資地點;0瓶</string>
 	<key>poll</key>
 	<string>0</string>
 	<key>info</key>
 	<string>報名網址：http://1129vday.tw</string>
 	<key>infoURL</key>
-	<string></string>
+	<string>http://1129vday.tw</string>
 	<key>version</key>
 	<string>1.0</string>
+	<key>iosToken</key>
+	<string></string>
 </dict>
 </plist>
