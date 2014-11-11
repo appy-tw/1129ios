@@ -381,9 +381,26 @@
         [self performSelector:@selector(toggleShop:) withObject:aShop afterDelay:0];
     }
 }
+-(MKPointAnnotation*)getUserLocationPin{
+    MKPointAnnotation* result = nil;
+    for(MKPointAnnotation* anno in self.mapView.annotations){
+        if ([anno isKindOfClass:[MKUserLocation class]]){
+            result = anno;
+            break;
+        }
+    }
+    return result;
+}
 -(void)toggleShop:(VShop*)aShop{
-    [self locateLocation:aShop.mGeoPoint];
+    
+    MKPointAnnotation* me = [self getUserLocationPin];
     MKPointAnnotation* annotation = [self.mAnnotationDictionary objectForKey:aShop.key];
+    if(me != nil){
+        NSArray* pins = [NSArray arrayWithObjects:annotation,me, nil];
+        [self.mapView showAnnotations:pins animated:YES];
+    }else{
+        [self locateLocation:aShop.mGeoPoint];
+    }
     [_mapView selectAnnotation:annotation animated:YES];
 }
 
