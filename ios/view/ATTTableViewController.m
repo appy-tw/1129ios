@@ -322,6 +322,7 @@
 //}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {");
 //    這份註解請勿刪
 //    static NSString *nssIDATT1 = @"ATT1";
 //    static NSString *nssIDATT2 = @"ATT2";
@@ -386,7 +387,15 @@
         [cell.contentView addSubview:_fbProfilePic];
         //蔡吳林的圖
         UIImageView *uiimvTsaiWuLin = [[UIImageView alloc] initWithFrame:CGRectMake(cgfScreenWidth * 32.0 / 640.0, cgfScreenWidth * 87.0 / 640.0, cgfScreenWidth * 217.0 / 640.0, cgfScreenWidth * 217.0 / 640.0)];
-        [uiimvTsaiWuLin setImage:[UIImage imageNamed:@"none"]];
+        if ([nssCounty isEqualToString:@"TPE-4"] == YES) {
+            [uiimvTsaiWuLin setImage:[UIImage imageNamed:@"tsai"]];
+        } else if ([nssCounty isEqualToString:@"TPQ-6"] == YES) {
+            [uiimvTsaiWuLin setImage:[UIImage imageNamed:@"lin"]];
+        } else if ([nssCounty isEqualToString:@"TPQ-1"] == YES) {
+            [uiimvTsaiWuLin setImage:[UIImage imageNamed:@"wu"]];
+        } else {
+            [uiimvTsaiWuLin setImage:[UIImage imageNamed:@"none"]];
+        }
         [cell.contentView addSubview:uiimvTsaiWuLin];
         UILabel *uilTsaiWuLin = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 32.0 / 640.0, 410.0 * cgfScreenWidth / 640.0 * 0.85, cgfScreenWidth * 217.0 / 640.0, 30.0)];
         [uilTsaiWuLin setText:@"任務尚未登入"];
@@ -448,10 +457,10 @@
         uiimv.image = [UIImage imageNamed:@"board"];
         [cell.contentView addSubview:uiimv];
         UILabel *uilLocationNameForItem = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 5.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.40, 15.0)];
-        [uilLocationNameForItem setText:@"目前無物資據點"];
+        [uilLocationNameForItem setText:[nssResourceBoard componentsSeparatedByString:@";"][0]];
         [cell.contentView addSubview:uilLocationNameForItem];
         UILabel *uilItemName = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 55.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.76, 15.0)];
-        [uilItemName setText:@"無前無物資"];
+        [uilItemName setText:[nssResourceBoard componentsSeparatedByString:@";"][1]];
         [cell.contentView addSubview:uilItemName];
     } else if (indexPath.row == 6) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT7];
@@ -466,10 +475,10 @@
         uiimv.image = [UIImage imageNamed:@"chair"];
         [cell.contentView addSubview:uiimv];
         UILabel *uilLocationNameForItem = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 5.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.40, 15.0)];
-        [uilLocationNameForItem setText:@"目前無物資據點"];
+        [uilLocationNameForItem setText:[nssResourceChair componentsSeparatedByString:@";"][0]];
         [cell.contentView addSubview:uilLocationNameForItem];
         UILabel *uilItemName = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 55.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.76, 15.0)];
-        [uilItemName setText:@"無前無物資"];
+        [uilItemName setText:[nssResourceChair componentsSeparatedByString:@";"][1]];
         [cell.contentView addSubview:uilItemName];
     } else if (indexPath.row == 7) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT8];
@@ -484,10 +493,10 @@
         uiimv.image = [UIImage imageNamed:@"desk"];
         [cell.contentView addSubview:uiimv];
         UILabel *uilLocationNameForItem = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 5.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.40, 15.0)];
-        [uilLocationNameForItem setText:@"目前無物資據點"];
+        [uilLocationNameForItem setText:[nssResourceDesk componentsSeparatedByString:@";"][0]];
         [cell.contentView addSubview:uilLocationNameForItem];
         UILabel *uilItemName = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 55.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.76, 15.0)];
-        [uilItemName setText:@"無前無物資"];
+        [uilItemName setText:[nssResourceDesk componentsSeparatedByString:@";"][1]];
         [cell.contentView addSubview:uilItemName];
     } else if (indexPath.row == 8) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT9];
@@ -502,10 +511,10 @@
         uiimv.image = [UIImage imageNamed:@"pen"];
         [cell.contentView addSubview:uiimv];
         UILabel *uilLocationNameForItem = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 5.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.40, 15.0)];
-        [uilLocationNameForItem setText:@"目前無物資據點"];
+        [uilLocationNameForItem setText:[nssResourcePen componentsSeparatedByString:@";"][0]];
         [cell.contentView addSubview:uilLocationNameForItem];
         UILabel *uilItemName = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 55.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.76, 15.0)];
-        [uilItemName setText:@"無前無物資"];
+        [uilItemName setText:[nssResourcePen componentsSeparatedByString:@";"][1]];
         [cell.contentView addSubview:uilItemName];
     } else if (indexPath.row == 9) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT10];
@@ -520,10 +529,10 @@
         uiimv.image = [UIImage imageNamed:@"umbrella"];
         [cell.contentView addSubview:uiimv];
         UILabel *uilLocationNameForItem = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 5.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.40, 15.0)];
-        [uilLocationNameForItem setText:@"目前無物資據點"];
+        [uilLocationNameForItem setText:[nssResourceUmbrella componentsSeparatedByString:@";"][0]];
         [cell.contentView addSubview:uilLocationNameForItem];
         UILabel *uilItemName = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 55.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.76, 15.0)];
-        [uilItemName setText:@"無前無物資"];
+        [uilItemName setText:[nssResourceUmbrella componentsSeparatedByString:@";"][1]];
         [cell.contentView addSubview:uilItemName];
     } else if (indexPath.row == 10) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT11];
@@ -538,10 +547,10 @@
         uiimv.image = [UIImage imageNamed:@"water"];
         [cell.contentView addSubview:uiimv];
         UILabel *uilLocationNameForItem = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 5.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.40, 15.0)];
-        [uilLocationNameForItem setText:@"目前無物資據點"];
+        [uilLocationNameForItem setText:[nssResourceWater componentsSeparatedByString:@";"][0]];
         [cell.contentView addSubview:uilLocationNameForItem];
         UILabel *uilItemName = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 55.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.76, 15.0)];
-        [uilItemName setText:@"無前無物資"];
+        [uilItemName setText:[nssResourceWater componentsSeparatedByString:@";"][1]];
         [cell.contentView addSubview:uilItemName];
     } else if (indexPath.row == 11) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT12];
@@ -556,10 +565,10 @@
         uiimv.image = [UIImage imageNamed:@"other"];
         [cell.contentView addSubview:uiimv];
         UILabel *uilLocationNameForItem = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 5.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.40, 15.0)];
-        [uilLocationNameForItem setText:@"目前無物資據點"];
+        [uilLocationNameForItem setText:[nssResourceOthers componentsSeparatedByString:@";"][0]];
         [cell.contentView addSubview:uilLocationNameForItem];
         UILabel *uilItemName = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 55.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.76, 15.0)];
-        [uilItemName setText:@"無前無物資"];
+        [uilItemName setText:[nssResourceOthers componentsSeparatedByString:@";"][1]];
         [cell.contentView addSubview:uilItemName];
     } else {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT13];
@@ -574,7 +583,7 @@
         uiimv.image = uiiATT6;
         [cell.contentView addSubview:uiimv];
         UITextView *uitvBeforeDeparture = [[UITextView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 0.04, cgfScreenWidth * 120.0 / 640.0, cgfScreenWidth * 0.92, cgfScreenWidth * 400.0 / 640.0)];
-        [uitvBeforeDeparture setText:@"尚未登入"];
+        [uitvBeforeDeparture setText:[nssResourceDesk componentsSeparatedByString:@";"][1]];
         [uitvBeforeDeparture setEditable:NO];
         [cell.contentView addSubview:uitvBeforeDeparture];
     }
@@ -675,46 +684,67 @@
                     NSLog(@"object[fid]: %@", object[@"fid"]);
                     NSLog(@"object[address]: %@", object[@"address"]);
                     nssAddress = [NSString stringWithString:object[@"address"]];
+                    NSLog(@"nssAddress: %@", nssAddress);
                     NSLog(@"object[lat]: %@", object[@"lat"]);
                     nssLat = [NSString stringWithString:object[@"lat"]];
+                    NSLog(@"nssLat: %@", nssLat);
                     NSLog(@"object[lon]: %@", object[@"lon"]);
                     nssLon = [NSString stringWithString:object[@"lon"]];
+                    NSLog(@"nssLon: %@", nssLon);
                     NSLog(@"object[point]: %@", object[@"point"]);
                     nssPoint = [NSString stringWithString:object[@"point"]];
+                    NSLog(@"nssPoint: %@", nssPoint);
                     NSLog(@"object[county]: %@", object[@"county"]);
                     nssCounty = [NSString stringWithString:object[@"county"]];
+                    NSLog(@"nssCounty: %@", nssCounty);
                     NSLog(@"object[board]: %@", object[@"board"]);
                     nssResourceBoard = [NSString stringWithString:object[@"board"]];
+                    NSLog(@"nssResourceBoard: %@", nssResourceBoard);
                     NSLog(@"object[chair]: %@", object[@"chair"]);
                     nssResourceChair = [NSString stringWithString:object[@"chair"]];
+                    NSLog(@"nssResourceChair: %@", nssResourceChair);
                     NSLog(@"object[desk]: %@", object[@"desk"]);
                     nssResourceDesk = [NSString stringWithString:object[@"desk"]];
+                    NSLog(@"nssResourceDesk: %@", nssResourceDesk);
                     NSLog(@"object[others]: %@", object[@"others"]);
                     nssResourceOthers = [NSString stringWithString:object[@"others"]];
+                    NSLog(@"nssResourceOthers: %@", nssResourceOthers);
                     NSLog(@"object[pen]: %@", object[@"pen"]);
                     nssResourcePen = [NSString stringWithString:object[@"pen"]];
+                    NSLog(@"nssResourcePen: %@", nssResourcePen);
                     NSLog(@"object[umbrella]: %@", object[@"umbrella"]);
                     nssResourceUmbrella = [NSString stringWithString:object[@"umbrella"]];
+                    NSLog(@"nssResourceUmbrella: %@", nssResourceUmbrella);
                     NSLog(@"object[water]: %@", object[@"water"]);
                     nssResourceWater = [NSString stringWithString:object[@"water"]];
+                    NSLog(@"nssResourceWater: %@", nssResourceWater);
                     NSLog(@"object[poll]: %@", object[@"poll"]);
                     nssPoll = [NSString stringWithString:object[@"poll"]];
+                    NSLog(@"nssPoll: %@", nssPoll);
                     NSLog(@"object[info]: %@", object[@"info"]);
                     nssInfo = [NSString stringWithString:object[@"info"]];
+                    NSLog(@"nssInfo: %@", nssInfo);
                     NSLog(@"object[infoURL]: %@", object[@"infoURL"]);
                     nssInfoURL = [NSString stringWithString:object[@"infoURL"]];
+                    NSLog(@"nssInfoURL: %@", nssInfoURL);
                     NSLog(@"object[version]: %@", object[@"version"]);
                     nssVersion = [NSString stringWithString:object[@"version"]];
+                    NSLog(@"nssVersion: %@", nssVersion);
                     NSLog(@"object[version]: %@", object[@"version"]);
                     nssIOSToken1 = [NSString stringWithString:object[@"iosToken1"]];
+                    NSLog(@"nssIOSToken1: %@", nssIOSToken1);
                     NSLog(@"object[iosToken1]: %@", object[@"iosToken1"]);
                     nssIOSToken2 = [NSString stringWithString:object[@"iosToken2"]];
+                    NSLog(@"nssIOSToken2: %@", nssIOSToken2);
                     NSLog(@"object[iosToken2]: %@", object[@"iosToken2"]);
                     nssIOSToken3 = [NSString stringWithString:object[@"iosToken3"]];
+                    NSLog(@"nssIOSToken3: %@", nssIOSToken3);
                     NSLog(@"object[iosToken3]: %@", object[@"iosToken3"]);
                     nssPush = [NSString stringWithString:object[@"push"]];
+                    NSLog(@"nssPush: %@", nssPush);
                     NSLog(@"object[push]: %@", object[@"push"]);
                     nssReady = [NSString stringWithString:object[@"ready"]];
+                    NSLog(@"nssReady: %@", nssReady);
                     NSLog(@"object[ready]: %@", object[@"ready"]);
                     if ([nssIOSToken isEqual:nssIOSToken1] == NO && [nssIOSToken isEqual:nssIOSToken2] == NO && [nssIOSToken isEqual:nssIOSToken3] == NO && [nssIOSToken1 isEqual:@"abcde"] == YES) {
                         NSLog(@"save to iosToken1: %@", nssIOSToken);
@@ -733,6 +763,9 @@
                         [errorAlert show];
                         NSLog(@"Error: %@",error.description);
                     }
+                    NSLog(@"[self.tableView reloadData];");
+                    [self writeToMyPlist];
+                    [self.tableView reloadData];
                 }
             }
         } else {
