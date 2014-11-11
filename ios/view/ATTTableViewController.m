@@ -75,6 +75,7 @@
     cgfScreenWidth = [[UIScreen mainScreen] bounds].size.width;
     cgfScreenHeight = [[UIScreen mainScreen] bounds].size.height - [[UIApplication sharedApplication] statusBarFrame].size.height - self.tabBarController.tabBar.frame.size.height - delegate.navigationController.navigationBar.frame.size.height - [UIApplication sharedApplication].statusBarFrame.size.height;
     cgfScreenHeightBase = [UIApplication sharedApplication].statusBarFrame.size.height;
+    
     if ([UIApplication sharedApplication].statusBarFrame.size.height == 20.0) {
         //without Hotspot: 64
         cgfKeyboardOffset =  cgfScreenHeightBase;
@@ -132,8 +133,199 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 13;
+    return 14;
 }
+
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    static NSString *nssIDATT = @"Cell";
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT];
+//    if (cell == nil) {
+//        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT];
+//    }
+//    for (UIView *view in cell.contentView.subviews) {
+//        if(![view isKindOfClass:[UILabel class]])
+//        {
+//            [view removeFromSuperview];
+//        }
+//        else
+//        {
+//            //check if it titlelabel or not, if not remove it
+//        }
+//    }
+//    [cell setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
+//    [cell setBackgroundView:nil];
+//    if (indexPath.row == 0) {
+//        UIView *uiClearView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, self.tableView.frame.size.width * 90 / 640 + 20.0)];
+//        [uiClearView setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
+//        [cell.contentView addSubview:uiClearView];
+//        UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, cgfScreenHeightBase, self.tableView.frame.size.width, self.tableView.frame.size.width * 90 / 640)];
+//        uiimv.image = uiiATT1;
+//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//        [cell.contentView addSubview:uiimv];
+//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    } else if (indexPath.row == 1) {
+//        UIView *uiClearView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, self.tableView.frame.size.width * 410 / 640 + 20.0)];
+//        [uiClearView setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
+//        [cell.contentView addSubview:uiClearView];
+//        UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.tableView.frame.size.width, self.tableView.frame.size.width * 410 / 640)];
+//        uiimv.image = uiiATT2;
+//        [cell.contentView addSubview:uiimv];
+//        [uilFBUserName setTextAlignment:NSTextAlignmentCenter];
+//        [cell.contentView addSubview:uilFBUserName];
+//        [cell.contentView addSubview:_fbProfilePic];
+//        //蔡吳林的圖
+//        UIImageView *uiimvTsaiWuLin = [[UIImageView alloc] initWithFrame:CGRectMake(cgfScreenWidth * 32.0 / 640.0, cgfScreenWidth * 87.0 / 640.0, cgfScreenWidth * 217.0 / 640.0, cgfScreenWidth * 217.0 / 640.0)];
+//        [uiimvTsaiWuLin setImage:[UIImage imageNamed:@"none"]];
+//        [cell.contentView addSubview:uiimvTsaiWuLin];
+//        UILabel *uilTsaiWuLin = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 32.0 / 640.0, 410.0 * cgfScreenWidth / 640.0 * 0.85, cgfScreenWidth * 217.0 / 640.0, 30.0)];
+//        [uilTsaiWuLin setText:@"任務尚未登入"];
+//        [uilTsaiWuLin setTextAlignment:NSTextAlignmentCenter];
+//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//        [cell.contentView addSubview:uilTsaiWuLin];
+//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    } else if (indexPath.row == 2) {
+//        UIView *uiClearView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, self.tableView.frame.size.width * 95 / 640 + 20.0)];
+//        [uiClearView setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
+//        [cell.contentView addSubview:uiClearView];
+//        fbLoginView.center = cell.contentView.center;
+//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//        [cell.contentView addSubview:fbLoginView];
+//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    } else if (indexPath.row == 3) {
+//        UIView *uiClearView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, self.tableView.frame.size.width * 95 / 640 + 20.0)];
+//        [uiClearView setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
+//        [cell.contentView addSubview:uiClearView];
+//        UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 40 / 640, 0.0, self.tableView.frame.size.width * 83 / 640, self.tableView.frame.size.width * 95 / 640)];
+//        uiimv.image = uiiATT3;
+//        [cell.contentView addSubview:uiimv];
+//        UILabel *uilLocationName = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 5.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.40, 15.0)];
+//        [uilLocationName setText:@"地點尚未登入"];
+//        [cell.contentView addSubview:uilLocationName];
+//        UILabel *uilAddress = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 55.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.76, 15.0)];
+//        [uilAddress setText:@"地址尚未登入"];
+//        [cell.contentView addSubview:uilAddress];
+//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    } else if (indexPath.row == 4) {
+//        UIView *uiClearView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, self.tableView.frame.size.width * 78 / 640 + 20.0)];
+//        [uiClearView setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
+//        [cell.contentView addSubview:uiClearView];
+//        UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 0.2867, 0.0, self.tableView.frame.size.width * 273.0 / 640.0, self.tableView.frame.size.width * 78 / 640)];
+//        uiimv.image = uiiATT4;
+//        [cell.contentView addSubview:uiimv];
+//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    } else if (indexPath.row == 5) {
+//        UIView *uiClearView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, self.tableView.frame.size.width * 95 / 640 + 20.0)];
+//        [uiClearView setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
+//        [cell.contentView addSubview:uiClearView];
+//        UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 40 / 640, 0.0, self.tableView.frame.size.width * 83 / 640, self.tableView.frame.size.width * 95 / 640)];
+//        uiimv.image = [UIImage imageNamed:@"board"];
+//        [cell.contentView addSubview:uiimv];
+//        UILabel *uilLocationNameForItem = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 5.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.40, 15.0)];
+//        [uilLocationNameForItem setText:@"目前無物資據點"];
+//        [cell.contentView addSubview:uilLocationNameForItem];
+//        UILabel *uilItemName = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 55.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.76, 15.0)];
+//        [uilItemName setText:@"無前無物資"];
+//        [cell.contentView addSubview:uilItemName];
+//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    } else if (indexPath.row == 6) {
+//        UIView *uiClearView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, self.tableView.frame.size.width * 95 / 640 + 20.0)];
+//        [uiClearView setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
+//        [cell.contentView addSubview:uiClearView];
+//        UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 40 / 640, 0.0, self.tableView.frame.size.width * 83 / 640, self.tableView.frame.size.width * 95 / 640)];
+//        uiimv.image = [UIImage imageNamed:@"chair"];
+//        [cell.contentView addSubview:uiimv];
+//        UILabel *uilLocationNameForItem = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 5.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.40, 15.0)];
+//        [uilLocationNameForItem setText:@"目前無物資據點"];
+//        [cell.contentView addSubview:uilLocationNameForItem];
+//        UILabel *uilItemName = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 55.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.76, 15.0)];
+//        [uilItemName setText:@"無前無物資"];
+//        [cell.contentView addSubview:uilItemName];
+//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    } else if (indexPath.row == 7) {
+//        UIView *uiClearView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, self.tableView.frame.size.width * 95 / 640 + 20.0)];
+//        [uiClearView setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
+//        [cell.contentView addSubview:uiClearView];
+//        UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 40 / 640, 0.0, self.tableView.frame.size.width * 83 / 640, self.tableView.frame.size.width * 95 / 640)];
+//        uiimv.image = [UIImage imageNamed:@"desk"];
+//        [cell.contentView addSubview:uiimv];
+//        UILabel *uilLocationNameForItem = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 5.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.40, 15.0)];
+//        [uilLocationNameForItem setText:@"目前無物資據點"];
+//        [cell.contentView addSubview:uilLocationNameForItem];
+//        UILabel *uilItemName = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 55.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.76, 15.0)];
+//        [uilItemName setText:@"無前無物資"];
+//        [cell.contentView addSubview:uilItemName];
+//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    } else if (indexPath.row == 8) {
+//        UIView *uiClearView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, self.tableView.frame.size.width * 95 / 640 + 20.0)];
+//        [uiClearView setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
+//        [cell.contentView addSubview:uiClearView];
+//        UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 40 / 640, 0.0, self.tableView.frame.size.width * 83 / 640, self.tableView.frame.size.width * 95 / 640)];
+//        uiimv.image = [UIImage imageNamed:@"pen"];
+//        [cell.contentView addSubview:uiimv];
+//        UILabel *uilLocationNameForItem = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 5.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.40, 15.0)];
+//        [uilLocationNameForItem setText:@"目前無物資據點"];
+//        [cell.contentView addSubview:uilLocationNameForItem];
+//        UILabel *uilItemName = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 55.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.76, 15.0)];
+//        [uilItemName setText:@"無前無物資"];
+//        [cell.contentView addSubview:uilItemName];
+//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    } else if (indexPath.row == 9) {
+//        UIView *uiClearView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, self.tableView.frame.size.width * 95 / 640 + 20.0)];
+//        [uiClearView setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
+//        [cell.contentView addSubview:uiClearView];
+//        UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 40 / 640, 0.0, self.tableView.frame.size.width * 83 / 640, self.tableView.frame.size.width * 95 / 640)];
+//        uiimv.image = [UIImage imageNamed:@"umbrella"];
+//        [cell.contentView addSubview:uiimv];
+//        UILabel *uilLocationNameForItem = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 5.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.40, 15.0)];
+//        [uilLocationNameForItem setText:@"目前無物資據點"];
+//        [cell.contentView addSubview:uilLocationNameForItem];
+//        UILabel *uilItemName = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 55.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.76, 15.0)];
+//        [uilItemName setText:@"無前無物資"];
+//        [cell.contentView addSubview:uilItemName];
+//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    } else if (indexPath.row == 10) {
+//        UIView *uiClearView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, self.tableView.frame.size.width * 95 / 640 + 20.0)];
+//        [uiClearView setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
+//        [cell.contentView addSubview:uiClearView];
+//        UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 40 / 640, 0.0, self.tableView.frame.size.width * 83 / 640, self.tableView.frame.size.width * 95 / 640)];
+//        uiimv.image = [UIImage imageNamed:@"water"];
+//        [cell.contentView addSubview:uiimv];
+//        UILabel *uilLocationNameForItem = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 5.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.40, 15.0)];
+//        [uilLocationNameForItem setText:@"目前無物資據點"];
+//        [cell.contentView addSubview:uilLocationNameForItem];
+//        UILabel *uilItemName = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 55.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.76, 15.0)];
+//        [uilItemName setText:@"無前無物資"];
+//        [cell.contentView addSubview:uilItemName];
+//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    } else if (indexPath.row == 11) {
+//        UIView *uiClearView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, self.tableView.frame.size.width * 95 / 640 + 20.0)];
+//        [uiClearView setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
+//        [cell.contentView addSubview:uiClearView];
+//        UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 40 / 640, 0.0, self.tableView.frame.size.width * 83 / 640, self.tableView.frame.size.width * 95 / 640)];
+//        uiimv.image = [UIImage imageNamed:@"other"];
+//        [cell.contentView addSubview:uiimv];
+//        UILabel *uilLocationNameForItem = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 5.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.40, 15.0)];
+//        [uilLocationNameForItem setText:@"目前無物資據點"];
+//        [cell.contentView addSubview:uilLocationNameForItem];
+//        UILabel *uilItemName = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 55.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.76, 15.0)];
+//        [uilItemName setText:@"無前無物資"];
+//        [cell.contentView addSubview:uilItemName];
+//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    } else if (indexPath.row == 12)  {
+//        UIView *uiClearView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, self.tableView.frame.size.width * 112 / 640 + 400.0)];
+//        [uiClearView setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
+//        [cell.contentView addSubview:uiClearView];
+//        UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.tableView.frame.size.width, self.tableView.frame.size.width * 112 / 640)];
+//        uiimv.image = uiiATT6;
+//        [cell.contentView addSubview:uiimv];
+//        UITextView *uitvBeforeDeparture = [[UITextView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 0.04, cgfScreenWidth * 120.0 / 640.0, cgfScreenWidth * 0.92, cgfScreenWidth * 400.0 / 640.0)];
+//        [uitvBeforeDeparture setText:@"尚未登入"];
+//        [uitvBeforeDeparture setEditable:NO];
+//        [cell.contentView addSubview:uitvBeforeDeparture];
+//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    }
+//    return cell;
+//}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *nssIDATT1 = @"ATT1";
@@ -150,19 +342,33 @@
     static NSString *nssIDATT12 = @"ATT12";
     static NSString *nssIDATT13 = @"ATT13";
     UITableViewCell *cell;
+//    for (id subview in [cell.contentView subviews])
+//    {
+//        NSLog(@"catch subview");
+//        [subview removeFromSuperview];
+//    }
     if (indexPath.row == 0) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT1];
+        cell = nil;
         if (cell == nil) {
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT1];
         }
+        UIView *uiClearView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, self.tableView.frame.size.width * 90 / 640 + 20.0)];
+        [uiClearView setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
+        [cell.contentView addSubview:uiClearView];
         UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, cgfScreenHeightBase, self.tableView.frame.size.width, self.tableView.frame.size.width * 90 / 640)];
         uiimv.image = uiiATT1;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [cell.contentView addSubview:uiimv];
     } else if (indexPath.row == 1) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT2];
+        cell = nil;
         if (cell == nil) {
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT3];
         }
+        UIView *uiClearView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, self.tableView.frame.size.width * 410 / 640 + 20.0)];
+        [uiClearView setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
+        [cell.contentView addSubview:uiClearView];
         UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.tableView.frame.size.width, self.tableView.frame.size.width * 410 / 640)];
         uiimv.image = uiiATT2;
         [cell.contentView addSubview:uiimv];
@@ -176,19 +382,29 @@
         UILabel *uilTsaiWuLin = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 32.0 / 640.0, 410.0 * cgfScreenWidth / 640.0 * 0.85, cgfScreenWidth * 217.0 / 640.0, 30.0)];
         [uilTsaiWuLin setText:@"任務尚未登入"];
         [uilTsaiWuLin setTextAlignment:NSTextAlignmentCenter];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [cell.contentView addSubview:uilTsaiWuLin];
     } else if (indexPath.row == 2) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT3];
+        cell = nil;
         if (cell == nil) {
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT2];
         }
+        UIView *uiClearView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, self.tableView.frame.size.width * 95 / 640 + 20.0)];
+        [uiClearView setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
+        [cell.contentView addSubview:uiClearView];
         fbLoginView.center = cell.contentView.center;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [cell.contentView addSubview:fbLoginView];
     } else if (indexPath.row == 3) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT4];
+        cell = nil;
         if (cell == nil) {
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT2];
         }
+        UIView *uiClearView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, self.tableView.frame.size.width * 95 / 640 + 20.0)];
+        [uiClearView setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
+        [cell.contentView addSubview:uiClearView];
         UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 40 / 640, 0.0, self.tableView.frame.size.width * 83 / 640, self.tableView.frame.size.width * 95 / 640)];
         uiimv.image = uiiATT3;
         [cell.contentView addSubview:uiimv];
@@ -200,17 +416,25 @@
         [cell.contentView addSubview:uilAddress];
     } else if (indexPath.row == 4) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT5];
+        cell = nil;
         if (cell == nil) {
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT4];
         }
+        UIView *uiClearView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, self.tableView.frame.size.width * 78 / 640 + 20.0)];
+        [uiClearView setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
+        [cell.contentView addSubview:uiClearView];
         UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 0.2867, 0.0, self.tableView.frame.size.width * 273.0 / 640.0, self.tableView.frame.size.width * 78 / 640)];
         uiimv.image = uiiATT4;
         [cell.contentView addSubview:uiimv];
     } else if (indexPath.row == 5) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT6];
+        cell = nil;
         if (cell == nil) {
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT2];
         }
+        UIView *uiClearView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, self.tableView.frame.size.width * 95 / 640 + 20.0)];
+        [uiClearView setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
+        [cell.contentView addSubview:uiClearView];
         UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 40 / 640, 0.0, self.tableView.frame.size.width * 83 / 640, self.tableView.frame.size.width * 95 / 640)];
         uiimv.image = [UIImage imageNamed:@"board"];
         [cell.contentView addSubview:uiimv];
@@ -222,9 +446,13 @@
         [cell.contentView addSubview:uilItemName];
     } else if (indexPath.row == 6) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT7];
+        cell = nil;
         if (cell == nil) {
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT2];
         }
+        UIView *uiClearView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, self.tableView.frame.size.width * 95 / 640 + 20.0)];
+        [uiClearView setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
+        [cell.contentView addSubview:uiClearView];
         UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 40 / 640, 0.0, self.tableView.frame.size.width * 83 / 640, self.tableView.frame.size.width * 95 / 640)];
         uiimv.image = [UIImage imageNamed:@"chair"];
         [cell.contentView addSubview:uiimv];
@@ -236,9 +464,13 @@
         [cell.contentView addSubview:uilItemName];
     } else if (indexPath.row == 7) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT8];
+        cell = nil;
         if (cell == nil) {
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT2];
         }
+        UIView *uiClearView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, self.tableView.frame.size.width * 95 / 640 + 20.0)];
+        [uiClearView setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
+        [cell.contentView addSubview:uiClearView];
         UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 40 / 640, 0.0, self.tableView.frame.size.width * 83 / 640, self.tableView.frame.size.width * 95 / 640)];
         uiimv.image = [UIImage imageNamed:@"desk"];
         [cell.contentView addSubview:uiimv];
@@ -250,9 +482,13 @@
         [cell.contentView addSubview:uilItemName];
     } else if (indexPath.row == 8) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT9];
+        cell = nil;
         if (cell == nil) {
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT2];
         }
+        UIView *uiClearView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, self.tableView.frame.size.width * 95 / 640 + 20.0)];
+        [uiClearView setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
+        [cell.contentView addSubview:uiClearView];
         UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 40 / 640, 0.0, self.tableView.frame.size.width * 83 / 640, self.tableView.frame.size.width * 95 / 640)];
         uiimv.image = [UIImage imageNamed:@"pen"];
         [cell.contentView addSubview:uiimv];
@@ -264,9 +500,13 @@
         [cell.contentView addSubview:uilItemName];
     } else if (indexPath.row == 9) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT10];
+        cell = nil;
         if (cell == nil) {
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT2];
         }
+        UIView *uiClearView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, self.tableView.frame.size.width * 95 / 640 + 20.0)];
+        [uiClearView setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
+        [cell.contentView addSubview:uiClearView];
         UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 40 / 640, 0.0, self.tableView.frame.size.width * 83 / 640, self.tableView.frame.size.width * 95 / 640)];
         uiimv.image = [UIImage imageNamed:@"umbrella"];
         [cell.contentView addSubview:uiimv];
@@ -278,9 +518,13 @@
         [cell.contentView addSubview:uilItemName];
     } else if (indexPath.row == 10) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT11];
+        cell = nil;
         if (cell == nil) {
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT2];
         }
+        UIView *uiClearView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, self.tableView.frame.size.width * 95 / 640 + 20.0)];
+        [uiClearView setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
+        [cell.contentView addSubview:uiClearView];
         UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 40 / 640, 0.0, self.tableView.frame.size.width * 83 / 640, self.tableView.frame.size.width * 95 / 640)];
         uiimv.image = [UIImage imageNamed:@"water"];
         [cell.contentView addSubview:uiimv];
@@ -292,9 +536,13 @@
         [cell.contentView addSubview:uilItemName];
     } else if (indexPath.row == 11) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT12];
+        cell = nil;
         if (cell == nil) {
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT2];
         }
+        UIView *uiClearView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, self.tableView.frame.size.width * 95 / 640 + 20.0)];
+        [uiClearView setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
+        [cell.contentView addSubview:uiClearView];
         UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 40 / 640, 0.0, self.tableView.frame.size.width * 83 / 640, self.tableView.frame.size.width * 95 / 640)];
         uiimv.image = [UIImage imageNamed:@"other"];
         [cell.contentView addSubview:uiimv];
@@ -306,18 +554,25 @@
         [cell.contentView addSubview:uilItemName];
     } else {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT13];
+        cell = nil;
         if (cell == nil) {
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT5];
         }
+        UIView *uiClearView = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, self.tableView.frame.size.width * 112 / 640 + 400.0)];
+        [uiClearView setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
+        [cell.contentView addSubview:uiClearView];
         UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.tableView.frame.size.width, self.tableView.frame.size.width * 112 / 640)];
         uiimv.image = uiiATT6;
         [cell.contentView addSubview:uiimv];
         UITextView *uitvBeforeDeparture = [[UITextView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 0.04, cgfScreenWidth * 120.0 / 640.0, cgfScreenWidth * 0.92, cgfScreenWidth * 400.0 / 640.0)];
         [uitvBeforeDeparture setText:@"尚未登入"];
+        [uitvBeforeDeparture setEditable:NO];
         [cell.contentView addSubview:uitvBeforeDeparture];
     }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
+
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
