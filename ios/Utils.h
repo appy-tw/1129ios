@@ -12,5 +12,6 @@
 @interface Utils : NSObject
 
 +(CLLocation*)getUserLocation;
++ (void)openSettings;
     
 @end

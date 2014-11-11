@@ -9,10 +9,20 @@
 #import "Utils.h"
 #import "VGeoManager.h"
 
+@import UIKit;
+
 @implementation Utils
 
 +(CLLocation*)getUserLocation{
     return [VGeoManager sharedInstance].cllmLocation.location;
+}
++ (void)openSettings
+{
+    BOOL canOpenSettings = (&UIApplicationOpenSettingsURLString != NULL);
+    if (canOpenSettings) {
+        NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+        [[UIApplication sharedApplication] openURL:url];
+    }
 }
 
 @end

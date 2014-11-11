@@ -10,10 +10,12 @@
 #import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
 
+#import "VGeoManager.h"
 #import "VShop.h"
 
-@interface SUPTableViewController : UITableViewController <MKMapViewDelegate>
+@interface SUPTableViewController : UITableViewController <MKMapViewDelegate,GeoManagerDelegate>
 
 @property (nonatomic, strong) NSMutableArray* mShopArray;
+@property (nonatomic, strong) NSMutableDictionary* mAnnotationDictionary;
 
 @end

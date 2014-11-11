@@ -90,7 +90,7 @@
         mkpaPoint.title = aShop.mTitle;
         mkpaPoint.subtitle = aShop.mAddress;
         [_mapView addAnnotation:mkpaPoint];
-        aShop.mAnnotation = mkpaPoint;
+        [self.mAnnotationDictionary setObject:mkpaPoint forKey:aShop.key];
     }
     return _mapView;
 }
@@ -144,23 +144,14 @@
     [self.mapView setRegion:region animated:YES];
 }
 
-- (void)setAllLocation {
-    
-}
-
-- (void)setDistance {
-    
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.mShopArray = [NSMutableArray array];
-    [[VGeoManager sharedInstance]setup];
+    self.mAnnotationDictionary = [NSMutableDictionary dictionary];
     
     [self setMyScreen];
     [self readAllFromMyPlist];
 //    [self setPinMap];
-    [self setAllLocation];
     [self setImage];
 
 //    [self setMap];
@@ -173,7 +164,8 @@
 {
     [delegate.cllMLocation stopUpdatingLocation];
     [self initMyPlist];
-    [[VGeoManager sharedInstance]start];
+    [[VGeoManager sharedInstance]setup];
+    [VGeoManager sharedInstance].delegate = self;
     [super viewDidDisappear:animated];
 }
 -(void)viewWillDisappear:(BOOL)animated{
@@ -385,13 +377,14 @@
     }else if(indexPath.row > 2){ // click on VShop
         UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
         VShop* aShop = [self.mShopArray objectAtIndex:cell.tag];
-        [self toggleShop:aShop];
         [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+        [self performSelector:@selector(toggleShop:) withObject:aShop afterDelay:0];
     }
 }
 -(void)toggleShop:(VShop*)aShop{
     [self locateLocation:aShop.mGeoPoint];
-    [_mapView selectAnnotation:aShop.mAnnotation animated:YES];
+    MKPointAnnotation* annotation = [self.mAnnotationDictionary objectForKey:aShop.key];
+    [_mapView selectAnnotation:annotation animated:YES];
 }
 
 //[[CLLocationInit
@@ -451,11 +444,12 @@
 //        self.locationUpdateCallback(manager.location);
 //    }
 //}
+/*
 -(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
     UIAlertView *errorAlert = [[UIAlertView alloc]initWithTitle:@"Error" message:@"There was an error retrieving your location" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
     [errorAlert show];
     NSLog(@"Error: %@",error.description);
-}
+}*/
 //-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 //{
 //    CLLocation *crnLoc = [locations lastObject];
@@ -482,6 +476,7 @@
     if (nssPlistDst == nil) {
         [self initMyPlist];
     }
+    self.mShopArray = [NSMutableArray array];
     nsmaPlistArray = [NSMutableArray arrayWithContentsOfFile:nssPlistDst];
     NSLog(@"%lu", (unsigned long)[nsmaPlistArray count]);
     for(NSDictionary* obj in nsmaPlistArray){
@@ -492,9 +487,16 @@
                                                     longitude:[[obj valueForKey:@"lon"]floatValue]];
         [self.mShopArray addObject:aShop];
     }
+    [self sortShops];
+}
+-(void)sortShops{
     self.mShopArray = [NSMutableArray arrayWithArray:[self.mShopArray sortedArrayUsingSelector:@selector(compare:)]];
+    [self.tableView reloadData];
 }
 
+-(void)didRequireGeoPermission:(BOOL)bSucceed{
+    [self sortShops];
+}
 //]]Plist
 
 @end
