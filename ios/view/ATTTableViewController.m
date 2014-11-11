@@ -393,12 +393,24 @@
             [uiimvTsaiWuLin setImage:[UIImage imageNamed:@"lin"]];
         } else if ([nssCounty isEqualToString:@"TPQ-1"] == YES) {
             [uiimvTsaiWuLin setImage:[UIImage imageNamed:@"wu"]];
+        } else if ([nssCounty isEqualToString:@"taiwan"] == YES) {
+            [uiimvTsaiWuLin setImage:[UIImage imageNamed:@"taiwan"]];
         } else {
             [uiimvTsaiWuLin setImage:[UIImage imageNamed:@"none"]];
         }
         [cell.contentView addSubview:uiimvTsaiWuLin];
         UILabel *uilTsaiWuLin = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 32.0 / 640.0, 410.0 * cgfScreenWidth / 640.0 * 0.85, cgfScreenWidth * 217.0 / 640.0, 30.0)];
-        [uilTsaiWuLin setText:@"任務尚未登入"];
+        if ([nssCounty isEqualToString:@"TPE-4"] == YES) {
+            [uilTsaiWuLin setText:@"蔡正元"];
+        } else if ([nssCounty isEqualToString:@"TPQ-6"] == YES) {
+            [uilTsaiWuLin setText:@"林鴻池"];
+        } else if ([nssCounty isEqualToString:@"TPQ-1"] == YES) {
+            [uilTsaiWuLin setText:@"吳育昇"];
+        } else if ([nssCounty isEqualToString:@"taiwan"] == YES) {
+            [uilTsaiWuLin setText:@"不分區"];
+        } else {
+            [uilTsaiWuLin setText:@"任務尚未登入"];
+        }
         [uilTsaiWuLin setTextAlignment:NSTextAlignmentCenter];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [cell.contentView addSubview:uilTsaiWuLin];
@@ -426,11 +438,11 @@
         UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 40 / 640, 0.0, self.tableView.frame.size.width * 83 / 640, self.tableView.frame.size.width * 95 / 640)];
         uiimv.image = uiiATT3;
         [cell.contentView addSubview:uiimv];
-        UILabel *uilLocationName = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 5.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.40, 15.0)];
-        [uilLocationName setText:@"地點尚未登入"];
+        UILabel *uilLocationName = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 5.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.75, 15.0)];
+        [uilLocationName setText:nssPoint];
         [cell.contentView addSubview:uilLocationName];
         UILabel *uilAddress = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 55.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.76, 15.0)];
-        [uilAddress setText:@"地址尚未登入"];
+        [uilAddress setText:nssAddress];
         [cell.contentView addSubview:uilAddress];
     } else if (indexPath.row == 4) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT5];
