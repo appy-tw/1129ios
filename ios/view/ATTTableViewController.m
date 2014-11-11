@@ -10,6 +10,8 @@
 #import "AppDelegate.h"
 #import "KeyHeader.h"
 
+#import "MapViewController.h"
+
 #import <Parse/Parse.h>
 
 
@@ -604,6 +606,24 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Select on show value on map
+    if (indexPath.row == 4) {
+        CGFloat latitude = [nssLat floatValue];
+        CGFloat longitude = [nssLon floatValue];
+        CLLocationCoordinate2D targetLocation = CLLocationCoordinate2DMake(latitude, longitude);
+        if (CLLocationCoordinate2DIsValid(targetLocation)) {
+            MapViewController *mapVC = [[MapViewController alloc] init];
+            mapVC.location = targetLocation;
+            // FIXME: this have problem can't show |navigationController|
+            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self];
+            [navigationController pushViewController:mapVC animated:YES];
+        } else {
+            NSLog(@"location is not valid");
+        }
+    }
+}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
