@@ -114,7 +114,7 @@
         if ([data length] > 0 && connectionError == nil) {
             _nssRSSContent = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
             [self writeToMyPlist];
-            NSLog(@"Content: %@", _nssRSSContent);
+//            NSLog(@"Content: %@", _nssRSSContent);
         } else {
             NSLog(@"Download url error: %@", connectionError);
         }

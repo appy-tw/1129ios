@@ -13,5 +13,7 @@
 
 +(CLLocation*)getUserLocation;
 + (void)openSettings;
-    
++ (CLLocationCoordinate2D) geoCodeUsingAddress:(NSString *)address;
+
++ (NSString *) getDocumentFolderPath;
 @end

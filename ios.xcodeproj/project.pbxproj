@@ -10,6 +10,7 @@
 		497FC9961A108B9A009787E9 /* VShop.m in Sources */ = {isa = PBXBuildFile; fileRef = 497FC9951A108B9A009787E9 /* VShop.m */; };
 		497FC9991A109286009787E9 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 497FC9981A109286009787E9 /* Utils.m */; };
 		497FC99C1A109BA6009787E9 /* VGeoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 497FC99B1A109BA6009787E9 /* VGeoManager.m */; };
+		49D2F2FA1A12725F00FBCFCE /* vshop.json in Resources */ = {isa = PBXBuildFile; fileRef = 49D2F2F91A12725F00FBCFCE /* vshop.json */; };
 		88E7B4431A11AA1E00B0639F /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E7B4231A11AA1E00B0639F /* MKAnnotationView+WebCache.m */; };
 		88E7B4441A11AA1E00B0639F /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E7B4251A11AA1E00B0639F /* NSData+ImageContentType.m */; };
 		88E7B4451A11AA1E00B0639F /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E7B4271A11AA1E00B0639F /* SDImageCache.m */; };
@@ -114,6 +115,7 @@
 		497FC99A1A109BA6009787E9 /* VGeoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VGeoManager.h; sourceTree = "<group>"; };
 		497FC99B1A109BA6009787E9 /* VGeoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VGeoManager.m; sourceTree = "<group>"; };
 		497FC99E1A109C75009787E9 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynthesizeSingleton.h; sourceTree = "<group>"; };
+		49D2F2F91A12725F00FBCFCE /* vshop.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = vshop.json; sourceTree = "<group>"; };
 		88E7B4221A11AA1E00B0639F /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		88E7B4231A11AA1E00B0639F /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		88E7B4241A11AA1E00B0639F /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageContentType.h"; sourceTree = "<group>"; };
@@ -398,6 +400,7 @@
 		8FBCEB4B1A029E2C00D200A0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				49D2F2F91A12725F00FBCFCE /* vshop.json */,
 				8FBCEB4C1A029E2C00D200A0 /* Info.plist */,
 				8FBCEB4D1A029E2C00D200A0 /* main.m */,
 				8F3BF8A71A040970002F75E9 /* UserData.plist */,
@@ -587,6 +590,7 @@
 				8F3A12851A0B322A00C10C5D /* InfoPlist.strings in Resources */,
 				8F3A12801A0B320000C10C5D /* Localizable.strings in Resources */,
 				8F2C57051A0E671C007A24A4 /* sup.plist in Resources */,
+				49D2F2FA1A12725F00FBCFCE /* vshop.json in Resources */,
 				E70861001A12556600D087E0 /* att.plist in Resources */,
 				8FE0E8161A061DD4000016D1 /* README.txt in Resources */,
 				8FE0E8461A061DD4000016D1 /* LICENSE in Resources */,
