@@ -132,7 +132,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 7;
+    return 13;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -143,6 +143,12 @@
     static NSString *nssIDATT5 = @"ATT5";
     static NSString *nssIDATT6 = @"ATT6";
     static NSString *nssIDATT7 = @"ATT7";
+    static NSString *nssIDATT8 = @"ATT8";
+    static NSString *nssIDATT9 = @"ATT9";
+    static NSString *nssIDATT10 = @"ATT10";
+    static NSString *nssIDATT11 = @"ATT11";
+    static NSString *nssIDATT12 = @"ATT12";
+    static NSString *nssIDATT13 = @"ATT13";
     UITableViewCell *cell;
     if (indexPath.row == 0) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT1];
@@ -153,7 +159,7 @@
         uiimv.image = uiiATT1;
         [cell.contentView addSubview:uiimv];
     } else if (indexPath.row == 1) {
-        cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT3];
+        cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT2];
         if (cell == nil) {
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT3];
         }
@@ -172,14 +178,14 @@
         [uilTsaiWuLin setTextAlignment:NSTextAlignmentCenter];
         [cell.contentView addSubview:uilTsaiWuLin];
     } else if (indexPath.row == 2) {
-        cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT2];
+        cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT3];
         if (cell == nil) {
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT2];
         }
         fbLoginView.center = cell.contentView.center;
         [cell.contentView addSubview:fbLoginView];
     } else if (indexPath.row == 3) {
-        cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT2];
+        cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT4];
         if (cell == nil) {
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT2];
         }
@@ -193,7 +199,7 @@
         [uilAddress setText:@"地址尚未登入"];
         [cell.contentView addSubview:uilAddress];
     } else if (indexPath.row == 4) {
-        cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT4];
+        cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT5];
         if (cell == nil) {
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT4];
         }
@@ -201,12 +207,96 @@
         uiimv.image = uiiATT4;
         [cell.contentView addSubview:uiimv];
     } else if (indexPath.row == 5) {
-        cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT2];
+        cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT6];
         if (cell == nil) {
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT2];
         }
         UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 40 / 640, 0.0, self.tableView.frame.size.width * 83 / 640, self.tableView.frame.size.width * 95 / 640)];
-        uiimv.image = [UIImage imageNamed:@"att5-1"];
+        uiimv.image = [UIImage imageNamed:@"board"];
+        [cell.contentView addSubview:uiimv];
+        UILabel *uilLocationNameForItem = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 5.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.40, 15.0)];
+        [uilLocationNameForItem setText:@"目前無物資據點"];
+        [cell.contentView addSubview:uilLocationNameForItem];
+        UILabel *uilItemName = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 55.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.76, 15.0)];
+        [uilItemName setText:@"無前無物資"];
+        [cell.contentView addSubview:uilItemName];
+    } else if (indexPath.row == 6) {
+        cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT7];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT2];
+        }
+        UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 40 / 640, 0.0, self.tableView.frame.size.width * 83 / 640, self.tableView.frame.size.width * 95 / 640)];
+        uiimv.image = [UIImage imageNamed:@"chair"];
+        [cell.contentView addSubview:uiimv];
+        UILabel *uilLocationNameForItem = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 5.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.40, 15.0)];
+        [uilLocationNameForItem setText:@"目前無物資據點"];
+        [cell.contentView addSubview:uilLocationNameForItem];
+        UILabel *uilItemName = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 55.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.76, 15.0)];
+        [uilItemName setText:@"無前無物資"];
+        [cell.contentView addSubview:uilItemName];
+    } else if (indexPath.row == 7) {
+        cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT8];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT2];
+        }
+        UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 40 / 640, 0.0, self.tableView.frame.size.width * 83 / 640, self.tableView.frame.size.width * 95 / 640)];
+        uiimv.image = [UIImage imageNamed:@"desk"];
+        [cell.contentView addSubview:uiimv];
+        UILabel *uilLocationNameForItem = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 5.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.40, 15.0)];
+        [uilLocationNameForItem setText:@"目前無物資據點"];
+        [cell.contentView addSubview:uilLocationNameForItem];
+        UILabel *uilItemName = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 55.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.76, 15.0)];
+        [uilItemName setText:@"無前無物資"];
+        [cell.contentView addSubview:uilItemName];
+    } else if (indexPath.row == 8) {
+        cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT9];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT2];
+        }
+        UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 40 / 640, 0.0, self.tableView.frame.size.width * 83 / 640, self.tableView.frame.size.width * 95 / 640)];
+        uiimv.image = [UIImage imageNamed:@"pen"];
+        [cell.contentView addSubview:uiimv];
+        UILabel *uilLocationNameForItem = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 5.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.40, 15.0)];
+        [uilLocationNameForItem setText:@"目前無物資據點"];
+        [cell.contentView addSubview:uilLocationNameForItem];
+        UILabel *uilItemName = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 55.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.76, 15.0)];
+        [uilItemName setText:@"無前無物資"];
+        [cell.contentView addSubview:uilItemName];
+    } else if (indexPath.row == 9) {
+        cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT10];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT2];
+        }
+        UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 40 / 640, 0.0, self.tableView.frame.size.width * 83 / 640, self.tableView.frame.size.width * 95 / 640)];
+        uiimv.image = [UIImage imageNamed:@"umbrella"];
+        [cell.contentView addSubview:uiimv];
+        UILabel *uilLocationNameForItem = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 5.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.40, 15.0)];
+        [uilLocationNameForItem setText:@"目前無物資據點"];
+        [cell.contentView addSubview:uilLocationNameForItem];
+        UILabel *uilItemName = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 55.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.76, 15.0)];
+        [uilItemName setText:@"無前無物資"];
+        [cell.contentView addSubview:uilItemName];
+    } else if (indexPath.row == 10) {
+        cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT11];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT2];
+        }
+        UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 40 / 640, 0.0, self.tableView.frame.size.width * 83 / 640, self.tableView.frame.size.width * 95 / 640)];
+        uiimv.image = [UIImage imageNamed:@"water"];
+        [cell.contentView addSubview:uiimv];
+        UILabel *uilLocationNameForItem = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 5.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.40, 15.0)];
+        [uilLocationNameForItem setText:@"目前無物資據點"];
+        [cell.contentView addSubview:uilLocationNameForItem];
+        UILabel *uilItemName = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 55.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.76, 15.0)];
+        [uilItemName setText:@"無前無物資"];
+        [cell.contentView addSubview:uilItemName];
+    } else if (indexPath.row == 11) {
+        cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT12];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT2];
+        }
+        UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 40 / 640, 0.0, self.tableView.frame.size.width * 83 / 640, self.tableView.frame.size.width * 95 / 640)];
+        uiimv.image = [UIImage imageNamed:@"other"];
         [cell.contentView addSubview:uiimv];
         UILabel *uilLocationNameForItem = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 5.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.40, 15.0)];
         [uilLocationNameForItem setText:@"目前無物資據點"];
@@ -215,7 +305,7 @@
         [uilItemName setText:@"無前無物資"];
         [cell.contentView addSubview:uilItemName];
     } else {
-        cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT5];
+        cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT13];
         if (cell == nil) {
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT5];
         }
@@ -244,6 +334,18 @@
     } else if (indexPath.row == 5) {
         return self.tableView.frame.size.width * 95 / 640 + 20.0;
     } else if (indexPath.row == 6) {
+        return self.tableView.frame.size.width * 95 / 640 + 20.0;
+    } else if (indexPath.row == 7) {
+        return self.tableView.frame.size.width * 95 / 640 + 20.0;
+    } else if (indexPath.row == 8) {
+        return self.tableView.frame.size.width * 95 / 640 + 20.0;
+    } else if (indexPath.row == 9) {
+        return self.tableView.frame.size.width * 95 / 640 + 20.0;
+    } else if (indexPath.row == 10) {
+        return self.tableView.frame.size.width * 95 / 640 + 20.0;
+    } else if (indexPath.row == 11) {
+        return self.tableView.frame.size.width * 95 / 640 + 20.0;
+    } else if (indexPath.row == 12) {
         return self.tableView.frame.size.width * 112 / 640 + 200.0;
     } else {
         return self.tableView.frame.size.width * 300 / 640 + 20.0;
