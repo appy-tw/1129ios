@@ -93,6 +93,7 @@
 		8FE0E9941A069D33000016D1 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FE0E9931A069D33000016D1 /* StoreKit.framework */; };
 		8FE0E9961A069D3C000016D1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FE0E9951A069D3C000016D1 /* SystemConfiguration.framework */; };
 		E70860FE1A1101BF00D087E0 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E70860FD1A1101BF00D087E0 /* MapViewController.m */; };
+		E70861001A12556600D087E0 /* att.plist in Resources */ = {isa = PBXBuildFile; fileRef = E70860FF1A12556600D087E0 /* att.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -214,6 +215,7 @@
 		8FE0E9951A069D3C000016D1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		E70860FC1A1101BF00D087E0 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapViewController.h; path = view/MapViewController.h; sourceTree = "<group>"; };
 		E70860FD1A1101BF00D087E0 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapViewController.m; path = view/MapViewController.m; sourceTree = "<group>"; };
+		E70860FF1A12556600D087E0 /* att.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = att.plist; path = ios/att.plist; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -268,6 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				497FC99E1A109C75009787E9 /* SynthesizeSingleton.h */,
+				E70860FF1A12556600D087E0 /* att.plist */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -550,7 +553,7 @@
 					};
 					8FBCEB631A029E2C00D200A0 = {
 						CreatedOnToolsVersion = 6.1;
-						DevelopmentTeam = 9SFGMQE6W6;
+						DevelopmentTeam = DEATJ76XRX;
 						TestTargetID = 8FBCEB471A029E2C00D200A0;
 					};
 				};
@@ -584,6 +587,7 @@
 				8F3A12851A0B322A00C10C5D /* InfoPlist.strings in Resources */,
 				8F3A12801A0B320000C10C5D /* Localizable.strings in Resources */,
 				8F2C57051A0E671C007A24A4 /* sup.plist in Resources */,
+				E70861001A12556600D087E0 /* att.plist in Resources */,
 				8FE0E8161A061DD4000016D1 /* README.txt in Resources */,
 				8FE0E8461A061DD4000016D1 /* LICENSE in Resources */,
 				8FE0E8481A061DD4000016D1 /* README.txt in Resources */,
