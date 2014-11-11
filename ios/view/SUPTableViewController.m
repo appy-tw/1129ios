@@ -184,6 +184,7 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
     [delegate.cllMLocation stopUpdatingLocation];
     [self initMyPlist];
     [[VGeoManager sharedInstance]setup];

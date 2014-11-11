@@ -131,7 +131,14 @@
     [fbLoginView sizeToFit];
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    [super viewWillAppear:animated];
+}
+
 - (void)viewDidLoad {
+    delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [self setMyScreenSize];
     [self makeKeyboardOffset];
     nssIOSToken = delegate.nssDeviceToken;
@@ -394,8 +401,8 @@
         [cell.contentView addSubview:uiClearView];
         UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.tableView.frame.size.width, self.tableView.frame.size.width * 90 / 640)];
         uiimv.image = uiiATT1;
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [cell.contentView addSubview:uiimv];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     } else if (indexPath.row == 1) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT2];
         cell = nil;
@@ -438,8 +445,8 @@
             [uilTsaiWuLin setText:@"任務尚未登入"];
         }
         [uilTsaiWuLin setTextAlignment:NSTextAlignmentCenter];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [cell.contentView addSubview:uilTsaiWuLin];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     } else if (indexPath.row == 2) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT3];
         cell = nil;
@@ -450,8 +457,8 @@
         [uiClearView setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
         [cell.contentView addSubview:uiClearView];
         fbLoginView.center = cell.contentView.center;
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [cell.contentView addSubview:fbLoginView];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     } else if (indexPath.row == 3) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT4];
         cell = nil;
@@ -470,6 +477,7 @@
         UILabel *uilAddress = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 55.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.76, 15.0)];
         [uilAddress setText:nssAddress];
         [cell.contentView addSubview:uilAddress];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     } else if (indexPath.row == 4) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT5];
         cell = nil;
@@ -500,6 +508,7 @@
         UILabel *uilItemName = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 55.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.76, 15.0)];
         [uilItemName setText:[nssResourceBoard componentsSeparatedByString:@";"][1]];
         [cell.contentView addSubview:uilItemName];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     } else if (indexPath.row == 6) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT7];
         cell = nil;
@@ -518,6 +527,7 @@
         UILabel *uilItemName = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 55.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.76, 15.0)];
         [uilItemName setText:[nssResourceChair componentsSeparatedByString:@";"][1]];
         [cell.contentView addSubview:uilItemName];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     } else if (indexPath.row == 7) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT8];
         cell = nil;
@@ -536,6 +546,7 @@
         UILabel *uilItemName = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 55.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.76, 15.0)];
         [uilItemName setText:[nssResourceDesk componentsSeparatedByString:@";"][1]];
         [cell.contentView addSubview:uilItemName];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     } else if (indexPath.row == 8) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT9];
         cell = nil;
@@ -554,6 +565,7 @@
         UILabel *uilItemName = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 55.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.76, 15.0)];
         [uilItemName setText:[nssResourcePen componentsSeparatedByString:@";"][1]];
         [cell.contentView addSubview:uilItemName];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     } else if (indexPath.row == 9) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT10];
         cell = nil;
@@ -572,6 +584,7 @@
         UILabel *uilItemName = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 55.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.76, 15.0)];
         [uilItemName setText:[nssResourceUmbrella componentsSeparatedByString:@";"][1]];
         [cell.contentView addSubview:uilItemName];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     } else if (indexPath.row == 10) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT11];
         cell = nil;
@@ -590,6 +603,7 @@
         UILabel *uilItemName = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 55.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.76, 15.0)];
         [uilItemName setText:[nssResourceWater componentsSeparatedByString:@";"][1]];
         [cell.contentView addSubview:uilItemName];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     } else if (indexPath.row == 11) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT12];
         cell = nil;
@@ -608,6 +622,7 @@
         UILabel *uilItemName = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 141.0 / 640.0, 55.0 * cgfScreenWidth / 640.0, cgfScreenWidth * 0.76, 15.0)];
         [uilItemName setText:[nssResourceOthers componentsSeparatedByString:@";"][1]];
         [cell.contentView addSubview:uilItemName];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     } else if (indexPath.row == 12) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT13];
         cell = nil;
@@ -629,6 +644,7 @@
         [uitvBeforeDeparture setText:nssInfo];
         [uitvBeforeDeparture setEditable:NO];
         [cell.contentView addSubview:uitvBeforeDeparture];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     } else {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT14];
         cell = nil;
@@ -645,13 +661,14 @@
         [uitvPush setText:nssPush];
         [uitvPush setEditable:NO];
         [cell.contentView addSubview:uitvPush];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath");
     // Select on show value on map
     if (indexPath.row == 4) {
         CGFloat latitude = [nssLat floatValue];
@@ -661,8 +678,10 @@
             MapViewController *mapVC = [[MapViewController alloc] init];
             mapVC.location = targetLocation;
             // FIXME: this have problem can't show |navigationController|
-            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self];
-            [navigationController pushViewController:mapVC animated:YES];
+//            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self];
+            [self makeKeyboardOffsetBack];
+            self.navigationController.navigationBarHidden = NO;
+            [self.navigationController pushViewController:mapVC animated:YES];
         } else {
             NSLog(@"location is not valid");
         }

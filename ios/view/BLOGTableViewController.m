@@ -14,6 +14,8 @@
 #import "PLISTHeader.h"
 #import "UIImageView+WebCache.h"
 
+#import "BLOGViewController.h"
+
 @interface BlogItem : NSObject
 @property (nonatomic, strong) NSString *strImageUrl;
 @property (nonatomic, strong) NSString *strSpan;
@@ -114,17 +116,42 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIAlertView *messageAlert = [[UIAlertView alloc]
-                                 initWithTitle:@"Row Selected" message:@"You've selected a row" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    NSLog(@"%ld", (long)indexPath.row);
+    [delegate.navigationControllerBlog setNavigationBarHidden:NO animated:NO];
+    [self makeKeyboardOffsetBack];
+    [delegate.navigationControllerBlog pushViewController:[UIViewController new] animated:NO];
     
-    // Display Alert Message
-    [messageAlert show];
+//    BlogItem *item = [self.blogItemsArr objectAtIndex:indexPath.row];
+//    delegate.nssBLOGLink = [NSString stringWithString:item.strLink];
+//    [delegate.navigationControllerBlog pushViewController:[[UIViewController alloc]init] animated:NO];
+////    delegate.nssBLOGLink = [self.blogItemsArr objectAtIndex:indexPath.row].strLink;
+//    UIAlertView *messageAlert = [[UIAlertView alloc]
+//                                 initWithTitle:@"Row Selected" message:[NSString stringWithFormat:@"You've selected a row: %ld", (long)indexPath.row] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//
+//    // Display Alert Message
+//    [messageAlert show];
     
 }
+
+- (void) makeKeyboardOffset {
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.0];
+    self.view.center = CGPointMake(self.view.center.x, -100);
+    [UIView commitAnimations];
+}
+
+- (void) makeKeyboardOffsetBack {
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.0];
+    self.view.center = CGPointMake(self.view.center.x, self.view.center.y);
+    [UIView commitAnimations];
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setMyScreenSize];
+    [self makeKeyboardOffset];
     [self prepareTable];
     [self prepareAllImage];
     

@@ -43,6 +43,16 @@
 //- (void)cllocationInit;
 //- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations;
 
+//[[forBLOG
+@property (strong, nonatomic) NSString *nssBLOGLink;
+//]]forBLOG
+
+//[[forSUP
+//]]forSUP
+
+//[[forATT
+//]]forATT
+
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
 
