@@ -1,797 +1,798 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-    <array>
-        <dict>
-            <key>title</key>
-            <string>橘子工坊</string>
-            <key>address</key>
-            <string>內湖區內湖路一段273號</string>
-            <key>time</key>
-            <string>10：00~22：00</string>
-            <key>lat</key>
-            <string>25.0825442</string>
-            <key>lon</key>
-            <string>121.56569239999999</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>陳嘉霖競選服務處</string>
-            <key>address</key>
-            <string>民權東路6段453號</string>
-            <key>time</key>
-            <string>周一-週五 全天</string>
-            <key>lat</key>
-            <string>25.0719953</string>
-            <key>lon</key>
-            <string>121.60453069999994</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>革合金迷你手縫皮革工廠</string>
-            <key>address</key>
-            <string>台北市內湖區內湖路一段283-5號二樓百貨區113室(捷運西湖站)</string>
-            <key>time</key>
-            <string>依照網路公告</string>
-            <key>site</key>
-            <string>https://www.facebook.com/HMSorbet/info</string>            <key>lat</key>
-            <string>25.082381</string>
-            <key>lon</key>
-            <string>121.56661200000008</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>麥味登早餐店</string>
-            <key>address</key>
-            <string>內湖區康樂街72巷17弄30號1樓</string>
-            <key>phone</key>
-            <string>02-26310446</string>
-            <key>time</key>
-            <string>6：00~13：00</string>
-            <key>lat</key>
-            <string>25.0702245</string>
-            <key>lon</key>
-            <string>121.61749929999996</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>好了拉 紅茶冰</string>
-            <key>address</key>
-            <string>台北市內湖區康寧路三段165巷6號</string>
-            <key>time</key>
-            <string>週一 – 週六： 11：30 – 23：30，週日： 11：30 – 22：30</string>
-            <key>lat</key>
-            <string>25.070681</string>
-            <key>lon</key>
-            <string>121.61173680000002</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>美德家具行</string>
-            <key>address</key>
-            <string>內湖區康樂街72巷17弄30號1樓</string>
-            <key>phone</key>
-            <string>02-26324862</string>
-            <key>time</key>
-            <string>610：30~21：30</string>
-            <key>lat</key>
-            <string>25.0702245</string>
-            <key>lon</key>
-            <string>121.61749929999996</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>觀茶入微</string>
-            <key>address</key>
-            <string>台北市內湖區成功路四段30巷30號</string>
-            <key>phone</key>
-            <string>02-87910303</string>
-            <key>time</key>
-            <string>週一 - 週四： 11：30 - 0：00週五 - 週六： 11：30 - 1：00週日： 11：30 - 0：00</string>
-            <key>lat</key>
-            <string>25.0826691</string>
-            <key>lon</key>
-            <string>121.59197280000001</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>一流眼鏡行</string>
-            <key>address</key>
-            <string>台北市內湖路ㄧ段735號</string>
-            <key>phone</key>
-            <string>02-2627-7942</string>
-            <key>time</key>
-            <string>10：00~22：00</string>
-            <key>lat</key>
-            <string>25.0791216</string>
-            <key>lon</key>
-            <string>121.57829379999998</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>王友信里長競選總部</string>
-            <key>address</key>
-            <string>南港區舊莊街一段77號</string>
-            <key>time</key>
-            <string>9：00~21：00</string>
-            <key>lat</key>
-            <string>25.0791216</string>
-            <key>lon</key>
-            <string>121.57829379999998</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>李建昌市議員競選總部</string>
-            <key>address</key>
-            <string>台北市內湖區成功路四段199號1樓</string>
-            <key>time</key>
-            <string>9：00~19：00</string>
-            <key>lat</key>
-            <string>25.0841822</string>
-            <key>lon</key>
-            <string>121.59583780000003</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>江志銘市議員競選總部</string>
-            <key>address</key>
-            <string>台北市內湖區成功路二段187號</string>
-            <key>time</key>
-            <string>9：00~19：00</string>
-            <key>lat</key>
-            <string>25.0666865</string>
-            <key>lon</key>
-            <string>121.59067549999997</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>王孝維市議員競選總部</string>
-            <key>address</key>
-            <string>台北市金龍路196號</string>
-            <key>time</key>
-            <string>9：00~19：00</string>
-            <key>lat</key>
-            <string>25.0873383</string>
-            <key>lon</key>
-            <string>121.58757450000007</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>高嘉瑜市議員競選總部</string>
-            <key>address</key>
-            <string>台北市民權東路6段423號</string>
-            <key>time</key>
-            <string>周ㄧ~周五 9：00~19：00</string>
-            <key>lat</key>
-            <string>25.0716002</string>
-            <key>lon</key>
-            <string>121.60354050000001</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>白鹿洞書店</string>
-            <key>address</key>
-            <string>內湖區星雲街27號</string>
-            <key>time</key>
-            <string>10：00~23：30</string>
-            <key>lat</key>
-            <string>25.0785805</string>
-            <key>lon</key>
-            <string>121.59113249999996</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>廖惠里長競選總部</string>
-            <key>address</key>
-            <string>台北市南港區成福里東新街91號</string>
-            <key>time</key>
-            <string>1100~1800</string>
-            <key>lat</key>
-            <string>25.0467116</string>
-            <key>lon</key>
-            <string>121.58911069999999</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>哈打奶奶</string>
-            <key>address</key>
-            <string>台北市南港區富康街1巷16弄10號</string>
-            <key>time</key>
-            <string>周一~周五 18：30~21：20 周六 12：00~17：00</string>
-            <key>lat</key>
-            <string>25.0539034</string>
-            <key>lon</key>
-            <string>121.61785110000005</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>Ponpie</string>
-            <key>address</key>
-            <string>新北市板橋區民權路202巷2弄1號</string>
-            <key>phone</key>
-            <string>(02) 2272-2224</string>
-            <key>time</key>
-            <string>週一 - 週六：12：00 - 20：00</string>
-            <key>site</key>
-            <string>https://www.facebook.com/ponpie0228</string>
-            <key>lat</key>
-            <string>25.01408</string>
-            <key>lon</key>
-            <string>121.45946600000002</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>猜咖啡 Guess What</string>
-            <key>address</key>
-            <string>新北市板橋區民生路二段234巷11號</string>
-            <key>phone</key>
-            <string>(02) 2257-5487</string>
-            <key>time</key>
-            <string>週一 – 週日：10：00 – 22：30</string>
-            <key>site</key>
-            <string>https://www.facebook.com/guesswhatcafe</string>
-            <key>lat</key>
-            <string>25.0228711</string>
-            <key>lon</key>
-            <string>121.46863970000004</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>木木商號</string>
-            <key>address</key>
-            <string>新北市板橋區三民路二段62號</string>
-            <key>phone</key>
-            <string>(02) 2959-6969</string>
-            <key>time</key>
-            <string>週一 - 週四：09：00 - 20：00，週六 - 週日：12：00 - 21：00</string>
-            <key>site</key>
-            <string>https://www.facebook.com/mu2coffee</string>
-            <key>lat</key>
-            <string>25.017425</string>
-            <key>lon</key>
-            <string>121.47913700000004</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>8鍋 (莒光店)</string>
-            <key>address</key>
-            <string>新北市板橋區莒光路40巷5號</string>
-            <key>phone</key>
-            <string>(02) 2255-3352</string>
-            <key>time</key>
-            <string>週一 - 週日：10：00 - 23：00</string>
-            <key>site</key>
-            <string>https://www.facebook.com/pages/8鍋莒光店/142786882564288</string>
-            <key>lat</key>
-            <string>25.0241492</string>
-            <key>lon</key>
-            <string>121.4703806</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>Tiere 堤柇 寵物住宿 / 人文咖啡</string>
-            <key>address</key>
-            <string>新北市板橋區文聖街207號</string>
-            <key>phone</key>
-            <string>(02) 2250-1377</string>
-            <key>time</key>
-            <string>週二 - 週日：11：00 - 21：00</string>
-            <key>site</key>
-            <string>https://www.facebook.com/pages/Tiere-堤柇-寵物住宿-人文咖啡/235856379923837</string>
-            <key>lat</key>
-            <string>25.02661</string>
-            <key>lon</key>
-            <string>121.47965999999997</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>小麻雀二手買與賣 Little Sparrow</string>
-            <key>address</key>
-            <string>新北市板橋區文化路二段125巷48號</string>
-            <key>phone</key>
-            <string>(02) 8259-5738</string>
-            <key>time</key>
-            <string>週三 - 週日：13：00 - 19：00</string>
-            <key>site</key>
-            <string>https://www.facebook.com/littlesparrow48</string>
-            <key>lat</key>
-            <string>25.0274482</string>
-            <key>lon</key>
-            <string>121.46982809999997</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>暱時光</string>
-            <key>address</key>
-            <string>臺北市中山區中山北路二段20巷25號2樓</string>
-            <key>phone</key>
-            <string>(02) 2523-8103</string>
-            <key>time</key>
-            <string>週二 - 週日：15：00 - 21：00</string>
-            <key>site</key>
-            <string>https://www.facebook.com/timeless2012</string>
-            <key>lat</key>
-            <string>25.0274482</string>
-            <key>lon</key>
-            <string>121.46982809999997</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>Homey’s Café</string>
-            <key>address</key>
-            <string>臺北市大安區敦化南路一段236巷36號2樓</string>
-            <key>phone</key>
-            <string>(02) 2711-1519</string>
-            <key>time</key>
-            <string>週一 - 週日：12：00 - 00：00</string>
-            <key>site</key>
-            <string>https://www.facebook.com/homeyscafe</string>
-            <key>lat</key>
-            <string>25.0405308</string>
-            <key>lon</key>
-            <string>121.54659479999998</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>公共冊所</string>
-            <key>address</key>
-            <string>臺北市大安區泰順街24號B1</string>
-            <key>phone</key>
-            <string>(02) 3365-2328</string>
-            <key>time</key>
-            <string>週一 - 週日：14：00 - 22：00</string>
-            <key>site</key>
-            <string>https://www.facebook.com/libratory.books</string>
-            <key>lat</key>
-            <string>25.025121</string>
-            <key>lon</key>
-            <string>121.53145500000005</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>Sugar Man Café</string>
-            <key>address</key>
-            <string>臺北市大安區和平東路一段87-1號</string>
-            <key>phone</key>
-            <string>(02) 2396-9980</string>
-            <key>time</key>
-            <string>週一 - 週日：14：00~04：00</string>
-            <key>site</key>
-            <string>https://www.facebook.com/cafesugarman</string>
-            <key>lat</key>
-            <string>25.02717</string>
-            <key>lon</key>
-            <string>121.52566300000001</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>後門咖啡</string>
-            <key>address</key>
-            <string>臺北市大安區復興南路二段332號</string>
-            <key>phone</key>
-            <string>(02) 27389670</string>
-            <key>time</key>
-            <string>週一 - 週五：11：00 - 22：00，週六、週日：09：00 - 22：00</string>
-            <key>site</key>
-            <string>https://www.facebook.com/cafebackstage332</string>
-            <key>lat</key>
-            <string>25.022891</string>
-            <key>lon</key>
-            <string>121.543205</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>Mucho Mucho</string>
-            <key>address</key>
-            <string>臺北市大安區復興南路一段107巷5弄29號</string>
-            <key>phone</key>
-            <string>(02) 2711-6691</string>
-            <key>time</key>
-            <string>週一 - 週日：11：00 - 00：00</string>
-            <key>site</key>
-            <string>https://www.facebook.com/mucho2cafe</string>
-            <key>lat</key>
-            <string>25.0228911</string>
-            <key>lon</key>
-            <string>121.54320529999995</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>沛洛瑟自家焙煎咖啡店</string>
-            <key>address</key>
-            <string>臺北市萬華區中華路二段75巷40號</string>
-            <key>phone</key>
-            <string>(02) 2312-2955</string>
-            <key>time</key>
-            <string>週一 - 週日：12：00 - 21：00</string>
-            <key>site</key>
-            <string>https://www.facebook.com/caffepeloso</string>
-            <key>lat</key>
-            <string>25.0334403</string>
-            <key>lon</key>
-            <string>121.50767840000003</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>卡市達創業加油站1店</string>
-            <key>address</key>
-            <string>臺北市萬華區武昌街二段122-1號</string>
-            <key>phone</key>
-            <string>(02) 2388-2758</string>
-            <key>time</key>
-            <string>週一 - 週日：10：00 - 19：00</string>
-            <key>site</key>
-            <string>https://www.facebook.com/pages/卡市達創業加油站/372467782832468</string>
-            <key>lat</key>
-            <string>25.0453065</string>
-            <key>lon</key>
-            <string>121.50397880000003</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>俏皮 CHO-pi</string>
-            <key>address</key>
-            <string>臺北市大同區民樂街20號2樓</string>
-            <key>phone</key>
-            <string>(02) 2559-8583</string>
-            <key>time</key>
-            <string>週二 - 週日：12：00 - 19：00</string>
-            <key>site</key>
-            <string>https://www.facebook.com/QiaoPiChoPi</string>
-            <key>lat</key>
-            <string>25.0561275</string>
-            <key>lon</key>
-            <string>121.51079270000002</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>早秋咖啡 CAFE Macho</string>
-            <key>address</key>
-            <string>臺北市中正區晉江街10號</string>
-            <key>phone</key>
-            <string>(02) 2368-5029</string>
-            <key>time</key>
-            <string>週一 – 週日：12：00 – 02：00</string>
-            <key>site</key>
-            <string>https://www.facebook.com/cafemacho</string>
-            <key>lat</key>
-            <string>25.026052</string>
-            <key>lon</key>
-            <string>121.52112899999997</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>陽光廚坊</string>
-            <key>address</key>
-            <string>台北市港墘里內湖區江南街124號</string>
-            <key>phone</key>
-            <string>02-26585559</string>
-            <key>time</key>
-            <string> 週一 – 週六： 9：30 – 21：00</string>
-            <key>site</key>
-            <string>https://www.facebook.com/pages/陽光廚坊/507185155985053</string>
-            <key>lat</key>
-            <string>25.0763681</string>
-            <key>lon</key>
-            <string>121.57574709999994</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>布夏拉提咖啡</string>
-            <key>address</key>
-            <string>台北市內湖區康寧路一段76號</string>
-            <key>phone</key>
-            <string>02 8792 9722</string>
-            <key>time</key>
-            <string>13：00 – 23：00 (每週二公休)</string>
-            <key>lat</key>
-            <string>25.0763681</string>
-            <key>lon</key>
-            <string>121.57574709999994</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>Tuttihome‧自家烘焙咖啡</string>
-            <key>address</key>
-            <string>台北市內湖區安康路418號</string>
-            <key>phone</key>
-            <string>02 2632 4006</string>
-            <key>time</key>
-            <string>12：30 – 21：00 (雙週星期三休)</string>
-            <key>lat</key>
-            <string>25.0662349</string>
-            <key>lon</key>
-            <string>121.61443499999996</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>杜鵑窩</string>
-            <key>address</key>
-            <string>台北市中山區北安路458巷41弄52號</string>
-            <key>phone</key>
-            <string>02-25330531</string>
-            <key>time</key>
-            <string>13：30  – 00：30</string>
-            <key>lat</key>
-            <string>25.0790489</string>
-            <key>lon</key>
-            <string>121.54653000000008</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>拎咖啡 LinCafe</string>
-            <key>address</key>
-            <string>南港區南港路2段25號</string>
-            <key>phone</key>
-            <string>0978 655 134</string>
-            <key>time</key>
-            <string> 7：00 – 21：00 (週一至週五)、9：30 – 21：00 (週末)</string>
-            <key>lat</key>
-            <string>25.0535455</string>
-            <key>lon</key>
-            <string>121.60314219999998</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>海邊的卡夫卡</string>
-            <key>address</key>
-            <string>台北市中正區羅斯福路三段244巷2號2樓</string>
-            <key>phone</key>
-            <string>02-23641996</string>
-            <key>time</key>
-            <string> 12：00 – 0：00 (週日至週四)、12：00 – 2：00 (週五及週六)</string>
-            <key>lat</key>
-            <string>25.017044</string>
-            <key>lon</key>
-            <string>121.531241</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>海柔屋桌上遊戲城</string>
-            <key>address</key>
-            <string>新北市板橋區四維路259巷1號一樓</string>
-            <key>phone</key>
-            <string>02 2258 5455</string>
-            <key>time</key>
-            <string>17：00 – 23：00 (週一至週五、週二公休)、12：00 – 23：00 (週末)</string>
-            <key>lat</key>
-            <string>25.0170439</string>
-            <key>lon</key>
-            <string>121.53124100000002</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>好初早餐一店</string>
-            <key>address</key>
-            <string>新北市板橋區文化路二段125巷70號</string>
-            <key>phone</key>
-            <string>02-22532087</string>
-            <key>time</key>
-            <string>8：00 – 16：00</string>
-            <key>lat</key>
-            <string>25.027873</string>
-            <key>lon</key>
-            <string>121.46998200000007</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>好初早餐二店</string>
-            <key>address</key>
-            <string>新北市板橋區建國街118號</string>
-            <key>phone</key>
-            <string>(02)29600788</string>
-            <key>time</key>
-            <string>8：00 – 16：00</string>
-            <key>lat</key>
-            <string>25.0175679</string>
-            <key>lon</key>
-            <string>121.46100000000001</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>Changee 延吉小屋</string>
-            <key>address</key>
-            <string>臺北市八德路三段106巷55號</string>
-            <key>phone</key>
-            <string>02-2577-8248</string>
-            <key>time</key>
-            <string>12：00 - 20：00 (週一公休)</string>
-            <key>lat</key>
-            <string>25.0453889</string>
-            <key>lon</key>
-            <string>121.55436069999996</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>Changee 噪咖</string>
-            <key>address</key>
-            <string>台北市福華路180號 (台北數位藝術中心內一樓)</string>
-            <key>phone</key>
-            <string>02-2834-2740</string>
-            <key>time</key>
-            <string>12：00-18：00 (週二至週五)</string>
-            <key>lat</key>
-            <string>25.0453889</string>
-            <key>lon</key>
-            <string>121.55436069999996</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>V＋ing</string>
-            <key>address</key>
-            <string>新北市新莊區中正路516-42號</string>
-            <key>phone</key>
-            <string>02-29020915</string>
-            <key>time</key>
-            <string>12：00 – 21：00</string>
-            <key>lat</key>
-            <string>25.032174</string>
-            <key>lon</key>
-            <string>121.43227000000002</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>混公社 (Hun Communes)</string>
-            <key>address</key>
-            <string>台北市和平東路一段104巷6號</string>
-            <key>phone</key>
-            <string>02-23636979</string>
-            <key>time</key>
-            <string>13：00~23：00</string>
-            <key>lat</key>
-            <string>25.0265347</string>
-            <key>lon</key>
-            <string>121.52488330000006</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>暗角咖啡</string>
-            <key>address</key>
-            <string>大安區潮州街41號</string>
-            <key>phone</key>
-            <string>02-23519907</string>
-            <key>time</key>
-            <string>15：00-04：00 (週一至周五)、14：00-04：00 (週末)</string>
-            <key>lat</key>
-            <string>25.029469</string>
-            <key>lon</key>
-            <string>121.52342729999998</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>浦城街代收咖啡店</string>
-            <key>address</key>
-            <string>台北市浦城街24-1號</string>
-            <key>phone</key>
-            <string>02-2363-6268</string>
-            <key>time</key>
-            <string>8：30-19：00 (週一至周五)、8：30-20：30 (週末)</string>
-            <key>lat</key>
-            <string>25.023057</string>
-            <key>lon</key>
-            <string>121.52670060000003</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>二條通：綠島小夜曲</string>
-            <key>address</key>
-            <string>台北市中山北路一段33巷1號</string>
-            <key>phone</key>
-            <string>02-25314594</string>
-            <key>time</key>
-            <string>12：00 - 21：30</string>
-            <key>lat</key>
-            <string>25.023057</string>
-            <key>lon</key>
-            <string>121.52670060000003</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>mellow coffee</string>
-            <key>address</key>
-            <string>新北市板橋區莒光路158號</string>
-            <key>time</key>
-            <string>13：00-23：00（週二公休）</string>
-            <key>lat</key>
-            <string>25.0239677</string>
-            <key>lon</key>
-            <string>121.4736332</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>書與咖啡</string>
-            <key>address</key>
-            <string>台北市南港區研究院路二段7-8號</string>
-            <key>time</key>
-            <string>周一-週五 8：00~21：30，週日12：00~21：30</string>
-            <key>lat</key>
-            <string>25.0468159</string>
-            <key>lon</key>
-            <string>121.61561099999994</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>有河book</string>
-            <key>address</key>
-            <string>新北市淡水區中正路5巷26號2樓</string>
-            <key>phone</key>
-            <string>02-26252459</string>
-            <key>time</key>
-            <string>12：00~22：00 (周一公休)</string>
-            <key>lat</key>
-            <string>25.1690418</string>
-            <key>lon</key>
-            <string>121.44225410000001</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>雅加達</string>
-            <key>address</key>
-            <string>新北市淡水淤民族路16號</string>
-            <key>phone</key>
-            <string>02-28082087</string>
-            <key>time</key>
-            <string>6：00~14：00</string>
-            <key>lat</key>
-            <string>25.1366345</string>
-            <key>lon</key>
-            <string>121.46076949999997</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>爐鍋咖啡　關渡總店</string>
-            <key>address</key>
-            <string>台北市北投區大度路三段296巷39號</string>
-            <key>phone</key>
-            <string>02-28915990</string>
-            <key>time</key>
-            <string>15：30~22：00</string>
-            <key>lat</key>
-            <string>25.1366345</string>
-            <key>lon</key>
-            <string>121.46076949999997</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>新豐糧米油雜貨行</string>
-            <key>address</key>
-            <string>新北市板橋區大明街20巷19弄7號</string>
-            <key>phone</key>
-            <string>02-2964-6447</string>
-            <key>time</key>
-            <string>8：30~20：30</string>
-            <key>lat</key>
-            <string>25.124283</string>
-            <key>lon</key>
-            <string>121.46673499999997</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>友善烏音樂空間 UKULELE FRIENDLY</string>
-            <key>address</key>
-            <string>台北市內湖區麗山街385巷4號（麗山國小後門）</string>
-            <key>phone</key>
-            <string>02-26279912</string>
-            <key>time</key>
-            <string>周一-週五13：00~22：00，周末10：00~20：00</string>
-            <key>lat</key>
-            <string>25.003108</string>
-            <key>lon</key>
-            <string>121.45820600000002</string>
-        </dict>
-        <dict>
-            <key>title</key>
-            <string>樹男咖啡館</string>
-            <key>address</key>
-            <string>新北市淡水區民生路52巷8號</string>
-            <key>phone</key>
-            <string>02-28087080</string>
-            <key>time</key>
-            <string>9：00~21：30(周三公休)</string>
-            <key>lat</key>
-            <string>25.1375666</string>
-            <key>lon</key>
-            <string>121.46212450000007</string>
-        </dict>
-    </array>
+<array>
+	<dict>
+		<key>title</key>
+		<string>橘子工坊</string>
+		<key>address</key>
+		<string>內湖區內湖路一段273號</string>
+		<key>time</key>
+		<string>10：00~22：00</string>
+		<key>lat</key>
+		<string>25.0825442</string>
+		<key>lon</key>
+		<string>121.56569239999999</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>陳嘉霖競選服務處</string>
+		<key>address</key>
+		<string>民權東路6段453號</string>
+		<key>time</key>
+		<string>周一-週五 全天</string>
+		<key>lat</key>
+		<string>25.0719953</string>
+		<key>lon</key>
+		<string>121.60453069999994</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>革合金迷你手縫皮革工廠</string>
+		<key>address</key>
+		<string>台北市內湖區內湖路一段283-5號二樓百貨區113室(捷運西湖站)</string>
+		<key>time</key>
+		<string>依照網路公告</string>
+		<key>site</key>
+		<string>https://www.facebook.com/HMSorbet/info</string>
+		<key>lat</key>
+		<string>25.082381</string>
+		<key>lon</key>
+		<string>121.56661200000008</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>麥味登早餐店</string>
+		<key>address</key>
+		<string>內湖區康樂街72巷17弄30號1樓</string>
+		<key>phone</key>
+		<string>02-26310446</string>
+		<key>time</key>
+		<string>6：00~13：00</string>
+		<key>lat</key>
+		<string>25.0702245</string>
+		<key>lon</key>
+		<string>121.61749929999996</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>好了拉 紅茶冰</string>
+		<key>address</key>
+		<string>台北市內湖區康寧路三段165巷6號</string>
+		<key>time</key>
+		<string>週一 – 週六： 11：30 – 23：30，週日： 11：30 – 22：30</string>
+		<key>lat</key>
+		<string>25.070681</string>
+		<key>lon</key>
+		<string>121.61173680000002</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>美德家具行</string>
+		<key>address</key>
+		<string>內湖區康樂街72巷17弄30號1樓</string>
+		<key>phone</key>
+		<string>02-26324862</string>
+		<key>time</key>
+		<string>610：30~21：30</string>
+		<key>lat</key>
+		<string>25.0702245</string>
+		<key>lon</key>
+		<string>121.61749929999996</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>觀茶入微</string>
+		<key>address</key>
+		<string>台北市內湖區成功路四段30巷30號</string>
+		<key>phone</key>
+		<string>02-87910303</string>
+		<key>time</key>
+		<string>週一 - 週四： 11：30 - 0：00週五 - 週六： 11：30 - 1：00週日： 11：30 - 0：00</string>
+		<key>lat</key>
+		<string>25.0826691</string>
+		<key>lon</key>
+		<string>121.59197280000001</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>一流眼鏡行</string>
+		<key>address</key>
+		<string>台北市內湖路ㄧ段735號</string>
+		<key>phone</key>
+		<string>02-2627-7942</string>
+		<key>time</key>
+		<string>10：00~22：00</string>
+		<key>lat</key>
+		<string>25.0791216</string>
+		<key>lon</key>
+		<string>121.57829379999998</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>王友信里長競選總部</string>
+		<key>address</key>
+		<string>南港區舊莊街一段77號</string>
+		<key>time</key>
+		<string>9：00~21：00</string>
+		<key>lat</key>
+		<string>25.0791216</string>
+		<key>lon</key>
+		<string>121.57829379999998</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>李建昌市議員競選總部</string>
+		<key>address</key>
+		<string>台北市內湖區成功路四段199號1樓</string>
+		<key>time</key>
+		<string>9：00~19：00</string>
+		<key>lat</key>
+		<string>25.0841822</string>
+		<key>lon</key>
+		<string>121.59583780000003</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>江志銘市議員競選總部</string>
+		<key>address</key>
+		<string>台北市內湖區成功路二段187號</string>
+		<key>time</key>
+		<string>9：00~19：00</string>
+		<key>lat</key>
+		<string>25.0666865</string>
+		<key>lon</key>
+		<string>121.59067549999997</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>王孝維市議員競選總部</string>
+		<key>address</key>
+		<string>台北市金龍路196號</string>
+		<key>time</key>
+		<string>9：00~19：00</string>
+		<key>lat</key>
+		<string>25.0873383</string>
+		<key>lon</key>
+		<string>121.58757450000007</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>高嘉瑜市議員競選總部</string>
+		<key>address</key>
+		<string>台北市民權東路6段423號</string>
+		<key>time</key>
+		<string>周ㄧ~周五 9：00~19：00</string>
+		<key>lat</key>
+		<string>25.0716002</string>
+		<key>lon</key>
+		<string>121.60354050000001</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>白鹿洞書店</string>
+		<key>address</key>
+		<string>內湖區星雲街27號</string>
+		<key>time</key>
+		<string>10：00~23：30</string>
+		<key>lat</key>
+		<string>25.0785805</string>
+		<key>lon</key>
+		<string>121.59113249999996</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>廖惠里長競選總部</string>
+		<key>address</key>
+		<string>台北市南港區成福里東新街91號</string>
+		<key>time</key>
+		<string>1100~1800</string>
+		<key>lat</key>
+		<string>25.0467116</string>
+		<key>lon</key>
+		<string>121.58911069999999</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>哈打奶奶</string>
+		<key>address</key>
+		<string>台北市南港區富康街1巷16弄10號</string>
+		<key>time</key>
+		<string>周一~周五 18：30~21：20 周六 12：00~17：00</string>
+		<key>lat</key>
+		<string>25.0539034</string>
+		<key>lon</key>
+		<string>121.61785110000005</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Ponpie</string>
+		<key>address</key>
+		<string>新北市板橋區民權路202巷2弄1號</string>
+		<key>phone</key>
+		<string>(02) 2272-2224</string>
+		<key>time</key>
+		<string>週一 - 週六：12：00 - 20：00</string>
+		<key>site</key>
+		<string>https://www.facebook.com/ponpie0228</string>
+		<key>lat</key>
+		<string>25.01408</string>
+		<key>lon</key>
+		<string>121.45946600000002</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>猜咖啡 Guess What</string>
+		<key>address</key>
+		<string>新北市板橋區民生路二段234巷11號</string>
+		<key>phone</key>
+		<string>(02) 2257-5487</string>
+		<key>time</key>
+		<string>週一 – 週日：10：00 – 22：30</string>
+		<key>site</key>
+		<string>https://www.facebook.com/guesswhatcafe</string>
+		<key>lat</key>
+		<string>25.0228711</string>
+		<key>lon</key>
+		<string>121.46863970000004</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>木木商號</string>
+		<key>address</key>
+		<string>新北市板橋區三民路二段62號</string>
+		<key>phone</key>
+		<string>(02) 2959-6969</string>
+		<key>time</key>
+		<string>週一 - 週四：09：00 - 20：00，週六 - 週日：12：00 - 21：00</string>
+		<key>site</key>
+		<string>https://www.facebook.com/mu2coffee</string>
+		<key>lat</key>
+		<string>25.017425</string>
+		<key>lon</key>
+		<string>121.47913700000004</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>8鍋 (莒光店)</string>
+		<key>address</key>
+		<string>新北市板橋區莒光路40巷5號</string>
+		<key>phone</key>
+		<string>(02) 2255-3352</string>
+		<key>time</key>
+		<string>週一 - 週日：10：00 - 23：00</string>
+		<key>site</key>
+		<string>https://www.facebook.com/pages/8鍋莒光店/142786882564288</string>
+		<key>lat</key>
+		<string>25.0241492</string>
+		<key>lon</key>
+		<string>121.4703806</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Tiere 堤柇 寵物住宿 / 人文咖啡</string>
+		<key>address</key>
+		<string>新北市板橋區文聖街207號</string>
+		<key>phone</key>
+		<string>(02) 2250-1377</string>
+		<key>time</key>
+		<string>週二 - 週日：11：00 - 21：00</string>
+		<key>site</key>
+		<string>https://www.facebook.com/pages/Tiere-堤柇-寵物住宿-人文咖啡/235856379923837</string>
+		<key>lat</key>
+		<string>25.02661</string>
+		<key>lon</key>
+		<string>121.47965999999997</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>小麻雀二手買與賣 Little Sparrow</string>
+		<key>address</key>
+		<string>新北市板橋區文化路二段125巷48號</string>
+		<key>phone</key>
+		<string>(02) 8259-5738</string>
+		<key>time</key>
+		<string>週三 - 週日：13：00 - 19：00</string>
+		<key>site</key>
+		<string>https://www.facebook.com/littlesparrow48</string>
+		<key>lat</key>
+		<string>25.0274482</string>
+		<key>lon</key>
+		<string>121.46982809999997</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>暱時光</string>
+		<key>address</key>
+		<string>臺北市中山區中山北路二段20巷25號2樓</string>
+		<key>phone</key>
+		<string>(02) 2523-8103</string>
+		<key>time</key>
+		<string>週二 - 週日：15：00 - 21：00</string>
+		<key>site</key>
+		<string>https://www.facebook.com/timeless2012</string>
+		<key>lat</key>
+		<string>25.0274482</string>
+		<key>lon</key>
+		<string>121.46982809999997</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Homey’s Café</string>
+		<key>address</key>
+		<string>臺北市大安區敦化南路一段236巷36號2樓</string>
+		<key>phone</key>
+		<string>(02) 2711-1519</string>
+		<key>time</key>
+		<string>週一 - 週日：12：00 - 00：00</string>
+		<key>site</key>
+		<string>https://www.facebook.com/homeyscafe</string>
+		<key>lat</key>
+		<string>25.0405308</string>
+		<key>lon</key>
+		<string>121.54659479999998</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>公共冊所</string>
+		<key>address</key>
+		<string>臺北市大安區泰順街24號B1</string>
+		<key>phone</key>
+		<string>(02) 3365-2328</string>
+		<key>time</key>
+		<string>週一 - 週日：14：00 - 22：00</string>
+		<key>site</key>
+		<string>https://www.facebook.com/libratory.books</string>
+		<key>lat</key>
+		<string>25.025121</string>
+		<key>lon</key>
+		<string>121.53145500000005</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Sugar Man Café</string>
+		<key>address</key>
+		<string>臺北市大安區和平東路一段87-1號</string>
+		<key>phone</key>
+		<string>(02) 2396-9980</string>
+		<key>time</key>
+		<string>週一 - 週日：14：00~04：00</string>
+		<key>site</key>
+		<string>https://www.facebook.com/cafesugarman</string>
+		<key>lat</key>
+		<string>25.02717</string>
+		<key>lon</key>
+		<string>121.52566300000001</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>後門咖啡</string>
+		<key>address</key>
+		<string>臺北市大安區復興南路二段332號</string>
+		<key>phone</key>
+		<string>(02) 27389670</string>
+		<key>time</key>
+		<string>週一 - 週五：11：00 - 22：00，週六、週日：09：00 - 22：00</string>
+		<key>site</key>
+		<string>https://www.facebook.com/cafebackstage332</string>
+		<key>lat</key>
+		<string>25.022891</string>
+		<key>lon</key>
+		<string>121.543205</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Mucho Mucho</string>
+		<key>address</key>
+		<string>臺北市大安區復興南路一段107巷5弄29號</string>
+		<key>phone</key>
+		<string>(02) 2711-6691</string>
+		<key>time</key>
+		<string>週一 - 週日：11：00 - 00：00</string>
+		<key>site</key>
+		<string>https://www.facebook.com/mucho2cafe</string>
+		<key>lat</key>
+		<string>25.0228911</string>
+		<key>lon</key>
+		<string>121.54320529999995</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>沛洛瑟自家焙煎咖啡店</string>
+		<key>address</key>
+		<string>臺北市萬華區中華路二段75巷40號</string>
+		<key>phone</key>
+		<string>(02) 2312-2955</string>
+		<key>time</key>
+		<string>週一 - 週日：12：00 - 21：00</string>
+		<key>site</key>
+		<string>https://www.facebook.com/caffepeloso</string>
+		<key>lat</key>
+		<string>25.0334403</string>
+		<key>lon</key>
+		<string>121.50767840000003</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>卡市達創業加油站1店</string>
+		<key>address</key>
+		<string>臺北市萬華區武昌街二段122-1號</string>
+		<key>phone</key>
+		<string>(02) 2388-2758</string>
+		<key>time</key>
+		<string>週一 - 週日：10：00 - 19：00</string>
+		<key>site</key>
+		<string>https://www.facebook.com/pages/卡市達創業加油站/372467782832468</string>
+		<key>lat</key>
+		<string>25.0453065</string>
+		<key>lon</key>
+		<string>121.50397880000003</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>俏皮 CHO-pi</string>
+		<key>address</key>
+		<string>臺北市大同區民樂街20號2樓</string>
+		<key>phone</key>
+		<string>(02) 2559-8583</string>
+		<key>time</key>
+		<string>週二 - 週日：12：00 - 19：00</string>
+		<key>site</key>
+		<string>https://www.facebook.com/QiaoPiChoPi</string>
+		<key>lat</key>
+		<string>25.0561275</string>
+		<key>lon</key>
+		<string>121.51079270000002</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>早秋咖啡 CAFE Macho</string>
+		<key>address</key>
+		<string>臺北市中正區晉江街10號</string>
+		<key>phone</key>
+		<string>(02) 2368-5029</string>
+		<key>time</key>
+		<string>週一 – 週日：12：00 – 02：00</string>
+		<key>site</key>
+		<string>https://www.facebook.com/cafemacho</string>
+		<key>lat</key>
+		<string>25.026052</string>
+		<key>lon</key>
+		<string>121.52112899999997</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>陽光廚坊</string>
+		<key>address</key>
+		<string>台北市港墘里內湖區江南街124號</string>
+		<key>phone</key>
+		<string>02-26585559</string>
+		<key>time</key>
+		<string> 週一 – 週六： 9：30 – 21：00</string>
+		<key>site</key>
+		<string>https://www.facebook.com/pages/陽光廚坊/507185155985053</string>
+		<key>lat</key>
+		<string>25.0763681</string>
+		<key>lon</key>
+		<string>121.57574709999994</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>布夏拉提咖啡</string>
+		<key>address</key>
+		<string>台北市內湖區康寧路一段76號</string>
+		<key>phone</key>
+		<string>02 8792 9722</string>
+		<key>time</key>
+		<string>13：00 – 23：00 (每週二公休)</string>
+		<key>lat</key>
+		<string>25.0763681</string>
+		<key>lon</key>
+		<string>121.57574709999994</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Tuttihome‧自家烘焙咖啡</string>
+		<key>address</key>
+		<string>台北市內湖區安康路418號</string>
+		<key>phone</key>
+		<string>02 2632 4006</string>
+		<key>time</key>
+		<string>12：30 – 21：00 (雙週星期三休)</string>
+		<key>lat</key>
+		<string>25.0662349</string>
+		<key>lon</key>
+		<string>121.61443499999996</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>杜鵑窩</string>
+		<key>address</key>
+		<string>台北市中山區北安路458巷41弄52號</string>
+		<key>phone</key>
+		<string>02-25330531</string>
+		<key>time</key>
+		<string>13：30  – 00：30</string>
+		<key>lat</key>
+		<string>25.0790489</string>
+		<key>lon</key>
+		<string>121.54653000000008</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>拎咖啡 LinCafe</string>
+		<key>address</key>
+		<string>南港區南港路2段25號</string>
+		<key>phone</key>
+		<string>0978 655 134</string>
+		<key>time</key>
+		<string> 7：00 – 21：00 (週一至週五)、9：30 – 21：00 (週末)</string>
+		<key>lat</key>
+		<string>25.0535455</string>
+		<key>lon</key>
+		<string>121.60314219999998</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>海邊的卡夫卡</string>
+		<key>address</key>
+		<string>台北市中正區羅斯福路三段244巷2號2樓</string>
+		<key>phone</key>
+		<string>02-23641996</string>
+		<key>time</key>
+		<string> 12：00 – 0：00 (週日至週四)、12：00 – 2：00 (週五及週六)</string>
+		<key>lat</key>
+		<string>25.017044</string>
+		<key>lon</key>
+		<string>121.531241</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>海柔屋桌上遊戲城</string>
+		<key>address</key>
+		<string>新北市板橋區四維路259巷1號一樓</string>
+		<key>phone</key>
+		<string>02 2258 5455</string>
+		<key>time</key>
+		<string>17：00 – 23：00 (週一至週五、週二公休)、12：00 – 23：00 (週末)</string>
+		<key>lat</key>
+		<string>25.0170439</string>
+		<key>lon</key>
+		<string>121.53124100000002</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>好初早餐一店</string>
+		<key>address</key>
+		<string>新北市板橋區文化路二段125巷70號</string>
+		<key>phone</key>
+		<string>02-22532087</string>
+		<key>time</key>
+		<string>8：00 – 16：00</string>
+		<key>lat</key>
+		<string>25.027873</string>
+		<key>lon</key>
+		<string>121.46998200000007</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>好初早餐二店</string>
+		<key>address</key>
+		<string>新北市板橋區建國街118號</string>
+		<key>phone</key>
+		<string>(02)29600788</string>
+		<key>time</key>
+		<string>8：00 – 16：00</string>
+		<key>lat</key>
+		<string>25.0175679</string>
+		<key>lon</key>
+		<string>121.46100000000001</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Changee 延吉小屋</string>
+		<key>address</key>
+		<string>臺北市八德路三段106巷55號</string>
+		<key>phone</key>
+		<string>02-2577-8248</string>
+		<key>time</key>
+		<string>12：00 - 20：00 (週一公休)</string>
+		<key>lat</key>
+		<string>25.0453889</string>
+		<key>lon</key>
+		<string>121.55436069999996</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Changee 噪咖</string>
+		<key>address</key>
+		<string>台北市福華路180號 (台北數位藝術中心內一樓)</string>
+		<key>phone</key>
+		<string>02-2834-2740</string>
+		<key>time</key>
+		<string>12：00-18：00 (週二至週五)</string>
+		<key>lat</key>
+		<string>25.106137</string>
+		<key>lon</key>
+		<string>121.522090</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>V＋ing</string>
+		<key>address</key>
+		<string>新北市新莊區中正路516-42號</string>
+		<key>phone</key>
+		<string>02-29020915</string>
+		<key>time</key>
+		<string>12：00 – 21：00</string>
+		<key>lat</key>
+		<string>25.032174</string>
+		<key>lon</key>
+		<string>121.43227000000002</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>混公社 (Hun Communes)</string>
+		<key>address</key>
+		<string>台北市和平東路一段104巷6號</string>
+		<key>phone</key>
+		<string>02-23636979</string>
+		<key>time</key>
+		<string>13：00~23：00</string>
+		<key>lat</key>
+		<string>25.0265347</string>
+		<key>lon</key>
+		<string>121.52488330000006</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>暗角咖啡</string>
+		<key>address</key>
+		<string>大安區潮州街41號</string>
+		<key>phone</key>
+		<string>02-23519907</string>
+		<key>time</key>
+		<string>15：00-04：00 (週一至周五)、14：00-04：00 (週末)</string>
+		<key>lat</key>
+		<string>25.029469</string>
+		<key>lon</key>
+		<string>121.52342729999998</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>浦城街代收咖啡店</string>
+		<key>address</key>
+		<string>台北市浦城街24-1號</string>
+		<key>phone</key>
+		<string>02-2363-6268</string>
+		<key>time</key>
+		<string>8：30-19：00 (週一至周五)、8：30-20：30 (週末)</string>
+		<key>lat</key>
+		<string>25.023057</string>
+		<key>lon</key>
+		<string>121.52670060000003</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>二條通：綠島小夜曲</string>
+		<key>address</key>
+		<string>台北市中山北路一段33巷1號</string>
+		<key>phone</key>
+		<string>02-25314594</string>
+		<key>time</key>
+		<string>12：00 - 21：30</string>
+		<key>lat</key>
+		<string>25.023057</string>
+		<key>lon</key>
+		<string>121.52670060000003</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>mellow coffee</string>
+		<key>address</key>
+		<string>新北市板橋區莒光路158號</string>
+		<key>time</key>
+		<string>13：00-23：00（週二公休）</string>
+		<key>lat</key>
+		<string>25.0239677</string>
+		<key>lon</key>
+		<string>121.4736332</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>書與咖啡</string>
+		<key>address</key>
+		<string>台北市南港區研究院路二段7-8號</string>
+		<key>time</key>
+		<string>周一-週五 8：00~21：30，週日12：00~21：30</string>
+		<key>lat</key>
+		<string>25.0468159</string>
+		<key>lon</key>
+		<string>121.61561099999994</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>有河book</string>
+		<key>address</key>
+		<string>新北市淡水區中正路5巷26號2樓</string>
+		<key>phone</key>
+		<string>02-26252459</string>
+		<key>time</key>
+		<string>12：00~22：00 (周一公休)</string>
+		<key>lat</key>
+		<string>25.1690418</string>
+		<key>lon</key>
+		<string>121.44225410000001</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>雅加達</string>
+		<key>address</key>
+		<string>新北市淡水淤民族路16號</string>
+		<key>phone</key>
+		<string>02-28082087</string>
+		<key>time</key>
+		<string>6：00~14：00</string>
+		<key>lat</key>
+		<string>25.1366345</string>
+		<key>lon</key>
+		<string>121.46076949999997</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>爐鍋咖啡　關渡總店</string>
+		<key>address</key>
+		<string>台北市北投區大度路三段296巷39號</string>
+		<key>phone</key>
+		<string>02-28915990</string>
+		<key>time</key>
+		<string>15：30~22：00</string>
+		<key>lat</key>
+		<string>25.1366345</string>
+		<key>lon</key>
+		<string>121.46076949999997</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>新豐糧米油雜貨行</string>
+		<key>address</key>
+		<string>新北市板橋區大明街20巷19弄7號</string>
+		<key>phone</key>
+		<string>02-2964-6447</string>
+		<key>time</key>
+		<string>8：30~20：30</string>
+		<key>lat</key>
+		<string>25.124283</string>
+		<key>lon</key>
+		<string>121.46673499999997</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>友善烏音樂空間 UKULELE FRIENDLY</string>
+		<key>address</key>
+		<string>台北市內湖區麗山街385巷4號（麗山國小後門）</string>
+		<key>phone</key>
+		<string>02-26279912</string>
+		<key>time</key>
+		<string>周一-週五13：00~22：00，周末10：00~20：00</string>
+		<key>lat</key>
+		<string>25.003108</string>
+		<key>lon</key>
+		<string>121.45820600000002</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>樹男咖啡館</string>
+		<key>address</key>
+		<string>新北市淡水區民生路52巷8號</string>
+		<key>phone</key>
+		<string>02-28087080</string>
+		<key>time</key>
+		<string>9：00~21：30(周三公休)</string>
+		<key>lat</key>
+		<string>25.1375666</string>
+		<key>lon</key>
+		<string>121.46212450000007</string>
+	</dict>
+</array>
 </plist>
