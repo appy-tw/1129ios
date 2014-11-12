@@ -50,15 +50,6 @@
     NSLog(@"width:%f, height:%f, tabbar:%f, navigationbarcontroller:%f, keyboardOffset: %f", cgfScreenWidth, cgfScreenHeight, self.tabBarController.tabBar.frame.size.height, self.navigationController.navigationBar.frame.size.height, cgfKeyboardOffset);
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSLog(@"delegate.nssKGLink: %ld", (long)indexPath.row);
-    delegate.nssKGLink = [NSString stringWithFormat:@"%ld", (long)indexPath.row];
-    [self.navigationController setNavigationBarHidden:NO animated:NO];
-    [self makeKeyboardOffsetBack];
-    [self.navigationController pushViewController:[KGViewController new] animated:YES];
-}
-
 - (void) makeKeyboardOffset {
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.0];

@@ -79,7 +79,7 @@
 //    pointerViewController = [[PointerViewController alloc]initWithViewController:kgTableViewController];
 //    _navigationController = [[UINavigationController alloc]initWithRootViewController:pointerViewController];
     _navigationControllerKG = [[UINavigationController alloc]initWithRootViewController:kgTableViewController];
-    _navigationControllerKG.title = NSLocalizedString(@"魔王領地", nil);
+    _navigationControllerKG.title = NSLocalizedString(@"魔王狀態", nil);
     _navigationControllerKG.tabBarItem.image = [UIImage imageNamed:@"kg"];
     _navigationControllerKG.navigationBarHidden = YES;
     //魔王的各領地資料
@@ -321,8 +321,6 @@
         _nssRSSURL = [nsmdPlistDictionary objectForKey:PLIST_RSS_URL];
         _nssTsaiWuLin = [nsmdPlistDictionary objectForKey:PLIST_TSAI_WU_LIN];
         _nssAddress = [nsmdPlistDictionary objectForKey:PLIST_ADDRESS];
-//        _nssGPSX = [nsmdPlistDictionary objectForKey:PLIST_GPSX];
-//        _nssGPSY = [nsmdPlistDictionary objectForKey:PLIST_GPSY];
     }
 }
 

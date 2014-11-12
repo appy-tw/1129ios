@@ -110,6 +110,31 @@
 //    }];
 //}
 
+//- (void)webViewDidStartLoad:(UIWebView *)webView; {
+//    NSLog(@"- (void)webViewDidStartLoad:(UIWebView *)webView");
+//    [webView stringByEvaluatingJavaScriptFromString:@"var script = document.createElement('script');"
+//     "script.type = 'text/javascript';"
+//     "var paras = document.getElementsByClassName('header');"
+//     "while(paras[0]) {paras[0].parentNode.removeChild(paras[0]);}"
+//     "var thefooter = document.getElementsByClassName('footer');"
+//     "while(thefooter[0]) {thefooter[0].parentNode.removeChild(thefooter[0]);}"
+//     "var textcenter = document.getElementsByClassName('textcenter');"
+//     "while(textcenter[0]) {textcenter[0].parentNode.removeChild(textcenter[0]);}"
+//     "var h3remove = document.getElementsByTagName('h3');"
+//     "while(h3remove[0]) {h3remove[0].parentNode.removeChild(h3remove[0]);}"
+//     "var mission_table = document.getElementsByClassName('mission_table');"
+//     "while(mission_table[0]) {mission_table[0].parentNode.removeChild(mission_table[0]);}"
+//     "var main-container = document.getElementsByClassName('main-container');"
+//     "while(main-container[0]) {main-container[0].parentNode.removeChild(main-container[0]);}"
+//     //     "var maincontainer = document.getElementById('main-container').style.width = '100%';"
+//     "var mission_map_container = document.getElementById('mission_map_container');"
+//     //     "mission_map_container.style.width = '95%';"
+//     "mission_map_container.style.minWidth = \"300px\";"
+//     "mission_map_container.style.maxWidth = \"300px\";"
+//     ];
+//    [webView stringByEvaluatingJavaScriptFromString:@"myFunction();"];
+//}
+
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     NSLog(@"- (void)webViewDidFinishLoad:(UIWebView *)webView");
     [webView stringByEvaluatingJavaScriptFromString:@"var script = document.createElement('script');"
@@ -118,10 +143,20 @@
      "while(paras[0]) {paras[0].parentNode.removeChild(paras[0]);}"
      "var thefooter = document.getElementsByClassName('footer');"
      "while(thefooter[0]) {thefooter[0].parentNode.removeChild(thefooter[0]);}"
-     "var textcenter = document.getElementsByClassName('textcenter');"
-     "while(textcenter[0]) {textcenter[0].parentNode.removeChild(textcenter[0]);}"
+//     "var textcenter = document.getElementsByClassName('textcenter');"
+//     "while(textcenter[0]) {textcenter[0].parentNode.removeChild(textcenter[0]);}"
+//     "var h3remove = document.getElementsByTagName('h3');"
+//     "while(h3remove[0]) {h3remove[0].parentNode.removeChild(h3remove[0]);}"
+//     "var mission_table = document.getElementsByClassName('mission_table');"
+//     "while(mission_table[0]) {mission_table[0].parentNode.removeChild(mission_table[0]);}"
+//     "var maincontainer = document.getElementsByClassName('main-container');"
+//     "while(maincontainer[0]) {maincontainer[0].parentNode.removeChild(maincontainer[0]);}"
+//     "var maincontainer = document.getElementById('main-container').style.width = '100%';"
+     "var mission_map_container = document.getElementById('mission_map_container');"
+//     "mission_map_container.style.width = '95%';"
+     "mission_map_container.style.minWidth = \"300px\";"
+     "mission_map_container.style.maxWidth = \"300px\";"
 ];
-    
     [webView stringByEvaluatingJavaScriptFromString:@"myFunction();"];
 }
 
