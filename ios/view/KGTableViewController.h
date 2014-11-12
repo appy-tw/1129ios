@@ -10,4 +10,6 @@
 
 @interface KGTableViewController : UITableViewController
 
+@property (strong, nonatomic) NSString *nssPlistDst;
+
 @end

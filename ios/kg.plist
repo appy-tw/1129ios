@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>taiwanman</key>
+	<string></string>
+	<key>taiwanitem</key>
+	<string></string>
 	<key>TPE-4hp</key>
 	<string>尚無資料</string>
 	<key>TPE-4man</key>
