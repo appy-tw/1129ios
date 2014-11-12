@@ -50,5 +50,14 @@
     NSString *documentsDirectory = [paths firstObject];
     return documentsDirectory;
 }
++ (void)writePreference:(id)value forKey:(NSString*)key{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:value
+                     forKey:key];
+    [userDefaults synchronize];
+}
++ (id)getPreferenceForKey:(NSString*)key{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:key];
+}
 
 @end

@@ -12,8 +12,9 @@
 
 #import "VGeoManager.h"
 #import "VShop.h"
+#import "VParseManager.h"
 
-@interface SUPTableViewController : UITableViewController <MKMapViewDelegate,GeoManagerDelegate>
+@interface SUPTableViewController : UITableViewController <MKMapViewDelegate,GeoManagerDelegate,VParseManagerDelegate>
 
 @property (nonatomic, strong) NSMutableArray* mShopArray;
 @property (nonatomic, strong) NSMutableDictionary* mAnnotationDictionary;

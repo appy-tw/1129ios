@@ -9,6 +9,7 @@
 #import "SUPTableViewController.h"
 #import "AppDelegate.h"
 #import "VGeoManager.h"
+#import "VParseManager.h"
 
 #import "MKMapView+ZoomLevel.h"
 #import "Utils.h"
@@ -81,8 +82,13 @@
     self.mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, self.mMapHeight)];
     self.mapView.delegate = self;
     
-    MKPointAnnotation *mkpaPoint;
     [_mapView setCenterCoordinate:CLLocationCoordinate2DMake(25.042594, 121.614642) zoomLevel:10 animated:YES];
+    return _mapView;
+}
+-(void)setPins{
+    [self.mapView removeAnnotations:self.mapView.annotations]; //clear up
+    
+    MKPointAnnotation *mkpaPoint;
     for(VShop* aShop in self.mShopArray){
         mkpaPoint = [[MKPointAnnotation alloc] init];
         mkpaPoint.coordinate = aShop.mGeoPoint.coordinate;
@@ -91,7 +97,6 @@
         [_mapView addAnnotation:mkpaPoint];
         [self.mAnnotationDictionary setObject:mkpaPoint forKey:aShop.key];
     }
-    return _mapView;
 }
 
 - (void)setMyScreenSize
@@ -133,7 +138,7 @@
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
     if([annotation isKindOfClass:MKPointAnnotation.class]){
         MKAnnotationView *newAnnotation=[[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"annotation1"];
-        newAnnotation.image = [UIImage imageNamed:@"sup"];
+        newAnnotation.image = [UIImage imageNamed:@"pin"];
         newAnnotation.canShowCallout=YES;
         return newAnnotation;
     }else // user pin
@@ -168,14 +173,23 @@
     self.mShopArray = [NSMutableArray array];
     self.mAnnotationDictionary = [NSMutableDictionary dictionary];
     
+    [self loadVShopFromParse];
+    
     [self setMyScreenSize];
     [self makeKeyboardOffset];
-    [self readAllFromMyPlist];
+    [self loadShops];
     [self setImage];
 
     [self setMyAnotherMap];
     
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+}
+-(void)loadVShopFromParse{
+    [[VParseManager sharedInstance]loadVShopFromServer];
+    [VParseManager sharedInstance].delegate = self;
+}
+-(void)didFinishLoading{
+    [self loadShops];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -341,8 +355,9 @@
     [_mapView selectAnnotation:annotation animated:YES];
 }
 
-- (void)readAllFromMyPlist {
+- (void) loadShops {
     self.mShopArray = [VShop loadVShop];
+    [self setPins];
     [self sortShops];
 }
 -(void)sortShops{
