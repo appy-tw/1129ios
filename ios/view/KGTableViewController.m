@@ -17,6 +17,8 @@
 
 #import <Parse/Parse.h>
 
+#import "THLabel.h"
+
 @interface KGTableViewController ()
 {
     CGFloat cgfW;
@@ -92,6 +94,7 @@
 }
 
 - (void)prepareTable {
+    [self readAllFromMyPlist];
     [self getAllInformationFromParse];
 }
 
@@ -109,7 +112,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 6;
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -118,7 +121,6 @@
     static NSString *nssIDKG3 = @"KG3";
     static NSString *nssIDKG4 = @"KG4";
     static NSString *nssIDKG5 = @"KG5";
-    static NSString *nssIDKG6 = @"KG6";
     UITableViewCell *cell;
     if (indexPath.row == 0) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDKG1];
@@ -184,25 +186,16 @@
             UIView *uivItemValue;
             uivItemValue.tag = 113;
             [cell.contentView addSubview:uivItemValue];
-            
-            
-//            UIView *uivHPValue = [[UIView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 50.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
-//            [uivHPValue setBackgroundColor:[UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0]];
-//            uivHPValue.layer.cornerRadius = 4;
-//            [cell.contentView addSubview:uivHPValue];
-//            UIView *uivManValue = [[UIView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 142.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
-//            uivManValue.layer.borderColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0].CGColor;
-//            uivManValue.layer.borderWidth = 2.0;
-//            [uivManValue setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
-//            uivManValue.layer.cornerRadius = 4;
-//            [cell.contentView addSubview:uivManValue];
-//            UIView *uivItemValue = [[UIView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 238.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
-//            uivItemValue.layer.borderColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0].CGColor;
-//            uivItemValue.layer.borderWidth = 2.0;
-//            [uivItemValue setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
-//            uivItemValue.layer.cornerRadius = 4;
-//            [cell.contentView addSubview:uivItemValue];
 
+            THLabel *thlHPValue;
+            thlHPValue.tag = 121;
+            [cell.contentView addSubview:thlHPValue];
+            THLabel *thlManValue;
+            thlManValue.tag = 122;
+            [cell.contentView addSubview:thlManValue];
+            THLabel *thlItemValue;
+            thlItemValue.tag = 123;
+            [cell.contentView addSubview:thlItemValue];
         }
         UILabel *uilHP = (UILabel *)[cell.contentView viewWithTag:101];
         [uilHP setText:[nssTPE4HP componentsSeparatedByString:@";"][0]];
@@ -210,6 +203,62 @@
         [uilMan setText:[nssTPE4Man componentsSeparatedByString:@";"][0]];
         UILabel *uilItem = (UILabel *)[cell.contentView viewWithTag:103];
         [uilItem setText:[nssTPE4Item componentsSeparatedByString:@";"][0]];
+        
+        UIView *uivHPValue = (UIView *)[cell.contentView viewWithTag:111];
+        if ([nssTPE4HP componentsSeparatedByString:@";"][2] != nil && [[nssTPE4HP componentsSeparatedByString:@";"][2] isEqualToString:@""] == NO && [[nssTPE4HP componentsSeparatedByString:@";"][2] isEqualToString:@"尚無資料"] == NO) {
+            uivHPValue = [[UIView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 50.0 / 640.0, cgfScreenWidth * 283.0 / 640.0 * [[nssTPE4HP componentsSeparatedByString:@";"][2]floatValue], cgfScreenWidth * 32.0 / 640.0)];
+            [uivHPValue setBackgroundColor:[UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0]];
+            uivHPValue.layer.cornerRadius = 4;
+            [cell.contentView addSubview:uivHPValue];
+        } else {
+            [uivHPValue setBackgroundColor:[UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:0.0]];
+        }
+        UIView *uivManValue = (UIView *)[cell.contentView viewWithTag:112];
+        if ([nssTPE4Man componentsSeparatedByString:@";"][2] != nil && [[nssTPE4Man componentsSeparatedByString:@";"][2] isEqualToString:@""] == NO && [[nssTPE4Man componentsSeparatedByString:@";"][2] isEqualToString:@"尚無資料"] == NO) {
+            uivManValue = [[UIView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 142.0 / 640.0, cgfScreenWidth * 283.0 / 640.0 * [[nssTPE4Man componentsSeparatedByString:@";"][2]floatValue], cgfScreenWidth * 32.0 / 640.0)];
+            [uivManValue setBackgroundColor:[UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0]];
+            uivManValue.layer.cornerRadius = 4;
+            [cell.contentView addSubview:uivManValue];
+        } else {
+            [uivManValue setBackgroundColor:[UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:0.0]];
+        }
+        UIView *uivItemValue = (UIView *)[cell.contentView viewWithTag:113];
+        if ([nssTPE4Item componentsSeparatedByString:@";"][2] != nil && [[nssTPE4Item componentsSeparatedByString:@";"][2] isEqualToString:@""] == NO && [[nssTPE4Item componentsSeparatedByString:@";"][2] isEqualToString:@"尚無資料"] == NO) {
+            uivItemValue = [[UIView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 238.0 / 640.0, cgfScreenWidth * 283.0 / 640.0 * [[nssTPE4Item componentsSeparatedByString:@";"][2]floatValue], cgfScreenWidth * 32.0 / 640.0)];
+            [uivItemValue setBackgroundColor:[UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0]];
+            uivItemValue.layer.cornerRadius = 4;
+            [cell.contentView addSubview:uivItemValue];
+        } else {
+            [uivItemValue setBackgroundColor:[UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:0.0]];
+        }
+        
+        THLabel *thlHPValue = (THLabel *)[cell.contentView viewWithTag:121];
+        thlHPValue= [[THLabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 47.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+        [thlHPValue setText:[nssTPE4HP componentsSeparatedByString:@";"][1]];
+        thlHPValue.strokeColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0];
+        thlHPValue.strokeSize = 0.8;
+        thlHPValue.textColor = [UIColor whiteColor];
+        [thlHPValue setFont:[UIFont systemFontOfSize:11]];
+        [thlHPValue setTextAlignment:NSTextAlignmentCenter];
+        [cell.contentView addSubview:thlHPValue];
+        THLabel *thlManValue = (THLabel *)[cell.contentView viewWithTag:122];
+        thlManValue= [[THLabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 140.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+        [thlManValue setText:[nssTPE4Man componentsSeparatedByString:@";"][1]];
+        thlManValue.strokeColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0];
+        thlManValue.strokeSize = 0.8;
+        thlManValue.textColor = [UIColor whiteColor];
+        [thlManValue setFont:[UIFont systemFontOfSize:11]];
+        [thlManValue setTextAlignment:NSTextAlignmentCenter];
+        [cell.contentView addSubview:thlManValue];
+        THLabel *thlItemValue = (THLabel *)[cell.contentView viewWithTag:123];
+        thlItemValue= [[THLabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 236.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+        [thlItemValue setText:[nssTPE4Item componentsSeparatedByString:@";"][1]];
+        thlItemValue.strokeColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0];
+        thlItemValue.strokeSize = 0.8;
+        thlItemValue.textColor = [UIColor whiteColor];
+        [thlItemValue setFont:[UIFont systemFontOfSize:11]];
+        [thlItemValue setTextAlignment:NSTextAlignmentCenter];
+        [cell.contentView addSubview:thlItemValue];
     } else if (indexPath.row == 2) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDKG3];
         if (cell == nil) {
@@ -257,6 +306,26 @@
             [uilItem setTextColor:[UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0]];
             [cell.contentView addSubview:uilItem];
             [uilItem setTextAlignment:NSTextAlignmentCenter];
+            
+            UIView *uivHPValue;
+            uivHPValue.tag = 211;
+            [cell.contentView addSubview:uivHPValue];
+            UIView *uivManValue;
+            uivManValue.tag = 212;
+            [cell.contentView addSubview:uivManValue];
+            UIView *uivItemValue;
+            uivItemValue.tag = 213;
+            [cell.contentView addSubview:uivItemValue];
+            
+            THLabel *thlHPValue;
+            thlHPValue.tag = 221;
+            [cell.contentView addSubview:thlHPValue];
+            THLabel *thlManValue;
+            thlManValue.tag = 222;
+            [cell.contentView addSubview:thlManValue];
+            THLabel *thlItemValue;
+            thlItemValue.tag = 223;
+            [cell.contentView addSubview:thlItemValue];
         }
         UILabel *uilHP = (UILabel *)[cell.contentView viewWithTag:201];
         [uilHP setText:[nssTPQ6HP componentsSeparatedByString:@";"][0]];
@@ -264,6 +333,62 @@
         [uilMan setText:[nssTPQ6Man componentsSeparatedByString:@";"][0]];
         UILabel *uilItem = (UILabel *)[cell.contentView viewWithTag:203];
         [uilItem setText:[nssTPQ6Item componentsSeparatedByString:@";"][0]];
+        
+        UIView *uivHPValue = (UIView *)[cell.contentView viewWithTag:211];
+        if ([nssTPQ6HP componentsSeparatedByString:@";"][2] != nil && [[nssTPQ6HP componentsSeparatedByString:@";"][2] isEqualToString:@""] == NO && [[nssTPQ6HP componentsSeparatedByString:@";"][2] isEqualToString:@"尚無資料"] == NO) {
+            uivHPValue = [[UIView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 50.0 / 640.0, cgfScreenWidth * 283.0 / 640.0 * [[nssTPE4HP componentsSeparatedByString:@";"][2]floatValue], cgfScreenWidth * 32.0 / 640.0)];
+            [uivHPValue setBackgroundColor:[UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0]];
+            uivHPValue.layer.cornerRadius = 4;
+            [cell.contentView addSubview:uivHPValue];
+        } else {
+            [uivHPValue setBackgroundColor:[UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:0.0]];
+        }
+        UIView *uivManValue = (UIView *)[cell.contentView viewWithTag:212];
+        if ([nssTPQ6Man componentsSeparatedByString:@";"][2] != nil && [[nssTPQ6Man componentsSeparatedByString:@";"][2] isEqualToString:@""] == NO && [[nssTPQ6Man componentsSeparatedByString:@";"][2] isEqualToString:@"尚無資料"] == NO) {
+            uivManValue = [[UIView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 142.0 / 640.0, cgfScreenWidth * 283.0 / 640.0 * [[nssTPQ6Man componentsSeparatedByString:@";"][2]floatValue], cgfScreenWidth * 32.0 / 640.0)];
+            [uivManValue setBackgroundColor:[UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0]];
+            uivManValue.layer.cornerRadius = 4;
+            [cell.contentView addSubview:uivManValue];
+        } else {
+            [uivManValue setBackgroundColor:[UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:0.0]];
+        }
+        UIView *uivItemValue = (UIView *)[cell.contentView viewWithTag:213];
+        if ([nssTPQ6Item componentsSeparatedByString:@";"][2] != nil && [[nssTPQ6Item componentsSeparatedByString:@";"][2] isEqualToString:@""] == NO && [[nssTPQ6Item componentsSeparatedByString:@";"][2] isEqualToString:@"尚無資料"] == NO) {
+            uivItemValue = [[UIView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 238.0 / 640.0, cgfScreenWidth * 283.0 / 640.0 * [[nssTPQ6Item componentsSeparatedByString:@";"][2]floatValue], cgfScreenWidth * 32.0 / 640.0)];
+            [uivItemValue setBackgroundColor:[UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0]];
+            uivItemValue.layer.cornerRadius = 4;
+            [cell.contentView addSubview:uivItemValue];
+        } else {
+            [uivItemValue setBackgroundColor:[UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:0.0]];
+        }
+        
+        THLabel *thlHPValue = (THLabel *)[cell.contentView viewWithTag:221];
+        thlHPValue= [[THLabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 47.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+        [thlHPValue setText:[nssTPQ6HP componentsSeparatedByString:@";"][1]];
+        thlHPValue.strokeColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0];
+        thlHPValue.strokeSize = 0.8;
+        thlHPValue.textColor = [UIColor whiteColor];
+        [thlHPValue setFont:[UIFont systemFontOfSize:11]];
+        [thlHPValue setTextAlignment:NSTextAlignmentCenter];
+        [cell.contentView addSubview:thlHPValue];
+        THLabel *thlManValue = (THLabel *)[cell.contentView viewWithTag:222];
+        thlManValue= [[THLabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 140.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+        [thlManValue setText:[nssTPQ6Man componentsSeparatedByString:@";"][1]];
+        thlManValue.strokeColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0];
+        thlManValue.strokeSize = 0.8;
+        thlManValue.textColor = [UIColor whiteColor];
+        [thlManValue setFont:[UIFont systemFontOfSize:11]];
+        [thlManValue setTextAlignment:NSTextAlignmentCenter];
+        [cell.contentView addSubview:thlManValue];
+        THLabel *thlItemValue = (THLabel *)[cell.contentView viewWithTag:223];
+        thlItemValue= [[THLabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 236.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+        [thlItemValue setText:[nssTPQ6Item componentsSeparatedByString:@";"][1]];
+        thlItemValue.strokeColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0];
+        thlItemValue.strokeSize = 0.8;
+        thlItemValue.textColor = [UIColor whiteColor];
+        [thlItemValue setFont:[UIFont systemFontOfSize:11]];
+        [thlItemValue setTextAlignment:NSTextAlignmentCenter];
+        [cell.contentView addSubview:thlItemValue];
     } else if (indexPath.row == 3) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDKG4];
         if (cell == nil) {
@@ -311,6 +436,26 @@
             [uilItem setTextColor:[UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0]];
             [cell.contentView addSubview:uilItem];
             [uilItem setTextAlignment:NSTextAlignmentCenter];
+            
+            UIView *uivHPValue;
+            uivHPValue.tag = 311;
+            [cell.contentView addSubview:uivHPValue];
+            UIView *uivManValue;
+            uivManValue.tag = 312;
+            [cell.contentView addSubview:uivManValue];
+            UIView *uivItemValue;
+            uivItemValue.tag = 313;
+            [cell.contentView addSubview:uivItemValue];
+            
+            THLabel *thlHPValue;
+            thlHPValue.tag = 321;
+            [cell.contentView addSubview:thlHPValue];
+            THLabel *thlManValue;
+            thlManValue.tag = 322;
+            [cell.contentView addSubview:thlManValue];
+            THLabel *thlItemValue;
+            thlItemValue.tag = 323;
+            [cell.contentView addSubview:thlItemValue];
         }
         UILabel *uilHP = (UILabel *)[cell.contentView viewWithTag:301];
         [uilHP setText:[nssTPQ1HP componentsSeparatedByString:@";"][0]];
@@ -318,6 +463,62 @@
         [uilMan setText:[nssTPQ1Man componentsSeparatedByString:@";"][0]];
         UILabel *uilItem = (UILabel *)[cell.contentView viewWithTag:303];
         [uilItem setText:[nssTPQ1Item componentsSeparatedByString:@";"][0]];
+        
+        UIView *uivHPValue = (UIView *)[cell.contentView viewWithTag:311];
+        if ([nssTPQ1HP componentsSeparatedByString:@";"][2] != nil && [[nssTPQ1HP componentsSeparatedByString:@";"][2] isEqualToString:@""] == NO && [[nssTPQ1HP componentsSeparatedByString:@";"][2] isEqualToString:@"尚無資料"] == NO) {
+            uivHPValue = [[UIView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 50.0 / 640.0, cgfScreenWidth * 283.0 / 640.0 * [[nssTPQ1HP componentsSeparatedByString:@";"][2]floatValue], cgfScreenWidth * 32.0 / 640.0)];
+            [uivHPValue setBackgroundColor:[UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0]];
+            uivHPValue.layer.cornerRadius = 4;
+            [cell.contentView addSubview:uivHPValue];
+        } else {
+            [uivHPValue setBackgroundColor:[UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:0.0]];
+        }
+        UIView *uivManValue = (UIView *)[cell.contentView viewWithTag:312];
+        if ([nssTPQ1Man componentsSeparatedByString:@";"][2] != nil && [[nssTPQ1Man componentsSeparatedByString:@";"][2] isEqualToString:@""] == NO && [[nssTPQ1Man componentsSeparatedByString:@";"][2] isEqualToString:@"尚無資料"] == NO) {
+            uivManValue = [[UIView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 142.0 / 640.0, cgfScreenWidth * 283.0 / 640.0 * [[nssTPQ1Man componentsSeparatedByString:@";"][2]floatValue], cgfScreenWidth * 32.0 / 640.0)];
+            [uivManValue setBackgroundColor:[UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0]];
+            uivManValue.layer.cornerRadius = 4;
+            [cell.contentView addSubview:uivManValue];
+        } else {
+            [uivManValue setBackgroundColor:[UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:0.0]];
+        }
+        UIView *uivItemValue = (UIView *)[cell.contentView viewWithTag:313];
+        if ([nssTPQ1Item componentsSeparatedByString:@";"][2] != nil && [[nssTPQ1Item componentsSeparatedByString:@";"][2] isEqualToString:@""] == NO && [[nssTPQ1Item componentsSeparatedByString:@";"][2] isEqualToString:@"尚無資料"] == NO) {
+            uivItemValue = [[UIView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 238.0 / 640.0, cgfScreenWidth * 283.0 / 640.0 * [[nssTPQ1Item componentsSeparatedByString:@";"][2]floatValue], cgfScreenWidth * 32.0 / 640.0)];
+            [uivItemValue setBackgroundColor:[UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0]];
+            uivItemValue.layer.cornerRadius = 4;
+            [cell.contentView addSubview:uivItemValue];
+        } else {
+            [uivItemValue setBackgroundColor:[UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:0.0]];
+        }
+        
+        THLabel *thlHPValue = (THLabel *)[cell.contentView viewWithTag:221];
+        thlHPValue= [[THLabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 47.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+        [thlHPValue setText:[nssTPQ1HP componentsSeparatedByString:@";"][1]];
+        thlHPValue.strokeColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0];
+        thlHPValue.strokeSize = 0.8;
+        thlHPValue.textColor = [UIColor whiteColor];
+        [thlHPValue setFont:[UIFont systemFontOfSize:11]];
+        [thlHPValue setTextAlignment:NSTextAlignmentCenter];
+        [cell.contentView addSubview:thlHPValue];
+        THLabel *thlManValue = (THLabel *)[cell.contentView viewWithTag:222];
+        thlManValue= [[THLabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 140.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+        [thlManValue setText:[nssTPQ1Man componentsSeparatedByString:@";"][1]];
+        thlManValue.strokeColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0];
+        thlManValue.strokeSize = 0.8;
+        thlManValue.textColor = [UIColor whiteColor];
+        [thlManValue setFont:[UIFont systemFontOfSize:11]];
+        [thlManValue setTextAlignment:NSTextAlignmentCenter];
+        [cell.contentView addSubview:thlManValue];
+        THLabel *thlItemValue = (THLabel *)[cell.contentView viewWithTag:223];
+        thlItemValue= [[THLabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 236.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+        [thlItemValue setText:[nssTPQ1Item componentsSeparatedByString:@";"][1]];
+        thlItemValue.strokeColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0];
+        thlItemValue.strokeSize = 0.8;
+        thlItemValue.textColor = [UIColor whiteColor];
+        [thlItemValue setFont:[UIFont systemFontOfSize:11]];
+        [thlItemValue setTextAlignment:NSTextAlignmentCenter];
+        [cell.contentView addSubview:thlItemValue];
     } else if (indexPath.row == 4) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDKG5];
         if (cell == nil) {
@@ -352,24 +553,65 @@
             [uilItem setTextColor:[UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0]];
             [cell.contentView addSubview:uilItem];
             [uilItem setTextAlignment:NSTextAlignmentCenter];
+            
+            UIView *uivManValue;
+            uivManValue.tag = 412;
+            [cell.contentView addSubview:uivManValue];
+            UIView *uivItemValue;
+            uivItemValue.tag = 413;
+            [cell.contentView addSubview:uivItemValue];
+            
+            THLabel *thlManValue;
+            thlManValue.tag = 422;
+            [cell.contentView addSubview:thlManValue];
+            THLabel *thlItemValue;
+            thlItemValue.tag = 423;
+            [cell.contentView addSubview:thlItemValue];
         }
         UILabel *uilMan = (UILabel *)[cell.contentView viewWithTag:402];
         [uilMan setText:[nssTaiwanMan componentsSeparatedByString:@";"][0]];
         UILabel *uilItem = (UILabel *)[cell.contentView viewWithTag:403];
         [uilItem setText:[nssTaiwanItem componentsSeparatedByString:@";"][0]];
-    } else {
-        cell = [tableView dequeueReusableCellWithIdentifier:nssIDKG6];
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDKG6];
-            UILabel *uilDate = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 0.04, cgfScreenWidth * 0.0 / 640, cgfScreenWidth * 0.92, cgfScreenWidth * 20 / 640)];
-            uilDate.tag = 601;
-            [uilDate setTextAlignment:NSTextAlignmentRight];
-            [cell.contentView addSubview:uilDate];
-            [uilDate setText:@"abcde"];
+        
+        UIView *uivManValue = (UIView *)[cell.contentView viewWithTag:412];
+        if ([nssTaiwanMan componentsSeparatedByString:@";"][2] != nil && [[nssTaiwanMan componentsSeparatedByString:@";"][2] isEqualToString:@""] == NO && [[nssTaiwanMan componentsSeparatedByString:@";"][2] isEqualToString:@"尚無資料"] == NO) {
+            uivManValue = [[UIView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 142.0 / 640.0, cgfScreenWidth * 283.0 / 640.0 * [[nssTaiwanMan componentsSeparatedByString:@";"][2]floatValue], cgfScreenWidth * 32.0 / 640.0)];
+            [uivManValue setBackgroundColor:[UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0]];
+            uivManValue.layer.cornerRadius = 4;
+            [cell.contentView addSubview:uivManValue];
+        } else {
+            [uivManValue setBackgroundColor:[UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:0.0]];
         }
-        UILabel *uilDate = (UILabel*)[cell.contentView viewWithTag:601];
-        [uilDate setText:nssDate];
+        UIView *uivItemValue = (UIView *)[cell.contentView viewWithTag:413];
+        if ([nssTaiwanItem componentsSeparatedByString:@";"][2] != nil && [[nssTaiwanItem componentsSeparatedByString:@";"][2] isEqualToString:@""] == NO && [[nssTaiwanItem componentsSeparatedByString:@";"][2] isEqualToString:@"尚無資料"] == NO) {
+            uivItemValue = [[UIView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 238.0 / 640.0, cgfScreenWidth * 283.0 / 640.0 * [[nssTaiwanItem componentsSeparatedByString:@";"][2]floatValue], cgfScreenWidth * 32.0 / 640.0)];
+            [uivItemValue setBackgroundColor:[UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0]];
+            uivItemValue.layer.cornerRadius = 4;
+            [cell.contentView addSubview:uivItemValue];
+        } else {
+            [uivItemValue setBackgroundColor:[UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:0.0]];
+        }
+        
+        THLabel *thlManValue = (THLabel *)[cell.contentView viewWithTag:422];
+        thlManValue= [[THLabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 140.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+        [thlManValue setText:[nssTaiwanMan componentsSeparatedByString:@";"][1]];
+        thlManValue.strokeColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0];
+        thlManValue.strokeSize = 0.8;
+        thlManValue.textColor = [UIColor whiteColor];
+        [thlManValue setFont:[UIFont systemFontOfSize:11]];
+        [thlManValue setTextAlignment:NSTextAlignmentCenter];
+        [cell.contentView addSubview:thlManValue];
+        THLabel *thlItemValue = (THLabel *)[cell.contentView viewWithTag:423];
+        thlItemValue= [[THLabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 236.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+        [thlItemValue setText:[nssTaiwanItem componentsSeparatedByString:@";"][1]];
+        thlItemValue.strokeColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0];
+        thlItemValue.strokeSize = 0.8;
+        thlItemValue.textColor = [UIColor whiteColor];
+        [thlItemValue setFont:[UIFont systemFontOfSize:11]];
+        [thlItemValue setTextAlignment:NSTextAlignmentCenter];
+        [cell.contentView addSubview:thlItemValue];
     }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
@@ -383,10 +625,8 @@
         return self.tableView.frame.size.width * 418 / 640;
     } else if (indexPath.row == 3) {
         return self.tableView.frame.size.width * 418 / 640;
-    } else if (indexPath.row == 4) {
-        return self.tableView.frame.size.width * 418 / 640;
     } else {
-        return self.tableView.frame.size.width * 60 / 640;
+        return self.tableView.frame.size.width * 418 / 640;
     }
 }
 
@@ -494,12 +734,13 @@
                     nssTaiwanItem = object[@"taiwanitem"];
                     NSLog(@"object[taiwanitem]: %@", object[@"taiwanitem"]);
                     
-                    nssDate = object[@"nssDate"];
                     NSLog(@"object[date]: %@", object[@"date"]);
-                    
-                    NSLog(@"[self.tableView reloadData];");
-                    [self writeToMyPlist];
-                    [self.tableView reloadData];
+                    if ([nssDate isEqualToString:object[@"nssDate"]] == NO) {
+                        nssDate = object[@"nssDate"];
+                        [self writeToMyPlist];
+                        NSLog(@"[self.tableView reloadData];");
+                        [self.tableView reloadData];
+                    }
                 }
             }
         } else {
