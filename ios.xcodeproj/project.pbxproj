@@ -27,6 +27,12 @@
 		88E7B4501A11AA1E00B0639F /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E7B43E1A11AA1E00B0639F /* UIImageView+HighlightedWebCache.m */; };
 		88E7B4511A11AA1E00B0639F /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E7B4401A11AA1E00B0639F /* UIImageView+WebCache.m */; };
 		88E7B4521A11AA1E00B0639F /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E7B4421A11AA1E00B0639F /* UIView+WebCacheOperation.m */; };
+		8F24C0481A12A7D000277BAD /* BLOGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F24C0471A12A7D000277BAD /* BLOGViewController.m */; };
+		8F24C0491A12A7D000277BAD /* BLOGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F24C0471A12A7D000277BAD /* BLOGViewController.m */; };
+		8F24C04C1A12A7F000277BAD /* SUPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F24C04B1A12A7F000277BAD /* SUPViewController.m */; };
+		8F24C04D1A12A7F000277BAD /* SUPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F24C04B1A12A7F000277BAD /* SUPViewController.m */; };
+		8F24C0501A12A80400277BAD /* ATTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F24C04F1A12A80400277BAD /* ATTViewController.m */; };
+		8F24C0511A12A80400277BAD /* ATTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F24C04F1A12A80400277BAD /* ATTViewController.m */; };
 		8F286CE21A0F52F200CA923D /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F286CDF1A0F52F200CA923D /* UIScrollView+SVInfiniteScrolling.m */; };
 		8F286CE31A0F52F200CA923D /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F286CDF1A0F52F200CA923D /* UIScrollView+SVInfiniteScrolling.m */; };
 		8F286CE41A0F52F200CA923D /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F286CE11A0F52F200CA923D /* UIScrollView+SVPullToRefresh.m */; };
@@ -149,6 +155,12 @@
 		88E7B4401A11AA1E00B0639F /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		88E7B4411A11AA1E00B0639F /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		88E7B4421A11AA1E00B0639F /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		8F24C0461A12A7D000277BAD /* BLOGViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BLOGViewController.h; path = view/BLOGViewController.h; sourceTree = "<group>"; };
+		8F24C0471A12A7D000277BAD /* BLOGViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BLOGViewController.m; path = view/BLOGViewController.m; sourceTree = "<group>"; };
+		8F24C04A1A12A7F000277BAD /* SUPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SUPViewController.h; path = view/SUPViewController.h; sourceTree = "<group>"; };
+		8F24C04B1A12A7F000277BAD /* SUPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SUPViewController.m; path = view/SUPViewController.m; sourceTree = "<group>"; };
+		8F24C04E1A12A80400277BAD /* ATTViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATTViewController.h; path = view/ATTViewController.h; sourceTree = "<group>"; };
+		8F24C04F1A12A80400277BAD /* ATTViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATTViewController.m; path = view/ATTViewController.m; sourceTree = "<group>"; };
 		8F286CDD1A0F52F200CA923D /* SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVPullToRefresh.h; sourceTree = "<group>"; };
 		8F286CDE1A0F52F200CA923D /* UIScrollView+SVInfiniteScrolling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVInfiniteScrolling.h"; sourceTree = "<group>"; };
 		8F286CDF1A0F52F200CA923D /* UIScrollView+SVInfiniteScrolling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVInfiniteScrolling.m"; sourceTree = "<group>"; };
@@ -433,12 +445,16 @@
 			children = (
 				8F3A129E1A0B394200C10C5D /* ATTTableViewController.h */,
 				8F3A129F1A0B394200C10C5D /* ATTTableViewController.m */,
+				8F24C04E1A12A80400277BAD /* ATTViewController.h */,
+				8F24C04F1A12A80400277BAD /* ATTViewController.m */,
 				8FD262151A0B8353000B8D59 /* BATTLEGROUNDViewController.h */,
 				8FD262161A0B8353000B8D59 /* BATTLEGROUNDViewController.m */,
 				8FBCEB751A02BDDB00D200A0 /* BLOGTableViewCell.h */,
 				8FBCEB761A02BDDB00D200A0 /* BLOGTableViewCell.m */,
 				8FBCEB771A02BDDB00D200A0 /* BLOGTableViewController.h */,
 				8FBCEB781A02BDDB00D200A0 /* BLOGTableViewController.m */,
+				8F24C0461A12A7D000277BAD /* BLOGViewController.h */,
+				8F24C0471A12A7D000277BAD /* BLOGViewController.m */,
 				8F3A12961A0B392700C10C5D /* KGTableViewController.h */,
 				8F3A12971A0B392700C10C5D /* KGTableViewController.m */,
 				E70860FC1A1101BF00D087E0 /* MapViewController.h */,
@@ -449,6 +465,8 @@
 				8F3A12AD1A0B73DE00C10C5D /* PointerViewController.m */,
 				8F3A129A1A0B393500C10C5D /* SUPTableViewController.h */,
 				8F3A129B1A0B393500C10C5D /* SUPTableViewController.m */,
+				8F24C04A1A12A7F000277BAD /* SUPViewController.h */,
+				8F24C04B1A12A7F000277BAD /* SUPViewController.m */,
 				8FBCEB811A02BDDB00D200A0 /* TabBarController.h */,
 				8FBCEB821A02BDDB00D200A0 /* TabBarController.m */,
 				8F3BF8991A03DAB4002F75E9 /* UIWebView+YouTube.h */,
@@ -556,7 +574,7 @@
 					};
 					8FBCEB631A029E2C00D200A0 = {
 						CreatedOnToolsVersion = 6.1;
-						DevelopmentTeam = 9SFGMQE6W6;
+						DevelopmentTeam = DEATJ76XRX;
 						TestTargetID = 8FBCEB471A029E2C00D200A0;
 					};
 				};
@@ -638,11 +656,13 @@
 				88E7B44C1A11AA1E00B0639F /* UIButton+WebCache.m in Sources */,
 				8FBCEB851A02BDDB00D200A0 /* BLOGTableViewController.m in Sources */,
 				8F3BF89B1A03DAB4002F75E9 /* UIWebView+YouTube.m in Sources */,
+				8F24C0481A12A7D000277BAD /* BLOGViewController.m in Sources */,
 				497FC99C1A109BA6009787E9 /* VGeoManager.m in Sources */,
 				8FBCEB8F1A02BDDB00D200A0 /* TabBarController.m in Sources */,
 				8FBCEB4E1A029E2C00D200A0 /* main.m in Sources */,
 				8F286CE41A0F52F200CA923D /* UIScrollView+SVPullToRefresh.m in Sources */,
 				88E7B4491A11AA1E00B0639F /* SDWebImageDownloaderOperation.m in Sources */,
+				8F24C04C1A12A7F000277BAD /* SUPViewController.m in Sources */,
 				497FC9991A109286009787E9 /* Utils.m in Sources */,
 				8FBCEB831A02BDDB00D200A0 /* BLOGTableViewCell.m in Sources */,
 				88E7B44B1A11AA1E00B0639F /* SDWebImagePrefetcher.m in Sources */,
@@ -656,6 +676,7 @@
 				8F3BF8A51A03F718002F75E9 /* MYParseDelegate.m in Sources */,
 				88E7B4521A11AA1E00B0639F /* UIView+WebCacheOperation.m in Sources */,
 				88E7B4501A11AA1E00B0639F /* UIImageView+HighlightedWebCache.m in Sources */,
+				8F24C0501A12A80400277BAD /* ATTViewController.m in Sources */,
 				8F3A12A01A0B394200C10C5D /* ATTTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -664,8 +685,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F24C0511A12A80400277BAD /* ATTViewController.m in Sources */,
 				8F3A12A11A0B394200C10C5D /* ATTTableViewController.m in Sources */,
 				8FD262181A0B8353000B8D59 /* BATTLEGROUNDViewController.m in Sources */,
+				8F24C0491A12A7D000277BAD /* BLOGViewController.m in Sources */,
 				8F286CE31A0F52F200CA923D /* UIScrollView+SVInfiniteScrolling.m in Sources */,
 				8F286CE51A0F52F200CA923D /* UIScrollView+SVPullToRefresh.m in Sources */,
 				8FBCEB861A02BDDB00D200A0 /* BLOGTableViewController.m in Sources */,
@@ -678,6 +701,7 @@
 				8FBCEB901A02BDDB00D200A0 /* TabBarController.m in Sources */,
 				8F839D231A07B77E0071654C /* MSTableViewController.m in Sources */,
 				8FBCEB841A02BDDB00D200A0 /* BLOGTableViewCell.m in Sources */,
+				8F24C04D1A12A7F000277BAD /* SUPViewController.m in Sources */,
 				8F3A12AF1A0B73DE00C10C5D /* PointerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
