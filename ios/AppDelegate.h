@@ -29,7 +29,7 @@
 @property (strong, nonatomic) NSString *nssTsaiWuLin;
 @property (strong, nonatomic) NSString *nssAddress;
 
-@property (strong, nonatomic) CLLocationManager *cllMLocation;
+//@property (strong, nonatomic) CLLocationManager *cllMLocation;
 @property (assign, nonatomic) CLLocationDegrees clldLatitude;
 @property (assign, nonatomic) CLLocationDegrees clldLongitude;
 

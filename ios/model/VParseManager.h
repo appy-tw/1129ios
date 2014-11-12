@@ -17,6 +17,7 @@
 @interface VParseManager : NSObject
 
 @property (nonatomic, weak) id<VParseManagerDelegate>delegate;
+@property (nonatomic) BOOL bLoading;
 
 -(void)loadVShopFromServer;
 

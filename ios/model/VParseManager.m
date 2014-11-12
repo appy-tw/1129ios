@@ -16,6 +16,13 @@
 @implementation VParseManager
 SYNTHESIZE_SINGLETON_FOR_CLASS(VParseManager)
 
+-(id)init {
+    if (self = [super init])  {
+        self.bLoading = NO;
+    }
+    return self;
+}
+
 -(VShopData*)getVShopDataWithId:(NSString*)vid{
     NSError* error;
     NSPredicate* cmd = [NSPredicate predicateWithFormat:@"vid = %@",vid];
@@ -23,6 +30,12 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(VParseManager)
     return [result firstObject];
 }
 -(void)loadVShopFromServer{
+    if(self.bLoading){
+        NSLog(@"already loading");
+        return;
+    }
+    self.bLoading = YES;
+        
     PFQuery *query = [PFQuery queryWithClassName:@"vshop"];
     NSDate* lastGet = [Utils getPreferenceForKey:LAST_GET_VSHOP];
     if(lastGet == nil){
@@ -57,6 +70,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(VParseManager)
             NSLog(@"retrive vshop data error!");
         }
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        self.bLoading = NO;
     }];
 }
 @end

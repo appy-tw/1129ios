@@ -46,7 +46,7 @@
     UIImage *uiiSUP2;
     UIImage *uiiSUP3;
     
-    AppDelegate *delegate;
+//    AppDelegate *delegate;
 
 }
 
@@ -112,7 +112,7 @@
         cgfKeyboardOffset = cgfScreenHeightBase + [UIApplication sharedApplication].statusBarFrame.size.height / 2.0;
     }
     NSLog(@"status bar height:%f",[UIApplication sharedApplication].statusBarFrame.size.height);
-    NSLog(@"width:%f, height:%f, tabbar:%f, navigationbarcontroller:%f, keyboardOffset: %f", cgfScreenWidth, cgfScreenHeight, self.tabBarController.tabBar.frame.size.height, delegate.navigationController.navigationBar.frame.size.height, cgfKeyboardOffset);
+//    NSLog(@"width:%f, height:%f, tabbar:%f, navigationbarcontroller:%f, keyboardOffset: %f", cgfScreenWidth, cgfScreenHeight, self.tabBarController.tabBar.frame.size.height, delegate.navigationController.navigationBar.frame.size.height, cgfKeyboardOffset);
 }
 
 - (void) makeKeyboardOffset {
@@ -173,8 +173,6 @@
     self.mShopArray = [NSMutableArray array];
     self.mAnnotationDictionary = [NSMutableDictionary dictionary];
     
-    [self loadVShopFromParse];
-    
     [self setMyScreenSize];
     [self makeKeyboardOffset];
     [self loadShops];
@@ -194,11 +192,12 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//    delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//    [delegate.cllMLocation stopUpdatingLocation];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
-    [delegate.cllMLocation stopUpdatingLocation];
     [[VGeoManager sharedInstance]setup];
     [VGeoManager sharedInstance].delegate = self;
+    [self loadVShopFromParse];
     [super viewDidDisappear:animated];
 }
 -(void)viewWillDisappear:(BOOL)animated{
