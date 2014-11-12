@@ -11,7 +11,11 @@
 
 #import "KGViewController.h"
 
+#import "KeyHeader.h"
+
 #import "BATTLEGROUNDViewController.h"
+
+#import <Parse/Parse.h>
 
 @interface KGTableViewController ()
 {
@@ -43,6 +47,8 @@
     
     NSString *nssTaiwanMan;
     NSString *nssTaiwanItem;
+    
+    NSString *nssDate;
 }
 
 @end
@@ -86,7 +92,7 @@
 }
 
 - (void)prepareTable {
-    
+    [self getAllInformationFromParse];
 }
 
 - (void)viewDidLoad {
@@ -103,7 +109,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return 6;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -112,6 +118,7 @@
     static NSString *nssIDKG3 = @"KG3";
     static NSString *nssIDKG4 = @"KG4";
     static NSString *nssIDKG5 = @"KG5";
+    static NSString *nssIDKG6 = @"KG6";
     UITableViewCell *cell;
     if (indexPath.row == 0) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDKG1];
@@ -203,27 +210,39 @@
         [uivItem setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
         uivItem.layer.cornerRadius = 4;
         [cell.contentView addSubview:uivItem];
-    } else {
+    } else if (indexPath.row == 4) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDKG5];
         if (cell == nil) {
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDKG5];
+            UIImage *uiim = [UIImage imageNamed:@"kg5"];
+            UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.tableView.frame.size.width, self.tableView.frame.size.width * 398 / 640)];
+            uiimv.image = uiim;
+            [cell.contentView addSubview:uiimv];
+            UIView *uivMan = [[UIView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 142.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+            uivMan.layer.borderColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0].CGColor;
+            uivMan.layer.borderWidth = 2.0;
+            [uivMan setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
+            uivMan.layer.cornerRadius = 4;
+            [cell.contentView addSubview:uivMan];
+            UIView *uivItem = [[UIView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 238.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+            uivItem.layer.borderColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0].CGColor;
+            uivItem.layer.borderWidth = 2.0;
+            [uivItem setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
+            uivItem.layer.cornerRadius = 4;
+            [cell.contentView addSubview:uivItem];
         }
-        UIImage *uiim = [UIImage imageNamed:@"kg5"];
-        UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.tableView.frame.size.width, self.tableView.frame.size.width * 398 / 640)];
-        uiimv.image = uiim;
-        [cell.contentView addSubview:uiimv];
-        UIView *uivMan = [[UIView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 142.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
-        uivMan.layer.borderColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0].CGColor;
-        uivMan.layer.borderWidth = 2.0;
-        [uivMan setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
-        uivMan.layer.cornerRadius = 4;
-        [cell.contentView addSubview:uivMan];
-        UIView *uivItem = [[UIView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 238.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
-        uivItem.layer.borderColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0].CGColor;
-        uivItem.layer.borderWidth = 2.0;
-        [uivItem setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
-        uivItem.layer.cornerRadius = 4;
-        [cell.contentView addSubview:uivItem];
+    } else {
+        cell = [tableView dequeueReusableCellWithIdentifier:nssIDKG6];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDKG6];
+            UILabel *uilDate = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 0.04, cgfScreenWidth * 0.0 / 640, cgfScreenWidth * 0.92, cgfScreenWidth * 20 / 640)];
+            uilDate.tag = 601;
+            [uilDate setTextAlignment:NSTextAlignmentRight];
+            [cell.contentView addSubview:uilDate];
+            [uilDate setText:@"abcde"];
+        }
+        UILabel *uilDate = (UILabel*)[cell.contentView viewWithTag:601];
+        [uilDate setText:nssDate];
     }
     return cell;
 }
@@ -241,7 +260,7 @@
     } else if (indexPath.row == 4) {
         return self.tableView.frame.size.width * 418 / 640;
     } else {
-        return self.tableView.frame.size.width * 418 / 640;
+        return self.tableView.frame.size.width * 60 / 640;
     }
 }
 
@@ -263,20 +282,23 @@
         [self initMyPlist];
     }
     NSMutableDictionary *nsmdPlistDictionary = [NSMutableDictionary dictionaryWithContentsOfFile:_nssPlistDst];
-    [nsmdPlistDictionary setValue:nssTPE4HP forKey:@"TPE-4hp"];
-    [nsmdPlistDictionary setValue:nssTPE4Man forKey:@"TPE-4man"];
-    [nsmdPlistDictionary setValue:nssTPE4Item forKey:@"TPE-4item"];
+    [nsmdPlistDictionary setValue:nssTPE4HP forKey:@"tpe4hp"];
+    [nsmdPlistDictionary setValue:nssTPE4Man forKey:@"tpe4man"];
+    [nsmdPlistDictionary setValue:nssTPE4Item forKey:@"tpe4item"];
     
-    [nsmdPlistDictionary setValue:nssTPQ1HP forKey:@"TPQ-1hp"];
-    [nsmdPlistDictionary setValue:nssTPQ1Man forKey:@"TPQ-1man"];
-    [nsmdPlistDictionary setValue:nssTPQ1Item forKey:@"TPQ-1item"];
+    [nsmdPlistDictionary setValue:nssTPQ1HP forKey:@"tpq1hp"];
+    [nsmdPlistDictionary setValue:nssTPQ1Man forKey:@"tpq1man"];
+    [nsmdPlistDictionary setValue:nssTPQ1Item forKey:@"tpq1item"];
     
-    [nsmdPlistDictionary setValue:nssTPQ6HP forKey:@"TPQ-6hp"];
-    [nsmdPlistDictionary setValue:nssTPQ6Man forKey:@"TPQ-6man"];
-    [nsmdPlistDictionary setValue:nssTPQ6Item forKey:@"TPQ-6item"];
+    [nsmdPlistDictionary setValue:nssTPQ6HP forKey:@"tpq6hp"];
+    [nsmdPlistDictionary setValue:nssTPQ6Man forKey:@"tpq6man"];
+    [nsmdPlistDictionary setValue:nssTPQ6Item forKey:@"tpq6item"];
 
     [nsmdPlistDictionary setValue:nssTaiwanMan forKey:@"taiwanman"];
     [nsmdPlistDictionary setValue:nssTaiwanItem forKey:@"taiwanitem"];
+    
+    [nsmdPlistDictionary setValue:nssDate forKey:@"date"];
+    
     [nsmdPlistDictionary writeToFile:_nssPlistDst atomically:YES];
 }
 
@@ -286,23 +308,84 @@
     }
     NSMutableDictionary *nsmdPlistDictionary = [NSMutableDictionary dictionaryWithContentsOfFile:_nssPlistDst];
     if (nsmdPlistDictionary != nil) {
-        nssTPE4HP = [nsmdPlistDictionary objectForKeyedSubscript:@"TPE-4hp"];
-        nssTPE4Man = [nsmdPlistDictionary objectForKeyedSubscript:@"TPE-4man"];
-        nssTPE4Item = [nsmdPlistDictionary objectForKeyedSubscript:@"TPE-4item"];
+        nssTPE4HP = [nsmdPlistDictionary objectForKeyedSubscript:@"tpe4hp"];
+        nssTPE4Man = [nsmdPlistDictionary objectForKeyedSubscript:@"tpe4man"];
+        nssTPE4Item = [nsmdPlistDictionary objectForKeyedSubscript:@"tpe4item"];
         
-        nssTPQ1HP = [nsmdPlistDictionary objectForKeyedSubscript:@"TPQ-1hp"];
-        nssTPQ1Man = [nsmdPlistDictionary objectForKeyedSubscript:@"TPQ-1man"];
-        nssTPQ1Item = [nsmdPlistDictionary objectForKeyedSubscript:@"TPQ-1item"];
+        nssTPQ1HP = [nsmdPlistDictionary objectForKeyedSubscript:@"tpq1hp"];
+        nssTPQ1Man = [nsmdPlistDictionary objectForKeyedSubscript:@"tpq1man"];
+        nssTPQ1Item = [nsmdPlistDictionary objectForKeyedSubscript:@"tpq1item"];
 
-        nssTPQ6HP = [nsmdPlistDictionary objectForKeyedSubscript:@"TPQ-6hp"];
-        nssTPQ6Man = [nsmdPlistDictionary objectForKeyedSubscript:@"TPQ-6man"];
-        nssTPQ6Item = [nsmdPlistDictionary objectForKeyedSubscript:@"TPQ-6item"];
+        nssTPQ6HP = [nsmdPlistDictionary objectForKeyedSubscript:@"tpq6hp"];
+        nssTPQ6Man = [nsmdPlistDictionary objectForKeyedSubscript:@"tpq6man"];
+        nssTPQ6Item = [nsmdPlistDictionary objectForKeyedSubscript:@"tpq6item"];
 
         nssTaiwanMan = [nsmdPlistDictionary objectForKeyedSubscript:@"taiwanman"];
         nssTaiwanItem = [nsmdPlistDictionary objectForKeyedSubscript:@"taiwanitem"];
+        
+        nssDate = [nsmdPlistDictionary objectForKeyedSubscript:@"date"];
     }
 }
 
 //]]Plist
+
+//[[parse
+
+- (void)getAllInformationFromParse {
+    PFQuery *query = [PFQuery queryWithClassName:@"hp"];
+    [query whereKey:@"available" equalTo:@"YES"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            // The find succeeded.
+            NSLog(@"Successfully retrieved %d scores.", objects.count);
+            if (objects.count != 0) {
+                for (PFObject *object in objects) {
+                    NSLog(@"%@", object.objectId);
+                    
+                    nssTPE4HP = object[@"tpe4hp"];
+                    NSLog(@"object[tpe4hp]: %@", object[@"tpe4hp"]);
+                    nssTPE4Man = object[@"tpe4man"];
+                    NSLog(@"object[tpe4man]: %@", object[@"tpe4man"]);
+                    nssTPE4Item = object[@"tpe4item"];
+                    NSLog(@"object[tpe4item]: %@", object[@"tpe4item"]);
+
+                    nssTPQ1HP = object[@"tpq1hp"];
+                    NSLog(@"object[tpq1hp]: %@", object[@"tpq1hp"]);
+                    nssTPQ1Man = object[@"tpq1man"];
+                    NSLog(@"object[tpq1man]: %@", object[@"tpq1man"]);
+                    nssTPQ1Item = object[@"tpq1item"];
+                    NSLog(@"object[tpq1item]: %@", object[@"tpq1item"]);
+                    
+                    nssTPQ6HP = object[@"tpq6hp"];
+                    NSLog(@"object[tpq6hp]: %@", object[@"tpq6hp"]);
+                    nssTPQ6Man = object[@"tpq6man"];
+                    NSLog(@"object[tpq6man]: %@", object[@"tpq6man"]);
+                    nssTPQ6Item = object[@"tpq6item"];
+                    NSLog(@"object[tpq6item]: %@", object[@"tpq6item"]);
+                    
+                    nssTaiwanMan = object[@"taiwanman"];
+                    NSLog(@"object[taiwanman]: %@", object[@"taiwanman"]);
+                    nssTaiwanItem = object[@"taiwanitem"];
+                    NSLog(@"object[taiwanitem]: %@", object[@"taiwanitem"]);
+                    
+                    nssDate = object[@"nssDate"];
+                    NSLog(@"object[date]: %@", object[@"date"]);
+                    
+                    NSLog(@"[self.tableView reloadData];");
+                    [self writeToMyPlist];
+                    [self.tableView reloadData];
+                }
+            }
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+            [self readAllFromMyPlist];
+            [self.tableView reloadData];
+        }
+    }];
+}
+
+//]]parse
+
 
 @end

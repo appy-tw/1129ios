@@ -8,6 +8,9 @@
 
 #import "BLOGViewController.h"
 #import "AppDelegate.h"
+#import "KeyHeader.h"
+
+#import <Parse/Parse.h>
 
 @interface BLOGViewController ()
 {
