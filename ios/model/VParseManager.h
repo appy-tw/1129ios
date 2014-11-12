@@ -18,6 +18,7 @@
 
 @property (nonatomic, weak) id<VParseManagerDelegate>delegate;
 @property (nonatomic) BOOL bLoading;
+@property (nonatomic, strong) NSDate* retriveTime;
 
 -(void)loadVShopFromServer;
 

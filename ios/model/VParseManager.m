@@ -43,6 +43,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(VParseManager)
     }
     [query whereKey:@"updatedAt" greaterThan:lastGet];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    self.retriveTime = [NSDate date];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             for(PFObject* obj in objects){
@@ -63,7 +64,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(VParseManager)
                 shop.website = [obj objectForKey:@"website"];
             }
             [VShopData commit];
-            [Utils writePreference:[NSDate date] forKey:LAST_GET_VSHOP]; // keep current time
+            [Utils writePreference:self.retriveTime forKey:LAST_GET_VSHOP]; // keep current time
             if(self.delegate)
                 [self.delegate didFinishLoading];
         }else{
