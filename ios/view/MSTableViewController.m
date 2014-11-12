@@ -43,7 +43,7 @@
         cgfKeyboardOffset = cgfScreenHeightBase + [UIApplication sharedApplication].statusBarFrame.size.height / 2.0;
     }
     NSLog(@"status bar height:%f",[UIApplication sharedApplication].statusBarFrame.size.height);
-    NSLog(@"width:%f, height:%f, tabbar:%f, navigationbarcontroller:%f, keyboardOffset: %f", cgfScreenWidth, cgfScreenHeight, self.tabBarController.tabBar.frame.size.height, delegate.navigationController.navigationBar.frame.size.height, cgfKeyboardOffset);
+    NSLog(@"width:%f, height:%f, tabbar:%f, navigationbarcontroller:%f, keyboardOffset: %f", cgfScreenWidth, cgfScreenHeight, self.tabBarController.tabBar.frame.size.height, self.navigationController.navigationBar.frame.size.height, cgfKeyboardOffset);
 }
 
 - (void) makeKeyboardOffset {
@@ -62,6 +62,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setMyScreenSize];
     [self makeKeyboardOffset];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     NSString *nssEmbedHTML = @"\
@@ -77,9 +78,8 @@
     width=\"%0.0f\" height=\"%0.0f\"></embed>\
     </body></html>";
     NSString *nssHtml = [NSString stringWithFormat:nssEmbedHTML, @"https://www.youtube.com/watch?feature=player_embedded&v=OtvbZscM90A", self.tableView.frame.size.width * 0.92, self.tableView.frame.size.width * .92 * 9.0 / 16.0];
-    _uiwVideoView = [[UIWebView alloc] initWithFrame:CGRectMake(self.tableView.frame.size.width * 0.04, self.tableView.frame.size.width * 90 / 640 + 15.0 + cgfScreenHeightBase, self.tableView.frame.size.width * 0.92, self.tableView.frame.size.width * 0.92 * 9.0 / 16.0)];
+    _uiwVideoView = [[UIWebView alloc] initWithFrame:CGRectMake(self.tableView.frame.size.width * 0.04, self.tableView.frame.size.width * 90 / 640 + 15.0, self.tableView.frame.size.width * 0.92, self.tableView.frame.size.width * 0.92 * 9.0 / 16.0)];
     [_uiwVideoView loadHTMLString:nssHtml baseURL:nil];
-    [self makeKeyboardOffset];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -281,7 +281,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
-        return cgfScreenHeightBase + self.tableView.frame.size.width * 90 / 640 + 5.0 + self.tableView.frame.size.width * 0.92 * 9.0 / 16.0 + 25.0;
+        return self.tableView.frame.size.width * 90 / 640 + 5.0 + self.tableView.frame.size.width * 0.92 * 9.0 / 16.0 + 25.0;
     } else if (indexPath.row == 1) {
         return self.tableView.frame.size.width * 114 / 640 + 15.0 + self.tableView.frame.size.width * 1.7 / 4.0;
     } else if (indexPath.row == 2) {

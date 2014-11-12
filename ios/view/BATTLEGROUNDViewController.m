@@ -71,7 +71,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     delegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
-    [delegate.navigationController setNavigationBarHidden:YES animated:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
     
     [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -139,7 +139,7 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    [delegate.navigationController setNavigationBarHidden:NO animated:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
     [super viewWillDisappear:animated];
 }
 

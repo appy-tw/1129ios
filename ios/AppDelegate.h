@@ -36,9 +36,9 @@
 @property (strong, nonatomic) UINavigationController *navigationControllerMS;
 @property (strong, nonatomic) UINavigationController *navigationControllerBlog;
 @property (strong, nonatomic) UINavigationController *navigationControllerSUP;
-//@property (strong, nonatomic) UINavigationController *navigationControllerKG;
+@property (strong, nonatomic) UINavigationController *navigationControllerKG;
 @property (strong, nonatomic) UINavigationController *navigationControllerATT;
-@property (strong, nonatomic) UINavigationController *navigationController;
+//@property (strong, nonatomic) UINavigationController *navigationController;
 
 //- (void)cllocationInit;
 //- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations;
@@ -46,6 +46,10 @@
 //[[forBLOG
 @property (strong, nonatomic) NSString *nssBLOGLink;
 //]]forBLOG
+
+//[[forKG
+@property (strong, nonatomic) NSString *nssKGLink;
+//]]forKG
 
 //[[forSUP
 //]]forSUP

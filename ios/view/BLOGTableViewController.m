@@ -69,7 +69,7 @@
         cgfKeyboardOffset = cgfScreenHeightBase + [UIApplication sharedApplication].statusBarFrame.size.height / 2.0;
     }
     NSLog(@"status bar height:%f",[UIApplication sharedApplication].statusBarFrame.size.height);
-    NSLog(@"width:%f, height:%f, tabbar:%f, navigationbarcontroller:%f, keyboardOffset: %f", cgfScreenWidth, cgfScreenHeight, self.tabBarController.tabBar.frame.size.height, delegate.navigationController.navigationBar.frame.size.height, cgfKeyboardOffset);
+    NSLog(@"width:%f, height:%f, tabbar:%f, navigationbarcontroller:%f, keyboardOffset: %f", cgfScreenWidth, cgfScreenHeight, self.tabBarController.tabBar.frame.size.height, self.navigationController.navigationBar.frame.size.height, cgfKeyboardOffset);
 }
 
 - (void)prepareTable
@@ -122,15 +122,7 @@
     NSLog(@"%@", delegate.nssBLOGLink);
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     [self makeKeyboardOffsetBack];
-    [self.navigationController pushViewController:[BLOGViewController new] animated:NO];
-//    [delegate.navigationControllerBlog pushViewController:[[UIViewController alloc]init] animated:NO];
-////    delegate.nssBLOGLink = [self.blogItemsArr objectAtIndex:indexPath.row].strLink;
-//    UIAlertView *messageAlert = [[UIAlertView alloc]
-//                                 initWithTitle:@"Row Selected" message:[NSString stringWithFormat:@"You've selected a row: %ld", (long)indexPath.row] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//
-//    // Display Alert Message
-//    [messageAlert show];
-    
+    [self.navigationController pushViewController:[BLOGViewController new] animated:YES];
 }
 
 - (void) makeKeyboardOffset {

@@ -9,6 +9,8 @@
 #import "KGTableViewController.h"
 #import "AppDelegate.h"
 
+#import "KGViewController.h"
+
 #import "BATTLEGROUNDViewController.h"
 
 @interface KGTableViewController ()
@@ -32,13 +34,11 @@
 
 @implementation KGTableViewController
 
-- (void)setMyScreen
+- (void)setMyScreenSize
 {
-    delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
     cgfScreenWidth = [[UIScreen mainScreen] bounds].size.width;
-    cgfScreenHeight = [[UIScreen mainScreen] bounds].size.height - [[UIApplication sharedApplication] statusBarFrame].size.height - self.tabBarController.tabBar.frame.size.height - delegate.navigationController.navigationBar.frame.size.height - [UIApplication sharedApplication].statusBarFrame.size.height;
-    cgfScreenHeightBase = delegate.navigationController.navigationBar.frame.size.height + [UIApplication sharedApplication].statusBarFrame.size.height;
+    cgfScreenHeight = [[UIScreen mainScreen] bounds].size.height - [[UIApplication sharedApplication] statusBarFrame].size.height - self.tabBarController.tabBar.frame.size.height - self.navigationController.navigationBar.frame.size.height - [UIApplication sharedApplication].statusBarFrame.size.height;
+    cgfScreenHeightBase = [UIApplication sharedApplication].statusBarFrame.size.height;
     if ([UIApplication sharedApplication].statusBarFrame.size.height == 20.0) {
         //without Hotspot: 64
         cgfKeyboardOffset =  cgfScreenHeightBase;
@@ -47,7 +47,16 @@
         cgfKeyboardOffset = cgfScreenHeightBase + [UIApplication sharedApplication].statusBarFrame.size.height / 2.0;
     }
     NSLog(@"status bar height:%f",[UIApplication sharedApplication].statusBarFrame.size.height);
-    NSLog(@"width:%f, height:%f, tabbar:%f, navigationbarcontroller:%f, keyboardOffset: %f", cgfScreenWidth, cgfScreenHeight, self.tabBarController.tabBar.frame.size.height, delegate.navigationController.navigationBar.frame.size.height, cgfKeyboardOffset);
+    NSLog(@"width:%f, height:%f, tabbar:%f, navigationbarcontroller:%f, keyboardOffset: %f", cgfScreenWidth, cgfScreenHeight, self.tabBarController.tabBar.frame.size.height, self.navigationController.navigationBar.frame.size.height, cgfKeyboardOffset);
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"delegate.nssKGLink: %ld", (long)indexPath.row);
+    delegate.nssKGLink = [NSString stringWithFormat:@"%ld", (long)indexPath.row];
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
+    [self makeKeyboardOffsetBack];
+    [self.navigationController pushViewController:[KGViewController new] animated:YES];
 }
 
 - (void) makeKeyboardOffset {
@@ -64,9 +73,16 @@
     [UIView commitAnimations];
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    [super viewWillAppear:animated];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setMyScreen];
+    delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [self setMyScreenSize];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [self makeKeyboardOffset];
 }
@@ -109,66 +125,6 @@
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"fb://profile/337299219755438"]];
 }
 
-- (void)setButton:(UITableViewCell *)cell offset:(CGFloat)cgfBaseHeight {
-    UIButton *uibTsai = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    uibTsai.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    uibTsai.frame = CGRectMake(self.tableView.frame.size.width * 0.06, self.tableView.frame.size.width * 0.14 + cgfBaseHeight, self.tableView.frame.size.width * 0.78, self.tableView.frame.size.width * 0.88 * 154.0 / 1315.0);
-    [uibTsai addTarget:self action:@selector(uibClickedTsai) forControlEvents:UIControlEventTouchUpInside];
-    uibTsai.tintColor = [UIColor blackColor];
-    [uibTsai setTitle:@"蔡正元選區：正元手術房" forState:UIControlStateNormal];
-    [cell.contentView addSubview:uibTsai];
-    
-    UIButton *uibWu = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    uibWu.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    uibWu.frame = CGRectMake(self.tableView.frame.size.width * 0.06, self.tableView.frame.size.width * 0.21 + cgfBaseHeight, self.tableView.frame.size.width * 0.78, self.tableView.frame.size.width * 0.88 * 154.0 / 1315.0);
-    [uibWu addTarget:self action:@selector(uibClickedWu) forControlEvents:UIControlEventTouchUpInside];
-    uibWu.tintColor = [UIColor blackColor];
-    [uibWu setTitle:@"吳育昇選區：海口夯社" forState:UIControlStateNormal];
-    [cell.contentView addSubview:uibWu];
-    
-    UIButton *uibLin = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    uibLin.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    uibLin.frame = CGRectMake(self.tableView.frame.size.width * 0.06, self.tableView.frame.size.width * 0.28 + cgfBaseHeight, self.tableView.frame.size.width * 0.78, self.tableView.frame.size.width * 0.88 * 154.0 / 1315.0);
-    [uibLin addTarget:self action:@selector(uibClickedLin) forControlEvents:UIControlEventTouchUpInside];
-    uibLin.tintColor = [UIColor blackColor];
-    [uibLin setTitle:@"林鴻池選區：板橋手術中" forState:UIControlStateNormal];
-    [cell.contentView addSubview:uibLin];
-    
-    UIButton *uibDragon = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    uibDragon.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    uibDragon.frame = CGRectMake(self.tableView.frame.size.width * 0.06, self.tableView.frame.size.width * 0.46 + cgfBaseHeight, self.tableView.frame.size.width * 0.78, self.tableView.frame.size.width * 0.88 * 154.0 / 1315.0);
-    [uibDragon addTarget:self action:@selector(uibClickedDragon) forControlEvents:UIControlEventTouchUpInside];
-    uibDragon.tintColor = [UIColor blackColor];
-    [uibDragon setTitle:@"蔡錦龍選區" forState:UIControlStateNormal];
-    [cell.contentView addSubview:uibDragon];
-    
-    UIButton *uibHuang = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    uibHuang.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    uibHuang.frame = CGRectMake(self.tableView.frame.size.width * 0.06, self.tableView.frame.size.width * 0.90 + cgfBaseHeight, self.tableView.frame.size.width * 0.78, self.tableView.frame.size.width * 0.88 * 154.0 / 1315.0);
-    [uibHuang addTarget:self action:@selector(uibClickedHuang) forControlEvents:UIControlEventTouchUpInside];
-    uibHuang.tintColor = [UIColor blackColor];
-    [uibHuang setTitle:@"黃昭順選區" forState:UIControlStateNormal];
-    [cell.contentView addSubview:uibHuang];
-    
-    UIButton *uibCountry = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    uibCountry.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    uibCountry.frame = CGRectMake(self.tableView.frame.size.width * 0.06, self.tableView.frame.size.width * 0.97 + cgfBaseHeight, self.tableView.frame.size.width * 0.78, self.tableView.frame.size.width * 0.88 * 154.0 / 1315.0);
-    [uibCountry addTarget:self action:@selector(uibClickedCountry) forControlEvents:UIControlEventTouchUpInside];
-    uibCountry.tintColor = [UIColor blackColor];
-    [uibCountry setTitle:@"林國正選區" forState:UIControlStateNormal];
-    [cell.contentView addSubview:uibCountry];
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if ((long)indexPath.row == 1) {
-        NSLog(@"%ld", (long)indexPath.row);
-        [delegate.navigationController setNavigationBarHidden:NO animated:NO];
-        [self makeKeyboardOffsetBack];
-        [delegate.navigationController pushViewController:[BATTLEGROUNDViewController new] animated:NO];
-    }
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *nssIDKG1 = @"KG1";
     static NSString *nssIDKG2 = @"KG2";
@@ -182,7 +138,7 @@
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDKG1];
         }
         UIImage *uiim = [UIImage imageNamed:@"kg1"];
-        UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, cgfScreenHeightBase, self.tableView.frame.size.width, self.tableView.frame.size.width * 90 / 640)];
+        UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.tableView.frame.size.width, self.tableView.frame.size.width * 90 / 640)];
         uiimv.image = uiim;
         [cell.contentView addSubview:uiimv];
     } else if (indexPath.row == 1) {
@@ -228,7 +184,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
-        return cgfScreenHeightBase + self.tableView.frame.size.width * 90 / 640 + 20.0;
+        return self.tableView.frame.size.width * 90 / 640 + 20.0;
     } else if (indexPath.row == 1) {
         return self.tableView.frame.size.width * 418 / 640;
     } else if (indexPath.row == 2) {
@@ -236,9 +192,9 @@
     } else if (indexPath.row == 3) {
         return self.tableView.frame.size.width * 418 / 640;
     } else if (indexPath.row == 4) {
-        return self.tableView.frame.size.width * 418 / 640 + 60;
+        return self.tableView.frame.size.width * 418 / 640;
     } else {
-        return self.tableView.frame.size.width * 418 / 640 + 80;
+        return self.tableView.frame.size.width * 418 / 640;
     }
 }
 

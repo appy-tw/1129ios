@@ -60,6 +60,8 @@
 		8F3BF8A61A03F718002F75E9 /* MYParseDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3BF8A41A03F718002F75E9 /* MYParseDelegate.m */; };
 		8F3BF8A81A040970002F75E9 /* UserData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F3BF8A71A040970002F75E9 /* UserData.plist */; };
 		8F3BF8A91A040970002F75E9 /* UserData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F3BF8A71A040970002F75E9 /* UserData.plist */; };
+		8F450FB51A13588100CD2C37 /* KGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F450FB41A13588100CD2C37 /* KGViewController.m */; };
+		8F450FB61A13588100CD2C37 /* KGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F450FB41A13588100CD2C37 /* KGViewController.m */; };
 		8F839D221A07B77E0071654C /* MSTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F839D211A07B77E0071654C /* MSTableViewController.m */; };
 		8F839D231A07B77E0071654C /* MSTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F839D211A07B77E0071654C /* MSTableViewController.m */; };
 		8FBCEB4E1A029E2C00D200A0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBCEB4D1A029E2C00D200A0 /* main.m */; };
@@ -189,6 +191,8 @@
 		8F3BF8A41A03F718002F75E9 /* MYParseDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MYParseDelegate.m; path = parse/MYParseDelegate.m; sourceTree = "<group>"; };
 		8F3BF8A71A040970002F75E9 /* UserData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = UserData.plist; sourceTree = "<group>"; };
 		8F3BF8AA1A040BC5002F75E9 /* PLISTHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLISTHeader.h; sourceTree = "<group>"; };
+		8F450FB31A13588100CD2C37 /* KGViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KGViewController.h; path = view/KGViewController.h; sourceTree = "<group>"; };
+		8F450FB41A13588100CD2C37 /* KGViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KGViewController.m; path = view/KGViewController.m; sourceTree = "<group>"; };
 		8F839D201A07B77E0071654C /* MSTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MSTableViewController.h; path = view/MSTableViewController.h; sourceTree = "<group>"; };
 		8F839D211A07B77E0071654C /* MSTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MSTableViewController.m; path = view/MSTableViewController.m; sourceTree = "<group>"; };
 		8FBCEB481A029E2C00D200A0 /* ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -457,6 +461,8 @@
 				8F24C0471A12A7D000277BAD /* BLOGViewController.m */,
 				8F3A12961A0B392700C10C5D /* KGTableViewController.h */,
 				8F3A12971A0B392700C10C5D /* KGTableViewController.m */,
+				8F450FB31A13588100CD2C37 /* KGViewController.h */,
+				8F450FB41A13588100CD2C37 /* KGViewController.m */,
 				E70860FC1A1101BF00D087E0 /* MapViewController.h */,
 				E70860FD1A1101BF00D087E0 /* MapViewController.m */,
 				8F839D201A07B77E0071654C /* MSTableViewController.h */,
@@ -656,6 +662,7 @@
 				88E7B44C1A11AA1E00B0639F /* UIButton+WebCache.m in Sources */,
 				8FBCEB851A02BDDB00D200A0 /* BLOGTableViewController.m in Sources */,
 				8F3BF89B1A03DAB4002F75E9 /* UIWebView+YouTube.m in Sources */,
+				8F450FB51A13588100CD2C37 /* KGViewController.m in Sources */,
 				8F24C0481A12A7D000277BAD /* BLOGViewController.m in Sources */,
 				497FC99C1A109BA6009787E9 /* VGeoManager.m in Sources */,
 				8FBCEB8F1A02BDDB00D200A0 /* TabBarController.m in Sources */,
@@ -703,6 +710,7 @@
 				8FBCEB841A02BDDB00D200A0 /* BLOGTableViewCell.m in Sources */,
 				8F24C04D1A12A7F000277BAD /* SUPViewController.m in Sources */,
 				8F3A12AF1A0B73DE00C10C5D /* PointerViewController.m in Sources */,
+				8F450FB61A13588100CD2C37 /* KGViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
