@@ -70,7 +70,7 @@
             nssContent = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
             NSLog(@"Content: %@", nssContent);
             nssContent =
-               [[@"<html><head><!-- Latest compiled and minified CSS --><link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css\"><style type=\"text/css\"> body { margin: auto; width: 320px;} img { margin: auto; width: 320px;}</style></head><body>" stringByAppendingString:[[[[nssContent componentsSeparatedByString:@"<section class=\"post\">"] objectAtIndex:1] componentsSeparatedByString:@"<section class=\"attribution-tags clearfix\">" ] objectAtIndex:0] ] stringByAppendingString: @"</section></body></html>"];
+               [[@"<html><head><!-- Latest compiled and minified CSS --><link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css\"><style type=\"text/css\"> body { margin: auto; width: 100%;} p > img { margin: auto; width: 100%;} p {margin:auto; width: 88%;} h2 {background-color: #b41e3e; color: white;} h2 > a {color: white;} </style></head><body>" stringByAppendingString:[[[[nssContent componentsSeparatedByString:@"<section class=\"post\">"] objectAtIndex:1] componentsSeparatedByString:@"<section class=\"attribution-tags clearfix\">" ] objectAtIndex:0] ] stringByAppendingString: @"</section></body></html>"];
             [uiwvBlog loadHTMLString:nssContent baseURL:nil];
         } else {
             NSLog(@"Download url error: %@", connectionError);
@@ -81,7 +81,7 @@
 }
 
 - (void)setWebView {
-    uiwvBlog = [[UIWebView alloc] initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, self.view.frame.size.height - self.tabBarController.tabBar.frame.size.height )];
+    uiwvBlog = [[UIWebView alloc] initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth, self.view.frame.size.height - self.tabBarController.tabBar.frame.size.height - 5.0)];
     [self downloadFile];
     NSLog(@"%@", delegate.nssBLOGLink);
     [self.view addSubview:uiwvBlog];
@@ -89,6 +89,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0];
     delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [self setMyScreenSize];
     [self makeKeyboardOffset];

@@ -133,83 +133,191 @@
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDKG2];
         if (cell == nil) {
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDKG2];
+            UIImage *uiim = [UIImage imageNamed:@"kg2"];
+            UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.tableView.frame.size.width, self.tableView.frame.size.width * 398 / 640)];
+            uiimv.image = uiim;
+            [cell.contentView addSubview:uiimv];
+            UIView *uivHP = [[UIView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 50.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+            uivHP.layer.borderColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0].CGColor;
+            uivHP.layer.borderWidth = 2.0;
+            [uivHP setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
+            uivHP.layer.cornerRadius = 4;
+            [cell.contentView addSubview:uivHP];
+            UIView *uivMan = [[UIView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 142.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+            uivMan.layer.borderColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0].CGColor;
+            uivMan.layer.borderWidth = 2.0;
+            [uivMan setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
+            uivMan.layer.cornerRadius = 4;
+            [cell.contentView addSubview:uivMan];
+            UIView *uivItem = [[UIView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 238.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+            uivItem.layer.borderColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0].CGColor;
+            uivItem.layer.borderWidth = 2.0;
+            [uivItem setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
+            uivItem.layer.cornerRadius = 4;
+            [cell.contentView addSubview:uivItem];
+            
+            UILabel *uilHP = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 6.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+            uilHP.tag = 101;
+            [uilHP setFont:[UIFont systemFontOfSize:14]];
+            [uilHP setTextColor:[UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0]];
+            [cell.contentView addSubview:uilHP];
+            [uilHP setTextAlignment:NSTextAlignmentCenter];
+            UILabel *uilMan = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 95.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+            uilMan.tag = 102;
+            [uilMan setFont:[UIFont systemFontOfSize:14]];
+            [uilMan setTextColor:[UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0]];
+            [cell.contentView addSubview:uilMan];
+            [uilMan setTextAlignment:NSTextAlignmentCenter];
+            UILabel *uilItem = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 187.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+            uilItem.tag = 103;
+            [uilItem setFont:[UIFont systemFontOfSize:14]];
+            [uilItem setTextColor:[UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0]];
+            [cell.contentView addSubview:uilItem];
+            [uilItem setTextAlignment:NSTextAlignmentCenter];
+
+            UIView *uivHPValue;
+            uivHPValue.tag = 111;
+            [cell.contentView addSubview:uivHPValue];
+            UIView *uivManValue;
+            uivManValue.tag = 112;
+            [cell.contentView addSubview:uivManValue];
+            UIView *uivItemValue;
+            uivItemValue.tag = 113;
+            [cell.contentView addSubview:uivItemValue];
+            
+            
+//            UIView *uivHPValue = [[UIView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 50.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+//            [uivHPValue setBackgroundColor:[UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0]];
+//            uivHPValue.layer.cornerRadius = 4;
+//            [cell.contentView addSubview:uivHPValue];
+//            UIView *uivManValue = [[UIView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 142.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+//            uivManValue.layer.borderColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0].CGColor;
+//            uivManValue.layer.borderWidth = 2.0;
+//            [uivManValue setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
+//            uivManValue.layer.cornerRadius = 4;
+//            [cell.contentView addSubview:uivManValue];
+//            UIView *uivItemValue = [[UIView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 238.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+//            uivItemValue.layer.borderColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0].CGColor;
+//            uivItemValue.layer.borderWidth = 2.0;
+//            [uivItemValue setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
+//            uivItemValue.layer.cornerRadius = 4;
+//            [cell.contentView addSubview:uivItemValue];
+
         }
-        UIImage *uiim = [UIImage imageNamed:@"kg2"];
-        UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.tableView.frame.size.width, self.tableView.frame.size.width * 398 / 640)];
-        uiimv.image = uiim;
-        [cell.contentView addSubview:uiimv];
-        UIView *uivHP = [[UIView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 50.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
-        uivHP.layer.borderColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0].CGColor;
-        uivHP.layer.borderWidth = 2.0;
-        [uivHP setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
-        uivHP.layer.cornerRadius = 4;
-        [cell.contentView addSubview:uivHP];
-        UIView *uivMan = [[UIView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 142.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
-        uivMan.layer.borderColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0].CGColor;
-        uivMan.layer.borderWidth = 2.0;
-        [uivMan setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
-        uivMan.layer.cornerRadius = 4;
-        [cell.contentView addSubview:uivMan];
-        UIView *uivItem = [[UIView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 238.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
-        uivItem.layer.borderColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0].CGColor;
-        uivItem.layer.borderWidth = 2.0;
-        [uivItem setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
-        uivItem.layer.cornerRadius = 4;
-        [cell.contentView addSubview:uivItem];
+        UILabel *uilHP = (UILabel *)[cell.contentView viewWithTag:101];
+        [uilHP setText:[nssTPE4HP componentsSeparatedByString:@";"][0]];
+        UILabel *uilMan = (UILabel *)[cell.contentView viewWithTag:102];
+        [uilMan setText:[nssTPE4Man componentsSeparatedByString:@";"][0]];
+        UILabel *uilItem = (UILabel *)[cell.contentView viewWithTag:103];
+        [uilItem setText:[nssTPE4Item componentsSeparatedByString:@";"][0]];
     } else if (indexPath.row == 2) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDKG3];
         if (cell == nil) {
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDKG3];
+            UIImage *uiim = [UIImage imageNamed:@"kg3"];
+            UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.tableView.frame.size.width, self.tableView.frame.size.width * 398 / 640)];
+            uiimv.image = uiim;
+            [cell.contentView addSubview:uiimv];
+            UIView *uivHP = [[UIView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 50.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+            uivHP.layer.borderColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0].CGColor;
+            uivHP.layer.borderWidth = 2.0;
+            [uivHP setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
+            uivHP.layer.cornerRadius = 4;
+            [cell.contentView addSubview:uivHP];
+            UIView *uivMan = [[UIView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 142.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+            uivMan.layer.borderColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0].CGColor;
+            uivMan.layer.borderWidth = 2.0;
+            [uivMan setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
+            uivMan.layer.cornerRadius = 4;
+            [cell.contentView addSubview:uivMan];
+            UIView *uivItem = [[UIView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 238.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+            uivItem.layer.borderColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0].CGColor;
+            uivItem.layer.borderWidth = 2.0;
+            [uivItem setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
+            uivItem.layer.cornerRadius = 4;
+            [cell.contentView addSubview:uivItem];
+            
+            UILabel *uilHP = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 6.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+            uilHP.tag = 201;
+            [uilHP setFont:[UIFont systemFontOfSize:14]];
+            [uilHP setTextColor:[UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0]];
+            [cell.contentView addSubview:uilHP];
+            [uilHP setTextAlignment:NSTextAlignmentCenter];
+            
+            UILabel *uilMan = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 95.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+            uilMan.tag = 202;
+            [uilMan setFont:[UIFont systemFontOfSize:14]];
+            [uilMan setTextColor:[UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0]];
+            [cell.contentView addSubview:uilMan];
+            [uilMan setTextAlignment:NSTextAlignmentCenter];
+            
+            UILabel *uilItem = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 187.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+            uilItem.tag = 203;
+            [uilItem setFont:[UIFont systemFontOfSize:14]];
+            [uilItem setTextColor:[UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0]];
+            [cell.contentView addSubview:uilItem];
+            [uilItem setTextAlignment:NSTextAlignmentCenter];
         }
-        UIImage *uiim = [UIImage imageNamed:@"kg3"];
-        UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.tableView.frame.size.width, self.tableView.frame.size.width * 398 / 640)];
-        uiimv.image = uiim;
-        [cell.contentView addSubview:uiimv];
-        UIView *uivHP = [[UIView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 50.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
-        uivHP.layer.borderColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0].CGColor;
-        uivHP.layer.borderWidth = 2.0;
-        [uivHP setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
-        uivHP.layer.cornerRadius = 4;
-        [cell.contentView addSubview:uivHP];
-        UIView *uivMan = [[UIView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 142.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
-        uivMan.layer.borderColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0].CGColor;
-        uivMan.layer.borderWidth = 2.0;
-        [uivMan setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
-        uivMan.layer.cornerRadius = 4;
-        [cell.contentView addSubview:uivMan];
-        UIView *uivItem = [[UIView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 238.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
-        uivItem.layer.borderColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0].CGColor;
-        uivItem.layer.borderWidth = 2.0;
-        [uivItem setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
-        uivItem.layer.cornerRadius = 4;
-        [cell.contentView addSubview:uivItem];
+        UILabel *uilHP = (UILabel *)[cell.contentView viewWithTag:201];
+        [uilHP setText:[nssTPQ6HP componentsSeparatedByString:@";"][0]];
+        UILabel *uilMan = (UILabel *)[cell.contentView viewWithTag:202];
+        [uilMan setText:[nssTPQ6Man componentsSeparatedByString:@";"][0]];
+        UILabel *uilItem = (UILabel *)[cell.contentView viewWithTag:203];
+        [uilItem setText:[nssTPQ6Item componentsSeparatedByString:@";"][0]];
     } else if (indexPath.row == 3) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDKG4];
         if (cell == nil) {
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDKG4];
+            UIImage *uiim = [UIImage imageNamed:@"kg4"];
+            UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.tableView.frame.size.width, self.tableView.frame.size.width * 398 / 640)];
+            uiimv.image = uiim;
+            [cell.contentView addSubview:uiimv];
+            UIView *uivHP = [[UIView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 50.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+            uivHP.layer.borderColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0].CGColor;
+            uivHP.layer.borderWidth = 2.0;
+            [uivHP setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
+            uivHP.layer.cornerRadius = 4;
+            [cell.contentView addSubview:uivHP];
+            UIView *uivMan = [[UIView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 142.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+            uivMan.layer.borderColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0].CGColor;
+            uivMan.layer.borderWidth = 2.0;
+            [uivMan setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
+            uivMan.layer.cornerRadius = 4;
+            [cell.contentView addSubview:uivMan];
+            UIView *uivItem = [[UIView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 238.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+            uivItem.layer.borderColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0].CGColor;
+            uivItem.layer.borderWidth = 2.0;
+            [uivItem setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
+            uivItem.layer.cornerRadius = 4;
+            [cell.contentView addSubview:uivItem];
+            
+            UILabel *uilHP = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 6.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+            uilHP.tag = 301;
+            [uilHP setFont:[UIFont systemFontOfSize:14]];
+            [uilHP setTextColor:[UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0]];
+            [cell.contentView addSubview:uilHP];
+            [uilHP setTextAlignment:NSTextAlignmentCenter];
+            
+            UILabel *uilMan = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 95.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+            uilMan.tag = 302;
+            [uilMan setFont:[UIFont systemFontOfSize:14]];
+            [uilMan setTextColor:[UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0]];
+            [cell.contentView addSubview:uilMan];
+            [uilMan setTextAlignment:NSTextAlignmentCenter];
+            
+            UILabel *uilItem = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 187.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+            uilItem.tag = 303;
+            [uilItem setFont:[UIFont systemFontOfSize:14]];
+            [uilItem setTextColor:[UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0]];
+            [cell.contentView addSubview:uilItem];
+            [uilItem setTextAlignment:NSTextAlignmentCenter];
         }
-        UIImage *uiim = [UIImage imageNamed:@"kg4"];
-        UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.tableView.frame.size.width, self.tableView.frame.size.width * 398 / 640)];
-        uiimv.image = uiim;
-        [cell.contentView addSubview:uiimv];
-        UIView *uivHP = [[UIView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 50.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
-        uivHP.layer.borderColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0].CGColor;
-        uivHP.layer.borderWidth = 2.0;
-        [uivHP setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
-        uivHP.layer.cornerRadius = 4;
-        [cell.contentView addSubview:uivHP];
-        UIView *uivMan = [[UIView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 142.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
-        uivMan.layer.borderColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0].CGColor;
-        uivMan.layer.borderWidth = 2.0;
-        [uivMan setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
-        uivMan.layer.cornerRadius = 4;
-        [cell.contentView addSubview:uivMan];
-        UIView *uivItem = [[UIView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 238.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
-        uivItem.layer.borderColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0].CGColor;
-        uivItem.layer.borderWidth = 2.0;
-        [uivItem setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
-        uivItem.layer.cornerRadius = 4;
-        [cell.contentView addSubview:uivItem];
+        UILabel *uilHP = (UILabel *)[cell.contentView viewWithTag:301];
+        [uilHP setText:[nssTPQ1HP componentsSeparatedByString:@";"][0]];
+        UILabel *uilMan = (UILabel *)[cell.contentView viewWithTag:302];
+        [uilMan setText:[nssTPQ1Man componentsSeparatedByString:@";"][0]];
+        UILabel *uilItem = (UILabel *)[cell.contentView viewWithTag:303];
+        [uilItem setText:[nssTPQ1Item componentsSeparatedByString:@";"][0]];
     } else if (indexPath.row == 4) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDKG5];
         if (cell == nil) {
@@ -230,7 +338,25 @@
             [uivItem setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]];
             uivItem.layer.cornerRadius = 4;
             [cell.contentView addSubview:uivItem];
+            
+            UILabel *uilMan = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 95.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+            uilMan.tag = 402;
+            [uilMan setFont:[UIFont systemFontOfSize:14]];
+            [uilMan setTextColor:[UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0]];
+            [cell.contentView addSubview:uilMan];
+            [uilMan setTextAlignment:NSTextAlignmentCenter];
+            
+            UILabel *uilItem = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 187.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+            uilItem.tag = 403;
+            [uilItem setFont:[UIFont systemFontOfSize:14]];
+            [uilItem setTextColor:[UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0]];
+            [cell.contentView addSubview:uilItem];
+            [uilItem setTextAlignment:NSTextAlignmentCenter];
         }
+        UILabel *uilMan = (UILabel *)[cell.contentView viewWithTag:402];
+        [uilMan setText:[nssTaiwanMan componentsSeparatedByString:@";"][0]];
+        UILabel *uilItem = (UILabel *)[cell.contentView viewWithTag:403];
+        [uilItem setText:[nssTaiwanItem componentsSeparatedByString:@";"][0]];
     } else {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDKG6];
         if (cell == nil) {

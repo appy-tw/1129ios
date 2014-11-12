@@ -147,6 +147,7 @@
     _fbProfilePic = [[FBProfilePictureView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 402 / 640 -1, cgfScreenWidth * 98 / 640 - 1, 200 * cgfScreenWidth / 640 + 2, 200 * cgfScreenWidth / 640 + 2)];
     [_fbProfilePic.layer setCornerRadius:50.0f];
     [super viewDidLoad];
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0];
     [self setImage];
     [self readAllFromMyPlist];
     [self setFBView];
