@@ -292,17 +292,8 @@
         [self initMyPlist];
     }
     NSMutableDictionary *nsmdPlistDictionary = [NSMutableDictionary dictionaryWithContentsOfFile:_nssPlistDst];
-    [nsmdPlistDictionary setValue:_nssUserName forKey:PLIST_USER_NAME];
     [nsmdPlistDictionary setValue:_nssDeviceToken forKey:PLIST_USER_DEVICE_TOKEN];
-    [nsmdPlistDictionary setValue:_nssGesturePassword forKey:PLIST_USER_GESTURE_PASSWORD];
-    [nsmdPlistDictionary setValue:_nssPassword forKey:PLIST_USER_PASSWORD];
-    [nsmdPlistDictionary setValue:_nssPhone forKey:PLIST_USER_PHONE];
-    [nsmdPlistDictionary setValue:_nssRSSContent forKey:PLIST_RSS_CONTENT];
     [nsmdPlistDictionary setValue:_nssRSSURL forKey:PLIST_RSS_URL];
-    [nsmdPlistDictionary setValue:_nssTsaiWuLin forKey:PLIST_TSAI_WU_LIN];
-    [nsmdPlistDictionary setValue:_nssAddress forKey:PLIST_ADDRESS];
-//    [nsmdPlistDictionary setValue:_nssGPSX forKey:PLIST_GPSX];
-//    [nsmdPlistDictionary setValue:_nssGPSY forKey:PLIST_GPSY];
     [nsmdPlistDictionary writeToFile:_nssPlistDst atomically:YES];
 }
 
@@ -312,15 +303,9 @@
     }
     NSMutableDictionary *nsmdPlistDictionary = [NSMutableDictionary dictionaryWithContentsOfFile:_nssPlistDst];
     if (nsmdPlistDictionary != nil) {
-        _nssUserName = [nsmdPlistDictionary objectForKey:PLIST_USER_NAME];
         _nssDeviceToken = [nsmdPlistDictionary objectForKey:PLIST_USER_DEVICE_TOKEN];
-        _nssGesturePassword = [nsmdPlistDictionary objectForKey:PLIST_USER_GESTURE_PASSWORD];
-        _nssPassword = [nsmdPlistDictionary objectForKey:PLIST_USER_PASSWORD];
-        _nssPhone = [nsmdPlistDictionary objectForKey:PLIST_USER_PHONE];
         _nssRSSContent = [nsmdPlistDictionary objectForKey:PLIST_RSS_CONTENT];
         _nssRSSURL = [nsmdPlistDictionary objectForKey:PLIST_RSS_URL];
-        _nssTsaiWuLin = [nsmdPlistDictionary objectForKey:PLIST_TSAI_WU_LIN];
-        _nssAddress = [nsmdPlistDictionary objectForKey:PLIST_ADDRESS];
     }
 }
 

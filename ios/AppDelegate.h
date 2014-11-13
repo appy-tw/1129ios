@@ -18,16 +18,16 @@
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
-@property (strong, nonatomic) NSString *nssUserName;
+//@property (strong, nonatomic) NSString *nssUserName;
 @property (strong, nonatomic) NSString *nssDeviceToken;
-@property (strong, nonatomic) NSString *nssGesturePassword;
-@property (strong, nonatomic) NSString *nssPassword;
-@property (strong, nonatomic) NSString *nssPhone;
+//@property (strong, nonatomic) NSString *nssGesturePassword;
+//@property (strong, nonatomic) NSString *nssPassword;
+//@property (strong, nonatomic) NSString *nssPhone;
 @property (strong, nonatomic) NSString *nssRSSContent;
 @property (strong, nonatomic) NSString *nssRSSURL;
 @property (strong, nonatomic) NSString *nssPlistDst;
-@property (strong, nonatomic) NSString *nssTsaiWuLin;
-@property (strong, nonatomic) NSString *nssAddress;
+//@property (strong, nonatomic) NSString *nssTsaiWuLin;
+//@property (strong, nonatomic) NSString *nssAddress;
 
 //@property (strong, nonatomic) CLLocationManager *cllMLocation;
 @property (assign, nonatomic) CLLocationDegrees clldLatitude;
