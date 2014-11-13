@@ -74,7 +74,7 @@
     MKPinAnnotationView *pinAnnotationView = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:identifierPin];
     if (!pinAnnotationView) {
         pinAnnotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifierPin];
-        pinAnnotationView.image = [UIImage imageNamed:@"sup"];
+        pinAnnotationView.image = [UIImage imageNamed:@"pin"];
         pinAnnotationView.canShowCallout = YES;
     } else {
         pinAnnotationView.annotation = annotation;

@@ -133,7 +133,7 @@
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
     if([annotation isKindOfClass:MKPointAnnotation.class]){
         MKAnnotationView *newAnnotation=[[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"annotation1"];
-        newAnnotation.image = [UIImage imageNamed:@"sup"];
+        newAnnotation.image = [UIImage imageNamed:@"pin"];
         newAnnotation.canShowCallout=YES;
         return newAnnotation;
     }else // user pin
@@ -180,9 +180,9 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//    delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
-    [delegate.cllMLocation stopUpdatingLocation];
+//    [delegate.cllMLocation stopUpdatingLocation];
     [[VGeoManager sharedInstance]setup];
     [VGeoManager sharedInstance].delegate = self;
     [super viewDidDisappear:animated];

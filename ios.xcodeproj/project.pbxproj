@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4957FDC41A13CFA2003C1621 /* VParseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4957FDC31A13CFA1003C1621 /* VParseManager.m */; };
+		4957FDC71A13D250003C1621 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4957FDC51A13D250003C1621 /* Model.xcdatamodeld */; };
+		4957FDCA1A13D346003C1621 /* VShopDataEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 4957FDC91A13D346003C1621 /* VShopDataEntity.m */; };
+		4957FDD81A13D39E003C1621 /* RHCoreDataCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4957FDCD1A13D39E003C1621 /* RHCoreDataCollectionViewController.m */; };
+		4957FDD91A13D39E003C1621 /* RHCoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4957FDCF1A13D39E003C1621 /* RHCoreDataTableViewController.m */; };
+		4957FDDA1A13D39E003C1621 /* RHFetchedResultsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4957FDD11A13D39E003C1621 /* RHFetchedResultsManager.m */; };
+		4957FDDB1A13D39E003C1621 /* RHManagedObject+legacy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4957FDD31A13D39E003C1621 /* RHManagedObject+legacy.m */; };
+		4957FDDC1A13D39E003C1621 /* RHManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4957FDD51A13D39E003C1621 /* RHManagedObject.m */; };
+		4957FDDD1A13D39E003C1621 /* RHManagedObjectContextManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4957FDD71A13D39E003C1621 /* RHManagedObjectContextManager.m */; };
+		4957FDE01A13D3C2003C1621 /* VShopData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4957FDDF1A13D3C2003C1621 /* VShopData.m */; };
+		4957FDE21A13D85F003C1621 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4957FDE11A13D85F003C1621 /* CoreData.framework */; };
+		4957FDE41A13D912003C1621 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4957FDE31A13D912003C1621 /* UIKit.framework */; };
 		497FC9961A108B9A009787E9 /* VShop.m in Sources */ = {isa = PBXBuildFile; fileRef = 497FC9951A108B9A009787E9 /* VShop.m */; };
 		497FC9991A109286009787E9 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 497FC9981A109286009787E9 /* Utils.m */; };
 		497FC99C1A109BA6009787E9 /* VGeoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 497FC99B1A109BA6009787E9 /* VGeoManager.m */; };
@@ -104,7 +116,6 @@
 		8FE0E98E1A069D1B000016D1 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FE0E98D1A069D1B000016D1 /* MobileCoreServices.framework */; };
 		8FE0E9901A069D23000016D1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FE0E98F1A069D23000016D1 /* QuartzCore.framework */; };
 		8FE0E9921A069D2B000016D1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FE0E9911A069D2B000016D1 /* Security.framework */; };
-		8FE0E9941A069D33000016D1 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FE0E9931A069D33000016D1 /* StoreKit.framework */; };
 		8FE0E9961A069D3C000016D1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FE0E9951A069D3C000016D1 /* SystemConfiguration.framework */; };
 		E70860FE1A1101BF00D087E0 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E70860FD1A1101BF00D087E0 /* MapViewController.m */; };
 		E70861001A12556600D087E0 /* att.plist in Resources */ = {isa = PBXBuildFile; fileRef = E70860FF1A12556600D087E0 /* att.plist */; };
@@ -121,6 +132,27 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4957FDC21A13CFA1003C1621 /* VParseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VParseManager.h; sourceTree = "<group>"; };
+		4957FDC31A13CFA1003C1621 /* VParseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VParseManager.m; sourceTree = "<group>"; };
+		4957FDC61A13D250003C1621 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		4957FDC81A13D346003C1621 /* VShopDataEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VShopDataEntity.h; sourceTree = "<group>"; };
+		4957FDC91A13D346003C1621 /* VShopDataEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VShopDataEntity.m; sourceTree = "<group>"; };
+		4957FDCC1A13D39E003C1621 /* RHCoreDataCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RHCoreDataCollectionViewController.h; sourceTree = "<group>"; };
+		4957FDCD1A13D39E003C1621 /* RHCoreDataCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RHCoreDataCollectionViewController.m; sourceTree = "<group>"; };
+		4957FDCE1A13D39E003C1621 /* RHCoreDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RHCoreDataTableViewController.h; sourceTree = "<group>"; };
+		4957FDCF1A13D39E003C1621 /* RHCoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RHCoreDataTableViewController.m; sourceTree = "<group>"; };
+		4957FDD01A13D39E003C1621 /* RHFetchedResultsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RHFetchedResultsManager.h; sourceTree = "<group>"; };
+		4957FDD11A13D39E003C1621 /* RHFetchedResultsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RHFetchedResultsManager.m; sourceTree = "<group>"; };
+		4957FDD21A13D39E003C1621 /* RHManagedObject+legacy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RHManagedObject+legacy.h"; sourceTree = "<group>"; };
+		4957FDD31A13D39E003C1621 /* RHManagedObject+legacy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RHManagedObject+legacy.m"; sourceTree = "<group>"; };
+		4957FDD41A13D39E003C1621 /* RHManagedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RHManagedObject.h; sourceTree = "<group>"; };
+		4957FDD51A13D39E003C1621 /* RHManagedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RHManagedObject.m; sourceTree = "<group>"; };
+		4957FDD61A13D39E003C1621 /* RHManagedObjectContextManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RHManagedObjectContextManager.h; sourceTree = "<group>"; };
+		4957FDD71A13D39E003C1621 /* RHManagedObjectContextManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RHManagedObjectContextManager.m; sourceTree = "<group>"; };
+		4957FDDE1A13D3C2003C1621 /* VShopData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VShopData.h; sourceTree = "<group>"; };
+		4957FDDF1A13D3C2003C1621 /* VShopData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VShopData.m; sourceTree = "<group>"; };
+		4957FDE11A13D85F003C1621 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		4957FDE31A13D912003C1621 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		497FC9941A108B9A009787E9 /* VShop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VShop.h; sourceTree = "<group>"; };
 		497FC9951A108B9A009787E9 /* VShop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VShop.m; sourceTree = "<group>"; };
 		497FC9971A109286009787E9 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
@@ -238,7 +270,6 @@
 		8FE0E98D1A069D1B000016D1 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		8FE0E98F1A069D23000016D1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		8FE0E9911A069D2B000016D1 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		8FE0E9931A069D33000016D1 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		8FE0E9951A069D3C000016D1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		E70860FC1A1101BF00D087E0 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapViewController.h; path = view/MapViewController.h; sourceTree = "<group>"; };
 		E70860FD1A1101BF00D087E0 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapViewController.m; path = view/MapViewController.m; sourceTree = "<group>"; };
@@ -251,9 +282,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F450FC01A13F3FE00CD2C37 /* CoreText.framework in Frameworks */,
+				4957FDE41A13D912003C1621 /* UIKit.framework in Frameworks */,
+				4957FDE21A13D85F003C1621 /* CoreData.framework in Frameworks */,
 				8F3A12A71A0B58B400C10C5D /* MapKit.framework in Frameworks */,
 				8FE0E9961A069D3C000016D1 /* SystemConfiguration.framework in Frameworks */,
-				8FE0E9941A069D33000016D1 /* StoreKit.framework in Frameworks */,
 				8FE0E9921A069D2B000016D1 /* Security.framework in Frameworks */,
 				8FE0E9901A069D23000016D1 /* QuartzCore.framework in Frameworks */,
 				8FE0E98E1A069D1B000016D1 /* MobileCoreServices.framework in Frameworks */,
@@ -283,13 +315,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4957FDCB1A13D39E003C1621 /* RHManagedObject */ = {
+			isa = PBXGroup;
+			children = (
+				4957FDCC1A13D39E003C1621 /* RHCoreDataCollectionViewController.h */,
+				4957FDCD1A13D39E003C1621 /* RHCoreDataCollectionViewController.m */,
+				4957FDCE1A13D39E003C1621 /* RHCoreDataTableViewController.h */,
+				4957FDCF1A13D39E003C1621 /* RHCoreDataTableViewController.m */,
+				4957FDD01A13D39E003C1621 /* RHFetchedResultsManager.h */,
+				4957FDD11A13D39E003C1621 /* RHFetchedResultsManager.m */,
+				4957FDD21A13D39E003C1621 /* RHManagedObject+legacy.h */,
+				4957FDD31A13D39E003C1621 /* RHManagedObject+legacy.m */,
+				4957FDD41A13D39E003C1621 /* RHManagedObject.h */,
+				4957FDD51A13D39E003C1621 /* RHManagedObject.m */,
+				4957FDD61A13D39E003C1621 /* RHManagedObjectContextManager.h */,
+				4957FDD71A13D39E003C1621 /* RHManagedObjectContextManager.m */,
+			);
+			path = RHManagedObject;
+			sourceTree = "<group>";
+		};
 		497FC9931A108B72009787E9 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				4957FDCB1A13D39E003C1621 /* RHManagedObject */,
 				497FC9941A108B9A009787E9 /* VShop.h */,
 				497FC9951A108B9A009787E9 /* VShop.m */,
 				497FC99A1A109BA6009787E9 /* VGeoManager.h */,
 				497FC99B1A109BA6009787E9 /* VGeoManager.m */,
+				4957FDC21A13CFA1003C1621 /* VParseManager.h */,
+				4957FDC31A13CFA1003C1621 /* VParseManager.m */,
+				4957FDC51A13D250003C1621 /* Model.xcdatamodeld */,
+				4957FDC81A13D346003C1621 /* VShopDataEntity.h */,
+				4957FDC91A13D346003C1621 /* VShopDataEntity.m */,
+				4957FDDE1A13D3C2003C1621 /* VShopData.h */,
+				4957FDDF1A13D3C2003C1621 /* VShopData.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -506,10 +565,11 @@
 			isa = PBXGroup;
 			children = (
 				8F450FBF1A13F3FE00CD2C37 /* CoreText.framework */,
+				4957FDE31A13D912003C1621 /* UIKit.framework */,
+				4957FDE11A13D85F003C1621 /* CoreData.framework */,
 				8F2C57021A0E6507007A24A4 /* GoogleMaps.framework */,
 				8F3A12A61A0B58B400C10C5D /* MapKit.framework */,
 				8FE0E9951A069D3C000016D1 /* SystemConfiguration.framework */,
-				8FE0E9931A069D33000016D1 /* StoreKit.framework */,
 				8FE0E9911A069D2B000016D1 /* Security.framework */,
 				8FE0E98F1A069D23000016D1 /* QuartzCore.framework */,
 				8FE0E98D1A069D1B000016D1 /* MobileCoreServices.framework */,
@@ -595,6 +655,9 @@
 					8FBCEB471A029E2C00D200A0 = {
 						CreatedOnToolsVersion = 6.1;
 						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
 							com.apple.Maps.iOS = {
 								enabled = 1;
 							};
@@ -602,7 +665,7 @@
 					};
 					8FBCEB631A029E2C00D200A0 = {
 						CreatedOnToolsVersion = 6.1;
-						DevelopmentTeam = DEATJ76XRX;
+						DevelopmentTeam = 9SFGMQE6W6;
 						TestTargetID = 8FBCEB471A029E2C00D200A0;
 					};
 				};
@@ -669,7 +732,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				88E7B4471A11AA1E00B0639F /* SDWebImageDecoder.m in Sources */,
+				4957FDCA1A13D346003C1621 /* VShopDataEntity.m in Sources */,
 				497FC9961A108B9A009787E9 /* VShop.m in Sources */,
+				4957FDD81A13D39E003C1621 /* RHCoreDataCollectionViewController.m in Sources */,
 				88E7B4431A11AA1E00B0639F /* MKAnnotationView+WebCache.m in Sources */,
 				8F839D221A07B77E0071654C /* MSTableViewController.m in Sources */,
 				8FBCEB541A029E2C00D200A0 /* ios.xcdatamodeld in Sources */,
@@ -686,6 +751,7 @@
 				88E7B44C1A11AA1E00B0639F /* UIButton+WebCache.m in Sources */,
 				8F450FBD1A13F3E700CD2C37 /* THLabel.m in Sources */,
 				8FBCEB851A02BDDB00D200A0 /* BLOGTableViewController.m in Sources */,
+				4957FDC71A13D250003C1621 /* Model.xcdatamodeld in Sources */,
 				8F3BF89B1A03DAB4002F75E9 /* UIWebView+YouTube.m in Sources */,
 				8F450FB51A13588100CD2C37 /* KGViewController.m in Sources */,
 				8F24C0481A12A7D000277BAD /* BLOGViewController.m in Sources */,
@@ -693,10 +759,12 @@
 				8FBCEB8F1A02BDDB00D200A0 /* TabBarController.m in Sources */,
 				8FBCEB4E1A029E2C00D200A0 /* main.m in Sources */,
 				8F286CE41A0F52F200CA923D /* UIScrollView+SVPullToRefresh.m in Sources */,
+				4957FDDC1A13D39E003C1621 /* RHManagedObject.m in Sources */,
 				88E7B4491A11AA1E00B0639F /* SDWebImageDownloaderOperation.m in Sources */,
 				8F24C04C1A12A7F000277BAD /* SUPViewController.m in Sources */,
 				497FC9991A109286009787E9 /* Utils.m in Sources */,
 				8FBCEB831A02BDDB00D200A0 /* BLOGTableViewCell.m in Sources */,
+				4957FDC41A13CFA2003C1621 /* VParseManager.m in Sources */,
 				88E7B44B1A11AA1E00B0639F /* SDWebImagePrefetcher.m in Sources */,
 				88E7B44F1A11AA1E00B0639F /* UIImage+WebP.m in Sources */,
 				88E7B44A1A11AA1E00B0639F /* SDWebImageManager.m in Sources */,
@@ -704,12 +772,17 @@
 				8F3A12AE1A0B73DE00C10C5D /* PointerViewController.m in Sources */,
 				8F3A12981A0B392700C10C5D /* KGTableViewController.m in Sources */,
 				8F3A129C1A0B393500C10C5D /* SUPTableViewController.m in Sources */,
+				4957FDDA1A13D39E003C1621 /* RHFetchedResultsManager.m in Sources */,
 				8FD262171A0B8353000B8D59 /* BATTLEGROUNDViewController.m in Sources */,
 				8F3BF8A51A03F718002F75E9 /* MYParseDelegate.m in Sources */,
 				88E7B4521A11AA1E00B0639F /* UIView+WebCacheOperation.m in Sources */,
+				4957FDDB1A13D39E003C1621 /* RHManagedObject+legacy.m in Sources */,
+				4957FDE01A13D3C2003C1621 /* VShopData.m in Sources */,
 				88E7B4501A11AA1E00B0639F /* UIImageView+HighlightedWebCache.m in Sources */,
 				8F24C0501A12A80400277BAD /* ATTViewController.m in Sources */,
+				4957FDD91A13D39E003C1621 /* RHCoreDataTableViewController.m in Sources */,
 				8F3A12A01A0B394200C10C5D /* ATTTableViewController.m in Sources */,
+				4957FDDD1A13D39E003C1621 /* RHManagedObjectContextManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -969,6 +1042,16 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
+		4957FDC51A13D250003C1621 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4957FDC61A13D250003C1621 /* Model.xcdatamodel */,
+			);
+			currentVersion = 4957FDC61A13D250003C1621 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
 		8FBCEB521A029E2C00D200A0 /* ios.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
