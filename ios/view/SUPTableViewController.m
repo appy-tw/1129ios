@@ -273,7 +273,7 @@
             [cell.contentView addSubview:uiimv];
             UILabel *uilTitle = [[UILabel alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 0.18, self.tableView.frame.size.width * 0.002+CELL_CONTENT_Y_OFFSET, self.tableView.frame.size.width * 0.45, 18.0)];
             UILabel *uilAddress = [[UILabel alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 0.18, self.tableView.frame.size.width * 0.06+CELL_CONTENT_Y_OFFSET, self.tableView.frame.size.width * 0.45, 18.0)];
-            UILabel *uilDistance = [[UILabel alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 0.82, self.tableView.frame.size.width * 0.027+CELL_CONTENT_Y_OFFSET, self.tableView.frame.size.width * 0.2, 18.0)];
+            UILabel *uilDistance = [[UILabel alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 0.795, self.tableView.frame.size.width * 0.027+CELL_CONTENT_Y_OFFSET, self.tableView.frame.size.width * 0.2, 18.0)];
             uilTitle.tag = __Title_Tag__;
             uilAddress.tag = __Address_Tag__;
             uilDistance.tag = __Distance_Tag__;
@@ -297,6 +297,14 @@
         [addressLabel setText:aShop.mAddress];
         CLLocationDistance dist = aShop.mDistance;
         [distanceLabel setText:[NSString stringWithFormat:@"%.1fKM", dist / 1000]];
+        [distanceLabel setTextAlignment:NSTextAlignmentCenter];
+        if (dist >= 100000000){
+            [distanceLabel setFont:[UIFont systemFontOfSize:8]];
+        } else if (dist >= 100000){
+            [distanceLabel setFont:[UIFont systemFontOfSize:12]];
+        } else {
+            [distanceLabel setFont:[UIFont systemFontOfSize:16]];
+        }
         cell.tag = [self.mShopArray indexOfObject: aShop];
     }
     if(indexPath.row < CELL_OFFSET){
