@@ -296,7 +296,7 @@
         [titleLabel setText:aShop.mTitle];
         [addressLabel setText:aShop.mAddress];
         CLLocationDistance dist = aShop.mDistance;
-        [distanceLabel setText:[NSString stringWithFormat:@"%.1fKM", dist / 1000]];
+        [distanceLabel setText:[NSString stringWithFormat:@"%.1f公里", dist / 1000]];
         [distanceLabel setTextAlignment:NSTextAlignmentCenter];
         if (dist >= 100000000){
             [distanceLabel setFont:[UIFont systemFontOfSize:8]];
