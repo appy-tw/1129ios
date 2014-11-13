@@ -98,6 +98,20 @@
         [self.mAnnotationDictionary setObject:mkpaPoint forKey:aShop.key];
     }
 }
+-(VShop*)getShopOfAnnotation:(MKPointAnnotation*)annotation{
+    NSArray* keys = [self.mAnnotationDictionary allKeysForObject:annotation];
+    if(keys != nil){
+        NSString* key = [keys firstObject];
+        if(key != nil){
+            for(VShop* shop in self.mShopArray){
+                if([key isEqualToString:shop.key]){
+                    return shop;
+                }
+            }
+        }
+    }
+    return nil;
+}
 
 - (void)setMyScreenSize
 {
@@ -138,7 +152,16 @@
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
     if([annotation isKindOfClass:MKPointAnnotation.class]){
         MKAnnotationView *newAnnotation=[[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"annotation1"];
-        newAnnotation.image = [UIImage imageNamed:@"pin"];
+        NSString* type = [self getShopOfAnnotation:annotation].mType;
+        if([type isEqualToString:@"cinema"]){
+            newAnnotation.image = [UIImage imageNamed:@"video"];
+        }else if([type isEqualToString:@"cafe"]){
+            newAnnotation.image = [UIImage imageNamed:@"restaurant"];
+        }else if([type isEqualToString:@"camp"]){
+            newAnnotation.image = [UIImage imageNamed:@"camp"];
+        }else{
+            newAnnotation.image = [UIImage imageNamed:@"pin"];
+        }
         newAnnotation.canShowCallout=YES;
         return newAnnotation;
     }else // user pin

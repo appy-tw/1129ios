@@ -63,6 +63,7 @@
     self.mTime = data.time;
     self.mPhone = data.phone;
     self.mWebSite = data.website;
+    self.mType = data.type;
     
     self.mGeoPoint = [[CLLocation alloc]initWithLatitude:[data.lat doubleValue ]
                                                longitude:[data.lon doubleValue]];
@@ -104,6 +105,7 @@
     [dictionary setValue:self.mTime forKey:@"time"];
     [dictionary setValue:self.mPhone forKey:@"phone"];
     [dictionary setValue:self.mWebSite forKey:@"website"];
+    [dictionary setValue:self.mType forKey:@"type"];
     
     NSString* lat = [[NSString alloc] initWithFormat:@"%.20f", self.mGeoPoint.coordinate.latitude];
     [dictionary setValue:lat forKey:@"lat"];

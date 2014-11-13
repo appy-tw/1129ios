@@ -13,14 +13,15 @@
 
 @interface VShopDataEntity : RHManagedObject
 
-@property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSString * address;
-@property (nonatomic, retain) NSString * vzone;
-@property (nonatomic, retain) NSString * time;
-@property (nonatomic, retain) NSString * phone;
-@property (nonatomic, retain) NSString * website;
-@property (nonatomic, retain) NSString * vid;
 @property (nonatomic, retain) NSString * lat;
 @property (nonatomic, retain) NSString * lon;
+@property (nonatomic, retain) NSString * phone;
+@property (nonatomic, retain) NSString * time;
+@property (nonatomic, retain) NSString * title;
+@property (nonatomic, retain) NSString * vid;
+@property (nonatomic, retain) NSString * vzone;
+@property (nonatomic, retain) NSString * website;
+@property (nonatomic, retain) NSString * type;
 
 @end
