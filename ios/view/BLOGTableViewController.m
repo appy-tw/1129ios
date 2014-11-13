@@ -262,16 +262,20 @@
 {
     if (indexPath.section == 0) {
 //        return cgfScreenHeightBase + self.tableView.frame.size.width * 45 / 320 + cgfScreenHeight * 0.04;
-        return self.tableView.frame.size.width * 90 / 640 + 5.0;
+        return self.tableView.frame.size.width * 90 / 640 + cgfScreenWidth * 25.0 / 640.0;
     } else {
         BlogItem *item = [self.blogItemsArr objectAtIndex:indexPath.row];
-        if (item.image)
-            return item.cellHeight + 10;
+        if (item.image){
+            if (indexPath.row == [self.blogItemsArr count] - 1) {
+                return item.cellHeight + cgfScreenWidth * 15.0 / 640.0 + cgfScreenWidth * 15.0 / 640.0;
+            } else {
+                return item.cellHeight + cgfScreenWidth * 15.0 / 640.0;
+            }
+        }
         else
             return 0;       // image has not downloaded yet.
     }
 }
-
 
 /*
 // Override to support conditional editing of the table view.

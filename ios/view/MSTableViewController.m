@@ -78,7 +78,7 @@
     width=\"%0.0f\" height=\"%0.0f\"></embed>\
     </body></html>";
     NSString *nssHtml = [NSString stringWithFormat:nssEmbedHTML, @"https://www.youtube.com/watch?feature=player_embedded&v=OtvbZscM90A", self.tableView.frame.size.width * 0.92, self.tableView.frame.size.width * .92 * 9.0 / 16.0];
-    _uiwVideoView = [[UIWebView alloc] initWithFrame:CGRectMake(self.tableView.frame.size.width * 0.04, self.tableView.frame.size.width * 90 / 640 + 15.0, self.tableView.frame.size.width * 0.92, self.tableView.frame.size.width * 0.92 * 9.0 / 16.0)];
+    _uiwVideoView = [[UIWebView alloc] initWithFrame:CGRectMake(self.tableView.frame.size.width * 0.04, self.tableView.frame.size.width * 90 / 640   + cgfScreenWidth * 25.0 / 640.0, self.tableView.frame.size.width * 0.92, self.tableView.frame.size.width * 0.92 * 9.0 / 16.0)];
     [_uiwVideoView loadHTMLString:nssHtml baseURL:nil];
 }
 
@@ -196,7 +196,7 @@
             uiimv.image = uiim;
             [cell.contentView addSubview:uiimv];
             
-            UITextView *uitvContent = [[UITextView alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 0.04, self.tableView.frame.size.width * 114 / 640 + 15.0, self.tableView.frame.size.width * 0.92, self.tableView.frame.size.width * 1.7 / 4.0)];
+            UITextView *uitvContent = [[UITextView alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 0.04, self.tableView.frame.size.width * 114 / 640 + cgfScreenWidth * 25.0 / 640.0, self.tableView.frame.size.width * 0.92, self.tableView.frame.size.width * 1.7 / 4.0)];
             [uitvContent setText:@"這是一場全民覺醒的運動，超越了議會，從家庭、從巷口、從網路，從社會的各個角落開始綻放，罷免不再是瀕死的法條，而是活著的行動。割去發炎的「闌尾」，從體制內去影響、去改變現今有缺陷的代議制度，讓我們一起締造台灣新型態的社會運動。不論你是想擔任當天擺攤志工、物資提供或純粹想要鍵盤參戰，亦或是您想要長期熱情參與，你都可以成為割闌尾V計劃的公民V。"];
             uitvContent.editable = NO;
             [cell.contentView addSubview:uitvContent];
@@ -210,7 +210,7 @@
             uiimv.image = uiim;
             [cell.contentView addSubview:uiimv];
             
-            UITextView *uitvContent = [[UITextView alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 0.04, self.tableView.frame.size.width * 114 / 640 + 15.0, self.tableView.frame.size.width * 0.92, self.tableView.frame.size.width * 1.7 / 4.0)];
+            UITextView *uitvContent = [[UITextView alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 0.04, self.tableView.frame.size.width * 114 / 640  + cgfScreenWidth * 25.0 / 640.0, self.tableView.frame.size.width * 0.92, self.tableView.frame.size.width * 1.7 / 4.0)];
             [uitvContent setText:@"這一天，就是今年的選舉日：1129。\n1129，台灣有七成的選民會去投票；1129這一天我們將在投票所外擺攤簽署罷免連署書，讓選舉日變成罷免日，因此割闌尾V計劃就是為了讓罷免第二階段看似不可能的任務變成可能，這一天我們將實踐屬於人民的參政權！"];
             uitvContent.editable = NO;
             [cell.contentView addSubview:uitvContent];
@@ -224,10 +224,10 @@
             uiimv.image = uiim;
             [cell.contentView addSubview:uiimv];
             UIImage *uiim2 = [UIImage imageNamed:@"ms4_2"];
-            UIImageView *uiimv2 = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, self.tableView.frame.size.width * 114 / 640 + 15.0, self.tableView.frame.size.width, self.tableView.frame.size.width * 772 / 640)];
+            UIImageView *uiimv2 = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, self.tableView.frame.size.width * 114 / 640   + cgfScreenWidth * 25.0 / 640.0, self.tableView.frame.size.width, self.tableView.frame.size.width * 772 / 640)];
             uiimv2.image = uiim2;
             [cell.contentView addSubview:uiimv2];
-            [self setButton:cell offset:self.tableView.frame.size.width * 114 / 640 + 15.0];
+            [self setButton:cell offset:self.tableView.frame.size.width * 114 / 640 + cgfScreenWidth * 25.0 / 640.0];
         }
     }
     return cell;
@@ -287,13 +287,13 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
-        return self.tableView.frame.size.width * 90 / 640 + 5.0 + self.tableView.frame.size.width * 0.92 * 9.0 / 16.0 + 25.0;
+        return self.tableView.frame.size.width * 90 / 640  + cgfScreenWidth * 25.0 / 640.0 + self.tableView.frame.size.width * 0.92 * 9.0 / 16.0 + cgfScreenWidth * 25.0 / 640.0;
     } else if (indexPath.row == 1) {
-        return self.tableView.frame.size.width * 114 / 640 + 15.0 + self.tableView.frame.size.width * 1.7 / 4.0;
+        return self.tableView.frame.size.width * 114 / 640  + cgfScreenWidth * 25.0 / 640.0 + self.tableView.frame.size.width * 1.7 / 4.0;
     } else if (indexPath.row == 2) {
-        return self.tableView.frame.size.width * 114 / 640 + 15.0 + self.tableView.frame.size.width * 1.7 / 4.0;;
+        return self.tableView.frame.size.width * 114 / 640  + cgfScreenWidth * 25.0 / 640.0 + self.tableView.frame.size.width * 1.7 / 4.0;;
     } else if (indexPath.row == 3) {
-        return self.tableView.frame.size.width * 114 / 640 + 15.0 + self.tableView.frame.size.width * 772 / 640 + 15.0;
+        return self.tableView.frame.size.width * 114 / 640  + cgfScreenWidth * 25.0 / 640.0 + self.tableView.frame.size.width * 772 / 640  + cgfScreenWidth * 15.0 / 640.0;
     } return 0;
 }
 

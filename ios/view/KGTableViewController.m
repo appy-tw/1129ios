@@ -614,7 +614,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
-        return self.tableView.frame.size.width * 90 / 640 + 20.0;
+        return self.tableView.frame.size.width * 90 / 640 +  + cgfScreenWidth * 25.0 / 640.0;
     } else if (indexPath.row == 1) {
         return self.tableView.frame.size.width * 418 / 640;
     } else if (indexPath.row == 2) {
@@ -622,7 +622,7 @@
     } else if (indexPath.row == 3) {
         return self.tableView.frame.size.width * 418 / 640;
     } else {
-        return self.tableView.frame.size.width * 418 / 640;
+        return self.tableView.frame.size.width * 418 / 640 + cgfScreenWidth * 15.0 / 640.0;
     }
 }
 
