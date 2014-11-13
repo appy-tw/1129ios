@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "att.png"
+      "filename" : "video.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "att@2x.png"
+      "filename" : "video@2x.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "att@3x.png"
+      "filename" : "video@3x.png"
     }
   ],
   "info" : {

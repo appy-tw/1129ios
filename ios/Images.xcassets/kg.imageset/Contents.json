@@ -3,16 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "sup.png"
+      "filename" : "kg.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "sup@2x.png"
+      "filename" : "kg@2x.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "3x"
+      "scale" : "3x",
+      "filename" : "kg@3x.png"
     }
   ],
   "info" : {

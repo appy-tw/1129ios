@@ -171,22 +171,26 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *identifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    static NSString *identifier0 = @"Cell0";
+    static NSString *identifier1 = @"Cell1";
+    static NSString *identifier2 = @"Cell2";
+    static NSString *identifier3 = @"Cell3";
+    UITableViewCell *cell;
     if (indexPath.row == 0) {
         if (cell == nil) {
-            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+            cell = [tableView dequeueReusableCellWithIdentifier:identifier0];
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier0];
             UIImage *uiim = [UIImage imageNamed:@"ms1_1"];
             UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.tableView.frame.size.width, self.tableView.frame.size.width * 90 / 640)];
             uiimv.image = uiim;
             [cell.contentView addSubview:uiimv];
             
             [cell.contentView addSubview:_uiwVideoView];
-//            cgfHigh0 = cgfScreenHeightBase + self.tableView.frame.size.width * 90 / 640 + 15.0 + self.tableView.frame.size.width * 0.92 * 9.0 / 16.0;
         }
     } else if (indexPath.row == 1) {
         if (cell == nil) {
-            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+            cell = [tableView dequeueReusableCellWithIdentifier:identifier1];
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier1];
             UIImage *uiim = [UIImage imageNamed:@"ms2_1"];
             UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.tableView.frame.size.width, self.tableView.frame.size.width * 114 / 640)];
             uiimv.image = uiim;
@@ -199,7 +203,8 @@
         }
     } else if (indexPath.row == 2) {
         if (cell == nil) {
-            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+            cell = [tableView dequeueReusableCellWithIdentifier:identifier2];
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier2];
             UIImage *uiim = [UIImage imageNamed:@"ms3_1"];
             UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.tableView.frame.size.width, self.tableView.frame.size.width * 114 / 640)];
             uiimv.image = uiim;
@@ -212,7 +217,8 @@
         }
     } else if (indexPath.row == 3) {
         if (cell == nil) {
-            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+            cell = [tableView dequeueReusableCellWithIdentifier:identifier3];
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier3];
             UIImage *uiim = [UIImage imageNamed:@"ms4_1"];
             UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.tableView.frame.size.width, self.tableView.frame.size.width * 114 / 640)];
             uiimv.image = uiim;
