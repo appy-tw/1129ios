@@ -52,8 +52,8 @@
 #if DUMP_MODE
     self.mGeoPoint = [[CLLocation alloc]initWithCoordinate:[Utils geoCodeUsingAddress:[self stripAddress: self.mAddress]] altitude:1 horizontalAccuracy:1 verticalAccuracy:-1 timestamp:nil];
 #else
-    self.mGeoPoint = [[CLLocation alloc]initWithLatitude:[[dict valueForKey:@"lat"]floatValue]
-                                                longitude:[[dict valueForKey:@"lon"]floatValue]];
+    self.mGeoPoint = [[CLLocation alloc]initWithLatitude:[[dict valueForKey:@"lat"]doubleValue]
+                                                longitude:[[dict valueForKey:@"lon"]doubleValue]];
 #endif
 }
 -(void)setDataWithShopData:(VShopData*)data{
@@ -64,8 +64,8 @@
     self.mPhone = data.phone;
     self.mWebSite = data.website;
     
-    self.mGeoPoint = [[CLLocation alloc]initWithLatitude:[data.lat floatValue]
-                                               longitude:[data.lon floatValue]];
+    self.mGeoPoint = [[CLLocation alloc]initWithLatitude:[data.lat doubleValue ]
+                                               longitude:[data.lon doubleValue]];
 }
 -(NSString*)stripAddress:(NSString*)address{
     NSRange range = [address rangeOfString:@"(" options:NSBackwardsSearch];
@@ -105,9 +105,9 @@
     [dictionary setValue:self.mPhone forKey:@"phone"];
     [dictionary setValue:self.mWebSite forKey:@"website"];
     
-    NSString* lat = [[NSString alloc] initWithFormat:@"%g°", self.mGeoPoint.coordinate.latitude];
+    NSString* lat = [[NSString alloc] initWithFormat:@"%.20f", self.mGeoPoint.coordinate.latitude];
     [dictionary setValue:lat forKey:@"lat"];
-    NSString* lon = [[NSString alloc] initWithFormat:@"%g°", self.mGeoPoint.coordinate.longitude];
+    NSString* lon = [[NSString alloc] initWithFormat:@"%.20f", self.mGeoPoint.coordinate.longitude];
     [dictionary setValue:lon forKey:@"lon"];
     
     return dictionary;
