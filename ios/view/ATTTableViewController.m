@@ -112,7 +112,7 @@
 }
 
 - (void)setFBView {
-    uilFBUserName = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 0.58, 410.0 * cgfScreenWidth / 640.0 * 0.85, cgfScreenWidth * 0.40, 30.0)];
+    uilFBUserName = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 0.58, 410.0 * cgfScreenWidth / 640.0 * 0.85, cgfScreenWidth * 0.40, 30.0 * cgfScreenWidth / 320.0)];
     fbLoginView = [[FBLoginView alloc] initWithReadPermissions:@[@"public_profile", @"email", @"user_friends"]];
     
     fbLoginView.frame = CGRectOffset(fbLoginView.frame, cgfScreenWidth / 12.0, 0);
@@ -824,33 +824,33 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
-        return self.tableView.frame.size.width * 90 / 640 + 20.0;
+        return self.tableView.frame.size.width * 90 / 640 + cgfScreenWidth * 25.0 / 640.0;
     } else if (indexPath.row == 1) {
-        return self.tableView.frame.size.width * 410 / 640 + 20.0;
+        return self.tableView.frame.size.width * 410 / 640 + cgfScreenWidth * 20.0 / 640.0;
     } else if (indexPath.row == 2) {
-        return self.tableView.frame.size.width * 95 / 640 + 20.0;
+        return self.tableView.frame.size.width * 95 / 640 + cgfScreenWidth * 20.0 / 640.0;
     } else if (indexPath.row == 3) {
-        return self.tableView.frame.size.width * 95 / 640 + 20.0;
+        return self.tableView.frame.size.width * 95 / 640 + cgfScreenWidth * 20.0 / 640.0;
     } else if (indexPath.row == 4) {
-        return self.tableView.frame.size.width * 78 / 640 + 20.0;
+        return self.tableView.frame.size.width * 78 / 640 + cgfScreenWidth * 20.0 / 640.0;
     } else if (indexPath.row == 5) {
-        return self.tableView.frame.size.width * 95 / 640 + 20.0;
+        return self.tableView.frame.size.width * 95 / 640 + cgfScreenWidth * 20.0 / 640.0;
     } else if (indexPath.row == 6) {
-        return self.tableView.frame.size.width * 95 / 640 + 20.0;
+        return self.tableView.frame.size.width * 95 / 640 + cgfScreenWidth * 20.0 / 640.0;
     } else if (indexPath.row == 7) {
-        return self.tableView.frame.size.width * 95 / 640 + 20.0;
+        return self.tableView.frame.size.width * 95 / 640 + cgfScreenWidth * 20.0 / 640.0;
     } else if (indexPath.row == 8) {
-        return self.tableView.frame.size.width * 95 / 640 + 20.0;
+        return self.tableView.frame.size.width * 95 / 640 + cgfScreenWidth * 20.0 / 640.0;
     } else if (indexPath.row == 9) {
-        return self.tableView.frame.size.width * 95 / 640 + 20.0;
+        return self.tableView.frame.size.width * 95 / 640 + cgfScreenWidth * 20.0 / 640.0;
     } else if (indexPath.row == 10) {
-        return self.tableView.frame.size.width * 95 / 640 + 20.0;
+        return self.tableView.frame.size.width * 95 / 640 + cgfScreenWidth * 20.0 / 640.0;
     } else if (indexPath.row == 11) {
-        return self.tableView.frame.size.width * 95 / 640 + 20.0;
+        return self.tableView.frame.size.width * 95 / 640 + cgfScreenWidth * 20.0 / 640.0;
     } else if (indexPath.row == 12) {
-        return self.tableView.frame.size.width * 300 / 640 + 20.0;
+        return self.tableView.frame.size.width * 300 / 640 + cgfScreenWidth * 20.0 / 640.0;
     } else {
-        return self.tableView.frame.size.width * 300 / 640 + 20.0;
+        return self.tableView.frame.size.width * 300 / 640 + cgfScreenWidth * 20.0 / 640.0;
     }
 }
 

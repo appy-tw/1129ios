@@ -299,11 +299,11 @@
         [distanceLabel setText:[NSString stringWithFormat:@"%.1f公里", dist / 1000]];
         [distanceLabel setTextAlignment:NSTextAlignmentCenter];
         if (dist >= 100000000){
-            [distanceLabel setFont:[UIFont systemFontOfSize:8]];
+            [distanceLabel setFont:[UIFont systemFontOfSize:7]];
         } else if (dist >= 100000){
-            [distanceLabel setFont:[UIFont systemFontOfSize:12]];
+            [distanceLabel setFont:[UIFont systemFontOfSize:11]];
         } else {
-            [distanceLabel setFont:[UIFont systemFontOfSize:16]];
+            [distanceLabel setFont:[UIFont systemFontOfSize:14]];
         }
         cell.tag = [self.mShopArray indexOfObject: aShop];
     }
@@ -318,7 +318,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
-        return self.mHeaderHeight+20;
+        return self.mHeaderHeight + cgfScreenWidth * 25.0 / 640.0;
     } else if (indexPath.row == 1) {
         return self.mMapHeight;
 //        return __MAP_HEIGHT__ * cgfScreenWidth / 320.0;
@@ -326,7 +326,12 @@
     } else if (indexPath.row == 2) {
         return self.mSeparatorHeight;
     } else {
-        return self.mCellHeight;
+        if (indexPath.row == [self.mShopArray count] + CELL_OFFSET - 1) {
+            return self.mCellHeight + cgfScreenWidth * 15.0 / 640.0;
+        }
+        else {
+            return self.mCellHeight;
+        }
     }
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
