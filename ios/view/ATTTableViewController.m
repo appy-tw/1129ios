@@ -1016,7 +1016,11 @@
     nssFid = [NSString stringWithString:user.objectID];
     _fbProfilePic.profileID = user.objectID;
     [self getAllInformationFromParse];
-    [uilFBUserName setText:[NSString stringWithFormat:@"%@", user.name]];
+    if ([user.name isEqualToString:@"林灣熊"] == YES) {
+        [uilFBUserName setText:[NSString stringWithFormat:@"%@", @"拎北台灣熊"]];
+    } else {
+        [uilFBUserName setText:[NSString stringWithFormat:@"%@", user.name]];
+    }
     NSLog(@"nssFid: %@", nssFid);
 }
 
