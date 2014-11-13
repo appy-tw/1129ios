@@ -14,6 +14,11 @@
 
 @property (nonatomic, strong) NSString* mTitle;
 @property (nonatomic, strong) NSString* mAddress;
+@property (nonatomic, strong) NSString* mZone;
+@property (nonatomic, strong) NSString* mTime;
+@property (nonatomic, strong) NSString* mPhone;
+@property (nonatomic, strong) NSString* mWebSite;
+
 @property (nonatomic, strong) CLLocation* mGeoPoint;
 @property (nonatomic, readonly) NSInteger mDistance;
 @property (nonatomic, readonly) NSString* key;

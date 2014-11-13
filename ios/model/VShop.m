@@ -8,8 +8,10 @@
 
 #import "VShop.h"
 #import "Utils.h"
+#import "VShopData.h"
 
 #define DUMP_MODE 0
+#define LOAD_SHOP_FROM_JSON 0
 
 @implementation VShop
 
@@ -17,6 +19,12 @@
 - (id)initWithDictionary:(NSDictionary*)data{
     if (self = [super init]) {
         [self setData:data];
+    }
+    return self;
+}
+- (id)initWithShopData:(VShopData*)data{
+    if (self = [super init]) {
+        [self setDataWithShopData:data];
     }
     return self;
 }
@@ -33,14 +41,31 @@
 -(void)setData:(NSDictionary*)dict{
     self.mTitle = [dict objectForKey:@"title"];
     self.mAddress = [dict objectForKey:@"address"];
+    self.mZone = [dict objectForKey:@"zone"];
+    self.mTime = [dict objectForKey:@"time"];
+    self.mPhone = [dict objectForKey:@"phone"];
+    self.mWebSite = [dict objectForKey:@"website"];
+    
     self.mTitle = [self.mTitle stringByReplacingOccurrencesOfString:@"至" withString:@""];
     self.mAddress = [self.mAddress stringByReplacingOccurrencesOfString:@"至" withString:@""];
+    self.mWebSite = [self.mWebSite stringByReplacingOccurrencesOfString:@"至" withString:@""];
 #if DUMP_MODE
     self.mGeoPoint = [[CLLocation alloc]initWithCoordinate:[Utils geoCodeUsingAddress:[self stripAddress: self.mAddress]] altitude:1 horizontalAccuracy:1 verticalAccuracy:-1 timestamp:nil];
 #else
-    self.mGeoPoint = [[CLLocation alloc]initWithLatitude:[[dict valueForKey:@"lat"]floatValue]
-                                                longitude:[[dict valueForKey:@"lon"]floatValue]];
+    self.mGeoPoint = [[CLLocation alloc]initWithLatitude:[[dict valueForKey:@"lat"]doubleValue]
+                                                longitude:[[dict valueForKey:@"lon"]doubleValue]];
 #endif
+}
+-(void)setDataWithShopData:(VShopData*)data{
+    self.mTitle = data.title;
+    self.mAddress = data.address;
+    self.mZone = data.vzone;
+    self.mTime = data.time;
+    self.mPhone = data.phone;
+    self.mWebSite = data.website;
+    
+    self.mGeoPoint = [[CLLocation alloc]initWithLatitude:[data.lat doubleValue ]
+                                               longitude:[data.lon doubleValue]];
 }
 -(NSString*)stripAddress:(NSString*)address{
     NSRange range = [address rangeOfString:@"(" options:NSBackwardsSearch];
@@ -75,9 +100,14 @@
     NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
     [dictionary setValue:self.mTitle forKey:@"title"];
     [dictionary setValue:self.mAddress forKey:@"address"];
-    NSString* lat = [[NSString alloc] initWithFormat:@"%g°", self.mGeoPoint.coordinate.latitude];
+    [dictionary setValue:self.mZone forKey:@"zone"];
+    [dictionary setValue:self.mTime forKey:@"time"];
+    [dictionary setValue:self.mPhone forKey:@"phone"];
+    [dictionary setValue:self.mWebSite forKey:@"website"];
+    
+    NSString* lat = [[NSString alloc] initWithFormat:@"%.20f", self.mGeoPoint.coordinate.latitude];
     [dictionary setValue:lat forKey:@"lat"];
-    NSString* lon = [[NSString alloc] initWithFormat:@"%g°", self.mGeoPoint.coordinate.longitude];
+    NSString* lon = [[NSString alloc] initWithFormat:@"%.20f", self.mGeoPoint.coordinate.longitude];
     [dictionary setValue:lon forKey:@"lon"];
     
     return dictionary;
@@ -101,6 +131,7 @@
 
 }
 +(NSMutableArray*)loadVShop{
+#if LOAD_SHOP_FROM_JSON
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"vshop" ofType:@"json"];
     NSData *JSONData = [NSData dataWithContentsOfFile:filePath options:NSDataReadingMappedIfSafe error:nil];
     NSArray *json= [NSJSONSerialization JSONObjectWithData:JSONData options:NSJSONReadingMutableContainers error:nil];
@@ -116,5 +147,15 @@
     [VShop dumpVShop:shops];
 #endif
     return shops;
+#else
+    // to load shop from coredata
+    NSMutableArray* shops= [NSMutableArray array];
+    NSArray* result = [VShopData fetchAll];
+    for(VShopData* data in result){
+        VShop* aShop = [[VShop alloc]initWithShopData:data];
+        [shops addObject:aShop];
+    }
+    return shops;
+#endif
 }
 @end

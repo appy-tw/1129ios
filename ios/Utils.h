@@ -16,4 +16,6 @@
 + (CLLocationCoordinate2D) geoCodeUsingAddress:(NSString *)address;
 
 + (NSString *) getDocumentFolderPath;
++ (void)writePreference:(id)value forKey:(NSString*)key;
++ (id)getPreferenceForKey:(NSString*)key;
 @end
