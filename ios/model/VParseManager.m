@@ -62,6 +62,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(VParseManager)
                 shop.lat = [obj objectForKey:@"lat"];
                 shop.vzone = [obj objectForKey:@"zone"];
                 shop.website = [obj objectForKey:@"website"];
+                shop.type = [obj objectForKey:@"type"];
             }
             [VShopData commit];
             [Utils writePreference:self.retriveTime forKey:LAST_GET_VSHOP]; // keep current time

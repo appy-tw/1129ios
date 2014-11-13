@@ -11,14 +11,15 @@
 
 @implementation VShopDataEntity
 
-@dynamic title;
 @dynamic address;
-@dynamic vzone;
-@dynamic time;
-@dynamic phone;
-@dynamic website;
-@dynamic vid;
 @dynamic lat;
 @dynamic lon;
+@dynamic phone;
+@dynamic time;
+@dynamic title;
+@dynamic vid;
+@dynamic vzone;
+@dynamic website;
+@dynamic type;
 
 @end

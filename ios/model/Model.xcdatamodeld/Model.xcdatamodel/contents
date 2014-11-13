@@ -7,11 +7,12 @@
         <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="time" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="vid" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="vzone" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="website" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="VShopData" positionX="-63" positionY="-18" width="128" height="180"/>
+        <element name="VShopData" positionX="-63" positionY="-18" width="128" height="195"/>
     </elements>
 </model>

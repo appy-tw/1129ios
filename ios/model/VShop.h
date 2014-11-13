@@ -18,6 +18,7 @@
 @property (nonatomic, strong) NSString* mTime;
 @property (nonatomic, strong) NSString* mPhone;
 @property (nonatomic, strong) NSString* mWebSite;
+@property (nonatomic, strong) NSString* mType;
 
 @property (nonatomic, strong) CLLocation* mGeoPoint;
 @property (nonatomic, readonly) NSInteger mDistance;
