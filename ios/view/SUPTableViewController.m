@@ -310,11 +310,9 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
-        return self.mHeaderHeight+20;
+        return self.mHeaderHeight;
     } else if (indexPath.row == 1) {
         return self.mMapHeight;
-//        return __MAP_HEIGHT__ * cgfScreenWidth / 320.0;
-//        return self.tableView.frame.size.width * 1.2;
     } else if (indexPath.row == 2) {
         return self.mSeparatorHeight;
     } else {
