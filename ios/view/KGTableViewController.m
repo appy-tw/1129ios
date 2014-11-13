@@ -188,13 +188,33 @@
             [cell.contentView addSubview:uivItemValue];
 
             THLabel *thlHPValue;
-            thlHPValue.tag = 121;
+            thlHPValue= [[THLabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 47.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+                        thlHPValue.tag = 121;
+            thlHPValue.strokeColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0];
+            thlHPValue.strokeSize = 0.8;
+            thlHPValue.textColor = [UIColor whiteColor];
+            [thlHPValue setFont:[UIFont systemFontOfSize:11]];
+            [thlHPValue setTextAlignment:NSTextAlignmentCenter];
             [cell.contentView addSubview:thlHPValue];
+            
             THLabel *thlManValue;
+            thlManValue= [[THLabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 140.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
             thlManValue.tag = 122;
+            thlManValue.strokeColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0];
+            thlManValue.strokeSize = 0.8;
+            thlManValue.textColor = [UIColor whiteColor];
+            [thlManValue setFont:[UIFont systemFontOfSize:11]];
+            [thlManValue setTextAlignment:NSTextAlignmentCenter];
             [cell.contentView addSubview:thlManValue];
+            
             THLabel *thlItemValue;
+            thlItemValue= [[THLabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 236.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
             thlItemValue.tag = 123;
+            thlItemValue.strokeColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0];
+            thlItemValue.strokeSize = 0.8;
+            thlItemValue.textColor = [UIColor whiteColor];
+            [thlItemValue setFont:[UIFont systemFontOfSize:11]];
+            [thlItemValue setTextAlignment:NSTextAlignmentCenter];
             [cell.contentView addSubview:thlItemValue];
         }
         UILabel *uilHP = (UILabel *)[cell.contentView viewWithTag:101];
@@ -233,31 +253,13 @@
         }
         
         THLabel *thlHPValue = (THLabel *)[cell.contentView viewWithTag:121];
-        thlHPValue= [[THLabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 47.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
         [thlHPValue setText:[nssTPE4HP componentsSeparatedByString:@";"][1]];
-        thlHPValue.strokeColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0];
-        thlHPValue.strokeSize = 0.8;
-        thlHPValue.textColor = [UIColor whiteColor];
-        [thlHPValue setFont:[UIFont systemFontOfSize:11]];
-        [thlHPValue setTextAlignment:NSTextAlignmentCenter];
         [cell.contentView addSubview:thlHPValue];
         THLabel *thlManValue = (THLabel *)[cell.contentView viewWithTag:122];
-        thlManValue= [[THLabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 140.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
         [thlManValue setText:[nssTPE4Man componentsSeparatedByString:@";"][1]];
-        thlManValue.strokeColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0];
-        thlManValue.strokeSize = 0.8;
-        thlManValue.textColor = [UIColor whiteColor];
-        [thlManValue setFont:[UIFont systemFontOfSize:11]];
-        [thlManValue setTextAlignment:NSTextAlignmentCenter];
         [cell.contentView addSubview:thlManValue];
         THLabel *thlItemValue = (THLabel *)[cell.contentView viewWithTag:123];
-        thlItemValue= [[THLabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 236.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
         [thlItemValue setText:[nssTPE4Item componentsSeparatedByString:@";"][1]];
-        thlItemValue.strokeColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0];
-        thlItemValue.strokeSize = 0.8;
-        thlItemValue.textColor = [UIColor whiteColor];
-        [thlItemValue setFont:[UIFont systemFontOfSize:11]];
-        [thlItemValue setTextAlignment:NSTextAlignmentCenter];
         [cell.contentView addSubview:thlItemValue];
     } else if (indexPath.row == 2) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDKG3];
@@ -318,13 +320,33 @@
             [cell.contentView addSubview:uivItemValue];
             
             THLabel *thlHPValue;
-            thlHPValue.tag = 221;
+            thlHPValue= [[THLabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 47.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+            thlHPValue.tag = 121;
+            thlHPValue.strokeColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0];
+            thlHPValue.strokeSize = 0.8;
+            thlHPValue.textColor = [UIColor whiteColor];
+            [thlHPValue setFont:[UIFont systemFontOfSize:11]];
+            [thlHPValue setTextAlignment:NSTextAlignmentCenter];
             [cell.contentView addSubview:thlHPValue];
+            
             THLabel *thlManValue;
-            thlManValue.tag = 222;
+            thlManValue= [[THLabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 140.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+            thlManValue.tag = 122;
+            thlManValue.strokeColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0];
+            thlManValue.strokeSize = 0.8;
+            thlManValue.textColor = [UIColor whiteColor];
+            [thlManValue setFont:[UIFont systemFontOfSize:11]];
+            [thlManValue setTextAlignment:NSTextAlignmentCenter];
             [cell.contentView addSubview:thlManValue];
+            
             THLabel *thlItemValue;
-            thlItemValue.tag = 223;
+            thlItemValue= [[THLabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 236.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+            thlItemValue.tag = 123;
+            thlItemValue.strokeColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0];
+            thlItemValue.strokeSize = 0.8;
+            thlItemValue.textColor = [UIColor whiteColor];
+            [thlItemValue setFont:[UIFont systemFontOfSize:11]];
+            [thlItemValue setTextAlignment:NSTextAlignmentCenter];
             [cell.contentView addSubview:thlItemValue];
         }
         UILabel *uilHP = (UILabel *)[cell.contentView viewWithTag:201];
@@ -362,32 +384,14 @@
             [uivItemValue setBackgroundColor:[UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:0.0]];
         }
         
-        THLabel *thlHPValue = (THLabel *)[cell.contentView viewWithTag:221];
-        thlHPValue= [[THLabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 47.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+        THLabel *thlHPValue = (THLabel *)[cell.contentView viewWithTag:121];
         [thlHPValue setText:[nssTPQ6HP componentsSeparatedByString:@";"][1]];
-        thlHPValue.strokeColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0];
-        thlHPValue.strokeSize = 0.8;
-        thlHPValue.textColor = [UIColor whiteColor];
-        [thlHPValue setFont:[UIFont systemFontOfSize:11]];
-        [thlHPValue setTextAlignment:NSTextAlignmentCenter];
         [cell.contentView addSubview:thlHPValue];
-        THLabel *thlManValue = (THLabel *)[cell.contentView viewWithTag:222];
-        thlManValue= [[THLabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 140.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+        THLabel *thlManValue = (THLabel *)[cell.contentView viewWithTag:122];
         [thlManValue setText:[nssTPQ6Man componentsSeparatedByString:@";"][1]];
-        thlManValue.strokeColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0];
-        thlManValue.strokeSize = 0.8;
-        thlManValue.textColor = [UIColor whiteColor];
-        [thlManValue setFont:[UIFont systemFontOfSize:11]];
-        [thlManValue setTextAlignment:NSTextAlignmentCenter];
         [cell.contentView addSubview:thlManValue];
-        THLabel *thlItemValue = (THLabel *)[cell.contentView viewWithTag:223];
-        thlItemValue= [[THLabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 236.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+        THLabel *thlItemValue = (THLabel *)[cell.contentView viewWithTag:123];
         [thlItemValue setText:[nssTPQ6Item componentsSeparatedByString:@";"][1]];
-        thlItemValue.strokeColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0];
-        thlItemValue.strokeSize = 0.8;
-        thlItemValue.textColor = [UIColor whiteColor];
-        [thlItemValue setFont:[UIFont systemFontOfSize:11]];
-        [thlItemValue setTextAlignment:NSTextAlignmentCenter];
         [cell.contentView addSubview:thlItemValue];
     } else if (indexPath.row == 3) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDKG4];
@@ -437,24 +441,34 @@
             [cell.contentView addSubview:uilItem];
             [uilItem setTextAlignment:NSTextAlignmentCenter];
             
-            UIView *uivHPValue;
-            uivHPValue.tag = 311;
-            [cell.contentView addSubview:uivHPValue];
-            UIView *uivManValue;
-            uivManValue.tag = 312;
-            [cell.contentView addSubview:uivManValue];
-            UIView *uivItemValue;
-            uivItemValue.tag = 313;
-            [cell.contentView addSubview:uivItemValue];
-            
             THLabel *thlHPValue;
-            thlHPValue.tag = 321;
+            thlHPValue= [[THLabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 47.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+            thlHPValue.tag = 121;
+            thlHPValue.strokeColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0];
+            thlHPValue.strokeSize = 0.8;
+            thlHPValue.textColor = [UIColor whiteColor];
+            [thlHPValue setFont:[UIFont systemFontOfSize:11]];
+            [thlHPValue setTextAlignment:NSTextAlignmentCenter];
             [cell.contentView addSubview:thlHPValue];
+            
             THLabel *thlManValue;
-            thlManValue.tag = 322;
+            thlManValue= [[THLabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 140.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+            thlManValue.tag = 122;
+            thlManValue.strokeColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0];
+            thlManValue.strokeSize = 0.8;
+            thlManValue.textColor = [UIColor whiteColor];
+            [thlManValue setFont:[UIFont systemFontOfSize:11]];
+            [thlManValue setTextAlignment:NSTextAlignmentCenter];
             [cell.contentView addSubview:thlManValue];
+            
             THLabel *thlItemValue;
-            thlItemValue.tag = 323;
+            thlItemValue= [[THLabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 236.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+            thlItemValue.tag = 123;
+            thlItemValue.strokeColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0];
+            thlItemValue.strokeSize = 0.8;
+            thlItemValue.textColor = [UIColor whiteColor];
+            [thlItemValue setFont:[UIFont systemFontOfSize:11]];
+            [thlItemValue setTextAlignment:NSTextAlignmentCenter];
             [cell.contentView addSubview:thlItemValue];
         }
         UILabel *uilHP = (UILabel *)[cell.contentView viewWithTag:301];
@@ -492,32 +506,14 @@
             [uivItemValue setBackgroundColor:[UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:0.0]];
         }
         
-        THLabel *thlHPValue = (THLabel *)[cell.contentView viewWithTag:221];
-        thlHPValue= [[THLabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 47.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+        THLabel *thlHPValue = (THLabel *)[cell.contentView viewWithTag:121];
         [thlHPValue setText:[nssTPQ1HP componentsSeparatedByString:@";"][1]];
-        thlHPValue.strokeColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0];
-        thlHPValue.strokeSize = 0.8;
-        thlHPValue.textColor = [UIColor whiteColor];
-        [thlHPValue setFont:[UIFont systemFontOfSize:11]];
-        [thlHPValue setTextAlignment:NSTextAlignmentCenter];
         [cell.contentView addSubview:thlHPValue];
-        THLabel *thlManValue = (THLabel *)[cell.contentView viewWithTag:222];
-        thlManValue= [[THLabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 140.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+        THLabel *thlManValue = (THLabel *)[cell.contentView viewWithTag:122];
         [thlManValue setText:[nssTPQ1Man componentsSeparatedByString:@";"][1]];
-        thlManValue.strokeColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0];
-        thlManValue.strokeSize = 0.8;
-        thlManValue.textColor = [UIColor whiteColor];
-        [thlManValue setFont:[UIFont systemFontOfSize:11]];
-        [thlManValue setTextAlignment:NSTextAlignmentCenter];
         [cell.contentView addSubview:thlManValue];
-        THLabel *thlItemValue = (THLabel *)[cell.contentView viewWithTag:223];
-        thlItemValue= [[THLabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 236.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+        THLabel *thlItemValue = (THLabel *)[cell.contentView viewWithTag:123];
         [thlItemValue setText:[nssTPQ1Item componentsSeparatedByString:@";"][1]];
-        thlItemValue.strokeColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0];
-        thlItemValue.strokeSize = 0.8;
-        thlItemValue.textColor = [UIColor whiteColor];
-        [thlItemValue setFont:[UIFont systemFontOfSize:11]];
-        [thlItemValue setTextAlignment:NSTextAlignmentCenter];
         [cell.contentView addSubview:thlItemValue];
     } else if (indexPath.row == 4) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDKG5];
@@ -562,10 +558,23 @@
             [cell.contentView addSubview:uivItemValue];
             
             THLabel *thlManValue;
-            thlManValue.tag = 422;
+            thlManValue= [[THLabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 140.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+            thlManValue.tag = 122;
+            thlManValue.strokeColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0];
+            thlManValue.strokeSize = 0.8;
+            thlManValue.textColor = [UIColor whiteColor];
+            [thlManValue setFont:[UIFont systemFontOfSize:11]];
+            [thlManValue setTextAlignment:NSTextAlignmentCenter];
             [cell.contentView addSubview:thlManValue];
+            
             THLabel *thlItemValue;
-            thlItemValue.tag = 423;
+            thlItemValue= [[THLabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 236.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+            thlItemValue.tag = 123;
+            thlItemValue.strokeColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0];
+            thlItemValue.strokeSize = 0.8;
+            thlItemValue.textColor = [UIColor whiteColor];
+            [thlItemValue setFont:[UIFont systemFontOfSize:11]];
+            [thlItemValue setTextAlignment:NSTextAlignmentCenter];
             [cell.contentView addSubview:thlItemValue];
         }
         UILabel *uilMan = (UILabel *)[cell.contentView viewWithTag:402];
@@ -591,24 +600,11 @@
         } else {
             [uivItemValue setBackgroundColor:[UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:0.0]];
         }
-        
-        THLabel *thlManValue = (THLabel *)[cell.contentView viewWithTag:422];
-        thlManValue= [[THLabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 140.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+        THLabel *thlManValue = (THLabel *)[cell.contentView viewWithTag:122];
         [thlManValue setText:[nssTaiwanMan componentsSeparatedByString:@";"][1]];
-        thlManValue.strokeColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0];
-        thlManValue.strokeSize = 0.8;
-        thlManValue.textColor = [UIColor whiteColor];
-        [thlManValue setFont:[UIFont systemFontOfSize:11]];
-        [thlManValue setTextAlignment:NSTextAlignmentCenter];
         [cell.contentView addSubview:thlManValue];
-        THLabel *thlItemValue = (THLabel *)[cell.contentView viewWithTag:423];
-        thlItemValue= [[THLabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 236.0 / 640.0, cgfScreenWidth * 283.0 / 640.0, cgfScreenWidth * 32.0 / 640.0)];
+        THLabel *thlItemValue = (THLabel *)[cell.contentView viewWithTag:123];
         [thlItemValue setText:[nssTaiwanItem componentsSeparatedByString:@";"][1]];
-        thlItemValue.strokeColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0];
-        thlItemValue.strokeSize = 0.8;
-        thlItemValue.textColor = [UIColor whiteColor];
-        [thlItemValue setFont:[UIFont systemFontOfSize:11]];
-        [thlItemValue setTextAlignment:NSTextAlignmentCenter];
         [cell.contentView addSubview:thlItemValue];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
