@@ -810,8 +810,8 @@
     if (CLLocationCoordinate2DIsValid(targetLocation)) {
         MapViewController *mapVC = [[MapViewController alloc] init];
         mapVC.location = targetLocation;
-        // FIXME: this have problem can't show |navigationController|
-        //            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self];
+        mapVC.title = nssName;
+        mapVC.address = nssAddress;
         [self makeKeyboardOffsetBack];
         self.navigationController.navigationBarHidden = NO;
         [self.navigationController pushViewController:mapVC animated:YES];
