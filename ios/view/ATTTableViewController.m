@@ -67,6 +67,9 @@
     NSString *nssIOSToken3;
     NSString *nssPush;
     NSString *nssReady;
+    
+    NSString *nssRefrashResultTitle;
+    NSString *nssRefrashResultContent;
 }
 @end
 
@@ -159,7 +162,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 14;
+    return 15;
 }
 
 //- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -491,6 +494,7 @@
     static NSString *nssIDATT12 = @"ATT12";
     static NSString *nssIDATT13 = @"ATT13";
     static NSString *nssIDATT14 = @"ATT14";
+    static NSString *nssIDATT15 = @"ATT15";
     UITableViewCell *cell;
     if (indexPath.row == 0) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT1];
@@ -759,7 +763,7 @@
         }
         UITextView *uitvBeforeDeparture = (UITextView *)[cell.contentView viewWithTag:1201];
         [uitvBeforeDeparture setText:nssInfo];
-    } else {
+    } else if (indexPath.row == 13) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT14];
         cell = nil;
         if (cell == nil) {
@@ -778,6 +782,23 @@
         }
         UITextView *uitvPush = (UITextView *)[cell.contentView viewWithTag:1301];
         [uitvPush setText:nssPush];
+    } else {
+        cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT5];
+        cell = nil;
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT5];
+            UIButton *uibRefrash = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+            [uibRefrash addTarget:self action:@selector(refrashClicked) forControlEvents:UIControlEventTouchUpInside];
+            uibRefrash.frame = CGRectMake(self.tableView.frame.size.width * 0.2867, 0.0, self.tableView.frame.size.width * 273.0 / 640.0, self.tableView.frame.size.width * 78 / 640);
+            uibRefrash.tag = 401;
+            [uibRefrash setTitle:@"更新" forState:UIControlStateNormal];
+            uibRefrash.tintColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0];
+            [cell.contentView addSubview:uibRefrash];
+            //            UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 0.2867, 0.0, self.tableView.frame.size.width * 273.0 / 640.0, self.tableView.frame.size.width * 78 / 640)];
+            //            uiimv.image = uiiATT4;
+            //            [cell.contentView addSubview:uiimv];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        }
     }
     return cell;
 }
@@ -797,6 +818,18 @@
     } else {
         NSLog(@"location is not valid");
     }
+}
+
+- (void)refrashClicked {
+    [self getAllInformationFromParse];
+    [self writeToMyPlist];
+    [self.tableView reloadData];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nssRefrashResultTitle
+                                                    message:nssRefrashResultContent
+                                                   delegate:nil
+                                          cancelButtonTitle:@"確認"
+                                          otherButtonTitles:nil];
+    [alert show];
 }
 
 //- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -849,8 +882,10 @@
         return self.tableView.frame.size.width * 95 / 640 + cgfScreenWidth * 20.0 / 640.0;
     } else if (indexPath.row == 12) {
         return self.tableView.frame.size.width * 300 / 640 + cgfScreenWidth * 20.0 / 640.0;
-    } else {
+    } else if (indexPath.row == 13) {
         return self.tableView.frame.size.width * 300 / 640 + cgfScreenWidth * 20.0 / 640.0;
+    } else {
+        return self.tableView.frame.size.width * 78 / 640 + cgfScreenWidth * 20.0 / 640.0;
     }
 }
 
@@ -880,6 +915,8 @@
             // The find succeeded.
             NSLog(@"Successfully retrieved %d scores.", objects.count);
             if (objects.count == 0) {
+                nssRefrashResultTitle = @"更新失敗";
+                nssRefrashResultContent = @"無法取得伺服器資料，請確認臉書是否為登入狀態或洽詢appy.service@gmail.com";
                 PFObject *newObject = [PFObject objectWithClassName:@"newtask"];
                 newObject[@"fid"] = nssFid;
                 newObject[@"address"] = @"目前無地址資料";
@@ -909,6 +946,8 @@
             // Do something with the found objects
             else {
                 for (PFObject *object in objects) {
+                    nssRefrashResultTitle = @"更新成功";
+                    nssRefrashResultContent = @"恭喜，資料已更新為最新狀態！";
                     NSLog(@"%@", object.objectId);
                     NSLog(@"object[fid]: %@", object[@"fid"]);
                     NSLog(@"object[address]: %@", object[@"address"]);
