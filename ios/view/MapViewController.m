@@ -36,6 +36,7 @@
 
     self.mapView = [[MKMapView alloc] initWithFrame:self.view.bounds];
     self.mapView.showsUserLocation = YES;
+    self.mapView.delegate = self;
     [self.view addSubview:self.mapView];
 
     UIBarButtonItem *shareItem =
@@ -100,8 +101,14 @@
     if (CLLocationCoordinate2DIsValid(location) == NO) return;
 
     [self.mapView addAnnotation:({
-        MapAnnotation *mapAnnotation = [[MapAnnotation alloc] init];
+        MKPointAnnotation *mapAnnotation = [[MKPointAnnotation alloc] init];
         mapAnnotation.coordinate = location;
+        if (self.title) {
+            mapAnnotation.title = self.title;
+        }
+        if (self.address) {
+            mapAnnotation.subtitle = self.address;
+        }
 
         [self updateMapViewRangeWithCenter:location];
 

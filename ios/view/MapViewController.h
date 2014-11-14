@@ -13,4 +13,8 @@
 
 @property (nonatomic, assign) CLLocationCoordinate2D location;
 
+@property (nonatomic, copy) NSString *title;
+
+@property (nonatomic, copy) NSString *address;
+
 @end
