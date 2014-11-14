@@ -824,12 +824,14 @@
     [self getAllInformationFromParse];
     [self writeToMyPlist];
     [self.tableView reloadData];
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nssRefrashResultTitle
-                                                    message:nssRefrashResultContent
-                                                   delegate:nil
-                                          cancelButtonTitle:@"確認"
-                                          otherButtonTitles:nil];
-    [alert show];
+    if (nssRefrashResultTitle != nil && [nssRefrashResultTitle isEqualToString:@""] == NO) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nssRefrashResultTitle
+                                                        message:nssRefrashResultContent
+                                                       delegate:nil
+                                              cancelButtonTitle:@"確認"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
 }
 
 //- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
