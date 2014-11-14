@@ -8,6 +8,7 @@
 
 #import "VGeoManager.h"
 #import "Utils.h"
+#import "AppDelegate.h"
 @import UIKit;
 
 @implementation VGeoManager
@@ -52,12 +53,16 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(VGeoManager)
 //    NSLog(@"got location info");
 }
 -(void)permoteRequirePermission{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TK_ALERT_TITLE_NOTICE",nil)
-                                                    message:NSLocalizedString(@"TK_RE_REQUIRE_GEO_PERMISSION",nil)
-                                                   delegate:self
-                                          cancelButtonTitle:NSLocalizedString(@"TK_ALERT_BTN_LATER",nil)
-                                          otherButtonTitles:NSLocalizedString(@"TK_ALERT_BTN_GO_SETTING",nil),nil];
-    [alert show];
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    if (delegate.bShouldAlartSUPOFGPS == YES) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"TK_ALERT_TITLE_NOTICE",nil)
+                                                        message:NSLocalizedString(@"TK_RE_REQUIRE_GEO_PERMISSION",nil)
+                                                       delegate:self
+                                              cancelButtonTitle:NSLocalizedString(@"TK_ALERT_BTN_LATER",nil)
+                                              otherButtonTitles:NSLocalizedString(@"TK_ALERT_BTN_GO_SETTING",nil),nil];
+        [alert show];
+        delegate.bShouldAlartSUPOFGPS = NO;
+    }
 }
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     switch (buttonIndex) {

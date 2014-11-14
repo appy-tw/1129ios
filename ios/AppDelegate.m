@@ -142,6 +142,7 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     [self setNotification:application];
+    _bShouldAlartSUPOFGPS = YES;
     return YES;
 }
 

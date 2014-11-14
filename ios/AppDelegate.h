@@ -52,6 +52,7 @@
 //]]forKG
 
 //[[forSUP
+@property (assign, nonatomic) BOOL bShouldAlartSUPOFGPS;
 //]]forSUP
 
 //[[forATT
