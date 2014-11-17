@@ -230,6 +230,7 @@
             [self setButton:cell offset:self.tableView.frame.size.width * 114 / 640 + cgfScreenWidth * 25.0 / 640.0];
         }
     }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 

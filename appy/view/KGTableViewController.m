@@ -358,7 +358,7 @@
         
         UIView *uivHPValue = (UIView *)[cell.contentView viewWithTag:211];
         if ([nssTPQ6HP componentsSeparatedByString:@";"][2] != nil && [[nssTPQ6HP componentsSeparatedByString:@";"][2] isEqualToString:@""] == NO && [[nssTPQ6HP componentsSeparatedByString:@";"][2] isEqualToString:@"尚無資料"] == NO) {
-            uivHPValue = [[UIView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 50.0 / 640.0, cgfScreenWidth * 283.0 / 640.0 * [[nssTPE4HP componentsSeparatedByString:@";"][2]floatValue], cgfScreenWidth * 32.0 / 640.0)];
+            uivHPValue = [[UIView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 320.0 / 640.0, cgfScreenWidth * 50.0 / 640.0, cgfScreenWidth * 283.0 / 640.0 * [[nssTPQ6HP componentsSeparatedByString:@";"][2]floatValue], cgfScreenWidth * 32.0 / 640.0)];
             [uivHPValue setBackgroundColor:[UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0]];
             uivHPValue.layer.cornerRadius = 4;
             [cell.contentView addSubview:uivHPValue];

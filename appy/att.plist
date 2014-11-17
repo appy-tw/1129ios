@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>name</key>
-	<string>姓名</string>
+	<string>尚未登入</string>
 	<key>fid</key>
-	<string>姓名</string>
+	<string></string>
 	<key>address</key>
 	<string>志工服務地址</string>
 	<key>lat</key>

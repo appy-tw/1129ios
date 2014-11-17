@@ -804,21 +804,31 @@
 }
 
 - (void)mapClicked {
-    CGFloat latitude = [nssLat floatValue];
-    CGFloat longitude = [nssLon floatValue];
-    CLLocationCoordinate2D targetLocation = CLLocationCoordinate2DMake(latitude, longitude);
-    if (CLLocationCoordinate2DIsValid(targetLocation)) {
-        MapViewController *mapVC = [[MapViewController alloc] init];
-        mapVC.location = targetLocation;
-        // FIXME: this have problem can't show |navigationController|
-        //            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self];
-        mapVC.title = nssName;
-        mapVC.address = nssAddress;
-        [self makeKeyboardOffsetBack];
-        self.navigationController.navigationBarHidden = NO;
-        [self.navigationController pushViewController:mapVC animated:YES];
-    } else {
+    if (([nssLat isEqualToString:@"25.082179"] == YES && [nssLon isEqualToString:@"121.567257"] == YES) || nssName == nil || [nssName isEqualToString:@"姓名"] == YES || [nssName isEqualToString:@""] == YES || [nssAddress isEqualToString:@"姓名"] == YES || [nssAddress isEqualToString:@"尚未登入"] == YES) {
         NSLog(@"location is not valid");
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"據點載入失敗"
+                                                        message:@"無法載入志工據點資訊，可能尚未登入臉書，未於官網報名，或系統尚未更新。\n如發現bug或遇操作障礙請洽appy.service@gmail.com。"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"確認"
+                                              otherButtonTitles:nil];
+        [alert show];
+    } else {
+        CGFloat latitude = [nssLat floatValue];
+        CGFloat longitude = [nssLon floatValue];
+        CLLocationCoordinate2D targetLocation = CLLocationCoordinate2DMake(latitude, longitude);
+        if (CLLocationCoordinate2DIsValid(targetLocation)) {
+            MapViewController *mapVC = [[MapViewController alloc] init];
+            mapVC.location = targetLocation;
+            // FIXME: this have problem can't show |navigationController|
+            //            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self];
+            mapVC.title = nssName;
+            mapVC.address = nssAddress;
+            [self makeKeyboardOffsetBack];
+            self.navigationController.navigationBarHidden = NO;
+            [self.navigationController pushViewController:mapVC animated:YES];
+        } else {
+            NSLog(@"location is not valid");
+        }
     }
 }
 
