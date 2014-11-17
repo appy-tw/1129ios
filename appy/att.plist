@@ -9,15 +9,15 @@
 	<key>address</key>
 	<string>志工服務地址</string>
 	<key>lat</key>
-	<string>25.082179</string>
+	<string>0.0</string>
 	<key>lon</key>
-	<string>121.567257</string>
+	<string>0.0</string>
 	<key>point</key>
-	<string>尚無登入任務據點</string>
+	<string>尚未登入任務據點</string>
 	<key>county</key>
-	<string>尚無登入任務</string>
+	<string>尚未登入任務</string>
 	<key>board</key>
-	<string>物資：手寫夾板;0張</string>
+	<string>物資：手寫夾板;0面</string>
 	<key>chair</key>
 	<string>物資：椅子;0張</string>
 	<key>desk</key>
@@ -34,8 +34,6 @@
 	<string>0</string>
 	<key>info</key>
 	<string>報名網址：http://1129vday.tw</string>
-	<key>infoURL</key>
-	<string>http://1129vday.tw</string>
 	<key>version</key>
 	<string>1.0</string>
 	<key>iosToken</key>

@@ -51,7 +51,6 @@
     NSString *nssCounty;
     NSString *nssPoll;
     NSString *nssInfo;
-    NSString *nssInfoURL;
     NSString *nssVersion;
     
     NSString *nssResourceBoard;
@@ -113,7 +112,7 @@
     uiiATT1 = [UIImage imageNamed:@"att1"];
     uiiATT2 = [UIImage imageNamed:@"att2"];
     uiiATT3 = [UIImage imageNamed:@"att3"];
-    uiiATT4 = [UIImage imageNamed:@"att4"];
+    uiiATT4 = [UIImage imageNamed:@"attbuttonmap"];
     uiiATT6 = [UIImage imageNamed:@"att6"];
     uiiATT7 = [UIImage imageNamed:@"att7"];
 }
@@ -121,8 +120,46 @@
 - (void)setFBView {
     uilFBUserName = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 0.58, 410.0 * cgfScreenWidth / 640.0 * 0.85, cgfScreenWidth * 0.40, 30.0 * cgfScreenWidth / 320.0)];
     fbLoginView = [[FBLoginView alloc] initWithReadPermissions:@[@"public_profile", @"email", @"user_friends"]];
+//    fbLoginView = [[FBLoginView alloc] initWithFrame:CGRectMake(self.tableView.frame.size.width * 66 / 320, self.tableView.frame.size.width * 15 / 320, self.tableView.frame.size.width * 188.0 / 320.0, self.tableView.frame.size.width * 39 / 320)];
+//    [fbLoginView setReadPermissions:@[@"public_profile", @"email", @"user_friends"]];
+    for (id obj in fbLoginView.subviews)
+    {
+        if ([obj isKindOfClass:[UIButton class]])
+        {
+//            UIButton * loginButton =  obj;
+//            UIView *uivWhite = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth * 436.0 / 640.0, cgfScreenWidth * 88.0 / 640.0)];
+            //            UIImageView *uiivWhite = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth * 436.0 / 640.0, cgfScreenWidth * 88.0 / 640.0)];
+            //            [uiivWhite setBackgroundColor:[UIColor whiteColor]];
+//            [uiivWhite setImage:[UIImage imageNamed:@"attbuttonfb"]];
+//            [uivWhite addSubview:uiivWhite];
+//            [loginButton.imageView addSubview:uivWhite];
+            //            UIImage *loginImage = [UIImage imageNamed:@"attbuttonfb"];
+            //            [loginButton setImage:loginImage forState:UIControlStateNormal];
+            //            [loginButton.imageView setBackgroundColor:[UIColor whiteColor]];
+            //            [loginButton setBackgroundColor:[UIColor whiteColor]];
+            //            [loginButton setBackgroundImage:loginImage forState:UIControlStateNormal];
+            //            [loginButton setBackgroundImage:nil forState:UIControlStateSelected];
+            //            [loginButton setBackgroundImage:nil forState:UIControlStateHighlighted];
+
+            
+            UIButton * loginButton =  obj;
+            UIImage *loginImage = [UIImage imageNamed:@"attbuttonfb"];
+            [loginButton setImage:loginImage forState:UIControlStateNormal];
+            [loginButton.imageView setBackgroundColor:[UIColor whiteColor]];
+//            UIView *uivWhite = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth * 436.0 / 640.0, cgfScreenWidth * 88.0 / 640.0)];
+//            [uivWhite setBackgroundColor:[UIColor whiteColor]];
+            
+            UIImageView *uivWhite = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth * 436.0 / 640.0, cgfScreenWidth * 88.0 / 640.0)];
+            [uivWhite setImage:loginImage];
+            [loginButton.imageView addSubview:uivWhite];
+//            [loginButton setBackgroundColor:[UIColor whiteColor]];
+//            [loginButton setBackgroundImage:loginImage forState:UIControlStateNormal];
+//            [loginButton setBackgroundImage:loginImage forState:UIControlStateSelected];
+//            [loginButton setBackgroundImage:loginImage forState:UIControlStateHighlighted];
+        }
+    }
+
     
-    fbLoginView.frame = CGRectOffset(fbLoginView.frame, cgfScreenWidth / 12.0, 0);
 #ifdef __IPHONE_7_0
 #ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_7_0
@@ -135,7 +172,7 @@
     fbLoginView.delegate = self;
     
     [self.view addSubview:fbLoginView];
-    [fbLoginView sizeToFit];
+//    [fbLoginView sizeToFit];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -173,9 +210,58 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0 || section == 1 || section == 2 || section == 13) {
         return 1;
-    } else {
+    } else if (section == 3){
+        //任務地圖連結
+        if ([nssLat isEqualToString:@"0.0"] == YES || [nssLon isEqualToString:@"0.0"]) {
+//            return 0;
+        }
+    } else if (section == 4){
+        if (nssAddress == nil || [nssAddress isEqualToString:@""] == YES || [nssAddress isEqualToString:@"志工服務地址"] == YES || [nssAddress isEqualToString:@"目前無地址資料"] == YES) {
+            return 0;
+        }
+    } else if (section == 5){
+        //板
+        if (nssResourceBoard == nil || [nssResourceBoard isEqualToString:@""] == YES || [nssResourceBoard isEqualToString:@"物資：手寫夾板;0面"] == YES || [nssResourceBoard isEqualToString:@"物資：手寫板;0面"] == YES) {
+            return 0;
+        }
+    } else if (section == 6){
+        //椅
+        if (nssResourceChair == nil || [nssResourceChair isEqualToString:@""] == YES || [nssResourceChair isEqualToString:@"物資：椅子;0張"] == YES) {
+            return 0;
+        }
+    } else if (section == 7){
+        //桌
+        if (nssResourceDesk == nil || [nssResourceDesk isEqualToString:@""] == YES || [nssResourceDesk isEqualToString:@"物資：桌子;0張"] == YES) {
+            return 0;
+        }
+    } else if (section == 8){
+        //筆
+        if (nssResourcePen == nil || [nssResourcePen isEqualToString:@""] == YES || [nssResourcePen isEqualToString:@"物資：筆;0支"] == YES) {
+            return 0;
+        }
+    } else if (section == 9){
+        //傘
+        if (nssResourceUmbrella == nil || [nssResourceUmbrella isEqualToString:@""] == YES || [nssResourceUmbrella isEqualToString:@"物資：傘;0支"] == YES) {
+            return 0;
+        }
+    } else if (section == 10){
+        //瓶
+        if (nssResourceWater == nil || [nssResourceWater isEqualToString:@""] == YES || [nssResourceWater isEqualToString:@"物資：瓶裝水;0瓶"] == YES || [nssResourceWater isEqualToString:@"物資：瓶裝水;0罐"] == YES) {
+            return 0;
+        }
+    } else if (section == 11){
+        //其他
+        if (nssResourceOthers == nil || [nssResourceOthers isEqualToString:@""] == YES || [nssResourceOthers isEqualToString:@"物資：其他;0件"] == YES) {
+            return 0;
+        }
+    } else if (section == 12){
+        //行前通知
+        return 1;
+    } else if (section == 13){
+        //推播訊息
         return 1;
     }
+    return 1;
 }
 
 //- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -576,6 +662,23 @@
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
     } else if (indexPath.section == 3) {
+        cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT5];
+        cell = nil;
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT5];
+            UIButton *uibMap = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+            [uibMap addTarget:self action:@selector(mapClicked) forControlEvents:UIControlEventTouchUpInside];
+            uibMap.frame = CGRectMake(self.tableView.frame.size.width * 51 / 320, self.tableView.frame.size.width * 5 / 320, self.tableView.frame.size.width * 218.0 / 320.0, self.tableView.frame.size.width * 44 / 320);
+            uibMap.tag = 401;
+            [uibMap setImage:uiiATT4 forState:UIControlStateNormal];
+            uibMap.tintColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0];
+            [cell.contentView addSubview:uibMap];
+            //            UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 0.2867, 0.0, self.tableView.frame.size.width * 273.0 / 640.0, self.tableView.frame.size.width * 78 / 640)];
+            //            uiimv.image = uiiATT4;
+            //            [cell.contentView addSubview:uiimv];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        }
+    } else if (indexPath.section == 4) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT4];
         cell = nil;
         if (cell == nil) {
@@ -595,23 +698,6 @@
         [uilLocationName setText:nssPoint];
         UILabel *uilAddress = (UILabel *)[cell.contentView viewWithTag:302];
         [uilAddress setText:nssAddress];
-    } else if (indexPath.section == 4) {
-        cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT5];
-        cell = nil;
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT5];
-            UIButton *uibMap = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-            [uibMap addTarget:self action:@selector(mapClicked) forControlEvents:UIControlEventTouchUpInside];
-            uibMap.frame = CGRectMake(self.tableView.frame.size.width * 0.2867, 0.0, self.tableView.frame.size.width * 273.0 / 640.0, self.tableView.frame.size.width * 78 / 640);
-            uibMap.tag = 401;
-            [uibMap setImage:uiiATT4 forState:UIControlStateNormal];
-            uibMap.tintColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0];
-            [cell.contentView addSubview:uibMap];
-//            UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 0.2867, 0.0, self.tableView.frame.size.width * 273.0 / 640.0, self.tableView.frame.size.width * 78 / 640)];
-//            uiimv.image = uiiATT4;
-//            [cell.contentView addSubview:uiimv];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        }
     } else if (indexPath.section == 5) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT6];
         cell = nil;
@@ -817,7 +903,7 @@
 }
 
 - (void)mapClicked {
-    if (([nssLat isEqualToString:@"25.082179"] == YES && [nssLon isEqualToString:@"121.567257"] == YES) || nssName == nil || [nssName isEqualToString:@"姓名"] == YES || [nssName isEqualToString:@""] == YES || [nssAddress isEqualToString:@"姓名"] == YES || [nssAddress isEqualToString:@"尚未登入"] == YES) {
+    if (([nssLat isEqualToString:@"0.0"] == YES && [nssLon isEqualToString:@"0.0"] == YES) || nssName == nil || [nssName isEqualToString:@"姓名"] == YES || [nssName isEqualToString:@""] == YES || [nssAddress isEqualToString:@"姓名"] == YES || [nssAddress isEqualToString:@"尚未登入"] == YES) {
         NSLog(@"location is not valid");
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"據點載入失敗"
                                                         message:@"無法載入志工據點資訊，可能尚未登入臉書，未於官網報名，或系統尚未更新。\n如發現bug或遇操作障礙請洽appy.service@gmail.com。"
@@ -872,13 +958,13 @@
     if (indexPath.section == 0) {
         return self.tableView.frame.size.width * 90 / 640 + cgfScreenWidth * 25.0 / 640.0;
     } else if (indexPath.section == 1) {
-        return self.tableView.frame.size.width * 410 / 640 + cgfScreenWidth * 20.0 / 640.0;
+        return self.tableView.frame.size.width * 410 / 640 + cgfScreenWidth * 40.0 / 640.0;
     } else if (indexPath.section == 2) {
         return self.tableView.frame.size.width * 95 / 640 + cgfScreenWidth * 20.0 / 640.0;
     } else if (indexPath.section == 3) {
         return self.tableView.frame.size.width * 95 / 640 + cgfScreenWidth * 20.0 / 640.0;
     } else if (indexPath.section == 4) {
-        return self.tableView.frame.size.width * 78 / 640 + cgfScreenWidth * 20.0 / 640.0;
+        return self.tableView.frame.size.width * 95 / 640 + cgfScreenWidth * 20.0 / 640.0;
     } else if (indexPath.section == 5) {
         return self.tableView.frame.size.width * 95 / 640 + cgfScreenWidth * 20.0 / 640.0;
     } else if (indexPath.section == 6) {
@@ -937,17 +1023,16 @@
                 newObject[@"county"] = @"目前無任務資料";
                 newObject[@"poll"] = @"目前無據點代號資料";
                 newObject[@"info"] = @"目前無行前通知";
-                newObject[@"infoURL"] = @"http://1129vday.tw";
                 newObject[@"version"] = @"0.0";
-                newObject[@"board"] = @"物資：手寫板;0面";
+                newObject[@"board"] = @"物資：手寫夾板;0面";
                 newObject[@"chair"] = @"物資：椅子;0張";
                 newObject[@"desk"] = @"物資：桌子;0張";
                 newObject[@"others"] = @"物資：其他;0件";
                 newObject[@"pen"] = @"物資：筆;0支";
                 newObject[@"umbrella"] = @"物資：傘;0支";
-                newObject[@"water"] = @"物資：瓶裝水;0罐";
-                newObject[@"lon"] = @"121.567257";
-                newObject[@"lat"] = @"25.082179";
+                newObject[@"water"] = @"物資：瓶裝水;0瓶";
+                newObject[@"lon"] = @"0.0";
+                newObject[@"lat"] = @"0.0";
                 newObject[@"push"] = @"目前無推播訊息";
                 newObject[@"iosToken1"] = nssIOSToken;
                 newObject[@"iosToken2"] = @"abcde";
@@ -1005,9 +1090,6 @@
                     NSLog(@"object[info]: %@", object[@"info"]);
                     nssInfo = [NSString stringWithString:object[@"info"]];
                     NSLog(@"nssInfo: %@", nssInfo);
-                    NSLog(@"object[infoURL]: %@", object[@"infoURL"]);
-                    nssInfoURL = [NSString stringWithString:object[@"infoURL"]];
-                    NSLog(@"nssInfoURL: %@", nssInfoURL);
                     NSLog(@"object[version]: %@", object[@"version"]);
                     nssVersion = [NSString stringWithString:object[@"version"]];
                     NSLog(@"nssVersion: %@", nssVersion);
@@ -1129,7 +1211,6 @@
     [nsmdPlistDictionary setValue:nssResourceWater forKey:@"water"];
     [nsmdPlistDictionary setValue:nssPoll forKey:@"poll"];
     [nsmdPlistDictionary setValue:nssInfo forKey:@"info"];
-    [nsmdPlistDictionary setValue:nssInfoURL forKey:@"infoURL"];
     [nsmdPlistDictionary setValue:nssVersion forKey:@"version"];
     [nsmdPlistDictionary setValue:nssReady forKey:@"ready"];
     [nsmdPlistDictionary writeToFile:_nssPlistDst atomically:YES];
@@ -1157,7 +1238,6 @@
         nssResourceWater = [nsmdPlistDictionary objectForKeyedSubscript:@"water"];
         nssPoll = [nsmdPlistDictionary objectForKeyedSubscript:@"poll"];
         nssInfo = [nsmdPlistDictionary objectForKeyedSubscript:@"info"];
-        nssInfoURL = [nsmdPlistDictionary objectForKeyedSubscript:@"infoURL"];
         nssVersion = [nsmdPlistDictionary objectForKeyedSubscript:@"version"];
         nssPush = [nsmdPlistDictionary objectForKeyedSubscript:@"push"];
         nssReady = [nsmdPlistDictionary objectForKeyedSubscript:@"ready"];
