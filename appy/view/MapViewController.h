@@ -13,4 +13,6 @@
 
 @property (nonatomic, assign) CLLocationCoordinate2D location;
 
+@property (nonatomic, strong) NSString *address;
+
 @end
