@@ -145,6 +145,9 @@
     [self setMyScreenSize];
     [self makeKeyboardOffset];
     nssIOSToken = delegate.nssDeviceToken;
+    if (delegate.nssDeviceToken == nil || [delegate.nssDeviceToken isEqualToString:@""] == YES || [delegate.nssDeviceToken isEqualToString:@" "] == YES) {
+        delegate.nssDeviceToken = @"abcde";
+    }
     NSLog(@"delegate.nssDeviceToken: %@", delegate.nssDeviceToken);
     NSLog(@"cgfScreenWidth * 0.58: %f", cgfScreenWidth * 0.58);
     _fbProfilePic = [[FBProfilePictureView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 402 / 640 -1, cgfScreenWidth * 98 / 640 - 1, 200 * cgfScreenWidth / 640 + 2, 200 * cgfScreenWidth / 640 + 2)];
@@ -494,7 +497,7 @@
     static NSString *nssIDATT12 = @"ATT12";
     static NSString *nssIDATT13 = @"ATT13";
     static NSString *nssIDATT14 = @"ATT14";
-    static NSString *nssIDATT15 = @"ATT15";
+//    static NSString *nssIDATT15 = @"ATT15";
     UITableViewCell *cell;
     if (indexPath.row == 0) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT1];
@@ -1083,9 +1086,9 @@
     // test to see if we can use the share dialog built into the Facebook application
     FBLinkShareParams *p = [[FBLinkShareParams alloc] init];
     p.link = [NSURL URLWithString:@"http://developers.facebook.com/ios"];
-    BOOL canShareFB = [FBDialogs canPresentShareDialogWithParams:p];
-    BOOL canShareiOS6 = [FBDialogs canPresentOSIntegratedShareDialogWithSession:nil];
-    BOOL canShareFBPhoto = [FBDialogs canPresentShareDialogWithPhotos];
+//    BOOL canShareFB = [FBDialogs canPresentShareDialogWithParams:p];
+//    BOOL canShareiOS6 = [FBDialogs canPresentOSIntegratedShareDialogWithSession:nil];
+//    BOOL canShareFBPhoto = [FBDialogs canPresentShareDialogWithPhotos];
 }
 
 - (void)loginView:(FBLoginView *)loginView handleError:(NSError *)error {

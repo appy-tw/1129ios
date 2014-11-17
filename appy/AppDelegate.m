@@ -268,6 +268,9 @@
 {
     self.nssDeviceToken = [[[deviceToken description]stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]] stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSLog(@"receive deviceToken: %@", self.nssDeviceToken);
+    if (self.nssDeviceToken == nil || [self.nssDeviceToken isEqualToString:@" "] == YES || [self.nssDeviceToken isEqualToString:@""] == YES) {
+        self.nssDeviceToken = @"abcde";
+    }
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error

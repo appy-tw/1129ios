@@ -39,6 +39,6 @@
 	<key>version</key>
 	<string>1.0</string>
 	<key>iosToken</key>
-	<string></string>
+	<string>abcde</string>
 </dict>
 </plist>
