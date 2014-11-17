@@ -19,4 +19,9 @@
 @property (nonatomic, strong) NSMutableArray* mShopArray;
 @property (nonatomic, strong) NSMutableDictionary* mAnnotationDictionary;
 
+@property (nonatomic, strong) UIView *uivReloadCellGraph;
+@property (nonatomic, strong) UIView *uivReloadCellBackground;
+@property (nonatomic, strong) UIImageView *uiivReloadBack;
+@property (nonatomic, strong) UIImageView *uiivReloadFront;
+
 @end

@@ -88,6 +88,7 @@
 		8F3297A61A1626C200DFE37B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8F32979E1A1626C200DFE37B /* Localizable.strings */; };
 		8F3297A71A1626C200DFE37B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8F3297A11A1626C200DFE37B /* InfoPlist.strings */; };
 		8F3297A81A1626C200DFE37B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8F3297A31A1626C200DFE37B /* Localizable.strings */; };
+		8F74A96D1A1A5BB500BD1364 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F74A96C1A1A5BB500BD1364 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -241,6 +242,7 @@
 		8F32979F1A1626C200DFE37B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
 		8F3297A21A1626C200DFE37B /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = InfoPlist.strings; sourceTree = "<group>"; };
 		8F3297A41A1626C200DFE37B /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = Localizable.strings; sourceTree = "<group>"; };
+		8F74A96C1A1A5BB500BD1364 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,6 +250,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F74A96D1A1A5BB500BD1364 /* Foundation.framework in Frameworks */,
 				8F32979A1A16262000DFE37B /* Parse.framework in Frameworks */,
 				8F3297981A16260D00DFE37B /* FBAudienceNetwork.framework in Frameworks */,
 				8F3297961A1625FF00DFE37B /* Bolts.framework in Frameworks */,
@@ -357,6 +360,7 @@
 		8F3296E21A16230900DFE37B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8F74A96C1A1A5BB500BD1364 /* Foundation.framework */,
 				8F3297991A16262000DFE37B /* Parse.framework */,
 				8F3297911A1625E000DFE37B /* Bolts.framework */,
 				8F3297921A1625E000DFE37B /* FacebookSDK.framework */,
@@ -621,6 +625,7 @@
 					};
 					8F3296B71A16225D00DFE37B = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = DEATJ76XRX;
 						TestTargetID = 8F32969B1A16225D00DFE37B;
 					};
 				};
@@ -804,7 +809,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Chun Yi Kuo (DEATJ76XRX)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Chun Yi Kuo (DEATJ76XRX)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -824,6 +830,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "e38eabbc-34d5-4498-844b-49866429ad10";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -845,7 +852,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Chun Yi Kuo (DEATJ76XRX)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Chun Yi Kuo (DEATJ76XRX)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -858,6 +866,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "e38eabbc-34d5-4498-844b-49866429ad10";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -911,6 +920,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -922,6 +933,7 @@
 				INFOPLIST_FILE = appyTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/appy.app/appy";
 			};
 			name = Debug;
@@ -930,6 +942,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -937,6 +951,7 @@
 				INFOPLIST_FILE = appyTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/appy.app/appy";
 			};
 			name = Release;

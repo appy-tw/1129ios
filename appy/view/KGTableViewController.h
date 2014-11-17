@@ -12,4 +12,9 @@
 
 @property (strong, nonatomic) NSString *nssPlistDst;
 
+@property (nonatomic, strong) UIView *uivReloadCellGraph;
+@property (nonatomic, strong) UIView *uivReloadCellBackground;
+@property (nonatomic, strong) UIImageView *uiivReloadBack;
+@property (nonatomic, strong) UIImageView *uiivReloadFront;
+
 @end

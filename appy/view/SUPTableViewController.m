@@ -47,7 +47,13 @@
     UIImage *uiiSUP3;
     
 //    AppDelegate *delegate;
-
+    
+    NSString *nssRefrashResultTitle;
+    NSString *nssRefrashResultContent;
+    
+    BOOL bIconAssociated;
+    BOOL bAnimation;
+    BOOL bTitleAdded;
 }
 
 @property (nonatomic, strong) MKMapView *mapView;
@@ -200,10 +206,10 @@
     [self makeKeyboardOffset];
     [self loadShops];
     [self setImage];
-
     [self setMyAnotherMap];
     
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [self setRefreshControl];
 }
 -(void)loadVShopFromParse{
     [[VParseManager sharedInstance]loadVShopFromServer];
@@ -402,5 +408,154 @@
     [self sortShops];
 }
 //]]Plist
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGRect cgfRefreshBounds = self.refreshControl.bounds;
+    CGFloat cgfPulledDistance = MAX(0.0, -self.refreshControl.frame.origin.y);
+    
+    CGFloat cgfMiddleX = self.tableView.frame.size.width / 2.0;
+    
+    CGFloat cgfRefreshHeight = self.uiivReloadBack.bounds.size.height;
+    CGFloat cgfRefreshHeightHalf = cgfRefreshHeight * 0.8 / 3.0;
+    
+    CGFloat cgfRefreshWidth = self.uiivReloadBack.bounds.size.width;
+    CGFloat cgfRefreshWidthHalf = cgfRefreshWidth / 2.0;
+    
+    CGFloat cgfFrontGraphHeight = self.uiivReloadFront.bounds.size.height;
+    CGFloat cgfFrontGraphHeightHalf = cgfFrontGraphHeight * 0.8 / 3.0;
+    
+    CGFloat cgfFrontGraphWidth = self.uiivReloadFront.bounds.size.width;
+    CGFloat cgfFrontGraphWidthHalf = cgfFrontGraphWidth / 2.0;
+    
+    CGFloat cgfPulledRatio = MIN( MAX(cgfPulledDistance, 0.0), 100.0) / 100.0;
+    
+    CGFloat BackgroundGraphY = cgfPulledDistance * 0.8 / 3.0 - cgfRefreshHeightHalf;
+    CGFloat FrontGraphY = cgfPulledDistance * 0.8 / 3.0 - cgfFrontGraphHeightHalf;
+    
+    CGFloat BackgroundGraphX = (cgfMiddleX + cgfRefreshWidthHalf) - (cgfRefreshWidth * cgfPulledRatio);
+    CGFloat FrontGraphX = (cgfMiddleX - cgfFrontGraphWidth - cgfFrontGraphWidthHalf) + (cgfFrontGraphWidth * cgfPulledRatio);
+    
+    if (fabsf(BackgroundGraphX - FrontGraphX) < 1.0) {
+        self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"下拉後卡開，進行更新"];
+        bIconAssociated = YES;
+    }
+    
+    if (bIconAssociated || self.refreshControl.isRefreshing) {
+        BackgroundGraphX = cgfMiddleX - cgfRefreshWidthHalf;
+        FrontGraphX = cgfMiddleX - cgfFrontGraphWidthHalf;
+    }
+    
+    CGRect BackgroundGraphFrame = self.uiivReloadBack.frame;
+    BackgroundGraphFrame.origin.x = BackgroundGraphX;
+    BackgroundGraphFrame.origin.y = BackgroundGraphY;
+    
+    CGRect FrontGraphFrame = self.uiivReloadFront.frame;
+    FrontGraphFrame.origin.x = FrontGraphX;
+    FrontGraphFrame.origin.y = FrontGraphY;
+    
+    self.uiivReloadBack.frame = BackgroundGraphFrame;
+    self.uiivReloadFront.frame = FrontGraphFrame;
+    
+    cgfRefreshBounds.size.height = cgfPulledDistance;
+    
+    self.uivReloadCellBackground.frame = cgfRefreshBounds;
+    self.uivReloadCellGraph.frame = cgfRefreshBounds;
+    
+    if (self.refreshControl.isRefreshing && !bAnimation) {
+        [self makeAnimation];
+    }
+}
+
+- (void)setRefreshControl
+{
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    self.uivReloadCellGraph = [[UIView alloc] initWithFrame:self.refreshControl.bounds];
+    self.uivReloadCellGraph.backgroundColor = [UIColor clearColor];
+    
+    self.uivReloadCellBackground = [[UIView alloc] initWithFrame:self.refreshControl.bounds];
+    self.uivReloadCellBackground.backgroundColor = [UIColor clearColor];
+    self.uivReloadCellBackground.alpha = 0.15;
+    
+    self.uiivReloadBack = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"reload-back"]];
+    [self.uivReloadCellGraph addSubview:self.uiivReloadBack];
+    [self.refreshControl addSubview:self.uivReloadCellBackground];
+    
+    self.uiivReloadFront = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"reload-front"]];
+    [self.uivReloadCellGraph addSubview:self.uiivReloadFront];
+    
+    // Let the graphics be separated
+    self.uivReloadCellGraph.clipsToBounds = YES;
+    
+    self.refreshControl.tintColor = [UIColor clearColor];
+    [self.refreshControl addSubview:self.uivReloadCellGraph];
+    
+    bIconAssociated = NO;
+    bAnimation = NO;
+    [self.refreshControl addTarget:self action:@selector(refrashClicked) forControlEvents:UIControlEventValueChanged];
+}
+
+- (void)refrashClicked {
+    [self loadShops];
+    [self setImage];
+    [self setMyAnotherMap];
+    // Reload table data
+    [self.tableView reloadData];
+    [self delayUntilReloadFinished];
+}
+
+- (void)delayUntilReloadFinished {
+    double dReloadSecond = 2.0;
+    dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(dReloadSecond * NSEC_PER_SEC));
+    dispatch_after(delayTime, dispatch_get_main_queue(), ^(void){
+        NSLog(@"Finished");
+        if (nssRefrashResultTitle != nil && [nssRefrashResultTitle isEqualToString:@""] == NO) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nssRefrashResultTitle
+                                                            message:nssRefrashResultContent
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"確認"
+                                                  otherButtonTitles:nil];
+            [alert show];
+        }
+        [self.refreshControl endRefreshing];
+    });
+}
+
+- (void)makeAnimation
+{
+    NSArray *nsaCellBackgroundColor = @[[UIColor redColor], [UIColor greenColor], [UIColor blueColor]];
+    static int siColorIndex = 0;
+    
+    bAnimation = YES;
+    
+    if (self.refreshControl) {
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"MMM d, h:mm a"];
+        NSString *title = [NSString stringWithFormat:@"上次更新時間: %@", [formatter stringFromDate:[NSDate date]]];
+        NSDictionary *attrsDictionary = [NSDictionary dictionaryWithObject:[UIColor blackColor] forKey:NSForegroundColorAttributeName];
+        NSAttributedString *attributedTitle = [[NSAttributedString alloc] initWithString:title attributes:attrsDictionary];
+        self.refreshControl.attributedTitle = attributedTitle;
+    }
+    
+    [UIView animateWithDuration:0.3
+                          delay:0
+                        options:UIViewAnimationOptionCurveLinear
+                     animations:^{
+                         [self.uiivReloadFront setTransform:CGAffineTransformRotate(self.uiivReloadFront.transform, M_PI_2)];
+                         [self.uiivReloadBack setTransform:CGAffineTransformRotate(self.uiivReloadBack.transform, M_PI_2)];
+                         
+                         self.uivReloadCellBackground.backgroundColor = [nsaCellBackgroundColor objectAtIndex:siColorIndex];
+                         siColorIndex = (siColorIndex + 1) % nsaCellBackgroundColor.count;
+                     }
+                     completion:^(BOOL bFinished) {
+                         if (self.refreshControl.isRefreshing) {
+                             [self makeAnimation];
+                         }else{
+                             bAnimation = NO;
+                             bIconAssociated = NO;
+                             self.uivReloadCellBackground.backgroundColor = [UIColor clearColor];
+                         }
+                     }];
+}
 
 @end

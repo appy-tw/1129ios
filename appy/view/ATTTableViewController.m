@@ -70,6 +70,10 @@
     
     NSString *nssRefrashResultTitle;
     NSString *nssRefrashResultContent;
+    
+    BOOL bIconAssociated;
+    BOOL bAnimation;
+    BOOL bTitleAdded;
 }
 @end
 
@@ -150,22 +154,28 @@
     }
     NSLog(@"delegate.nssDeviceToken: %@", delegate.nssDeviceToken);
     NSLog(@"cgfScreenWidth * 0.58: %f", cgfScreenWidth * 0.58);
-    _fbProfilePic = [[FBProfilePictureView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 402 / 640 -1, cgfScreenWidth * 98 / 640 - 1, 200 * cgfScreenWidth / 640 + 2, 200 * cgfScreenWidth / 640 + 2)];
-    [_fbProfilePic.layer setCornerRadius:50.0f];
+    _fbProfilePic = [[FBProfilePictureView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 402 / 640 + 1, cgfScreenWidth * 98 / 640 + 1, 200 * cgfScreenWidth / 640 - 2, 200 * cgfScreenWidth / 640 - 2)];
+    [_fbProfilePic.layer setCornerRadius:49.0f];
     [super viewDidLoad];
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0];
     [self setImage];
     [self readAllFromMyPlist];
     [self setFBView];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    
+    [self setRefreshControl];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 14;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 15;
+    if (section == 0 || section == 1 || section == 2 || section == 13) {
+        return 1;
+    } else {
+        return 1;
+    }
 }
 
 //- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -205,7 +215,7 @@
 //    //        NSLog(@"catch subview");
 //    //        [subview removeFromSuperview];
 //    //    }
-//    if (indexPath.row == 0) {
+//    if (indexPath.section == 0) {
 //        cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT1];
 //        cell = nil;
 //        if (cell == nil) {
@@ -218,7 +228,7 @@
 //        uiimv.image = uiiATT1;
 //        [cell.contentView addSubview:uiimv];
 //        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//    } else if (indexPath.row == 1) {
+//    } else if (indexPath.section == 1) {
 //        cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT2];
 //        cell = nil;
 //        if (cell == nil) {
@@ -262,7 +272,7 @@
 //        [uilTsaiWuLin setTextAlignment:NSTextAlignmentCenter];
 //        [cell.contentView addSubview:uilTsaiWuLin];
 //        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//    } else if (indexPath.row == 2) {
+//    } else if (indexPath.section == 2) {
 //        cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT3];
 //        cell = nil;
 //        if (cell == nil) {
@@ -274,7 +284,7 @@
 //        fbLoginView.center = cell.contentView.center;
 //        [cell.contentView addSubview:fbLoginView];
 //        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//    } else if (indexPath.row == 3) {
+//    } else if (indexPath.section == 3) {
 //        cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT4];
 //        cell = nil;
 //        if (cell == nil) {
@@ -293,7 +303,7 @@
 //        [uilAddress setText:nssAddress];
 //        [cell.contentView addSubview:uilAddress];
 //        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//    } else if (indexPath.row == 4) {
+//    } else if (indexPath.section == 4) {
 //        cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT5];
 //        cell = nil;
 //        if (cell == nil) {
@@ -305,7 +315,7 @@
 //        UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 0.2867, 0.0, self.tableView.frame.size.width * 273.0 / 640.0, self.tableView.frame.size.width * 78 / 640)];
 //        uiimv.image = uiiATT4;
 //        [cell.contentView addSubview:uiimv];
-//    } else if (indexPath.row == 5) {
+//    } else if (indexPath.section == 5) {
 //        cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT6];
 //        cell = nil;
 //        if (cell == nil) {
@@ -324,7 +334,7 @@
 //        [uilItemName setText:[nssResourceBoard componentsSeparatedByString:@";"][1]];
 //        [cell.contentView addSubview:uilItemName];
 //        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//    } else if (indexPath.row == 6) {
+//    } else if (indexPath.section == 6) {
 //        cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT7];
 //        cell = nil;
 //        if (cell == nil) {
@@ -343,7 +353,7 @@
 //        [uilItemName setText:[nssResourceChair componentsSeparatedByString:@";"][1]];
 //        [cell.contentView addSubview:uilItemName];
 //        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//    } else if (indexPath.row == 7) {
+//    } else if (indexPath.section == 7) {
 //        cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT8];
 //        cell = nil;
 //        if (cell == nil) {
@@ -362,7 +372,7 @@
 //        [uilItemName setText:[nssResourceDesk componentsSeparatedByString:@";"][1]];
 //        [cell.contentView addSubview:uilItemName];
 //        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//    } else if (indexPath.row == 8) {
+//    } else if (indexPath.section == 8) {
 //        cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT9];
 //        cell = nil;
 //        if (cell == nil) {
@@ -381,7 +391,7 @@
 //        [uilItemName setText:[nssResourcePen componentsSeparatedByString:@";"][1]];
 //        [cell.contentView addSubview:uilItemName];
 //        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//    } else if (indexPath.row == 9) {
+//    } else if (indexPath.section == 9) {
 //        cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT10];
 //        cell = nil;
 //        if (cell == nil) {
@@ -400,7 +410,7 @@
 //        [uilItemName setText:[nssResourceUmbrella componentsSeparatedByString:@";"][1]];
 //        [cell.contentView addSubview:uilItemName];
 //        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//    } else if (indexPath.row == 10) {
+//    } else if (indexPath.section == 10) {
 //        cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT11];
 //        cell = nil;
 //        if (cell == nil) {
@@ -419,7 +429,7 @@
 //        [uilItemName setText:[nssResourceWater componentsSeparatedByString:@";"][1]];
 //        [cell.contentView addSubview:uilItemName];
 //        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//    } else if (indexPath.row == 11) {
+//    } else if (indexPath.section == 11) {
 //        cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT12];
 //        cell = nil;
 //        if (cell == nil) {
@@ -438,7 +448,7 @@
 //        [uilItemName setText:[nssResourceOthers componentsSeparatedByString:@";"][1]];
 //        [cell.contentView addSubview:uilItemName];
 //        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//    } else if (indexPath.row == 12) {
+//    } else if (indexPath.section == 12) {
 //        cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT13];
 //        cell = nil;
 //        if (cell == nil) {
@@ -499,7 +509,7 @@
     static NSString *nssIDATT14 = @"ATT14";
 //    static NSString *nssIDATT15 = @"ATT15";
     UITableViewCell *cell;
-    if (indexPath.row == 0) {
+    if (indexPath.section == 0) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT1];
         cell = nil;
         if (cell == nil) {
@@ -510,7 +520,7 @@
             [cell.contentView addSubview:uiimv];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
-    } else if (indexPath.row == 1) {
+    } else if (indexPath.section == 1) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT2];
         cell = nil;
         if (cell == nil) {
@@ -556,7 +566,7 @@
         } else {
             [uilTsaiWuLin setText:@"任務尚未登入"];
         }
-    } else if (indexPath.row == 2) {
+    } else if (indexPath.section == 2) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT3];
         cell = nil;
         if (cell == nil) {
@@ -565,7 +575,7 @@
             [cell.contentView addSubview:fbLoginView];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
-    } else if (indexPath.row == 3) {
+    } else if (indexPath.section == 3) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT4];
         cell = nil;
         if (cell == nil) {
@@ -585,7 +595,7 @@
         [uilLocationName setText:nssPoint];
         UILabel *uilAddress = (UILabel *)[cell.contentView viewWithTag:302];
         [uilAddress setText:nssAddress];
-    } else if (indexPath.row == 4) {
+    } else if (indexPath.section == 4) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT5];
         cell = nil;
         if (cell == nil) {
@@ -602,7 +612,7 @@
 //            [cell.contentView addSubview:uiimv];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
-    } else if (indexPath.row == 5) {
+    } else if (indexPath.section == 5) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT6];
         cell = nil;
         if (cell == nil) {
@@ -622,7 +632,7 @@
         UILabel *uilItemName = (UILabel *)[cell.contentView viewWithTag:502];
         [uilLocationNameForItem setText:[nssResourceBoard componentsSeparatedByString:@";"][0]];
         [uilItemName setText:[nssResourceBoard componentsSeparatedByString:@";"][1]];
-    } else if (indexPath.row == 6) {
+    } else if (indexPath.section == 6) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT7];
         cell = nil;
         if (cell == nil) {
@@ -642,7 +652,7 @@
         UILabel *uilItemName = (UILabel *)[cell.contentView viewWithTag:602];
         [uilLocationNameForItem setText:[nssResourceChair componentsSeparatedByString:@";"][0]];
         [uilItemName setText:[nssResourceChair componentsSeparatedByString:@";"][1]];
-    } else if (indexPath.row == 7) {
+    } else if (indexPath.section == 7) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT8];
         cell = nil;
         if (cell == nil) {
@@ -662,7 +672,7 @@
         UILabel *uilItemName = (UILabel *)[cell.contentView viewWithTag:702];
         [uilLocationNameForItem setText:[nssResourceDesk componentsSeparatedByString:@";"][0]];
         [uilItemName setText:[nssResourceDesk componentsSeparatedByString:@";"][1]];
-    } else if (indexPath.row == 8) {
+    } else if (indexPath.section == 8) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT9];
         cell = nil;
         if (cell == nil) {
@@ -682,7 +692,7 @@
         UILabel *uilItemName = (UILabel *)[cell.contentView viewWithTag:802];
         [uilLocationNameForItem setText:[nssResourcePen componentsSeparatedByString:@";"][0]];
         [uilItemName setText:[nssResourcePen componentsSeparatedByString:@";"][1]];
-    } else if (indexPath.row == 9) {
+    } else if (indexPath.section == 9) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT10];
         cell = nil;
         if (cell == nil) {
@@ -702,7 +712,7 @@
         UILabel *uilItemName = (UILabel *)[cell.contentView viewWithTag:902];
         [uilLocationNameForItem setText:[nssResourceUmbrella componentsSeparatedByString:@";"][0]];
         [uilItemName setText:[nssResourceUmbrella componentsSeparatedByString:@";"][1]];
-    } else if (indexPath.row == 10) {
+    } else if (indexPath.section == 10) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT11];
         cell = nil;
         if (cell == nil) {
@@ -722,7 +732,7 @@
         UILabel *uilItemName = (UILabel *)[cell.contentView viewWithTag:1002];
         [uilLocationNameForItem setText:[nssResourceWater componentsSeparatedByString:@";"][0]];
         [uilItemName setText:[nssResourceWater componentsSeparatedByString:@";"][1]];
-    } else if (indexPath.row == 11) {
+    } else if (indexPath.section == 11) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT12];
         cell = nil;
         if (cell == nil) {
@@ -742,7 +752,7 @@
         UILabel *uilItemName = (UILabel *)[cell.contentView viewWithTag:1102];
         [uilLocationNameForItem setText:[nssResourceOthers componentsSeparatedByString:@";"][0]];
         [uilItemName setText:[nssResourceOthers componentsSeparatedByString:@";"][1]];
-    } else if (indexPath.row == 12) {
+    } else if (indexPath.section == 12) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT13];
         cell = nil;
         if (cell == nil) {
@@ -766,7 +776,7 @@
         }
         UITextView *uitvBeforeDeparture = (UITextView *)[cell.contentView viewWithTag:1201];
         [uitvBeforeDeparture setText:nssInfo];
-    } else if (indexPath.row == 13) {
+    } else {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT14];
         cell = nil;
         if (cell == nil) {
@@ -785,24 +795,24 @@
         }
         UITextView *uitvPush = (UITextView *)[cell.contentView viewWithTag:1301];
         [uitvPush setText:nssPush];
-    } else {
-        cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT5];
-        cell = nil;
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT5];
-            UIButton *uibRefrash = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-            [uibRefrash addTarget:self action:@selector(refrashClicked) forControlEvents:UIControlEventTouchUpInside];
-            uibRefrash.frame = CGRectMake(self.tableView.frame.size.width * 0.2867, 0.0, self.tableView.frame.size.width * 273.0 / 640.0, self.tableView.frame.size.width * 78 / 640);
-            uibRefrash.tag = 401;
-            [uibRefrash setTitle:@"更新" forState:UIControlStateNormal];
-            uibRefrash.tintColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0];
-            [cell.contentView addSubview:uibRefrash];
-            //            UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 0.2867, 0.0, self.tableView.frame.size.width * 273.0 / 640.0, self.tableView.frame.size.width * 78 / 640)];
-            //            uiimv.image = uiiATT4;
-            //            [cell.contentView addSubview:uiimv];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        }
-    }
+    }// else {
+//        cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT5];
+//        cell = nil;
+//        if (cell == nil) {
+//            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT5];
+//            UIButton *uibRefrash = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//            [uibRefrash addTarget:self action:@selector(refrashClicked) forControlEvents:UIControlEventTouchUpInside];
+//            uibRefrash.frame = CGRectMake(self.tableView.frame.size.width * 0.2867, 0.0, self.tableView.frame.size.width * 273.0 / 640.0, self.tableView.frame.size.width * 78 / 640);
+//            uibRefrash.tag = 401;
+//            [uibRefrash setTitle:@"更新" forState:UIControlStateNormal];
+//            uibRefrash.tintColor = [UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0];
+//            [cell.contentView addSubview:uibRefrash];
+//            //            UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width * 0.2867, 0.0, self.tableView.frame.size.width * 273.0 / 640.0, self.tableView.frame.size.width * 78 / 640)];
+//            //            uiimv.image = uiiATT4;
+//            //            [cell.contentView addSubview:uiimv];
+//            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//        }
+//    }
     return cell;
 }
 
@@ -835,25 +845,11 @@
     }
 }
 
-- (void)refrashClicked {
-    [self getAllInformationFromParse];
-    [self writeToMyPlist];
-    [self.tableView reloadData];
-    if (nssRefrashResultTitle != nil && [nssRefrashResultTitle isEqualToString:@""] == NO) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nssRefrashResultTitle
-                                                        message:nssRefrashResultContent
-                                                       delegate:nil
-                                              cancelButtonTitle:@"確認"
-                                              otherButtonTitles:nil];
-        [alert show];
-    }
-}
-
 //- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 //{
 //    NSLog(@"- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath");
 //    // Select on show value on map
-//    if (indexPath.row == 4) {
+//    if (indexPath.section == 4) {
 //        CGFloat latitude = [nssLat floatValue];
 //        CGFloat longitude = [nssLon floatValue];
 //        CLLocationCoordinate2D targetLocation = CLLocationCoordinate2DMake(latitude, longitude);
@@ -873,33 +869,33 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0) {
+    if (indexPath.section == 0) {
         return self.tableView.frame.size.width * 90 / 640 + cgfScreenWidth * 25.0 / 640.0;
-    } else if (indexPath.row == 1) {
+    } else if (indexPath.section == 1) {
         return self.tableView.frame.size.width * 410 / 640 + cgfScreenWidth * 20.0 / 640.0;
-    } else if (indexPath.row == 2) {
+    } else if (indexPath.section == 2) {
         return self.tableView.frame.size.width * 95 / 640 + cgfScreenWidth * 20.0 / 640.0;
-    } else if (indexPath.row == 3) {
+    } else if (indexPath.section == 3) {
         return self.tableView.frame.size.width * 95 / 640 + cgfScreenWidth * 20.0 / 640.0;
-    } else if (indexPath.row == 4) {
+    } else if (indexPath.section == 4) {
         return self.tableView.frame.size.width * 78 / 640 + cgfScreenWidth * 20.0 / 640.0;
-    } else if (indexPath.row == 5) {
+    } else if (indexPath.section == 5) {
         return self.tableView.frame.size.width * 95 / 640 + cgfScreenWidth * 20.0 / 640.0;
-    } else if (indexPath.row == 6) {
+    } else if (indexPath.section == 6) {
         return self.tableView.frame.size.width * 95 / 640 + cgfScreenWidth * 20.0 / 640.0;
-    } else if (indexPath.row == 7) {
+    } else if (indexPath.section == 7) {
         return self.tableView.frame.size.width * 95 / 640 + cgfScreenWidth * 20.0 / 640.0;
-    } else if (indexPath.row == 8) {
+    } else if (indexPath.section == 8) {
         return self.tableView.frame.size.width * 95 / 640 + cgfScreenWidth * 20.0 / 640.0;
-    } else if (indexPath.row == 9) {
+    } else if (indexPath.section == 9) {
         return self.tableView.frame.size.width * 95 / 640 + cgfScreenWidth * 20.0 / 640.0;
-    } else if (indexPath.row == 10) {
+    } else if (indexPath.section == 10) {
         return self.tableView.frame.size.width * 95 / 640 + cgfScreenWidth * 20.0 / 640.0;
-    } else if (indexPath.row == 11) {
+    } else if (indexPath.section == 11) {
         return self.tableView.frame.size.width * 95 / 640 + cgfScreenWidth * 20.0 / 640.0;
-    } else if (indexPath.row == 12) {
+    } else if (indexPath.section == 12) {
         return self.tableView.frame.size.width * 300 / 640 + cgfScreenWidth * 20.0 / 640.0;
-    } else if (indexPath.row == 13) {
+    } else if (indexPath.section == 13) {
         return self.tableView.frame.size.width * 300 / 640 + cgfScreenWidth * 20.0 / 640.0;
     } else {
         return self.tableView.frame.size.width * 78 / 640 + cgfScreenWidth * 20.0 / 640.0;
@@ -1050,6 +1046,7 @@
                     }
                     NSLog(@"[self.tableView reloadData];");
                     [self writeToMyPlist];
+                    
                     [self.tableView reloadData];
                 }
             }
@@ -1170,5 +1167,152 @@
 
 //]]Plist
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGRect cgfRefreshBounds = self.refreshControl.bounds;
+    CGFloat cgfPulledDistance = MAX(0.0, -self.refreshControl.frame.origin.y);
+    
+    CGFloat cgfMiddleX = self.tableView.frame.size.width / 2.0;
+    
+    CGFloat cgfRefreshHeight = self.uiivReloadBack.bounds.size.height;
+    CGFloat cgfRefreshHeightHalf = cgfRefreshHeight * 0.8 / 3.0;
+    
+    CGFloat cgfRefreshWidth = self.uiivReloadBack.bounds.size.width;
+    CGFloat cgfRefreshWidthHalf = cgfRefreshWidth / 2.0;
+    
+    CGFloat cgfFrontGraphHeight = self.uiivReloadFront.bounds.size.height;
+    CGFloat cgfFrontGraphHeightHalf = cgfFrontGraphHeight * 0.8 / 3.0;
+    
+    CGFloat cgfFrontGraphWidth = self.uiivReloadFront.bounds.size.width;
+    CGFloat cgfFrontGraphWidthHalf = cgfFrontGraphWidth / 2.0;
+    
+    CGFloat cgfPulledRatio = MIN( MAX(cgfPulledDistance, 0.0), 100.0) / 100.0;
+    
+    CGFloat BackgroundGraphY = cgfPulledDistance * 0.8 / 3.0 - cgfRefreshHeightHalf;
+    CGFloat FrontGraphY = cgfPulledDistance * 0.8 / 3.0 - cgfFrontGraphHeightHalf;
+    
+    CGFloat BackgroundGraphX = (cgfMiddleX + cgfRefreshWidthHalf) - (cgfRefreshWidth * cgfPulledRatio);
+    CGFloat FrontGraphX = (cgfMiddleX - cgfFrontGraphWidth - cgfFrontGraphWidthHalf) + (cgfFrontGraphWidth * cgfPulledRatio);
+    
+    if (fabsf(BackgroundGraphX - FrontGraphX) < 1.0) {
+        self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"下拉後卡開，進行更新"];
+        bIconAssociated = YES;
+    }
+    
+    if (bIconAssociated || self.refreshControl.isRefreshing) {
+        BackgroundGraphX = cgfMiddleX - cgfRefreshWidthHalf;
+        FrontGraphX = cgfMiddleX - cgfFrontGraphWidthHalf;
+    }
+    
+    CGRect BackgroundGraphFrame = self.uiivReloadBack.frame;
+    BackgroundGraphFrame.origin.x = BackgroundGraphX;
+    BackgroundGraphFrame.origin.y = BackgroundGraphY;
+    
+    CGRect FrontGraphFrame = self.uiivReloadFront.frame;
+    FrontGraphFrame.origin.x = FrontGraphX;
+    FrontGraphFrame.origin.y = FrontGraphY;
+    
+    self.uiivReloadBack.frame = BackgroundGraphFrame;
+    self.uiivReloadFront.frame = FrontGraphFrame;
+    
+    cgfRefreshBounds.size.height = cgfPulledDistance;
+    
+    self.uivReloadCellBackground.frame = cgfRefreshBounds;
+    self.uivReloadCellGraph.frame = cgfRefreshBounds;
+    
+    if (self.refreshControl.isRefreshing && !bAnimation) {
+        [self makeAnimation];
+    }
+}
+
+- (void)setRefreshControl
+{
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    self.uivReloadCellGraph = [[UIView alloc] initWithFrame:self.refreshControl.bounds];
+    self.uivReloadCellGraph.backgroundColor = [UIColor clearColor];
+    
+    self.uivReloadCellBackground = [[UIView alloc] initWithFrame:self.refreshControl.bounds];
+    self.uivReloadCellBackground.backgroundColor = [UIColor clearColor];
+    self.uivReloadCellBackground.alpha = 0.15;
+    
+    self.uiivReloadBack = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"reload-back"]];
+    [self.uivReloadCellGraph addSubview:self.uiivReloadBack];
+    [self.refreshControl addSubview:self.uivReloadCellBackground];
+    
+    self.uiivReloadFront = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"reload-front"]];
+    [self.uivReloadCellGraph addSubview:self.uiivReloadFront];
+    
+    // Let the graphics be separated
+    self.uivReloadCellGraph.clipsToBounds = YES;
+    
+    self.refreshControl.tintColor = [UIColor clearColor];
+    [self.refreshControl addSubview:self.uivReloadCellGraph];
+    
+    bIconAssociated = NO;
+    bAnimation = NO;
+    [self.refreshControl addTarget:self action:@selector(refrashClicked) forControlEvents:UIControlEventValueChanged];
+}
+
+- (void)refrashClicked {
+    [self getAllInformationFromParse];
+    [self writeToMyPlist];
+    // Reload table data
+    [self.tableView reloadData];
+    [self delayUntilReloadFinished];
+}
+
+- (void)delayUntilReloadFinished {
+    double dReloadSecond = 2.0;
+    dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(dReloadSecond * NSEC_PER_SEC));
+    dispatch_after(delayTime, dispatch_get_main_queue(), ^(void){
+        NSLog(@"Finished");
+        if (nssRefrashResultTitle != nil && [nssRefrashResultTitle isEqualToString:@""] == NO) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nssRefrashResultTitle
+                                                            message:nssRefrashResultContent
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"確認"
+                                                  otherButtonTitles:nil];
+            [alert show];
+        }
+        [self.refreshControl endRefreshing];
+    });
+}
+
+- (void)makeAnimation
+{
+    NSArray *nsaCellBackgroundColor = @[[UIColor redColor], [UIColor greenColor], [UIColor blueColor]];
+    static int siColorIndex = 0;
+    
+    bAnimation = YES;
+    
+    if (self.refreshControl) {
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"MMM d, h:mm a"];
+        NSString *title = [NSString stringWithFormat:@"上次更新時間: %@", [formatter stringFromDate:[NSDate date]]];
+        NSDictionary *attrsDictionary = [NSDictionary dictionaryWithObject:[UIColor blackColor] forKey:NSForegroundColorAttributeName];
+        NSAttributedString *attributedTitle = [[NSAttributedString alloc] initWithString:title attributes:attrsDictionary];
+        self.refreshControl.attributedTitle = attributedTitle;
+    }
+    
+    [UIView animateWithDuration:0.3
+                          delay:0
+                        options:UIViewAnimationOptionCurveLinear
+                     animations:^{
+                         [self.uiivReloadFront setTransform:CGAffineTransformRotate(self.uiivReloadFront.transform, M_PI_2)];
+                         [self.uiivReloadBack setTransform:CGAffineTransformRotate(self.uiivReloadBack.transform, M_PI_2)];
+                         
+                         self.uivReloadCellBackground.backgroundColor = [nsaCellBackgroundColor objectAtIndex:siColorIndex];
+                         siColorIndex = (siColorIndex + 1) % nsaCellBackgroundColor.count;
+                     }
+                     completion:^(BOOL bFinished) {
+                         if (self.refreshControl.isRefreshing) {
+                             [self makeAnimation];
+                         }else{
+                             bAnimation = NO;
+                             bIconAssociated = NO;
+                             self.uivReloadCellBackground.backgroundColor = [UIColor clearColor];
+                         }
+                     }];
+}
 
 @end
