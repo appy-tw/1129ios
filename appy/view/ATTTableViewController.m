@@ -126,44 +126,20 @@
 - (void)setFBView {
     uilFBUserName = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 0.58, 410.0 * cgfScreenWidth / 640.0 * 0.85, cgfScreenWidth * 0.40, 30.0 * cgfScreenWidth / 320.0)];
     fbLoginView = [[FBLoginView alloc] initWithReadPermissions:@[@"public_profile", @"email", @"user_friends"]];
-//    fbLoginView = [[FBLoginView alloc] initWithFrame:CGRectMake(self.tableView.frame.size.width * 66 / 320, self.tableView.frame.size.width * 15 / 320, self.tableView.frame.size.width * 188.0 / 320.0, self.tableView.frame.size.width * 39 / 320)];
-//    [fbLoginView setReadPermissions:@[@"public_profile", @"email", @"user_friends"]];
-    for (id obj in fbLoginView.subviews)
-    {
-        if ([obj isKindOfClass:[UIButton class]])
-        {
+//    for (id obj in fbLoginView.subviews)
+//    {
+//        if ([obj isKindOfClass:[UIButton class]])
+//        {
 //            UIButton * loginButton =  obj;
-//            UIView *uivWhite = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth * 436.0 / 640.0, cgfScreenWidth * 88.0 / 640.0)];
-            //            UIImageView *uiivWhite = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth * 436.0 / 640.0, cgfScreenWidth * 88.0 / 640.0)];
-            //            [uiivWhite setBackgroundColor:[UIColor whiteColor]];
-//            [uiivWhite setImage:[UIImage imageNamed:@"attbuttonfb"]];
-//            [uivWhite addSubview:uiivWhite];
-//            [loginButton.imageView addSubview:uivWhite];
-            //            UIImage *loginImage = [UIImage imageNamed:@"attbuttonfb"];
-            //            [loginButton setImage:loginImage forState:UIControlStateNormal];
-            //            [loginButton.imageView setBackgroundColor:[UIColor whiteColor]];
-            //            [loginButton setBackgroundColor:[UIColor whiteColor]];
-            //            [loginButton setBackgroundImage:loginImage forState:UIControlStateNormal];
-            //            [loginButton setBackgroundImage:nil forState:UIControlStateSelected];
-            //            [loginButton setBackgroundImage:nil forState:UIControlStateHighlighted];
-
-            
-            UIButton * loginButton =  obj;
-            UIImage *loginImage = [UIImage imageNamed:@"attbuttonfb"];
-            [loginButton setImage:loginImage forState:UIControlStateNormal];
-            [loginButton.imageView setBackgroundColor:[UIColor whiteColor]];
-//            UIView *uivWhite = [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth * 436.0 / 640.0, cgfScreenWidth * 88.0 / 640.0)];
+//            UIImage *loginImage = [UIImage imageNamed:@"attbuttonfb"];
+//            [loginButton setImage:loginImage forState:UIControlStateNormal];
+//            [loginButton.imageView setBackgroundColor:[UIColor whiteColor]];
+//            
+//            UIImageView *uivWhite = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, -1.0, cgfScreenWidth * 436.0 / 640.0, cgfScreenWidth * 90.0 / 640.0)];
 //            [uivWhite setBackgroundColor:[UIColor whiteColor]];
-            
-            UIImageView *uivWhite = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, cgfScreenWidth * 436.0 / 640.0, cgfScreenWidth * 88.0 / 640.0)];
-            [uivWhite setImage:loginImage];
-            [loginButton.imageView addSubview:uivWhite];
-//            [loginButton setBackgroundColor:[UIColor whiteColor]];
-//            [loginButton setBackgroundImage:loginImage forState:UIControlStateNormal];
-//            [loginButton setBackgroundImage:loginImage forState:UIControlStateSelected];
-//            [loginButton setBackgroundImage:loginImage forState:UIControlStateHighlighted];
-        }
-    }
+//            [uivWhite setImage:loginImage];
+//            [loginButton.imageView addSubview:uivWhite];
+//        }
 
     
 #ifdef __IPHONE_7_0
