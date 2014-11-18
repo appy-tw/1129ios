@@ -209,7 +209,6 @@
     [self setMyAnotherMap];
     
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    [self setRefreshControl];
 }
 -(void)loadVShopFromParse{
     [[VParseManager sharedInstance]loadVShopFromServer];

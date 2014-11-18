@@ -161,7 +161,6 @@
     [self prepareAllImage];
     
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    [self setRefreshControl];
 }
 
 - (void)didReceiveMemoryWarning {

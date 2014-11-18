@@ -704,6 +704,8 @@
 - (void)getAllInformationFromParse {
     PFQuery *query = [PFQuery queryWithClassName:@"hp"];
     [query whereKey:@"available" equalTo:@"YES"];
+    nssRefrashResultTitle = @"很抱歉";
+    nssRefrashResultContent = @"資料無法取得。";
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             // The find succeeded.
@@ -746,6 +748,8 @@
                         [self.tableView reloadData];
                     }
                 }
+                nssRefrashResultTitle = @"更新成功";
+                nssRefrashResultContent = @"恭喜，資料已更新為最新狀態！";
             }
         } else {
             // Log details of the failure
