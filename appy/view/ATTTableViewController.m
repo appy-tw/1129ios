@@ -15,7 +15,7 @@
 #import <Parse/Parse.h>
 
 
-@interface ATTTableViewController () <FBLoginViewDelegate>
+@interface ATTTableViewController () <FBLoginViewDelegate, UITextViewDelegate>
 {
     CGFloat cgfW;
     
@@ -37,6 +37,7 @@
     UIImage* uiiATT4;
     UIImage* uiiATT6;
     UIImage* uiiATT7;
+    UIImage* uiiATT8;
     
     FBLoginView *fbLoginView;
     UIImage *uiiFBImage;
@@ -73,6 +74,10 @@
     BOOL bIconAssociated;
     BOOL bAnimation;
     BOOL bTitleAdded;
+    
+    UITextView *uitvGlobalUserReply;
+    UILabel *uilGlobalUserReplyTextAccount;
+    NSString *nssUserReplyText;
 }
 @end
 
@@ -115,6 +120,7 @@
     uiiATT4 = [UIImage imageNamed:@"attbuttonmap"];
     uiiATT6 = [UIImage imageNamed:@"att6"];
     uiiATT7 = [UIImage imageNamed:@"att7"];
+    uiiATT8 = [UIImage imageNamed:@"att8"];
 }
 
 - (void)setFBView {
@@ -204,7 +210,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 14;
+    return 15;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -260,6 +266,11 @@
     } else if (section == 13){
         //推播訊息
         return 1;
+    } else if (section == 14){
+        //問題回報
+        if (nssFid == nil || [nssFid isEqual:@""] == YES || [nssFid isEqual:@" "] == YES || [nssFid isEqual:@"abcde"] == YES) {
+        return 0;
+        }
     }
     return 1;
 }
@@ -593,7 +604,7 @@
     static NSString *nssIDATT12 = @"ATT12";
     static NSString *nssIDATT13 = @"ATT13";
     static NSString *nssIDATT14 = @"ATT14";
-//    static NSString *nssIDATT15 = @"ATT15";
+    static NSString *nssIDATT15 = @"ATT15";
     UITableViewCell *cell;
     if (indexPath.section == 0) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT1];
@@ -862,7 +873,7 @@
         }
         UITextView *uitvBeforeDeparture = (UITextView *)[cell.contentView viewWithTag:1201];
         [uitvBeforeDeparture setText:nssInfo];
-    } else {
+    } else if (indexPath.section == 13) {
         cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT14];
         cell = nil;
         if (cell == nil) {
@@ -881,6 +892,44 @@
         }
         UITextView *uitvPush = (UITextView *)[cell.contentView viewWithTag:1301];
         [uitvPush setText:nssPush];
+    } else {
+        cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT15];
+        cell = nil;
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nssIDATT15];
+            UIImageView *uiimv = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.tableView.frame.size.width, self.tableView.frame.size.width * 112 / 640)];
+            uiimv.image = uiiATT8;
+            [cell.contentView addSubview:uiimv];
+            UITextView *uitvReply = [[UITextView alloc]initWithFrame:CGRectMake(cgfScreenWidth * 0.04, cgfScreenWidth * 120.0 / 640.0, cgfScreenWidth * 0.92, cgfScreenWidth * 180.0 / 640.0)];
+            uitvReply.layer.borderWidth = 1.0f;
+            uitvReply.layer.borderColor = [[UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0]CGColor];
+            uitvReply.layer.cornerRadius = 5;
+            uitvReply.tag = 1401;
+            [uitvReply setEditable:YES];
+            [cell.contentView addSubview:uitvReply];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textViewDidChange:) name:UITextViewTextDidChangeNotification object:uitvReply];
+            uitvGlobalUserReply = uitvReply;
+            
+            UILabel *uilTextAccount = [[UILabel alloc]initWithFrame:CGRectMake(cgfScreenWidth * 0.04, cgfScreenWidth * 320.0 / 640.0 , cgfScreenWidth * 0.70, cgfScreenWidth * 50.0 / 640.0)];
+            [uilTextAccount setText:@"字數：0/250"];
+            uilGlobalUserReplyTextAccount = uilTextAccount;
+            [uilGlobalUserReplyTextAccount setTextAlignment:NSTextAlignmentLeft];
+            [uilGlobalUserReplyTextAccount setFont:[UIFont systemFontOfSize:12.0]];
+            [cell.contentView addSubview:uilTextAccount];
+            
+            UIButton *uibUserReply = [[UIButton alloc]initWithFrame:CGRectMake(cgfScreenWidth * 0.74, cgfScreenWidth * 320.0 / 640.0 , cgfScreenWidth * 0.22, cgfScreenWidth * 50.0 / 640.0)];
+            [uibUserReply setTitle:@"送出" forState:UIControlStateNormal];
+            [uibUserReply addTarget:self action:@selector(sentUserReply) forControlEvents:UIControlEventTouchUpInside];
+//            [uibUserReply setTintColor:[UIColor blackColor]];
+            [uibUserReply setTitleColor:[UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0] forState:UIControlStateSelected];
+            [uibUserReply setBackgroundColor:[UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0]];
+            uibUserReply.titleLabel.font = [UIFont systemFontOfSize:12];
+            uibUserReply.layer.cornerRadius = 3;
+//            [uibUserReply setTintColor:[UIColor colorWithRed:0.72 green:0.11 blue:0.24 alpha:1.0]];
+            [cell.contentView addSubview:uibUserReply];
+        }
     }// else {
 //        cell = [tableView dequeueReusableCellWithIdentifier:nssIDATT5];
 //        cell = nil;
@@ -900,6 +949,61 @@
 //        }
 //    }
     return cell;
+}
+
+- (void)sentUserReply {
+    if ([uitvGlobalUserReply.text length] > 250) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"傳送失敗"
+                                                        message:@"最多傳送字數為250字，請精簡後傳送。謝謝~"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"確認"
+                                              otherButtonTitles:nil];
+        [alert show];
+    } else if ( uitvGlobalUserReply == nil || [uitvGlobalUserReply isEqual:@""]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"傳送失敗"
+                                                        message:@"請填入文字後再點擊送出。"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"確認"
+                                              otherButtonTitles:nil];
+        [alert show];
+    } else {
+        PFObject *newObject = [PFObject objectWithClassName:@"response"];
+        newObject[@"fid"] = nssFid;
+        newObject[@"name"] = nssName;
+        newObject[@"address"] = nssAddress;
+        newObject[@"point"] = nssPoint;
+        newObject[@"iosToken"] = nssIOSToken;
+        newObject[@"content"] = nssUserReplyText;
+        NSLog(@"[newObject sent reply];");
+        
+        [newObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (succeeded) {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"訊息傳送成功"
+                                                                message:@"謝謝您的回覆~"
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"確認"
+                                                      otherButtonTitles:nil];
+                [alert show];
+            } else {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"訊息傳送失敗"
+                                                                message:@"請確認網路狀況~"
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"確認"
+                                                      otherButtonTitles:nil];
+                [alert show];
+                NSLog(@"%@", error);
+            }
+        }];
+    }
+}
+
+- (void)textViewDidChange:(NSNotification *)notification {
+    [uilGlobalUserReplyTextAccount setText:[NSString stringWithFormat:@"字數：%ld/250", (long)[uitvGlobalUserReply.text length]]];
+    if ((long)[uitvGlobalUserReply.text length] <= 250) {
+        nssUserReplyText = uitvGlobalUserReply.text;
+    } else {
+        nssUserReplyText = nil;
+    }
 }
 
 - (void)mapClicked {
@@ -983,6 +1087,8 @@
         return self.tableView.frame.size.width * 300 / 640 + cgfScreenWidth * 20.0 / 640.0;
     } else if (indexPath.section == 13) {
         return self.tableView.frame.size.width * 300 / 640 + cgfScreenWidth * 20.0 / 640.0;
+    } else if (indexPath.section == 14) {
+        return self.tableView.frame.size.width * 380 / 640 + cgfScreenWidth * 20.0 / 640.0;
     } else {
         return self.tableView.frame.size.width * 78 / 640 + cgfScreenWidth * 20.0 / 640.0;
     }
