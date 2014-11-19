@@ -79,6 +79,8 @@
     UILabel *uilGlobalUserReplyTextAccount;
     NSString *nssUserReplyText;
     UIButton *uibGlobalCancel;
+    
+    int iInitialReload;
 }
 @end
 
@@ -165,6 +167,7 @@
 }
 
 - (void)viewDidLoad {
+    iInitialReload = 1;
     delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [self setMyScreenSize];
     [self makeKeyboardOffset];
@@ -754,12 +757,14 @@
     PFQuery *query = [PFQuery queryWithClassName:@"newtask"];
     [query whereKey:@"fid" equalTo:nssFid];
     nssRefrashResultTitle = @"很抱歉";
-    nssRefrashResultContent = @"資料無法取得。";
+    nssRefrashResultContent = @"資料無法取得，可能原因為網路連線失敗。";
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             // The find succeeded.
             NSLog(@"Successfully retrieved %d scores.", objects.count);
             if (objects.count == 0) {
+                nssRefrashResultTitle = @"更新成功";
+                nssRefrashResultContent = @"恭喜，資料已更新為最新狀態！";
                 PFObject *newObject = [PFObject objectWithClassName:@"newtask"];
                 newObject[@"fid"] = nssFid;
                 newObject[@"address"] = @"目前無地址資料";
@@ -880,6 +885,20 @@
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
+        if (iInitialReload == 0) {
+            if (nssRefrashResultTitle != nil && [nssRefrashResultTitle isEqualToString:@""] == NO) {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nssRefrashResultTitle
+                                                                message:nssRefrashResultContent
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"確認"
+                                                      otherButtonTitles:nil];
+                [alert show];
+            }
+        }
+        if (iInitialReload > 0) {
+            iInitialReload = iInitialReload - 1;
+        }
+        [self.refreshControl endRefreshing];
     }];
 }
 
@@ -1019,7 +1038,7 @@
     CGFloat FrontGraphX = (cgfMiddleX - cgfFrontGraphWidth - cgfFrontGraphWidthHalf) + (cgfFrontGraphWidth * cgfPulledRatio);
     
     if (fabsf(BackgroundGraphX - FrontGraphX) < 1.0) {
-        self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"下拉後卡開，進行更新"];
+//        self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"下拉後輕放，進行更新"];
         bIconAssociated = YES;
     }
     
@@ -1035,6 +1054,8 @@
     CGRect FrontGraphFrame = self.uiivReloadFront.frame;
     FrontGraphFrame.origin.x = FrontGraphX;
     FrontGraphFrame.origin.y = FrontGraphY;
+    
+    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"下拉後輕放，進行更新"];
     
     self.uiivReloadBack.frame = BackgroundGraphFrame;
     self.uiivReloadFront.frame = FrontGraphFrame;
@@ -1082,11 +1103,11 @@
     [self writeToMyPlist];
     // Reload table data
     [self.tableView reloadData];
-    [self delayUntilReloadFinished];
+//    [self delayUntilReloadFinished];
 }
 
 - (void)delayUntilReloadFinished {
-    double dReloadSecond = 2.0;
+    double dReloadSecond = 3.0;
     dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(dReloadSecond * NSEC_PER_SEC));
     dispatch_after(delayTime, dispatch_get_main_queue(), ^(void){
         NSLog(@"Finished");
@@ -1099,6 +1120,7 @@
             [alert show];
         }
         [self.refreshControl endRefreshing];
+        self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"更新完成"];
     });
 }
 

@@ -58,6 +58,8 @@
     BOOL bIconAssociated;
     BOOL bAnimation;
     BOOL bTitleAdded;
+    
+    BOOL bInitialReload;
 }
 
 @end
@@ -106,6 +108,7 @@
 }
 
 - (void)viewDidLoad {
+    bInitialReload = YES;
     [super viewDidLoad];
     delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [self setMyScreenSize];
@@ -705,7 +708,7 @@
     PFQuery *query = [PFQuery queryWithClassName:@"hp"];
     [query whereKey:@"available" equalTo:@"YES"];
     nssRefrashResultTitle = @"很抱歉";
-    nssRefrashResultContent = @"資料無法取得。";
+    nssRefrashResultContent = @"資料無法取得，可能原因為網路連線失敗。";
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             // The find succeeded.
@@ -757,6 +760,18 @@
             [self readAllFromMyPlist];
             [self.tableView reloadData];
         }
+        if (bInitialReload == NO) {
+            if (nssRefrashResultTitle != nil && [nssRefrashResultTitle isEqualToString:@""] == NO) {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nssRefrashResultTitle
+                                                                message:nssRefrashResultContent
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"確認"
+                                                      otherButtonTitles:nil];
+                [alert show];
+            }
+        }
+        bInitialReload = NO;
+        [self.refreshControl endRefreshing];
     }];
 }
 
@@ -790,7 +805,7 @@
     CGFloat FrontGraphX = (cgfMiddleX - cgfFrontGraphWidth - cgfFrontGraphWidthHalf) + (cgfFrontGraphWidth * cgfPulledRatio);
     
     if (fabsf(BackgroundGraphX - FrontGraphX) < 1.0) {
-        self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"下拉後卡開，進行更新"];
+//        self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"下拉後輕放，進行更新"];
         bIconAssociated = YES;
     }
     
@@ -806,6 +821,8 @@
     CGRect FrontGraphFrame = self.uiivReloadFront.frame;
     FrontGraphFrame.origin.x = FrontGraphX;
     FrontGraphFrame.origin.y = FrontGraphY;
+    
+    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"下拉後輕放，進行更新"];
     
     self.uiivReloadBack.frame = BackgroundGraphFrame;
     self.uiivReloadFront.frame = FrontGraphFrame;
@@ -852,11 +869,11 @@
     [self prepareTable];
     // Reload table data
     [self.tableView reloadData];
-    [self delayUntilReloadFinished];
+//    [self delayUntilReloadFinished];
 }
 
 - (void)delayUntilReloadFinished {
-    double dReloadSecond = 2.0;
+    double dReloadSecond = 0.5;
     dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(dReloadSecond * NSEC_PER_SEC));
     dispatch_after(delayTime, dispatch_get_main_queue(), ^(void){
         NSLog(@"Finished");
@@ -869,6 +886,7 @@
             [alert show];
         }
         [self.refreshControl endRefreshing];
+        self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"更新完成"];
     });
 }
 

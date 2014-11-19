@@ -436,7 +436,7 @@
     CGFloat FrontGraphX = (cgfMiddleX - cgfFrontGraphWidth - cgfFrontGraphWidthHalf) + (cgfFrontGraphWidth * cgfPulledRatio);
     
     if (fabsf(BackgroundGraphX - FrontGraphX) < 1.0) {
-        self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"下拉後卡開，進行更新"];
+        self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"下拉後輕放，進行更新"];
         bIconAssociated = YES;
     }
     
@@ -533,7 +533,7 @@
         NSString *title = [NSString stringWithFormat:@"上次更新時間: %@", [formatter stringFromDate:[NSDate date]]];
         NSDictionary *attrsDictionary = [NSDictionary dictionaryWithObject:[UIColor blackColor] forKey:NSForegroundColorAttributeName];
         NSAttributedString *attributedTitle = [[NSAttributedString alloc] initWithString:title attributes:attrsDictionary];
-        self.refreshControl.attributedTitle = attributedTitle;
+        self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"下拉後輕放，進行更新"];
     }
     
     [UIView animateWithDuration:0.3
